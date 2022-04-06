@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Реєстрація" />
+
+    <!--AccountName-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/accountNameTil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/groupNameTil"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="40dp">
+
+        <EditText
+            android:id="@+id/accountNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Логін"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--GroupName-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/groupNameTil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/CorporateEmailTil"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="40dp">
+
+        <EditText
+            android:id="@+id/groupNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Група"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--CorporateEmail-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/CorporateEmailTil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/passwordTil"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="40dp">
+
+        <EditText
+            android:id="@+id/CorporateEmailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Корпоративна пошта"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--password-->
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id = "@+id/passwordTil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="40dp"
+        app:passwordToggleEnabled = "true">
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint = "Пароль"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below = "@id/passwordTil"
+        android:text = "Зареєструватись"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="100dp" />
+
+
+</RelativeLayout>
