@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "555424810925",
+    "project_id": "freewilldatabase",
+    "storage_bucket": "freewilldatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555424810925:android:71c26b3795cf34d7940324",
+        "android_client_info": {
+          "package_name": "com.example.freewill"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555424810925-u288qskte6na7uboh72lgusj0jtdeg0m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.freewill",
+            "certificate_hash": "b8398c45ca6cbdf7c3b45dd35d87a487fd7f07a9"
+          }
+        },
+        {
+          "client_id": "555424810925-j6k18o7ptbr1tdjhq2fcjpebbfpmlkj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3Gx09cW1qxzPocBGYdekIdw3cPbBVo4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555424810925-j6k18o7ptbr1tdjhq2fcjpebbfpmlkj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
