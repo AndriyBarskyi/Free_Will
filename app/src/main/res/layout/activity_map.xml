@@ -10,13 +10,17 @@
         android:id="@+id/findDirectionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="64dp"
-        android:backgroundTint="#05B8DF"
+        android:layout_gravity='end|bottom'
+        android:layout_margin="42dp"
+        android:backgroundTint="@color/main_blue"
         android:clickable="true"
         android:contentDescription="@android:string/search_go"
         android:focusable="true"
+        android:scaleType="center"
+        android:src="@drawable/ic_directions_fab"
+        app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_directions_fab" />
+        app:src="@drawable/ic_directions_fab"
+        app:tint="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
