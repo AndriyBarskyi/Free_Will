@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="400dp"
-    android:layout_height="200dp"
-    android:layout_marginTop="80dp">
+    android:layout_width="411dp"
+    android:layout_height="150dp"
+    android:layout_marginTop="100dp"
+    android:background="@color/main_pale_blue">
 
     <Button
+        android:id="@+id/searchFromToButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -12,21 +14,44 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="129dp"
         android:layout_marginEnd="129dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/main_blue"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/search"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp">
 
     </Button>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="198dp"
-        android:layout_height="36dp"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="250dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="230dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/comfortaa"
+            android:hint="@string/from"
+            android:textColorHint="#616161" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/from" />
+            android:fontFamily="@font/comfortaa"
+            android:hint="@string/to"
+            android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>

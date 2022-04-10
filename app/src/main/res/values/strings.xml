@@ -3,4 +3,5 @@
     <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
     <string name="from">Від</string>
     <string name="to">До</string>
+    <string name="search">Пошук</string>
 </resources>
