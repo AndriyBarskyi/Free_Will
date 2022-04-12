@@ -7,6 +7,12 @@
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1796875" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/_______.xml" value="0.1785" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/btn_shape.xml" value="0.155" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_choose_page.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
       </map>
     </option>
   </component>
@@ -15,5 +21,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.16666666666666666" />
+      </ProjectState>
+    </option>
   </component>
 </project>

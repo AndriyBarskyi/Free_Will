@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Free Will</string>
     <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
+    <string name="choose_page">Ласкаво просимо</string>
+    <string name="choose_page_btn1">Студент</string>
+    <string name="choose_page_btn2">Гість</string>
 </resources>
