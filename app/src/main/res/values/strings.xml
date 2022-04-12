@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Free Will</string>
     <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
+    <string name="setting">Налаштування</string>
+    <string name="group">Група</string>
+    <string name="login">Логін</string>
+    <string name="gmail">Пошта</string>
+    <string name="personal_data">Особисті дані</string>
+    <string name="general_setting">Загальні налаштування</string>
+    <string name="change">Змінити</string>
+    <string name="sound">Сповіщення\nзвук</string>
+    <string name="language">Мова</string>
+    <string name="type_words">Розмір шрифту</string>
+    <string name="on">Вкл</string>
+    <string name="off">Викл</string>
+    <string name="Ukraine">Соловїна</string>
+    <string name="English">English</string>
+    <string name="Big">B</string>
+    <string name="Medium">C</string>
+    <string name="Small">M</string>
+    <string name="five_minute">за 5 хв</string>
+    <string name="ten_minute">за 10 хв</string>
+    <string name="fifteen_minute">за 15 хв</string>
+    <string name="twelve_minute">за 20 хв</string>
+    <string name="remember">нагадати</string>
 </resources>
