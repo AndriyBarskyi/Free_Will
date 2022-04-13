@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Choose_page_activity">
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="411dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/comfortaa"
+        android:shadowColor="@color/dark_blue"
+        android:text="@string/choose_page"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="451dp"
+        android:layout_height="417dp"
+        app:srcCompat="@drawable/_______"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-20dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="441dp"
+        android:layout_height="815dp"
+        app:srcCompat="@drawable/_____"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="291dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="170dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_shape"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/choose_page_btn1"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="236dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="170dp"
+        android:layout_height="52dp"
+        android:background="@drawable/btn_shape"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/choose_page_btn2"
+        android:textColor="@color/white"
+
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="672dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
