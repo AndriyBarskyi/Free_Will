@@ -43,7 +43,7 @@
     <!--AccountName-->
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/accountNameTil"
+        android:id="@+id/emailTil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/passwordTil"
@@ -51,11 +51,10 @@
         android:layout_marginHorizontal="40dp">
 
         <EditText
-            android:id="@+id/accountNameEditText"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/entrance_login"
-            android:visibility="visible" />
+
 
     </com.google.android.material.textfield.TextInputLayout>
 

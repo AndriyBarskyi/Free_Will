@@ -7,12 +7,32 @@
     tools:context=".ProfileActivity">
 
     <TextView
+
         android:id="@+id/entance"
+        android:id="@+id/infoText"
+
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="100dp"
         android:text="Вітаємо, ви увійшли" />
+
+    <TextView
+        android:id="@+id/userNameText"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/infoText"
+        android:layout_centerInParent="true"
+        android:text="" />
+
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userNameText"
+        android:layout_marginHorizontal="120dp"
+        android:text="Log Out" />
 
 </RelativeLayout>
