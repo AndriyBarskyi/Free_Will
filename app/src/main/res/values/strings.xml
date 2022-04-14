@@ -4,4 +4,6 @@
     <string name="choose_page">Ласкаво просимо</string>
     <string name="choose_page_btn1">Студент</string>
     <string name="choose_page_btn2">Гість</string>
+    <string name="welcome_page_1">Львівський національний університет імені Івана Франка</string>
+    <string name="welcome_page_2">студентами для студентів</string>
 </resources>
