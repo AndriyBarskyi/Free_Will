@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Free Will</string>
-    <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
     <string name="choose_page">Ласкаво просимо</string>
     <string name="choose_page_btn1">Студент</string>
     <string name="choose_page_btn2">Гість</string>
     <string name="welcome_page_1">Львівський національний університет імені Івана Франка</string>
     <string name="welcome_page_2">студентами для студентів</string>
+    <string name="entrance_1">Вхід</string>
+    <string name="entrance_login">Логін</string>
+    <string name="entrance_password">Пароль</string>
+    <string name="entrance_btn">Увійти</string>
+    <string name="entrance_no_account">Я ще не маю акаунта</string>
+    <string name="entrance_registration">Зареєструватись</string>
 </resources>

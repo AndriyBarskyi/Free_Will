@@ -7,7 +7,7 @@
     tools:context=".ProfileActivity">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/entance"
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
