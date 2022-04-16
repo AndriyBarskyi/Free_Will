@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.freewill" >
+    package="com.example.freewill">
     <!-- add internet permission -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,7 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FreeWill" >
+        android:theme="@style/Theme.FreeWill">
+        <activity
+            android:name=".Check_email_entrance"
+            android:exported="false" />
+        <activity
+            android:name=".Schedule_page"
+            android:exported="false" />
         <activity
             android:name=".welcome_page"
             android:exported="false" />
@@ -24,7 +30,7 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
