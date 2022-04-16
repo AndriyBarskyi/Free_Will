@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="411dp"
-    android:layout_height="150dp"
+    android:layout_height="136dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="150dp"
-    android:background="@color/main_pale_blue">
+    android:background="@drawable/ic_rounded_layout_corners">
 
     <Button
         android:id="@+id/searchFromToButton"
@@ -21,41 +21,47 @@
         android:fontFamily="@font/comfortaa"
         android:text="@string/search"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp">
-    </Button>
+        app:cornerRadius="12dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="230dp"
+        android:layout_marginEnd="220dp"
         app:boxBackgroundColor="@color/white"
         app:boxStrokeErrorColor="@color/red"
-        app:strokeColor="@color/black">
+        app:strokeColor="@color/black"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopStart="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/comfortaa"
             android:hint="@string/from"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="230dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="20dp"
         app:boxBackgroundColor="@color/white"
-        app:boxStrokeErrorColor="@color/red">
+        app:boxStrokeErrorColor="@color/red"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopStart="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
 
