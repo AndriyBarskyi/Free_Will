@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreeWill">
         <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".Check_email_entrance"
             android:exported="false" />
         <activity
@@ -38,7 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

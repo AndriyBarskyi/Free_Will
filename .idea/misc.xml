@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Free_Will_Project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.236" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/drawable/button_stroke.xml" value="0.2075" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/drawable/ic_directions_fab.xml" value="0.236" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.236" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/drawable/ic_rounded_layout_corners.xml" value="0.2555" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/font/comfortaa_bold.xml" value="0.190625" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/layout/activity_login.xml" value="0.24547101449275363" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/layout/activity_map.xml" value="0.4" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/layout/content_map.xml" value="0.24547101449275363" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/layout/fragment_first.xml" value="0.24547101449275363" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/layout/fragment_second.xml" value="0.24547101449275363" />
+        <entry key="..\:/Free_Will_Project/app/src/main/res/layout/search_popup.xml" value="0.6" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1796875" />
