@@ -33,7 +33,7 @@
         android:layout_marginEnd="140dp"
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/comfortaa"
-        android:text="Змінити"
+        android:text="@string/schedule_btn"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="14sp"
