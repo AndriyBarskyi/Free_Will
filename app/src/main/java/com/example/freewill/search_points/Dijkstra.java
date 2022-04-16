@@ -37,8 +37,8 @@ class Graph {
             }
         }
 
-        for (Line l : root.lines) {
-            addVertex(l.p1.id, l.p2.id, l.weight(), true);
+        for (Line l : root.getLines()) {
+            addVertex(l.getP1().getId(), l.getP2().getId(), l.weight(), true);
         }
 
     }
