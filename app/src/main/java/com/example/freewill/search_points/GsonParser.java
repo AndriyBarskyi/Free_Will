@@ -26,7 +26,7 @@ class Root {
         return lines;
     }
 
-    public ArrayList<Line> lines;
+    private ArrayList<Line> lines;
     private final Map<String, Integer> displayFromId = new HashMap<>(); // name:id
 
 
@@ -38,7 +38,7 @@ class Root {
     }
 
 
-    public void initDisplay() {
+    private void initDisplay() {
         displayFromId.put("237", 15);
         displayFromId.put("238", 13);
         displayFromId.put("239", 11);
@@ -86,11 +86,11 @@ class Root {
 
     public Point getPointById(int id) {
         for (Line l : lines) {
-            if (l.p1.getId() == id) {
-                return l.p1;
+            if (l.getP1().getId() == id) {
+                return l.getP1();
             }
-            if (l.p2.getId() == id) {
-                return l.p2;
+            if (l.getP2().getId() == id) {
+                return l.getP2();
             }
         }
         return new Point();
@@ -99,8 +99,9 @@ class Root {
 }
 
 class Point {
-    public int id;
-    public int x;
+    private int id;
+    private int x;
+    private int y;
 
     public int getX() {
         return x;
@@ -110,16 +111,14 @@ class Point {
         return y;
     }
 
-    public int y;
-
     public int getId() {
         return id;
     }
 }
 
 class Line {
-    public Point p1;
-    public Point p2;
+    private Point p1;
+    private Point p2;
 
     public Point getP1() {
         return p1;
@@ -130,14 +129,6 @@ class Line {
     }
 
     public int weight() {
-        return (int) Math.round(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
+        return (int) Math.round(Math.sqrt(Math.pow((p2.getX() - p1.getX()), 2) + Math.pow((p2.getY() - p1.getY()), 2)));
     }
-}
-
-class P1 extends Point {
-
-}
-
-class P2 extends Point {
-
 }
