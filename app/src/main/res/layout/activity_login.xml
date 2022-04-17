@@ -61,7 +61,7 @@
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -83,8 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/entrance_password"
-            android:inputType="textPassword" />
-
+            android:inputType="textPassword"
+        />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
