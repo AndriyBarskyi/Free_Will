@@ -47,7 +47,7 @@ class ProfileActivity : AppCompatActivity() {
         }
         else{
             //user is not logged in
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, ScheduleActivity::class.java))
         }
     }
 }
