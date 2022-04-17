@@ -13,7 +13,7 @@
         android:layout_marginTop="-28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/__________________________" />
+        app:srcCompat="@drawable/circles_up_1" />
 
     <ImageView
         android:id="@+id/imageView13"

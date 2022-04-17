@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreeWill">
         <activity
+            android:name=".EditScheduleActivity"
+            android:exported="false" />
+        <activity
             android:name=".MapActivity"
             android:exported="false" />
         <activity
