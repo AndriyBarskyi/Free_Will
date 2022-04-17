@@ -7,6 +7,14 @@
     tools:context=".LoginActivity">
 
     <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="65dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
         android:id="@+id/imageView3"
         android:layout_width="170dp"
         android:layout_height="225dp"
