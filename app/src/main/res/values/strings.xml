@@ -24,4 +24,8 @@
     <string name="edit_schedule_thu">чт</string>
     <string name="edit_schedule_fri">пт</string>
     <string name="edit_schedule_plus">+</string>
+
+<!--    navigation_drawer-->
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
