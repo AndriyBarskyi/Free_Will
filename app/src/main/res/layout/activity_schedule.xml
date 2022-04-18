@@ -1,184 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="170dp"
-        android:layout_height="401dp"
-        android:layout_marginTop="-280dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:srcCompat="@drawable/circles_down" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="170dp"
-        android:layout_height="401dp"
-        android:layout_marginTop="-280dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:srcCompat="@drawable/circles_down_right" />
-
-    <Button
-        android:id="@+id/Change_btn_1"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="140dp"
-        android:background="@drawable/btn_shape"
-        android:fontFamily="@font/comfortaa"
-        android:text="@string/schedule_btn"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/class_1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/light_blue"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/class_2"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="340dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/light_blue"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="170dp"
+            android:layout_height="401dp"
+            android:layout_marginTop="-280dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@drawable/circles_down" />
 
-    <EditText
-        android:id="@+id/class_3"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="410dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/light_blue"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="170dp"
+            android:layout_height="401dp"
+            android:layout_marginTop="-280dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@drawable/circles_down_right" />
 
-    <EditText
-        android:id="@+id/class_4"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="480dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/light_blue"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/Change_btn_1"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="140dp"
+            android:background="@drawable/btn_shape"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/schedule_btn"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/class_5"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="550dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="180dp"
-        android:backgroundTint="@color/light_blue"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/class_1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView10"
+        <EditText
+            android:id="@+id/class_2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="340dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/class_3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="410dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/class_4"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="480dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/class_5"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="180dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/schedule_up" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="82dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/access_to_sidebar" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="220dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/white_regt_schedule" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="35dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="Сьогодні"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/Change_btn_1"
+            app:layout_constraintEnd_toEndOf="@+id/imageView9"
+            app:layout_constraintStart_toStartOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView9" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/schedule_up" />
+        android:layout_height="match_parent"
+        app:menu="@menu/nav_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true">
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="82dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/access_to_sidebar" />
+    </com.google.android.material.navigation.NavigationView>
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="220dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/white_regt_schedule" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="35dp"
-        android:fontFamily="@font/comfortaa"
-        android:text="Сьогодні"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Change_btn_1"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/imageView9" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
