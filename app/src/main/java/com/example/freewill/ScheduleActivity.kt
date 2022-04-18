@@ -30,21 +30,12 @@ class ScheduleActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.navView)
         navView.setNavigationItemSelectedListener{
             when(it.itemId){
-//                R.id.nav_schedule ->
-//                    Toast.makeText(applicationContext, "Schedule is clicked", Toast.LENGTH_SHORT).show()
-//
-//                R.id.nav_map ->
-//                    Toast.makeText(applicationContext, "Map is clicked", Toast.LENGTH_SHORT).show()
-//
-//                R.id.nav_settings ->
-//                    Toast.makeText(applicationContext, "Settings is clicked", Toast.LENGTH_SHORT).show()
-
                 R.id.nav_schedule -> startActivity(Intent(this, ScheduleActivity::class.java))
 
                 R.id.nav_map -> startActivity(Intent(this, MapActivity::class.java))
 
                 R.id.nav_settings ->
-                    Toast.makeText(applicationContext, "Settings is clicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "No Settings yet", Toast.LENGTH_SHORT).show()
 
             }
             true

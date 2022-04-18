@@ -30,6 +30,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/userNameText"
         android:layout_marginHorizontal="120dp"
-        android:text="Log Out" />
+        android:text="Вийти" />
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logOutButton"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="120dp"
+        android:text="Наступна" />
 
 </RelativeLayout>

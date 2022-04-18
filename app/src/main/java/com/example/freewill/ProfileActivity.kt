@@ -35,6 +35,10 @@ class ProfileActivity : AppCompatActivity() {
             firebaseAuth.signOut()
             checkUser()
         }
+
+        binding.nextButton.setOnClickListener{
+            startActivity(Intent(this, ScheduleActivity::class.java))
+        }
     }
 
     private fun checkUser() {
@@ -47,7 +51,7 @@ class ProfileActivity : AppCompatActivity() {
         }
         else{
             //user is not logged in
-            startActivity(Intent(this, ScheduleActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 }
