@@ -376,7 +376,7 @@
         app:layout_constraintTop_toTopOf="@+id/class_edit_5"
         app:srcCompat="@drawable/pencil" />
 
-    <TextView
+    <EditText
         android:id="@+id/class_edit_text1"
         android:layout_width="130dp"
         android:layout_height="32dp"
@@ -389,7 +389,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/class_edit_1" />
 
-    <TextView
+    <EditText
         android:id="@+id/class_edit_text2"
         android:layout_width="130dp"
         android:layout_height="32dp"
@@ -402,7 +402,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/class_edit_2" />
 
-    <TextView
+    <EditText
         android:id="@+id/class_edit_text3"
         android:layout_width="130dp"
         android:layout_height="32dp"
@@ -415,7 +415,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/class_edit_3" />
 
-    <TextView
+    <EditText
         android:id="@+id/class_edit_text4"
         android:layout_width="130dp"
         android:layout_height="32dp"
@@ -428,7 +428,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/class_edit_4" />
 
-    <TextView
+    <EditText
         android:id="@+id/class_edit_text5"
         android:layout_width="130dp"
         android:layout_height="32dp"
