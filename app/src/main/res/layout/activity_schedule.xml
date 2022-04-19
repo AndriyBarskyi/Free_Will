@@ -16,18 +16,18 @@
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="401dp"
-            android:layout_marginTop="-280dp"
+            android:layout_marginTop="-255dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
             app:srcCompat="@drawable/circles_down" />
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="401dp"
-            android:layout_marginTop="-280dp"
+            android:layout_marginTop="-255dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
             app:srcCompat="@drawable/circles_down_right" />
@@ -37,7 +37,7 @@
             android:layout_width="150dp"
             android:layout_height="55dp"
             android:layout_marginStart="140dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="120dp"
             android:layout_marginEnd="140dp"
             android:background="@drawable/btn_shape"
             android:fontFamily="@font/comfortaa"
@@ -55,13 +55,14 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="220dp"
             android:layout_marginEnd="50dp"
             android:backgroundTint="@color/light_blue"
             android:ems="10"
             android:fontFamily="@font/comfortaa"
             android:inputType="textPersonName"
             android:textColor="@color/black"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +71,24 @@
 
         <EditText
             android:id="@+id/class_2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/light_blue"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/class_3"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
@@ -82,33 +101,17 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/class_3"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="410dp"
-            android:layout_marginEnd="50dp"
-            android:backgroundTint="@color/light_blue"
-            android:ems="10"
-            android:fontFamily="@font/comfortaa"
-            android:inputType="textPersonName"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:textSize="12sp" />
 
         <EditText
             android:id="@+id/class_4"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="480dp"
+            android:layout_marginTop="400dp"
             android:layout_marginEnd="50dp"
             android:backgroundTint="@color/light_blue"
             android:ems="10"
@@ -118,32 +121,32 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:textSize="12sp" />
 
         <EditText
             android:id="@+id/class_5"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="550dp"
+            android:layout_marginTop="460dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginBottom="180dp"
             android:backgroundTint="@color/light_blue"
             android:ems="10"
             android:fontFamily="@font/comfortaa"
             android:inputType="textPersonName"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:textSize="12sp" />
 
         <ImageView
             android:id="@+id/imageView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="200dp"
+            android:layout_marginBottom="170dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -164,7 +167,7 @@
             android:layout_width="220dp"
             android:layout_height="125dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="-5dp"
             android:layout_marginEnd="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
