@@ -27,9 +27,17 @@ class EditScheduleActivity : AppCompatActivity() {
         //firebaseAuth = FirebaseAuth.getInstance()
         //val  user = firebaseAuth.uid.
         //startActivity(Intent(this, ScheduleActivity::class.java))
-        //binding.monday.setOnClickListener{}
+
+
+        //OpenFrag(EditSchedule_monday_Fragment.newInstance(), R.id.FrameLayout)
+        binding.monday.setOnClickListener{
+            OpenFrag(EditSchedule_monday_Fragment.newInstance(), R.id.FrameLayout)
+        }
+        binding.tuesday.setOnClickListener{
+            OpenFrag(EditSchedule_tuesday_Fragment.newInstance(), R.id.FrameLayout)
+        }
         
-        //OpenFrag(EditSchedule_monday_Fragment.newInstance(), R.id.frameLayout)
+
     
     }
     private fun OpenFrag(f:Fragment, idHolder:Int) {

@@ -32,7 +32,7 @@ class EditSchedule_monday_Fragment : Fragment() {
         return binding.root
     }
 
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnEditSchedule.setOnClickListener{
             val firstpara = binding.classEditText1.text.toString().trim()
@@ -47,7 +47,7 @@ class EditSchedule_monday_Fragment : Fragment() {
         }
 
     }
-*/
+
 
 
     companion object {
@@ -56,12 +56,12 @@ class EditSchedule_monday_Fragment : Fragment() {
     }
 
 
-    /*private fun updateShedule(monday: Day)
+    private fun updateShedule(monday: Day)
     {
 
         val nameOfGroup = "pmi_25"
-        val ChangeDay = binding.monday.text.toString().trim()
-
+        //val ChangeDay = binding.monday.text.toString().trim()
+        val ChangeDay ="monday"
 
         //init reference of database
         database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -83,5 +83,5 @@ class EditSchedule_monday_Fragment : Fragment() {
 
             }
 
-    }*/
+    }
 }

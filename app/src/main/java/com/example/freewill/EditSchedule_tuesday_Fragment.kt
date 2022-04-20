@@ -44,21 +44,7 @@ class EditSchedule_tuesday_Fragment : Fragment() {
             //startActivity(Intent(this, ScheduleActivity::class.java))
         }
 
-        /*binding.monday.setOnClickListener {
-            OpenFrag(EditSchedule_monday_Fragment.newInstance(), R.id.frameLayout)
-        }*/
     }
-
-    /*private fun OpenFrag(f:Fragment, idHolder:Int) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(idHolder,f)
-            .commit()
-    }*/
-
-
-
-
 
     companion object {
         @JvmStatic
