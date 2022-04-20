@@ -6,16 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <!--AccountName-->
+
     <TextView
         android:id="@+id/textView1"
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Вхід" />
-
-    <!--AccountName-->
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="140dp"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/entrance_1"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTil"
@@ -27,9 +34,10 @@
 
         <EditText
             android:id="@+id/emailEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"/>
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_border"
+            android:hint="Email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,22 +55,26 @@
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint = "Пароль"/>
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_border"
+            android:hint="Пароль"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/loginWithoutPasswordButton"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/noAccountText"
         android:layout_marginHorizontal="130dp"
-        android:layout_marginTop="43dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="Увійти без авторизації" />
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_shape"
+        android:fontFamily="@font/comfortaa"
+        android:text="Увійти без авторизації"
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/loginButton"
@@ -71,8 +83,11 @@
         android:layout_below="@id/passwordTil"
         android:layout_marginHorizontal="130dp"
         android:layout_marginTop="100dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="Увійти" />
+        android:background="@drawable/btn_shape"
+        android:fontFamily="@font/comfortaa"
+        android:text="Увійти"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/noAccountText"
@@ -81,16 +96,39 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginButton"
         android:layout_centerHorizontal="true"
+        android:fontFamily="@font/comfortaa"
         android:text="@string/no_account"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/forgotPassword"
+        style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "Забули пароль?"
         android:layout_below="@+id/passwordTil"
         android:layout_alignRight="@id/passwordTil"
-        style="@style/TextAppearance.MaterialComponents.Caption"/>
+        android:fontFamily="@font/comfortaa"
+        android:text="Забули пароль?"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="170dp"
+        android:layout_height="225dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="0dp"
+        app:srcCompat="@drawable/circles_up_1" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="65dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/back" />
 
 </RelativeLayout>
