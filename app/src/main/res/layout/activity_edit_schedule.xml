@@ -7,6 +7,7 @@
     tools:context=".EditScheduleActivity">
 
 
+
     <ImageView
         android:id="@+id/circles_up_2_sched"
         android:layout_width="170dp"
@@ -37,8 +38,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/day_edit_blue"
         tools:visibility="visible" />
 
@@ -51,6 +54,7 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/comfortaa"
         android:text="@string/edit_schedule_mon"
+        android:textAlignment="center"
         android:textColor="@color/dark_blue"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/imageView12"
@@ -376,7 +380,7 @@
     <EditText
         android:id="@+id/class_edit_text1"
         android:layout_width="130dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:fontFamily="@font/comfortaa"
         android:hint="Перша пара"
         android:textColor="@color/black"
@@ -390,7 +394,7 @@
     <EditText
         android:id="@+id/class_edit_text2"
         android:layout_width="130dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:fontFamily="@font/comfortaa"
         android:hint="Друга пара"
         android:textColor="@color/black"
@@ -404,7 +408,7 @@
     <EditText
         android:id="@+id/class_edit_text3"
         android:layout_width="130dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:fontFamily="@font/comfortaa"
         android:hint="Третя пара"
         android:textColor="@color/black"
@@ -418,7 +422,7 @@
     <EditText
         android:id="@+id/class_edit_text4"
         android:layout_width="130dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:fontFamily="@font/comfortaa"
         android:textColor="@color/black"
         android:textSize="13sp"
@@ -431,7 +435,7 @@
     <EditText
         android:id="@+id/class_edit_text5"
         android:layout_width="130dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:fontFamily="@font/comfortaa"
         android:textColor="@color/black"
         android:textSize="13sp"
@@ -441,4 +445,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/class_edit_5" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
