@@ -41,6 +41,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/blue"
                 android:textSize="40sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sideBar"
                 tools:ignore="TextContrastCheck" />
@@ -107,7 +108,8 @@
                 android:text="@string/group"
                 android:textAlignment="textStart"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
@@ -128,7 +130,8 @@
                 android:paddingStart="5dp"
                 android:text="@string/login"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editGroup"
@@ -149,7 +152,8 @@
                 android:paddingStart="5dp"
                 android:text="@string/gmail"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editLogin"
@@ -178,7 +182,8 @@
                     android:paddingStart="5dp"
                     android:text="@string/password"
                     android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/eyeButton"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -211,18 +216,19 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/change"
-                    android:layout_width="182dp"
-                    android:layout_height="44dp"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="115dp"
                     android:layout_marginTop="25dp"
-                    android:background="@drawable/circle_button_dark_blue"
+                    android:background="@drawable/btn_shape"
                     android:fontFamily="@font/comfortaa_light"
                     android:text="@string/change"
                     android:textColor="@color/white"
-                    android:textSize="16dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
 
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
                     tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>
@@ -277,6 +283,7 @@
                 android:text="@string/sound"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
                 tools:ignore="TextContrastCheck" />
@@ -317,6 +324,7 @@
                     android:text="@string/on"
                     android:textAlignment="center"
                     android:textColor="@color/white"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sound"
                     tools:ignore="TextContrastCheck,TextContrastCheck" />
@@ -334,6 +342,7 @@
                 android:text="@string/remember"
                 android:textColor="@color/black"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
@@ -358,6 +367,7 @@
                     android:fontFamily="@font/comfortaa_light"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/five_minute"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/remember"
                     tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
@@ -366,12 +376,13 @@
                 <RadioButton
                     android:id="@+id/fifteen_minute"
                     android:layout_width="106dp"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="120dp"
                     android:fontFamily="@font/comfortaa_light"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/fifteen_minute"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/remember"
                     tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
@@ -399,6 +410,7 @@
                     android:fontFamily="@font/comfortaa_light"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/ten_minute"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/five_minute"
                     tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
@@ -412,6 +424,7 @@
                     android:fontFamily="@font/comfortaa_light"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/twelve_minute"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fifteen_minute"
                     tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
@@ -431,6 +444,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
@@ -484,6 +498,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="36dp"
                     android:background="@drawable/rounded_border"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -501,6 +516,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
@@ -527,6 +543,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="25sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
@@ -543,6 +560,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="25sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button_M"
                     app:layout_constraintStart_toEndOf="@+id/button_B"
@@ -559,6 +577,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="25sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
