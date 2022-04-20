@@ -5,14 +5,15 @@
     <string name="group">Група</string>
     <string name="login">Логін</string>
     <string name="gmail">Пошта</string>
+    <string name="password">Пароль</string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>
     <string name="sound">Сповіщення\nзвук</string>
     <string name="language">Мова</string>
     <string name="type_words">Розмір шрифту</string>
-    <string name="on">Вкл</string>
-    <string name="off">Викл</string>
+    <string name="on">Увімкнуто</string>
+    <string name="off">Вимкнуто</string>
     <string name="Ukraine">Соловїна</string>
     <string name="English">English</string>
     <string name="Big">B</string>

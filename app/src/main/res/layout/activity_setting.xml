@@ -6,386 +6,574 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/black"
-        android:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/generalSettings" />
-
-    <TextView
-        android:id="@+id/setting"
-        android:layout_width="295dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/setting"
-        android:textAlignment="center"
-        android:textColor="@color/blue"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="1dp"
-        android:background="@color/black"
-        android:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personalData" />
-
-    <TextView
-        android:id="@+id/personalData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="@string/personal_data"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setting" />
-
-    <Button
-        android:id="@+id/change"
-        android:layout_width="182dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="6dp"
-        android:backgroundTint="@color/blue"
-        android:text="@string/change"
-        android:fontFamily="@font/comfortaa_light"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/generalSettings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editGmail"
-        app:layout_constraintVertical_bias="0.178"
-        tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
-
-    <EditText
-        android:id="@+id/editGroup"
-        android:layout_width="255dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="76dp"
-        android:autofillHints=""
-        android:background="@drawable/rounded_border"
-        android:contentDescription="@string/twelve_minute"
-        android:ems="10"
-        android:fontFamily="@font/comfortaa_light"
-        android:inputType="textPersonName"
-        android:paddingStart="5dp"
-        android:text="@string/group"
-        android:textAlignment="textStart"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck,EditableContentDescCheck" />
-
-    <EditText
-        android:id="@+id/editLogin"
-        android:layout_width="255dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="76dp"
-        android:autofillHints=""
-        android:background="@drawable/rounded_border"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingStart="5dp"
-        android:text="@string/login"
-        android:fontFamily="@font/comfortaa_light"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editGroup"
-        tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
-
-    <EditText
-        android:id="@+id/editGmail"
-        android:layout_width="255dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="76dp"
-        android:autofillHints=""
-        android:background="@drawable/rounded_border"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingStart="5dp"
-        android:text="@string/gmail"
-        android:fontFamily="@font/comfortaa_light"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editLogin"
-        tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-    <TextView
-        android:id="@+id/generalSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="228dp"
-        android:text="@string/general_setting"
-        android:fontFamily="@font/comfortaa_bold"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setting" />
-
-    <ImageButton
-        android:id="@+id/sideBar"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="@color/white"
-
-        app:layout_constraintBottom_toTopOf="@+id/personalData"
-        app:layout_constraintEnd_toStartOf="@+id/setting"
-        app:srcCompat="@drawable/ic_sidebar_white"
-        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
-
-    <TextView
-        android:id="@+id/sound"
-        android:layout_width="155dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="@string/sound"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/generalSettings"
-        tools:ignore="TextContrastCheck" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="219dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_border_dark_blue"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/on"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/off_on"
-        app:layout_constraintTop_toBottomOf="@+id/sound"
-        app:srcCompat="@drawable/ic_sound"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck" />
-
-    <TextView
-        android:id="@+id/off_on"
-        android:layout_width="68dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="72dp"
-        android:background="@drawable/for_sound"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/on"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sound"
-        tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/language"
-        android:layout_width="58dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="@string/language"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ten_minute" />
-
-
-    <Button
-        android:id="@+id/ukraine_language"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:backgroundTint="@color/blue"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/Ukraine"
-        android:textSize="11sp"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
-
-    <Button
-        android:id="@+id/english_language"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="28dp"
-        android:backgroundTint="@color/less_blue"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="@string/English"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="339dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/language" />
-
-    <TextView
-        android:id="@+id/type_words"
-        android:layout_width="187dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="@string/type_words"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_B"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.47000003" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_B"
-        android:layout_width="57dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/circle_button"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/Big"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_C"
-        android:layout_width="57dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/circle_button_dark_blue"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/Medium"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_M"
-        app:layout_constraintStart_toEndOf="@+id/button_B"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_M"
-        android:layout_width="57dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/circle_button"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/Small"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/remember"
-        android:layout_width="239dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="@string/remember"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
-
-    <RadioGroup
-        android:id="@+id/radios"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
-
-    </RadioGroup>
-
-    <RadioButton
-        android:id="@+id/five_minute"
-        android:layout_width="106dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:onClick="onRadioButtonClicked"
-        android:text="@string/five_minute"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remember"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
-
-    <RadioButton
-        android:id="@+id/ten_minute"
-        android:layout_width="106dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="3dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:onClick="onRadioButtonClicked"
-        android:text="@string/ten_minute"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/five_minute"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
-
-    <RadioButton
-        android:id="@+id/fifteen_minute"
-        android:layout_width="106dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="120dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:onClick="onRadioButtonClicked"
-        android:text="@string/fifteen_minute"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remember"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RadioButton
-        android:id="@+id/twelve_minute"
-        android:layout_width="106dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="120dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:onClick="onRadioButtonClicked"
-        android:text="@string/twelve_minute"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fifteen_minute"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/sideBar"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="3dp"
+                android:backgroundTint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_sidebar_white"
+                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
+
+
+            <TextView
+                android:id="@+id/setting"
+                android:layout_width="354dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="25dp"
+                android:fontFamily="@font/comfortaa_light"
+                android:text="@string/setting"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="40sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sideBar"
+                tools:ignore="TextContrastCheck" />
+
+            <RelativeLayout
+                android:id="@+id/personalDateRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/editGroup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/setting"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/personalData"
+                    android:layout_width="417dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/circle_button"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:text="@string/personal_data"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="72dp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    app:srcCompat="@drawable/ic_ball_to_the_left" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    app:srcCompat="@drawable/ic_ball_right" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/editGroup"
+                android:layout_width="255dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="76dp"
+                android:autofillHints=""
+                android:background="@drawable/rounded_border"
+                android:contentDescription="@string/twelve_minute"
+                android:ems="10"
+                android:fontFamily="@font/comfortaa_light"
+                android:inputType="textPersonName"
+                android:paddingStart="5dp"
+                android:text="@string/group"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+                tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck,EditableContentDescCheck" />
+
+            <EditText
+                android:id="@+id/editLogin"
+                android:layout_width="255dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="76dp"
+                android:autofillHints=""
+                android:background="@drawable/rounded_border"
+                android:ems="10"
+                android:fontFamily="@font/comfortaa_light"
+                android:inputType="textPersonName"
+                android:paddingStart="5dp"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editGroup"
+                tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/editGmail"
+                android:layout_width="255dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="76dp"
+                android:autofillHints=""
+                android:background="@drawable/rounded_border"
+                android:ems="10"
+                android:fontFamily="@font/comfortaa_light"
+                android:inputType="textPersonName"
+                android:paddingStart="5dp"
+                android:text="@string/gmail"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editLogin"
+                tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
+
+            <LinearLayout
+                android:id="@+id/PasswordLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editGmail">
+
+                <EditText
+                    android:id="@+id/editPassword"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="80dp"
+                    android:autofillHints=""
+                    android:background="@drawable/for_password"
+                    android:ems="10"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:inputType="textPersonName"
+                    android:paddingStart="5dp"
+                    android:text="@string/password"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toStartOf="@+id/eyeButton"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck"
+                    tools:layout_editor_absoluteY="229dp" />
+
+                <ImageButton
+                    android:id="@+id/eyeButton"
+                    android:layout_width="55dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="76dp"
+                    android:background="@drawable/for_eye_password"
+                    app:layout_constraintBottom_toBottomOf="@+id/editPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/editPassword"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_eye_near_password" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/changeLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="254dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/change"
+                    android:layout_width="182dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/circle_button_dark_blue"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:text="@string/change"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/GeneralSettingRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/sound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/generalSettings"
+                    android:layout_width="417dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle_button"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:text="@string/general_setting"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    app:srcCompat="@drawable/ic_ball_right" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    app:srcCompat="@drawable/ic_ball_to_the_left" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/sound"
+                android:layout_width="155dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="@string/sound"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+                tools:ignore="TextContrastCheck" />
+
+            <LinearLayout
+                android:id="@+id/SoundLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sound">
+
+                <ImageButton
+                    android:id="@+id/soundButton"
+                    android:layout_width="219dp"
+                    android:layout_height="39dp"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_border_dark_blue"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:text="@string/on"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/off_on"
+                    app:layout_constraintTop_toBottomOf="@+id/sound"
+                    app:srcCompat="@drawable/ic_sound_on"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/off_on"
+                    android:layout_width="103dp"
+                    android:layout_height="39dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="72dp"
+                    android:background="@drawable/for_sound"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:text="@string/on"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sound"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/remember"
+                android:layout_width="239dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="@string/remember"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+            <LinearLayout
+                android:id="@+id/time1LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remember">
+
+                <RadioButton
+                    android:id="@+id/five_minute"
+                    android:layout_width="106dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/five_minute"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/remember"
+                    tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+
+
+                <RadioButton
+                    android:id="@+id/fifteen_minute"
+                    android:layout_width="106dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="120dp"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/fifteen_minute"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/remember"
+                    tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/time2LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/language"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <RadioButton
+                    android:id="@+id/ten_minute"
+                    android:layout_width="106dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/ten_minute"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/five_minute"
+                    tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/twelve_minute"
+                    android:layout_width="106dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="120dp"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/twelve_minute"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fifteen_minute"
+                    tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/language"
+                android:layout_width="58dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="@string/language"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+            <RelativeLayout
+                android:id="@+id/languageRelativeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/language"
+                tools:ignore="MissingConstraints">
+
+
+                <Button
+                    android:id="@+id/english_language"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_alignStart="@+id/textView9"
+                    android:layout_alignTop="@+id/textView9"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="0dp"
+                    android:backgroundTint="@color/less_blue"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:text="@string/English"
+                    android:textSize="11sp"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
+
+                <Button
+                    android:id="@+id/ukraine_language"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_alignTop="@+id/textView9"
+                    android:layout_alignEnd="@+id/textView9"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="15dp"
+                    android:backgroundTint="@color/blue"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:text="@string/Ukraine"
+                    android:textSize="11sp"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="339dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="36dp"
+                    android:background="@drawable/rounded_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/type_words"
+                android:layout_width="187dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="@string/type_words"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+            <LinearLayout
+                android:id="@+id/fontLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/type_words">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_B"
+                    android:layout_width="57dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="36dp"
+                    android:background="@drawable/circle_button"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:text="@string/Big"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_C"
+                    android:layout_width="57dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="80dp"
+                    android:background="@drawable/circle_button_dark_blue"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:text="@string/Medium"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_M"
+                    app:layout_constraintStart_toEndOf="@+id/button_B"
+                    tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_M"
+                    android:layout_width="57dp"
+                    android:layout_height="49dp"
+                    android:layout_marginEnd="36dp"
+                    android:background="@drawable/circle_button"
+                    android:fontFamily="@font/comfortaa_light"
+                    android:text="@string/Small"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
