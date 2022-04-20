@@ -41,4 +41,14 @@
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
+    <string name="edit_schedule_mon">пн</string>
+    <string name="edit_schedule_tue">вт</string>
+    <string name="edit_schedule_wen">ср</string>
+    <string name="edit_schedule_thu">чт</string>
+    <string name="edit_schedule_fri">пт</string>
+    <string name="edit_schedule_plus">+</string>
+
+<!--    navigation_drawer-->
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
