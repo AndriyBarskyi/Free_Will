@@ -21,6 +21,7 @@
             android:clickable="true"
             android:contentDescription="@android:string/search_go"
             android:focusable="true"
+            android:onClick="onClickOpenPopUp"
             android:scaleType="center"
             android:src="@drawable/ic_directions_fab"
             app:fabSize="auto"
