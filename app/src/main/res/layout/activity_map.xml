@@ -5,7 +5,8 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
+    tools:context=".MapActivity"
+    android:foreground="@drawable/popup_foreground" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
