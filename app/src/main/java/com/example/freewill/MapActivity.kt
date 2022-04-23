@@ -37,19 +37,17 @@ class MapActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val navView: NavigationView = findViewById(R.id.navView)
+        navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.nav_schedule -> startActivity(Intent(this, ScheduleActivity::class.java))
 
                 R.id.nav_map -> startActivity(Intent(this, MapActivity::class.java))
 
-                R.id.nav_settings ->
-                    Toast.makeText(applicationContext, "No Settings yet", Toast.LENGTH_SHORT).show()
-
+                R.id.nav_settings -> startActivity(Intent(this, SettingActivity::class.java))
             }
             true
         }
-
     }
 
     @SuppressLint("ClickableViewAccessibility", "InflateParams")
