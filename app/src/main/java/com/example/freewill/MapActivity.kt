@@ -58,7 +58,7 @@ class MapActivity : AppCompatActivity() {
         val inflater =
             view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         drawerLayout = findViewById(R.id.drawerLayout)
-        drawerLayout.foreground.alpha = 120
+        drawerLayout.foreground.alpha = 255
         val popupView: View = inflater.inflate(R.layout.activity_search_popup, null)
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
