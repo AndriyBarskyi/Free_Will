@@ -2,13 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_schedule"
-        android:title="Schedule" />
+        android:icon="@drawable/ic_timetable_rounded"
+        android:title="" />
 
     <item
         android:id="@+id/nav_map"
-        android:title="Map" />
+        android:icon="@drawable/ic_map_icon_rounded"
+        android:title="" />
 
     <item
         android:id="@+id/nav_settings"
-        android:title="Settings"/>
+        android:icon="@drawable/ic_settings_rounded"
+        android:title=""/>
+
+    <item
+        android:id="@+id/nav_log_out"
+        android:icon="@drawable/ic_log_out_rounded"
+        android:title=""/>
 </menu>

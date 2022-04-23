@@ -48,7 +48,7 @@ class EditSchedule_tuesday_Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = EditSchedule_monday_Fragment()
+        fun newInstance() = EditSchedule_tuesday_Fragment()
     }
 
 
