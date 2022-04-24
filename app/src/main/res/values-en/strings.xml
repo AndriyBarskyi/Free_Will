@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name = "app_name"> Free Will </string>
+    <string name = "no_account"> I don\'t have an account yet. \n <b><u> Sign up </u></b></string>
+    <string name = "setting"> Settings </string>
+    <string name = "group"> Group </string>
+    <string name = "login"> Login </string>
+    <string name = "gmail"> Mail </string>
+    <string name = "password"> Password </string>
+    <string name = "personal_data"> Personal data </string>
+    <string name = "general_setting"> General settings </string>
+    <string name = "change"> Edit </string>
+    <string name = "sound"> Notification \n sound </string>
+    <string name = "language"> Language </string>
+    <string name = "type_words"> Font size </string>
+    <string name = "on"> Enabled </string>
+    <string name = "off"> Off </string>
+    <string name = "Ukraine"> Солов\'їна </string>
+    <string name = "English"> English </string>
+    <string name = "Big"> B </string>
+    <string name = "Medium"> C </string>
+    <string name = "Small"> M </string>
+    <string name = "five_minute"> in 5 minutes </string>
+    <string name = "ten_minute"> in 10 minutes </string>
+    <string name = "fifteen_minute"> in 15 minutes </string>
+    <string name = "twelve_minute"> in 20 minutes </string>
+    <string name = "remember"> remind </string>
+    <string name = "from"> From </string>
+    <string name = "to"> To </string>
+    <string name = "search"> Search </string>
+    <string name = "choose_page"> Welcome </string>
+    <string name = "choose_page_btn1"> Student </string>
+    <string name = "choose_page_btn2"> Guest </string>
+    <string name = "welcome_page_1"> Ivan Franko National University of Lviv </string>
+    <string name = "welcome_page_2"> by students for students </string>
+    <string name = "entrance_1"> Login </string>
+    <string name = "entrance_login"> Login </string>
+    <string name = "entrance_password"> Password </string>
+    <string name = "entrance_btn"> Login </string>
+    <string name = "entrance_no_account"> I don\'t have an account yet </string>
+    <string name = "entrance_registration"> Register </string>
+    <string name = "schedule_btn"> Edit </string>
+    <string name = "check_entrance"> <b> A login email has been sent to your mail. Use it to sign in. </b>
+    <b> You can change your password in Settings. </b> </string>
+    <string name = "edit_schedule_mon"> Mon </string>
+    <string name = "edit_schedule_tue"> Tue </string>
+    <string name = "edit_schedule_wen"> sr </string>
+    <string name = "edit_schedule_thu"> Thu </string>
+    <string name = "edit_schedule_fri"> Fri </string>
+    <string name = "edit_schedule_plus"> + </string>
+    <!--    navigation_drawer-->
+    <string name = "open"> Open </string>
+    <string name = "close"> Close </string>
+</resources>

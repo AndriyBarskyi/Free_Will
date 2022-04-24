@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -277,7 +278,7 @@
 
             <TextView
                 android:id="@+id/sound"
-                android:layout_width="155dp"
+                android:layout_width="wrap_content"
                 android:layout_height="41dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
@@ -363,7 +364,7 @@
                 <RadioButton
                     android:id="@+id/five_minute"
                     android:layout_width="106dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/comfortaa_light"
@@ -378,7 +379,7 @@
                 <RadioButton
                     android:id="@+id/fifteen_minute"
                     android:layout_width="106dp"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="120dp"
                     android:fontFamily="@font/comfortaa_light"
@@ -406,7 +407,7 @@
                 <RadioButton
                     android:id="@+id/ten_minute"
                     android:layout_width="106dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="3dp"
                     android:fontFamily="@font/comfortaa_light"
@@ -420,7 +421,7 @@
                 <RadioButton
                     android:id="@+id/twelve_minute"
                     android:layout_width="106dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="120dp"
                     android:fontFamily="@font/comfortaa_light"
@@ -437,7 +438,7 @@
 
             <TextView
                 android:id="@+id/language"
-                android:layout_width="58dp"
+                android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
@@ -472,6 +473,7 @@
                     android:layout_marginTop="0dp"
                     android:backgroundTint="@color/less_blue"
                     android:fontFamily="@font/comfortaa_bold"
+                    android:onClick="ChangeLanguage2"
                     android:text="@string/English"
                     android:textSize="11sp"
                     tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
@@ -486,8 +488,10 @@
                     android:layout_marginEnd="15dp"
                     android:backgroundTint="@color/blue"
                     android:fontFamily="@font/comfortaa_light"
-                    android:text="@string/Ukraine"
-                    android:textSize="11sp"
+                    android:hint="@string/Ukraine"
+                    android:onClick="ChangeLanguage"
+                    android:textColorHint="@color/white"
+                    android:textSize="12sp"
                     tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
 
                 <TextView
@@ -508,7 +512,7 @@
 
             <TextView
                 android:id="@+id/type_words"
-                android:layout_width="187dp"
+                android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="12dp"
@@ -527,8 +531,8 @@
                 android:id="@+id/fontLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="8dp"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -588,13 +592,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
