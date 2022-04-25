@@ -37,19 +37,17 @@ class MapActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val navView: NavigationView = findViewById(R.id.navView)
+        navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.nav_schedule -> startActivity(Intent(this, ScheduleActivity::class.java))
 
                 R.id.nav_map -> startActivity(Intent(this, MapActivity::class.java))
 
-                R.id.nav_settings ->
-                    Toast.makeText(applicationContext, "No Settings yet", Toast.LENGTH_SHORT).show()
-
+                R.id.nav_settings -> startActivity(Intent(this, SettingActivity::class.java))
             }
             true
         }
-
     }
 
     @SuppressLint("ClickableViewAccessibility", "InflateParams")
@@ -58,7 +56,7 @@ class MapActivity : AppCompatActivity() {
         val inflater =
             view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         drawerLayout = findViewById(R.id.drawerLayout)
-        drawerLayout.foreground.alpha = 120
+        drawerLayout.foreground.alpha = 255
         val popupView: View = inflater.inflate(R.layout.activity_search_popup, null)
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
