@@ -38,10 +38,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.525"
         app:srcCompat="@drawable/day_edit_blue"
         tools:visibility="visible" />
 
@@ -100,7 +100,7 @@
     <TextView
         android:id="@+id/thursday"
         android:layout_width="40dp"
-        android:layout_height="22dp"
+        android:layout_height="28dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -117,7 +117,7 @@
     <TextView
         android:id="@+id/friday"
         android:layout_width="40dp"
-        android:layout_height="22dp"
+        android:layout_height="28dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -150,7 +150,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
     <FrameLayout
-        android:id="@+id/FrameLayout"
+        android:id="@+id/FramLayout"
         android:layout_width="391dp"
         android:layout_height="463dp"
         app:layout_constraintBottom_toBottomOf="parent"
