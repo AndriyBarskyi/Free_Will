@@ -1,7 +1,9 @@
 package com.example.freewill
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -13,13 +15,17 @@ class  SettingActivity : AppCompatActivity() {
     lateinit var chooseLang : String
     var resLang : SharedPreferences? = null
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
+    @SuppressLint("ResourceAsColor")
+    protected override fun onCreate(savedInstanceState: Bundle?)
+    {
+        resLang = getSharedPreferences("LANGUAGE", Context.MODE_PRIVATE)
+        chooseLang = resLang?.getString("chooseLang", mLanguageCodeUa)!!
+        LocaleHelper.setLocale(this, chooseLang)
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        resLang = getSharedPreferences("LANGUAGE1", Context.MODE_PRIVATE)
-        chooseLang = resLang?.getString("chooseLang",mLanguageCodeUa)!!
-        LocaleHelper.setLocale(this, chooseLang)
 
         val a : Button = findViewById(R.id.english_language)
         val b : Button = findViewById(R.id.ukraine_language)
@@ -36,6 +42,7 @@ class  SettingActivity : AppCompatActivity() {
             recreate()
         })
     }
+
     fun saveLanguage(res:String)
     {
         val editor = resLang?.edit()
@@ -47,6 +54,7 @@ class  SettingActivity : AppCompatActivity() {
     {
         super.onDestroy()
         saveLanguage(chooseLang)
+
     }
 }
 

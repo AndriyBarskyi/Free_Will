@@ -327,6 +327,7 @@
                     android:text="@string/on"
                     android:textAlignment="center"
                     android:textColor="@color/white"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sound"
@@ -465,7 +466,7 @@
 
                 <Button
                     android:id="@+id/english_language"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_alignStart="@+id/textView9"
                     android:layout_alignTop="@+id/textView9"
@@ -473,14 +474,14 @@
                     android:layout_marginTop="0dp"
                     android:backgroundTint="@color/less_blue"
                     android:fontFamily="@font/comfortaa_bold"
-                    android:onClick="ChangeLanguage2"
+                    android:onClick="EnglishSelected"
                     android:text="@string/English"
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
 
                 <Button
                     android:id="@+id/ukraine_language"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_alignTop="@+id/textView9"
                     android:layout_alignEnd="@+id/textView9"
@@ -488,10 +489,10 @@
                     android:layout_marginEnd="15dp"
                     android:backgroundTint="@color/blue"
                     android:fontFamily="@font/comfortaa_light"
-                    android:hint="@string/Ukraine"
-                    android:onClick="ChangeLanguage"
+                    android:onClick="UkrainianSelected"
+                    android:text="@string/Ukraine"
                     android:textColorHint="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     tools:ignore="TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck" />
 
                 <TextView
