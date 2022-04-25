@@ -4,25 +4,27 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import com.example.freewill.databinding.ActivityScheduleBinding
+import com.google.android.material.navigation.NavigationView
 
-class  SettingActivity : AppCompatActivity() {
+
+class SettingActivity : AppCompatActivity() {
     private val mLanguageCodeEn = "en"
     private val mLanguageCodeUa = "ua"
     lateinit var chooseLang : String
     var resLang : SharedPreferences? = null
 
-    @SuppressLint("ResourceAsColor")
-    protected override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         resLang = getSharedPreferences("LANGUAGE", Context.MODE_PRIVATE)
         chooseLang = resLang?.getString("chooseLang", mLanguageCodeUa)!!
         LocaleHelper.setLocale(this, chooseLang)
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
@@ -48,6 +50,7 @@ class  SettingActivity : AppCompatActivity() {
         val editor = resLang?.edit()
         editor?.putString("chooseLang", res)
         editor?.apply()
+
     }
 
     override fun onDestroy()

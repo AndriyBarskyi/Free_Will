@@ -5,7 +5,8 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
+    tools:context=".MapActivity"
+    android:foreground="@drawable/popup_foreground" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,6 +22,7 @@
             android:clickable="true"
             android:contentDescription="@android:string/search_go"
             android:focusable="true"
+            android:onClick="onClickOpenPopUp"
             android:scaleType="center"
             android:src="@drawable/ic_directions_fab"
             app:fabSize="auto"
@@ -31,13 +33,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+
         android:id="@+id/navView"
         android:layout_width="120dp"
         android:layout_height="match_parent"
-        app:menu="@menu/nav_menu"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true">
-
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_menu"
+        app:itemVerticalPadding="@dimen/item_vertical_margin"
+        app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
+        android:background="@drawable/nav_background"
+        app:itemIconSize="80dp">
     </com.google.android.material.navigation.NavigationView>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -10,8 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FreeWill"
-        android:enabled="true">
+        android:theme="@style/Theme.FreeWill">
         <activity
             android:name=".EditScheduleActivity"
             android:exported="false" />
@@ -28,7 +27,7 @@
             android:name=".GuestOrStudentActivity"
             android:exported="false" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
@@ -37,10 +36,11 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,7 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
+
 </manifest>
