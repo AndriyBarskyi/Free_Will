@@ -27,17 +27,21 @@
             android:scaleType="center"
             android:src="@drawable/ic_directions_fab"
             app:fabSize="auto"
-            app:tint="@color/white"
-            tools:layout_editor_absoluteX="314dp"
-            tools:layout_editor_absoluteY="797dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.848"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.948"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/imageView16"
-            android:layout_width="409dp"
-            android:layout_height="895dp"
+            android:layout_width="394dp"
+            android:layout_height="826dp"
             app:srcCompat="@drawable/ourrrmap"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="5dp" />
 
         <Button
             android:id="@+id/button3"
@@ -46,9 +50,11 @@
             android:layout_height="69dp"
             android:onClick="aud237"
             app:layout_constraintBottom_toTopOf="@+id/button6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_editor_absoluteX="2dp" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/button6"
@@ -57,9 +63,11 @@
             android:layout_height="46dp"
             android:onClick="aud238"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.003"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.404"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintVertical_bias="0.454" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
