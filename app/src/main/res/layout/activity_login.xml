@@ -6,41 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="170dp"
-        android:layout_height="225dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="-28dp"
-        android:layout_marginEnd="0dp"
-        app:srcCompat="@drawable/__________________________" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="170dp"
-        android:layout_height="401dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="-118dp"
-        app:srcCompat="@drawable/circles_down" />
+    <!--AccountName-->
 
     <TextView
-        android:id="@+id/entance"
-        android:layout_width="match_parent"
+        android:id="@+id/textView1"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/accountNameTil"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="140dp"
         android:fontFamily="@font/comfortaa"
         android:text="@string/entrance_1"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="48sp"
-        android:textStyle="bold" />
-
-    <!--AccountName-->
+        android:textSize="40sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTil"
@@ -52,9 +34,10 @@
 
         <EditText
             android:id="@+id/emailEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_border"
+            android:hint="Email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,41 +55,52 @@
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/entrance_password"
+            android:layout_width="310dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_border"
+            android:hint="Пароль"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/loginWithoutPasswordButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noAccountText"
+        android:layout_marginHorizontal="130dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_shape"
+        android:fontFamily="@font/comfortaa"
+        android:text="Увійти без авторизації"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <Button
         android:id="@+id/loginButton"
-        android:layout_width="170dp"
-        android:layout_height="52dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/passwordTil"
         android:layout_marginHorizontal="130dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/comfortaa"
-        android:text="@string/entrance_btn"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        tools:textSize="14sp" />
+        android:text="Увійти"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/noAccountText"
         style="@style/TextAppearance.MaterialComponents.Caption"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/loginButton"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/loginButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="230dp"
         android:fontFamily="@font/comfortaa"
-        android:text="@string/entrance_no_account"
+        android:text="@string/no_account"
         android:textAlignment="center"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/forgotPassword"
@@ -115,18 +109,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordTil"
         android:layout_alignRight="@id/passwordTil"
-        android:text="Забули пароль?" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="215dp"
         android:fontFamily="@font/comfortaa"
-        android:text="@string/entrance_registration"
-        android:textAlignment="center"
-        android:textColor="@color/dark_blue" />
+        android:text="Забули пароль?"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="170dp"
+        android:layout_height="225dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="0dp"
+        app:srcCompat="@drawable/circles_up_1" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="65dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/back" />
 
 </RelativeLayout>

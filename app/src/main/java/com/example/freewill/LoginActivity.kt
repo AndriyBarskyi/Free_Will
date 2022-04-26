@@ -54,7 +54,9 @@ class LoginActivity : AppCompatActivity() {
             validateUser()
         }
 
-
+        binding.loginWithoutPasswordButton.setOnClickListener {
+            startActivity(Intent(this, ScheduleActivity::class.java))
+        }
     }
 
     private fun validateUser(){

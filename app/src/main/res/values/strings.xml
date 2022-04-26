@@ -1,5 +1,32 @@
-<resources>
+<resources >
     <string name="app_name">Free Will</string>
+    <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
+    <string name="setting">Налаштування</string>
+    <string name="group">Група</string>
+    <string name="login">Логін</string>
+    <string name="gmail">Пошта</string>
+    <string name="password">Пароль</string>
+    <string name="personal_data">Особисті дані</string>
+    <string name="general_setting">Загальні налаштування</string>
+    <string name="change">Змінити</string>
+    <string name="sound">Сповіщення\nзвук</string>
+    <string name="language">Мова</string>
+    <string name="type_words">Розмір шрифту</string>
+    <string name="on">Увімкнуто</string>
+    <string name="off">Вимкнуто</string>
+    <string name="Ukraine">Солов\'їна</string>
+    <string name="English">English</string>
+    <string name="Big">B</string>
+    <string name="Medium">C</string>
+    <string name="Small">M</string>
+    <string name="five_minute">за 5 хв</string>
+    <string name="ten_minute">за 10 хв</string>
+    <string name="fifteen_minute">за 15 хв</string>
+    <string name="twelve_minute">за 20 хв</string>
+    <string name="remember">нагадати</string>
+    <string name="from">Від</string>
+    <string name="to">До</string>
+    <string name="search">Пошук</string>
     <string name="choose_page">Ласкаво просимо</string>
     <string name="choose_page_btn1">Студент</string>
     <string name="choose_page_btn2">Гість</string>
@@ -11,4 +38,19 @@
     <string name="entrance_btn">Увійти</string>
     <string name="entrance_no_account">Я ще не маю акаунта</string>
     <string name="entrance_registration">Зареєструватись</string>
+    <string name="schedule_btn">Змінити</string>
+    <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
+    <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
+    <string name="edit_schedule_mon">пн</string>
+    <string name="edit_schedule_tue">вт</string>
+    <string name="edit_schedule_wen">ср</string>
+    <string name="edit_schedule_thu">чт</string>
+    <string name="edit_schedule_fri">пт</string>
+    <string name="edit_schedule_plus">+</string>
+
+    <!--    navigation_drawer-->
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
