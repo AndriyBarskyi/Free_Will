@@ -1,6 +1,7 @@
 package com.example.freewill
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +13,10 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.DialogFragment
 import com.example.freewill.databinding.ActivityMapBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -68,6 +71,88 @@ class MapActivity : AppCompatActivity() {
         popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
         }
+    }
+    class InfoRoomFragment (_room : String): DialogFragment()
+    {
+        val room=_room
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            return activity?.let {
+                val builder = AlertDialog.Builder(it)
+                builder.setTitle("Інформація про ${room} ауд.")
+                    .setMessage("Кафедра...")
+                builder.create()
+            } ?: throw IllegalStateException("Activity cannot be null")
+        }
+    }
+    fun aud237(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud238(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("238")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud239(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud240(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud241(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud241a(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud242(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud243(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud244(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
+    }
+    fun aud245(view: View)
+    {
+        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
+        val infoRoomFragment = InfoRoomFragment("237")
+        val manager = supportFragmentManager
+        infoRoomFragment.show(manager, "myDialog")
     }
 
 }

@@ -10,14 +10,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/button5">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/findDirectionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity='end|bottom'
-            android:layout_margin="42dp"
             android:backgroundTint="@color/dark_blue"
             android:clickable="true"
             android:contentDescription="@android:string/search_go"
@@ -26,9 +27,39 @@
             android:scaleType="center"
             android:src="@drawable/ic_directions_fab"
             app:fabSize="auto"
+            app:tint="@color/white"
+            tools:layout_editor_absoluteX="314dp"
+            tools:layout_editor_absoluteY="797dp" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="409dp"
+            android:layout_height="895dp"
+            app:srcCompat="@drawable/ourrrmap"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/Widget.MaterialComponents.TimePicker.Button"
+            android:layout_width="88dp"
+            android:layout_height="69dp"
+            android:onClick="aud237"
+            app:layout_constraintBottom_toTopOf="@+id/button6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="2dp" />
+
+        <Button
+            android:id="@+id/button6"
+            style="@style/Widget.MaterialComponents.TimePicker.Button"
+            android:layout_width="87dp"
+            android:layout_height="46dp"
+            android:onClick="aud238"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/white" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.404"
+            tools:layout_editor_absoluteX="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
