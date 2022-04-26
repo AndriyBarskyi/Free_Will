@@ -38,7 +38,7 @@ class Graph {
         }
 
         for (Line l : root.getLines()) {
-            addVertex(l.getP1().getId(), l.getP2().getId(), l.weight(), true);
+            addVertex(root.getDisplayFromId().get(l.getP1().getId()), root.getDisplayFromId().get(l.getP2().getId()), l.weight(), true);
         }
 
     }
@@ -88,7 +88,6 @@ class Graph {
         if (way[0] == 0) {
             result.add(tempVertex);
         }
-
         return result;
     }
 
@@ -102,9 +101,11 @@ class Graph {
         ArrayList<Integer> vectorResult = getWay(endVertex);
         ArrayList<Integer> coords = new ArrayList<>();
 
-        for (Integer integer : vectorResult) {
-            coords.add(root.getPointById(integer).getX());
-            coords.add(root.getPointById(integer).getY());
+        for (int integer : vectorResult) {
+            Point p = root.getPointById(root.getKeyByValue(integer));
+
+            coords.add(p.getX());
+            coords.add(p.getY());
         }
         return coords;
     }
