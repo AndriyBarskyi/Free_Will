@@ -10,7 +10,7 @@ public class GsonParser {
     public Root parse() {
         Gson gson = new Gson();
 
-        try (FileReader reader = new FileReader("src/main/res/points_data/data.json")) {
+        try (FileReader reader = new FileReader("data.json")) {
             return gson.fromJson(reader, Root.class);
         } catch (Exception e) {
             System.out.println("Parsing error " + e);
@@ -35,6 +35,16 @@ class Root {
             initDisplay();
         }
         return displayFromId;
+    }
+
+    public String getKeyByValue(int value) {
+        getDisplayFromId();
+        for (var d : displayFromId.entrySet()) {
+            if (d.getValue() == value) {
+                return d.getKey();
+            }
+        }
+        return "";
     }
 
 
@@ -84,12 +94,12 @@ class Root {
         displayFromId.put("021", 39);
     }
 
-    public Point getPointById(int id) {
+    public Point getPointById(String id) {
         for (Line l : lines) {
-            if (l.getP1().getId() == id) {
+            if (l.getP1().getId().equals(id)) {
                 return l.getP1();
             }
-            if (l.getP2().getId() == id) {
+            if (l.getP2().getId().equals(id)) {
                 return l.getP2();
             }
         }
@@ -99,7 +109,7 @@ class Root {
 }
 
 class Point {
-    private int id;
+    private String id;
     private int x;
     private int y;
 
@@ -111,8 +121,13 @@ class Point {
         return y;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("P\t X: %d, Y: %d\n", getX(), getY());
     }
 }
 
@@ -130,5 +145,10 @@ class Line {
 
     public int weight() {
         return (int) Math.round(Math.sqrt(Math.pow((p2.getX() - p1.getX()), 2) + Math.pow((p2.getY() - p1.getY()), 2)));
+    }
+
+    @Override
+    public String toString() {
+        return String.format("P1\t X: %d, Y: %d\nP2\t X: %d, Y: %d", getP1().getX(), getP1().getY(), getP2().getX(), getP2().getY());
     }
 }
