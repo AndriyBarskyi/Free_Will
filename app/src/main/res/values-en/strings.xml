@@ -44,7 +44,7 @@
     <b> You can change your password in Settings. </b> </string>
     <string name = "edit_schedule_mon"> Mon </string>
     <string name = "edit_schedule_tue"> Tue </string>
-    <string name = "edit_schedule_wen"> sr </string>
+    <string name = "edit_schedule_wen"> Wed </string>
     <string name = "edit_schedule_thu"> Thu </string>
     <string name = "edit_schedule_fri"> Fri </string>
     <string name = "edit_schedule_plus"> + </string>
