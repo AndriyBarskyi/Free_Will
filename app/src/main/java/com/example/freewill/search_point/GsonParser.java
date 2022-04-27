@@ -39,7 +39,7 @@ class Root {
 
     public String getKeyByValue(int value) {
         getDisplayFromId();
-        for (var d : displayFromId.entrySet()) {
+        for (Map.Entry<String, Integer> d : displayFromId.entrySet()) {
             if (d.getValue() == value) {
                 return d.getKey();
             }
