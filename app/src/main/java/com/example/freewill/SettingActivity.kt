@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -18,11 +19,16 @@ import com.google.android.material.navigation.NavigationView
 
 class SettingActivity : AppCompatActivity()
 {
-    val nameBaseLang = "LANGUAGE"
-    val path = "chooseLang"
+    val baseForSetting = "LANGUAGE"
+    val keyLanguage = "chooseLang"
+    val keyFont ="font"
     private val mLanguageCodeEn = "en"
     private val mLanguageCodeUa = "ua"
+    private val small = "small"
+    private val medium = "medium"
+    private val big = "big"
 
+    lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
     lateinit var chooseLang : String
     var resLang : SharedPreferences? = null
@@ -34,61 +40,99 @@ class SettingActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
-        resLang = getSharedPreferences(nameBaseLang, Context.MODE_PRIVATE)
-        chooseLang = resLang?.getString(path, mLanguageCodeUa)!!
+        resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
+        chooseLang = resLang?.getString(keyLanguage, mLanguageCodeUa)!!
         LocaleHelper.setLocale(this, chooseLang)
 
         super.onCreate(savedInstanceState)
         bindingClass = ActivitySettingBinding.inflate(layoutInflater)
 
-        when(chooseLang){
+        // language selection after restart
+        when(chooseLang)
+        {
             mLanguageCodeEn->{bindingClass.ukraineLanguage.setBackgroundResource(R.color.less_blue)
                 bindingClass.englishLanguage.setBackgroundResource(R.color.dark_blue)}
             mLanguageCodeUa->{ bindingClass.ukraineLanguage.setBackgroundResource(R.color.dark_blue)
                 bindingClass.englishLanguage.setBackgroundResource(R.color.less_blue)}
         }
 
+        // font size selection after restart
+        chooseFont = resLang?.getString(keyFont, medium)!!
+        when(chooseFont)
+        {
+            small ->{selectColorsFontSize(R.drawable.circle_button_dark_blue, R.drawable.circle_button,
+                R.drawable.circle_button)}
+            medium ->{selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button_dark_blue,
+                R.drawable.circle_button)}
+            big ->{selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button,
+                R.drawable.circle_button_dark_blue)}
+        }
+
+
         setContentView(bindingClass.root)
 
 
 
-
+        // change language
         bindingClass.ukraineLanguage.setOnClickListener(View.OnClickListener
-        { //Change Application level locale
+        {
             LocaleHelper.setLocale(this, mLanguageCodeUa)
-            val myToast = Toast.makeText(this,
-                "Мова змінена на українську. Перезагрузіть додаток.", Toast.LENGTH_SHORT)
-            myToast.show()
             chooseLang = mLanguageCodeUa
             recreate()
         })
 
         bindingClass.englishLanguage.setOnClickListener(View.OnClickListener
-        { //Change Application level locale
+        {
             LocaleHelper.setLocale(this, mLanguageCodeEn)
-            val myToast = Toast.makeText(this, "language changed to english. Restart app.", Toast.LENGTH_SHORT)
-            myToast.show()
             chooseLang = mLanguageCodeEn
             recreate()
         })
 
+        // change Font
+        bindingClass.buttonS.setOnClickListener(View.OnClickListener
+        {
+            chooseFont = small
+            selectColorsFontSize(R.drawable.circle_button_dark_blue, R.drawable.circle_button,
+                R.drawable.circle_button)
+            recreate()
+        })
+        bindingClass.buttonM.setOnClickListener(View.OnClickListener
+        {
+            chooseFont = medium
+            selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button_dark_blue,
+                R.drawable.circle_button)
+            recreate()
+        })
+        bindingClass.buttonB.setOnClickListener(View.OnClickListener
+        {
+            chooseFont = big
+            selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button,
+                R.drawable.circle_button_dark_blue)
+            recreate()
+        })
+
+        //functional toolbar
         toolBar()
 
     }
 
-    fun smallFont(view:View)
+    fun saveLanguageAndFont(resLanguage:String, resFont:String)
     {
-        bindingClass.buttonM.setBackgroundResource(R.color.less_blue)
-        bindingClass.buttonB.setBackgroundResource(R.color.less_blue)
-    }
-    fun mediumFont(view:View)
-    {
+        val editor = resLang?.edit()
+        editor?.putString(keyLanguage, resLanguage)
+        editor?.putString(keyFont, resFont)
+        editor?.apply()
 
     }
-    fun bigFont(view:View)
-    {
 
+
+    fun selectColorsFontSize(smallB : Int, mediumB : Int, bigB : Int)
+    {
+        bindingClass.buttonS.setBackgroundResource(smallB)
+        bindingClass.buttonM.setBackgroundResource(mediumB)
+        bindingClass.buttonB.setBackgroundResource(bigB)
     }
+
 
 
     fun toolBar()
@@ -118,18 +162,10 @@ class SettingActivity : AppCompatActivity()
 
     }
 
-    fun saveLanguage(res:String)
-    {
-        val editor = resLang?.edit()
-        editor?.putString(path, res)
-        editor?.apply()
-
-    }
-
     override fun onDestroy()
     {
         super.onDestroy()
-        saveLanguage(chooseLang)
+        saveLanguageAndFont(chooseLang, chooseFont)
 
     }
 }

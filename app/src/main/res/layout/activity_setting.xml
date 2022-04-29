@@ -26,17 +26,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/sideBar"
-                    android:layout_width="60dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="3dp"
-                    android:backgroundTint="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_sidebar_white"
-                    tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
-
 
                 <TextView
                     android:id="@+id/setting"
@@ -165,52 +154,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/editLogin"
                     tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
 
-                <LinearLayout
-                    android:id="@+id/PasswordLinearLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editGmail">
 
-                    <EditText
-                        android:id="@+id/editPassword"
-                        android:layout_width="200dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="80dp"
-                        android:autofillHints=""
-                        android:background="@drawable/for_password"
-                        android:ems="10"
-                        android:fontFamily="@font/comfortaa_light"
-                        android:inputType="textPersonName"
-                        android:paddingStart="5dp"
-                        android:hint="@string/password"
-                        android:textColor="@color/white"
-                        android:textSize="16dp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/eyeButton"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck"
-                        tools:layout_editor_absoluteY="229dp" />
-
-                    <ImageButton
-                        android:id="@+id/eyeButton"
-                        android:layout_width="55dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="76dp"
-                        android:background="@drawable/for_eye_password"
-                        android:contentDescription="eye_button"
-                        app:layout_constraintBottom_toBottomOf="@+id/editPassword"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/editPassword"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_eye_near_password"
-                        tools:ignore="TouchTargetSizeCheck" />
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -283,7 +227,7 @@
 
                 <TextView
                     android:id="@+id/sound"
-                    android:layout_width="155dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="41dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
@@ -443,7 +387,7 @@
 
                 <TextView
                     android:id="@+id/language"
-                    android:layout_width="58dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="8dp"
@@ -490,7 +434,7 @@
                         android:layout_alignEnd="@+id/textView9"
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="15dp"
-                        android:background="@drawable/buttonselector"
+                        android:background="@color/less_blue"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/Ukraine"
                         android:textSize="13sp"
@@ -514,7 +458,7 @@
 
                 <TextView
                     android:id="@+id/type_words"
-                    android:layout_width="187dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="12dp"
