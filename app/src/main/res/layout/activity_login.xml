@@ -37,7 +37,7 @@
             android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_border"
-            android:hint="Email" />
+            android:hint="@string/gmail" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +58,7 @@
             android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_border"
-            android:hint="Пароль"
+            android:hint="@string/password"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +72,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/comfortaa"
-        android:text="Увійти без авторизації"
+        android:text="@string/entrance_without"
         android:textSize="12sp"
         android:textStyle="bold" />
 
@@ -85,7 +85,7 @@
         android:layout_marginTop="100dp"
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/comfortaa"
-        android:text="Увійти"
+        android:text="@string/entrance_btn"
         android:textSize="14sp"
         android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
         android:layout_below="@+id/passwordTil"
         android:layout_alignRight="@id/passwordTil"
         android:fontFamily="@font/comfortaa"
-        android:text="Забули пароль?"
+        android:text="@string/forget_pass"
         android:textColor="@color/black"
         android:textStyle="normal" />
 

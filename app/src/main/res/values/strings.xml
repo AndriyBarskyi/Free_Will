@@ -36,13 +36,16 @@
     <string name="entrance_login">Логін</string>
     <string name="entrance_password">Пароль</string>
     <string name="entrance_btn">Увійти</string>
+    <string name="entrance_without">Увійти без авторизації</string>
     <string name="entrance_no_account">Я ще не маю акаунта</string>
     <string name="entrance_registration">Зареєструватись</string>
+    <string name="forget_pass">Забули пароль?</string>
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
     <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження, після чого Ви зможете увійти.</b>
     <b>Вже очікуємо на Вас!</b></string>
+
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
     <string name="edit_schedule_wen">ср</string>
