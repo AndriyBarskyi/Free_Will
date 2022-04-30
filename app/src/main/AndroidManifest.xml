@@ -13,36 +13,47 @@
         android:supportsRtl="true">
 <!--        android:theme="@style/Theme.FreeWill">-->
         <activity
+            android:noHistory="true"
             android:name=".CheckEntranceActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".EditScheduleActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".MapActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".ScheduleActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".CheckEmailMessageActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".GuestOrStudentActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".WelcomeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true">

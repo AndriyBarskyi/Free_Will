@@ -21,9 +21,6 @@ class SignUpActivity : AppCompatActivity() {
     //ViewBinding
     private lateinit var binding: ActivitySignUpBinding
 
-    //Action Bar
-    private lateinit var actionBar: ActionBar
-
     //ProgressBar
     private lateinit var progressDialog: ProgressDialog
 
@@ -43,13 +40,6 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        //Configure ActionBar and enable back button
-        actionBar = supportActionBar!!
-        actionBar.title = "Реєстрація"
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setDisplayShowHomeEnabled(true)
-
 
         //configure progress dialog
         progressDialog = ProgressDialog(this)

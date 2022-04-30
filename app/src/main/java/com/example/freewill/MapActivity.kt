@@ -54,11 +54,21 @@ class MapActivity : AppCompatActivity() {
         navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener{
             when(it.itemId){
-                R.id.nav_schedule -> startActivity(Intent(this, ScheduleActivity::class.java))
-
-                R.id.nav_map -> startActivity(Intent(this, MapActivity::class.java))
-
-                R.id.nav_settings -> startActivity(Intent(this, SettingActivity::class.java))
+                R.id.nav_schedule -> {
+                    val i = Intent(this, ScheduleActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+                R.id.nav_map -> {
+                    val i = Intent(this, MapActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+                R.id.nav_settings -> {
+                    val i = Intent(this, SettingActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
             }
             true
         }
