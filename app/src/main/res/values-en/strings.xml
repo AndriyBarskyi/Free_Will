@@ -5,7 +5,7 @@
     <string name = "setting"> Settings </string>
     <string name = "group"> Group </string>
     <string name = "login"> Login </string>
-    <string name = "gmail"> Mail </string>
+    <string name = "gmail"> Email </string>
     <string name = "password"> Password </string>
     <string name = "personal_data"> Personal data </string>
     <string name = "general_setting"> General settings </string>
