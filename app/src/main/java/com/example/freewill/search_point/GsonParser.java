@@ -1,16 +1,25 @@
 package com.example.freewill.search_point;
 
+import android.app.Activity;
+import android.content.Context;
+
+import com.example.freewill.R;
 import com.google.gson.Gson;
 
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.*;
 
-public class GsonParser {
+public class GsonParser extends Activity {
     public Root parse() {
         Gson gson = new Gson();
 
-        try (FileReader reader = new FileReader("data.json")) {
+        Context ctx = this;
+
+        try (InputStream inputStream = ctx.getResources().openRawResource(R.raw.data)) {
+            Reader reader = new InputStreamReader(inputStream);
             return gson.fromJson(reader, Root.class);
         } catch (Exception e) {
             System.out.println("Parsing error " + e);
