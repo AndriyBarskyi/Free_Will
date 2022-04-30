@@ -1,23 +1,18 @@
 package com.example.freewill
 
-import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.freewill.databinding.ActivityEditScheduleBinding
 import com.example.freewill.databinding.ActivityScheduleBinding
-import com.example.freewill.models.Day
-import com.example.freewill.models.User
-import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
+
 
 class ScheduleActivity : AppCompatActivity() {
 
@@ -32,6 +27,13 @@ class ScheduleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScheduleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // assigning ID of the toolbar to a variable
+        val toolbar: Toolbar = binding.toolbar
+
+        // using toolbar as ActionBar
+        toolbar.setTitle(R.string.toolbar_schedule)
+        setSupportActionBar(toolbar)
 
         //firebaseAuth = FirebaseAuth.getInstance()
         //val user = firebaseAuth.currentUser
@@ -73,19 +75,15 @@ class ScheduleActivity : AppCompatActivity() {
 
 
 
-
-//      Navigashion bar
+//      Navigation bar
         drawerLayout = findViewById(R.id.drawerLayout)
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
-
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        toggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-
         val navView: NavigationView = findViewById(R.id.navView)
         navView.itemIconTintList = null
-
         navView.setNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.nav_schedule -> startActivity(Intent(this, ScheduleActivity::class.java))
@@ -97,6 +95,8 @@ class ScheduleActivity : AppCompatActivity() {
             }
             true
         }
+
+
     }
 
     private fun readSchedule() {

@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import com.example.freewill.databinding.ActivityMapBinding
@@ -29,10 +30,20 @@ class MapActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_map)
+        mapBinding = ActivityMapBinding.inflate(layoutInflater)
+        setContentView(mapBinding.root)
+
+        // assigning ID of the toolbar to a variable
+        val toolbar: Toolbar = mapBinding.toolbar
+
+        // using toolbar as ActionBar
+        toolbar.setTitle(R.string.toolbar_map)
+        setSupportActionBar(toolbar)
+
+
         drawerLayout = findViewById(R.id.drawerLayout)
         drawerLayout.foreground.alpha = 0
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -51,6 +62,7 @@ class MapActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     @SuppressLint("ClickableViewAccessibility", "InflateParams")
