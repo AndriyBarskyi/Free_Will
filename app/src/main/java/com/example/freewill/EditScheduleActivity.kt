@@ -3,11 +3,15 @@ package com.example.freewill
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.freewill.databinding.ActivityEditScheduleBinding
 import com.example.freewill.models.DataModel
@@ -18,55 +22,72 @@ import com.google.firebase.database.FirebaseDatabase
 
 class EditScheduleActivity : AppCompatActivity() ,  View.OnClickListener
     {
-            private lateinit var binding: ActivityEditScheduleBinding
-            private lateinit var database: FirebaseDatabase
-            private lateinit var reference: DatabaseReference
-    //        val listClic = mutableListOf<TextView>(binding.monday,binding.tuesday,binding.wednesday,
-    //            binding.thursday,binding.friday)
+        private lateinit var binding: ActivityEditScheduleBinding
+        private lateinit var database: FirebaseDatabase
+        private lateinit var reference: DatabaseReference
+        private lateinit var toggle: ActionBarDrawerToggle
+        private lateinit var drawerLayout: DrawerLayout
+//        val listClic = mutableListOf<TextView>(binding.monday,binding.tuesday,binding.wednesday,
+//            binding.thursday,binding.friday)
 
-            private val dataModel: DataModel by viewModels()
+        private val dataModel: DataModel by viewModels()
 
-            override fun onCreate(savedInstanceState: Bundle?) {
-                super.onCreate(savedInstanceState)
-                binding = ActivityEditScheduleBinding.inflate(layoutInflater)
-                setContentView(binding.root)
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            binding = ActivityEditScheduleBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-                binding.backSched.setOnClickListener {
-                    startActivity(Intent(this, ScheduleActivity::class.java))
+            binding.backSched.setOnClickListener {
+                startActivity(Intent(this, ScheduleActivity::class.java))
+            }
+
+            binding.monday.setOnClickListener(this)
+            binding.tuesday.setOnClickListener(this)
+            binding.wednesday.setOnClickListener(this)
+            binding.thursday.setOnClickListener(this)
+            binding.friday.setOnClickListener(this)
+
+            val toolbar: Toolbar = binding.toolbar
+
+            // using toolbar as ActionBar
+            setSupportActionBar(toolbar)
+            supportActionBar?.apply {
+                title = "Change Schedule"
+                setDisplayHomeAsUpEnabled(true)
+                setDisplayShowHomeEnabled(true)
+            }
+
+        }
+
+        override fun onSupportNavigateUp(): Boolean {
+            onBackPressed()
+            return super.onSupportNavigateUp()
+        }
+
+        private fun OpenFrag(f:Fragment, idHolder:Int) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(idHolder,f)
+                .commit()
+        }
+
+
+        private fun updateShedule(monday: Day, ChangeDay: String)
+        {
+            val nameOfGroup = "pmi_25"
+            //val ChangeDay="вівторок"
+            database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+            reference = database.getReference("Shedule")
+
+            //add user data to database
+            reference.child(nameOfGroup).child(ChangeDay!!).setValue(monday)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Shedule add...", Toast.LENGTH_SHORT).show()
                 }
-
-                binding.monday.setOnClickListener(this)
-                binding.tuesday.setOnClickListener(this)
-                binding.wednesday.setOnClickListener(this)
-                binding.thursday.setOnClickListener(this)
-                binding.friday.setOnClickListener(this)
-
-            }
-
-            private fun OpenFrag(f:Fragment, idHolder:Int) {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(idHolder,f)
-                    .commit()
-            }
-
-
-            private fun updateShedule(monday: Day, ChangeDay: String)
-            {
-                val nameOfGroup = "pmi_25"
-                //val ChangeDay="вівторок"
-                database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                reference = database.getReference("Shedule")
-
-                //add user data to database
-                reference.child(nameOfGroup).child(ChangeDay!!).setValue(monday)
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Shedule add...", Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnFailureListener{ e ->
-                        Toast.makeText(this, "Failed saving shedule due to ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-            }
+                .addOnFailureListener{ e ->
+                    Toast.makeText(this, "Failed saving shedule due to ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
 
         override fun onClick(v: View?) {
             when (v?.getId()) {

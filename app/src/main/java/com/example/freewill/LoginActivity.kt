@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     //ActionBar
-    private lateinit var actionBar: ActionBar
+//    private lateinit var actionBar: ActionBar
 
     //ProgressDialog
     private lateinit var progressDialog: ProgressDialog
@@ -33,8 +33,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //configure actionBar
-        actionBar = supportActionBar!!
-        actionBar.title = "Login"
+//        actionBar = supportActionBar!!
+//        actionBar.title = "Login"
 
         //configure progress dialog
         progressDialog = ProgressDialog(this)

@@ -56,5 +56,9 @@
     <!--    navigation_drawer-->
     <string name = "open"> Open </string>
     <string name = "close"> Close </string>
+    <string name="toolbar_schedule">Розклад</string>
+    <string name="toolbar_map">Карта</string>
+    <string name="toolbar_settings">Налаштування</string>
+    <string name="toolbar_change_schedule">Зміна розкладу</string>
 
 </resources>

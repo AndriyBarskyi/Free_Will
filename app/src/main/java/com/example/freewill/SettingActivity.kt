@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.databinding.ActivitySettingBinding
@@ -111,8 +112,8 @@ class SettingActivity : AppCompatActivity()
             recreate()
         })
 
-        //functional toolbar
-        toolBar()
+        //Navigation drawer
+        NavigationDrawer()
 
     }
 
@@ -135,15 +136,23 @@ class SettingActivity : AppCompatActivity()
 
 
 
-    fun toolBar()
+    fun NavigationDrawer()
     {
         drawerLayout = findViewById(R.id.drawerLayout)
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+
+        // assigning ID of the toolbar to a variable
+        val toolbar: Toolbar = bindingClass.toolbar
+
+        // using toolbar as ActionBar
+        toolbar.setTitle(R.string.toolbar_settings)
+        setSupportActionBar(toolbar)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
-        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val navView: NavigationView = findViewById(R.id.navView)
         navView.itemIconTintList = null
