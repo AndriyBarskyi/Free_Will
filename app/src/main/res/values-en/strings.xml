@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name = "app_name"> Free Will </string>
-    <string name = "no_account"> I don\'t have an account yet. \n <b><u> Sign up </u></b></string>
+    <string name = "no_account"> I don\'t have an account yet. \n<b><u> Sign up </u></b></string>
     <string name = "setting"> Settings </string>
     <string name = "group"> Group </string>
     <string name = "login"> Login </string>
@@ -32,16 +32,22 @@
     <string name = "choose_page_btn1"> Student </string>
     <string name = "choose_page_btn2"> Guest </string>
     <string name = "welcome_page_1"> Ivan Franko National University of Lviv </string>
-    <string name = "welcome_page_2"> by students for students </string>
+    <string name = "welcome_page_2"> student for student </string>
     <string name = "entrance_1"> Login </string>
     <string name = "entrance_login"> Login </string>
     <string name = "entrance_password"> Password </string>
     <string name = "entrance_btn"> Login </string>
+    <string name = "entrance_without"> Sign in without authorization </string>
     <string name = "entrance_no_account"> I don\'t have an account yet </string>
     <string name = "entrance_registration"> Register </string>
+    <string name = "forget_pass"> Forgot password? </string>
     <string name = "schedule_btn"> Edit </string>
     <string name = "check_entrance"> <b> A login email has been sent to your mail. Use it to sign in. </b>
     <b> You can change your password in Settings. </b> </string>
+    <string name = "check_registr" >
+        <b> A confirmation email has been sent to your inbox so you can sign in. </b>
+    <b> Looking forward to seeing you! </b> </string>
+
     <string name = "edit_schedule_mon"> Mon </string>
     <string name = "edit_schedule_tue"> Tue </string>
     <string name = "edit_schedule_wen"> Wed </string>
