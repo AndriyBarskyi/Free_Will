@@ -44,7 +44,7 @@ class ScheduleActivity : AppCompatActivity() {
             //readGroup(user)
         //}
         var userGrop="pmi_24"
-        readSchedule(userGrop)
+        //readSchedule(userGrop)
 
         binding.ChangeBtn1.setOnClickListener {
             startActivity(Intent(this, EditScheduleActivity::class.java))
@@ -115,37 +115,37 @@ class ScheduleActivity : AppCompatActivity() {
 
 
 
-    private fun readSchedule(user: String?) {
-
-        val referenceSchedule = FirebaseDatabase
-            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-            .getReference("Shedule")
-        referenceSchedule.child(user!!).get().addOnSuccessListener{
-            if(it.exists())
-            {
-                val firstpara =it.child("firstpara").value
-                val secondpara =it.child("secondpara").value
-                val thirdpara =it.child("thirdpara").value
-                val fourthpara =it.child("fourthpara").value
-                val fifthpara =it.child("fifthpara").value
-
-                binding.class1.setText(firstpara.toString())
-                binding.class2.setText(secondpara.toString())
-                binding.class3.setText(thirdpara.toString())
-                binding.class4.setText(fourthpara.toString())
-                binding.class5.setText(fifthpara.toString())
-                Toast.makeText(this, "Shedule read...", Toast.LENGTH_SHORT).show()
-            }
-            else
-            {
-                Toast.makeText(this, "Shedule not read!!!", Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener {
-            Toast.makeText(this, "Failed read shedule ", Toast.LENGTH_SHORT).show()
-
-        }
-
-    }
+//    private fun readSchedule(user: String?) {
+//
+//        val referenceSchedule = FirebaseDatabase
+//            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+//            .getReference("Shedule")
+//        referenceSchedule.child(user!!).get().addOnSuccessListener{
+//            if(it.exists())
+//            {
+//                val firstpara =it.child("firstpara").value
+//                val secondpara =it.child("secondpara").value
+//                val thirdpara =it.child("thirdpara").value
+//                val fourthpara =it.child("fourthpara").value
+//                val fifthpara =it.child("fifthpara").value
+//
+//                binding.class1.setText(firstpara.toString())
+//                binding.class2.setText(secondpara.toString())
+//                binding.class3.setText(thirdpara.toString())
+//                binding.class4.setText(fourthpara.toString())
+//                binding.class5.setText(fifthpara.toString())
+//                Toast.makeText(this, "Shedule read...", Toast.LENGTH_SHORT).show()
+//            }
+//            else
+//            {
+//                Toast.makeText(this, "Shedule not read!!!", Toast.LENGTH_SHORT).show()
+//            }
+//        }.addOnFailureListener {
+//            Toast.makeText(this, "Failed read shedule ", Toast.LENGTH_SHORT).show()
+//
+//        }
+//
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
