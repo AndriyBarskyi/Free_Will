@@ -43,7 +43,7 @@
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
-    <string name="check_registr" translatable="false"><b>На Вашу пошту був надісланий лист для підтвердження, після чого Ви зможете увійти.</b>
+    <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження, після чого Ви зможете увійти.</b>
     <b>Вже очікуємо на Вас!</b></string>
 
     <string name="edit_schedule_mon">пн</string>

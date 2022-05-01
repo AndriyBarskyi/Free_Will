@@ -24,28 +24,30 @@ class SettingActivity : AppCompatActivity()
     val keyLanguage = "chooseLang"
     val keyFont ="font"
     private val mLanguageCodeEn = "en"
-    private val mLanguageCodeUa = "ua"
+    val mLanguageCodeUa = "ua"
     private val small = "small"
     private val medium = "medium"
     private val big = "big"
 
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
-    lateinit var chooseLang : String
+    public lateinit var chooseLang : String
     var resLang : SharedPreferences? = null
     private lateinit var binding: ActivityScheduleBinding
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
 
+
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
         resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
         chooseLang = resLang?.getString(keyLanguage, mLanguageCodeUa)!!
         LocaleHelper.setLocale(this, chooseLang)
 
         super.onCreate(savedInstanceState)
+
+
         bindingClass = ActivitySettingBinding.inflate(layoutInflater)
 
         // language selection after restart
@@ -80,6 +82,7 @@ class SettingActivity : AppCompatActivity()
             LocaleHelper.setLocale(this, mLanguageCodeUa)
             chooseLang = mLanguageCodeUa
             recreate()
+
         })
 
         bindingClass.englishLanguage.setOnClickListener(View.OnClickListener
@@ -187,6 +190,9 @@ class SettingActivity : AppCompatActivity()
         saveLanguageAndFont(chooseLang, chooseFont)
 
     }
+
 }
+
+
 
 
