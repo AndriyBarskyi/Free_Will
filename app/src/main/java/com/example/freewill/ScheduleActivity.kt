@@ -9,7 +9,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.example.freewill.databinding.ActivityScheduleBinding
+import com.example.freewill.models.ScheduleAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -23,6 +26,8 @@ class ScheduleActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var referenceSchedule: DatabaseReference
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var adapter: ScheduleAdapter
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,14 @@ class ScheduleActivity : AppCompatActivity() {
         // using toolbar as ActionBar
         toolbar.setTitle(R.string.toolbar_schedule)
         setSupportActionBar(toolbar)
+
+        val fragments: ArrayList<Fragment> = arrayListOf(
+            ScheduleFragment(),
+            ScheduleFragment2()
+        )
+        adapter = ScheduleAdapter(fragments, this)
+        viewPager = findViewById(R.id.pager)
+        viewPager.adapter=adapter
 
         //firebaseAuth = FirebaseAuth.getInstance()
         //val user = firebaseAuth.currentUser
