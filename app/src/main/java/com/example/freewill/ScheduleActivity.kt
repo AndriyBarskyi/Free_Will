@@ -80,7 +80,7 @@ class ScheduleActivity : AppCompatActivity() {
 //      Navigation bar
         drawerLayout = findViewById(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-        toggle.isDrawerIndicatorEnabled = true
+//        toggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -90,17 +90,17 @@ class ScheduleActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.nav_schedule -> {
                     val i = Intent(this, ScheduleActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
                 R.id.nav_map -> {
                     val i = Intent(this, MapActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
                 R.id.nav_settings -> {
                     val i = Intent(this, SettingActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
             }
