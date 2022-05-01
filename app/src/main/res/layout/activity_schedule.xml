@@ -219,12 +219,13 @@
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/nav_menu"
-        app:itemVerticalPadding="@dimen/item_vertical_margin"
-        app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         android:background="@drawable/nav_background"
-        app:itemIconSize="80dp">
+        android:fitsSystemWindows="true"
+        android:visibility="gone"
+        app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
+        app:itemIconSize="80dp"
+        app:itemVerticalPadding="@dimen/item_vertical_margin"
+        app:menu="@menu/nav_menu">
 
     </com.google.android.material.navigation.NavigationView>
 
