@@ -168,7 +168,7 @@ class VisitedVertex {
 
 }
 
-class Dijkstra {
+public class Dijkstra {
     public static ArrayList<Integer> Calculate(String startVertex, String endVertex) {
         GsonParser parser = new GsonParser();
         Root root = parser.parse();
