@@ -27,9 +27,9 @@ class SettingActivity : AppCompatActivity()
     val small = "small"
     val medium = "medium"
     val big = "big"
-    val smallSize = 0.50f
+    val smallSize = 0.80f
     val mediumSize = 1.0f
-    val bigSize = 1.6f
+    val bigSize = 1.2f
 
     var chooseSizeKoef : Float? = null
     var check :Boolean?=null
@@ -52,6 +52,8 @@ class SettingActivity : AppCompatActivity()
         windowManager.defaultDisplay.getMetrics(metrics)
         metrics.scaledDensity = configuration.fontScale * metrics.density
         baseContext.resources.updateConfiguration(configuration, metrics)
+        //TypedValue.COMPLEX_UNIT_DIP
+        //
 
     }
 
