@@ -89,7 +89,7 @@ class SignUpActivity : AppCompatActivity() {
                     if(task.isSuccessful){
                         updateUserInfo()
                         Toast.makeText(this, "User added successfully", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, ProfileActivity::class.java))
+                        startActivity(Intent(this, ScheduleActivity::class.java))
                         finish()
                     }
                     else{
