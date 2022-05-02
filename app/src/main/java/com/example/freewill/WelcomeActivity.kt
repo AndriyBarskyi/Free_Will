@@ -30,23 +30,6 @@ class WelcomeActivity : AppCompatActivity() {
         toSettingApp()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-/*
-        checking = getSharedPreferences("forSett", Context.MODE_PRIVATE)
-        val choose = checking?.getBoolean(checkk, true)!!
-        if (choose){
-            when(a.resLang?.getString(a.keyFont, a.medium)!!){
-                a.small->{SetSizeFont(a.smallSize)}
-                a.medium->{SetSizeFont(a.mediumSize)}
-                a.big->{SetSizeFont(a.bigSize)}
-            }
-            editor?.putBoolean(checkk, false)
-            editor?.apply()
-        }
-        editor?.putBoolean(checkk, true)
-        editor?.apply()
-*/
-
-
 
         Handler().postDelayed({
             startActivity(Intent(this, LoginActivity::class.java))

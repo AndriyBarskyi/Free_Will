@@ -59,6 +59,7 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sideBar"
+                    android:layout_marginTop="40dp"
                     tools:ignore="TextContrastCheck" />
 
                 <RelativeLayout
