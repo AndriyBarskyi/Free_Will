@@ -103,6 +103,7 @@ class ScheduleActivity : AppCompatActivity() {
 //                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
+
             }
             true
         }
