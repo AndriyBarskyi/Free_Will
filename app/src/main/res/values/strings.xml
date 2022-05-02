@@ -39,6 +39,7 @@
     <string name="entrance_without">Увійти без авторизації</string>
     <string name="entrance_no_account">Я ще не маю акаунта</string>
     <string name="entrance_registration">Зареєструватись</string>
+    <string name="registration">Реєстрація</string>
     <string name="forget_pass">Забули пароль?</string>
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
