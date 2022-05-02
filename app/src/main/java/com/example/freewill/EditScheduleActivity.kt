@@ -37,10 +37,6 @@ class EditScheduleActivity : AppCompatActivity() ,  View.OnClickListener
             binding = ActivityEditScheduleBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
-            binding.backSched.setOnClickListener {
-                startActivity(Intent(this, ScheduleActivity::class.java))
-            }
-
             binding.monday.setOnClickListener(this)
             binding.tuesday.setOnClickListener(this)
             binding.wednesday.setOnClickListener(this)
