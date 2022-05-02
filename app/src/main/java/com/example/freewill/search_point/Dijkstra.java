@@ -1,5 +1,7 @@
 package com.example.freewill.search_point;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 //import java.util.Map;
@@ -169,8 +171,9 @@ class VisitedVertex {
 }
 
 public class Dijkstra {
-    public static ArrayList<Integer> Calculate(String startVertex, String endVertex) {
-        GsonParser parser = new GsonParser();
+    public static ArrayList<Integer> Calculate(String startVertex, String endVertex, Context ctx) {
+        GsonParser parser = new GsonParser(ctx);
+
         Root root = parser.parse();
 
         int start = root.getDisplayFromId().get(startVertex);
