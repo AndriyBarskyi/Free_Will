@@ -30,7 +30,7 @@
         android:id="@+id/circles_up_2_sched"
         android:layout_width="170dp"
         android:layout_height="225dp"
-        android:layout_marginTop="-60dp"
+        android:layout_marginTop="-10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/circles_up_2" />
@@ -40,7 +40,7 @@
         android:layout_width="65dp"
         android:layout_height="77dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back" />
