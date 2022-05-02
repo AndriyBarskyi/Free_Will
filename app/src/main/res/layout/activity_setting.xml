@@ -55,7 +55,7 @@
                     android:text="@string/setting"
                     android:textAlignment="center"
                     android:textColor="@color/blue"
-                    android:textSize="40sp"
+                    android:textSize="40dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sideBar"
@@ -84,7 +84,7 @@
                         android:text="@string/personal_data"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="22dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.4"
                         app:layout_constraintStart_toStartOf="parent"
@@ -117,12 +117,12 @@
                     android:background="@drawable/rounded_border"
                     android:ems="10"
                     android:fontFamily="@font/comfortaa_light"
+                    android:hint="@string/group"
                     android:inputType="textPersonName"
                     android:paddingStart="5dp"
-                    android:hint="@string/group"
                     android:textAlignment="textStart"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -140,9 +140,9 @@
                     android:background="@drawable/rounded_border"
                     android:ems="10"
                     android:fontFamily="@font/comfortaa_light"
+                    android:hint="@string/login"
                     android:inputType="textPersonName"
                     android:paddingStart="5dp"
-                    android:hint="@string/login"
                     android:textColor="@color/white"
                     android:textSize="16dp"
                     android:textStyle="bold"
@@ -162,9 +162,9 @@
                     android:background="@drawable/rounded_border"
                     android:ems="10"
                     android:fontFamily="@font/comfortaa_light"
+                    android:hint="@string/gmail"
                     android:inputType="textPersonName"
                     android:paddingStart="5dp"
-                    android:hint="@string/gmail"
                     android:textColor="@color/white"
                     android:textSize="16dp"
                     android:textStyle="bold"
@@ -172,8 +172,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editLogin"
                     tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
-
-
 
 
                 <LinearLayout
@@ -195,7 +193,7 @@
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/change"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
 
@@ -225,7 +223,7 @@
                         android:text="@string/general_setting"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="22sp" />
+                        android:textSize="22dp" />
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -296,9 +294,10 @@
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
+                        android:paddingVertical="7dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/sound"
-                        tools:ignore="TextContrastCheck,TextContrastCheck" />
+                        tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck" />
 
                 </LinearLayout>
 
@@ -407,7 +406,7 @@
                 <TextView
                     android:id="@+id/language"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/comfortaa_bold"
@@ -437,8 +436,10 @@
                         android:layout_height="40dp"
                         android:layout_alignStart="@+id/textView9"
                         android:layout_alignTop="@+id/textView9"
+                        android:layout_alignParentBottom="true"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="0dp"
+                        android:layout_marginBottom="0dp"
                         android:background="@color/less_blue"
                         android:fontFamily="@font/comfortaa_bold"
                         android:text="@string/English"
@@ -451,8 +452,10 @@
                         android:layout_height="40dp"
                         android:layout_alignTop="@+id/textView9"
                         android:layout_alignEnd="@+id/textView9"
+                        android:layout_alignParentBottom="true"
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="0dp"
                         android:background="@color/less_blue"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/Ukraine"
@@ -478,7 +481,7 @@
                 <TextView
                     android:id="@+id/type_words"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="8dp"
