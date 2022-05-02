@@ -3,30 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Free_Will/app/src/main/res/layout/activity_map.xml" value="0.264" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_edit_schedule.xml" value="0.22" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_schedule.xml" value="0.1" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_setting.xml" value="0.1" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_sign_up.xml" value="0.1513157894736842" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_edit_schedule_.xml" value="0.1513157894736842" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_edit_schedule_monday_.xml" value="0.14666666666666667" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_edit_schedule_tuesday_.xml" value="0.13815789473684212" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_schedule.xml" value="0.1" />
-        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/menu/nav_menu.xml" value="0.1513157894736842" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_edit_schedule.xml" value="0.14749893116716545" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_map.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1796875" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_schedule.xml" value="0.1" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_setting.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_welcome.xml" value="0.14563106796116504" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/fragment_schedule.xml" value="0.14749893116716545" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/nav_background.xml" value="0.14749893116716545" />
-        <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/menu/nav_menu.xml" value="0.14550509731232622" />
-        <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_setting.xml" value="0.275" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/_____.xml" value="0.137" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/_______.xml" value="0.1785" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/________________.xml" value="0.1245" />
@@ -61,6 +41,7 @@
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_welcome.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_welcome_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/fragment_edit_schedule_monday_.xml" value="0.22" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/fragment_schedule.xml" value="0.1" />
       </map>
     </option>
   </component>
