@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -20,7 +21,7 @@ class ScheduleActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     private lateinit var database: FirebaseDatabase
-    private lateinit var reference: DatabaseReference
+    private lateinit var referenceSchedule: DatabaseReference
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,13 +43,14 @@ class ScheduleActivity : AppCompatActivity() {
         //{
             //readGroup(user)
         //}
-        var userGrop="pmi-25"
-
+        var userGrop="pmi_24"
+        //readSchedule(userGrop)
 
         binding.ChangeBtn1.setOnClickListener {
             startActivity(Intent(this, EditScheduleActivity::class.java))
         }
-        database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+        //database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+
 
 
         //readSchedule()
@@ -78,7 +80,7 @@ class ScheduleActivity : AppCompatActivity() {
 //      Navigation bar
         drawerLayout = findViewById(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-        toggle.isDrawerIndicatorEnabled = true
+//        toggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -88,17 +90,17 @@ class ScheduleActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.nav_schedule -> {
                     val i = Intent(this, ScheduleActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
                 R.id.nav_map -> {
                     val i = Intent(this, MapActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
                 R.id.nav_settings -> {
                     val i = Intent(this, SettingActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
             }
@@ -111,21 +113,39 @@ class ScheduleActivity : AppCompatActivity() {
 
 
 
-    private fun readSchedule() {
-        TODO("Not yet implemented")
-    }
 
-    private fun readGroup(user: String?) {
 
-        val referenceUser = database.getReference("Users")
-        referenceUser.child(user!!).get().addOnSuccessListener{
-            if(it.exists())
-            {
-                val group =it.child("groupName").value
-            }
-        }
-
-    }
+//    private fun readSchedule(user: String?) {
+//
+//        val referenceSchedule = FirebaseDatabase
+//            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+//            .getReference("Shedule")
+//        referenceSchedule.child(user!!).get().addOnSuccessListener{
+//            if(it.exists())
+//            {
+//                val firstpara =it.child("firstpara").value
+//                val secondpara =it.child("secondpara").value
+//                val thirdpara =it.child("thirdpara").value
+//                val fourthpara =it.child("fourthpara").value
+//                val fifthpara =it.child("fifthpara").value
+//
+//                binding.class1.setText(firstpara.toString())
+//                binding.class2.setText(secondpara.toString())
+//                binding.class3.setText(thirdpara.toString())
+//                binding.class4.setText(fourthpara.toString())
+//                binding.class5.setText(fifthpara.toString())
+//                Toast.makeText(this, "Shedule read...", Toast.LENGTH_SHORT).show()
+//            }
+//            else
+//            {
+//                Toast.makeText(this, "Shedule not read!!!", Toast.LENGTH_SHORT).show()
+//            }
+//        }.addOnFailureListener {
+//            Toast.makeText(this, "Failed read shedule ", Toast.LENGTH_SHORT).show()
+//
+//        }
+//
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){

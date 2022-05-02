@@ -36,7 +36,11 @@
             android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_border"
-            android:hint="@string/gmail" />
+            android:fontFamily="@font/comfortaa"
+            android:hint="@string/gmail"
+            android:paddingStart="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,8 +61,12 @@
             android:layout_width="310dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_border"
+            android:fontFamily="@font/comfortaa"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,6 +80,7 @@
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/comfortaa"
         android:text="@string/entrance_without"
+        android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold" />
 
@@ -85,6 +94,7 @@
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/comfortaa"
         android:text="@string/entrance_btn"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
 

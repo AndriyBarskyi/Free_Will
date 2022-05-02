@@ -38,7 +38,6 @@
             app:cornerRadius="12dp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="240dp"
             android:layout_height="60dp"
             android:layout_marginStart="10dp"
@@ -60,7 +59,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="240dp"
             android:layout_height="60dp"
             android:layout_marginStart="210dp"

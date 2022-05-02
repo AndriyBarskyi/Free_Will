@@ -190,17 +190,17 @@ class SettingActivity : AppCompatActivity()
             when(it.itemId){
                 R.id.nav_schedule -> {
                     val i = Intent(this, ScheduleActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
                 R.id.nav_map -> {
                     val i = Intent(this, MapActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
                 R.id.nav_settings -> {
                     val i = Intent(this, SettingActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
             }

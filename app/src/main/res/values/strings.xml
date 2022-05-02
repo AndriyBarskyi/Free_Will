@@ -1,4 +1,4 @@
-<resources >
+<resources>
     <string name="app_name">Free Will</string>
     <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
     <string name="setting">Налаштування</string>
@@ -39,6 +39,7 @@
     <string name="entrance_without">Увійти без авторизації</string>
     <string name="entrance_no_account">Я ще не маю акаунта</string>
     <string name="entrance_registration">Зареєструватись</string>
+    <string name="registration">Реєстрація</string>
     <string name="forget_pass">Забули пароль?</string>
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
@@ -54,11 +55,13 @@
     <string name="edit_schedule_plus">+</string>
 
     <!--    navigation_drawer-->
-    <string name = "open"> Open </string>
-    <string name = "close"> Close </string>
+    <string name="open"> Open </string>
+    <string name="close"> Close </string>
     <string name="toolbar_schedule">Розклад</string>
     <string name="toolbar_map">Карта</string>
     <string name="toolbar_settings">Налаштування</string>
     <string name="toolbar_change_schedule">Зміна розкладу</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
