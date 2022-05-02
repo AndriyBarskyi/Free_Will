@@ -5,10 +5,12 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
@@ -19,8 +21,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import com.example.freewill.databinding.ActivityMapBinding
+import com.example.freewill.search_point.Dijkstra
 import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.textfield.TextInputEditText
+import java.util.ArrayList
 
 
 class MapActivity : AppCompatActivity() {
@@ -71,6 +76,25 @@ class MapActivity : AppCompatActivity() {
         popupWindow.isOutsideTouchable = true
         popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
+        }
+
+        val findDirectionBtn: Button = popupWindow.contentView.findViewById(R.id.searchFromToButton)
+        findDirectionBtn.setOnClickListener {
+            var fromPlace: String = ""
+            var toPlace: String = ""
+            val searchFromInput: TextInputEditText = popupWindow.contentView.findViewById(R.id.searchFromInput)
+            fromPlace = searchFromInput.text.toString()
+
+            val searchToInput: TextInputEditText = popupWindow.contentView.findViewById(R.id.searchToInput)
+            toPlace = searchToInput.text.toString()
+            if (fromPlace != "" && toPlace != "") {
+                val points: ArrayList<Int>? = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
+                if (points != null) {
+                    for (i in points){
+                        Log.d("Point123", i.toString())
+                    }
+                }
+            }
         }
     }
     class InfoRoomFragment (_room : String): DialogFragment()

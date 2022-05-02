@@ -51,6 +51,7 @@
             app:boxStrokeErrorColor="@color/red">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchFromInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/comfortaa"
@@ -72,7 +73,7 @@
             app:boxStrokeErrorColor="@color/red">
 
             <com.google.android.material.textfield.TextInputEditText
-
+                android:id="@+id/searchToInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/comfortaa"

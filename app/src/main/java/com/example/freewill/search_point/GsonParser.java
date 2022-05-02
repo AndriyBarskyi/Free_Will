@@ -16,7 +16,7 @@ public class GsonParser extends Activity {
     public Root parse() {
         Gson gson = new Gson();
 
-        Context ctx = this;
+        Context ctx = this.getBaseContext();
 
         try (InputStream inputStream = ctx.getResources().openRawResource(R.raw.data)) {
             Reader reader = new InputStreamReader(inputStream);
@@ -26,6 +26,10 @@ public class GsonParser extends Activity {
         }
 
         return null;
+    }
+
+    public GsonParser(Context ctx) {
+        this.attachBaseContext(ctx);
     }
 }
 
