@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.databinding.ActivitySettingBinding
+import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
 
 
@@ -142,11 +143,8 @@ class SettingActivity : AppCompatActivity()
         })
 
         //Navigation drawer
-        NavigationDrawer()
-
+        createNavigationMenu()
     }
-
-
 
     fun saveLanguageAndFont(resLanguage:String, resFont:String)
     {
@@ -157,7 +155,6 @@ class SettingActivity : AppCompatActivity()
 
     }
 
-
     fun selectColorsFontSize(smallB : Int, mediumB : Int, bigB : Int)
     {
         bindingClass.buttonS.setBackgroundResource(smallB)
@@ -167,7 +164,7 @@ class SettingActivity : AppCompatActivity()
 
 
 
-    fun NavigationDrawer()
+    fun createNavigationMenu()
     {
         drawerLayout = findViewById(R.id.drawerLayout)
 
@@ -177,37 +174,16 @@ class SettingActivity : AppCompatActivity()
         // using toolbar as ActionBar
         toolbar.setTitle(R.string.toolbar_settings)
         setSupportActionBar(toolbar)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
+//        actionBar?.setDisplayHomeAsUpEnabled(true)
+//        actionBar?.setDisplayShowHomeEnabled(true)
 
+        //      Navigation bar
+        drawerLayout = findViewById(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
         val navView: NavigationView = findViewById(R.id.navView)
-        navView.itemIconTintList = null
 
-        navView.setNavigationItemSelectedListener{
-            when(it.itemId){
-                R.id.nav_schedule -> {
-                    val i = Intent(this, ScheduleActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-                R.id.nav_map -> {
-                    val i = Intent(this, MapActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-                R.id.nav_settings -> {
-                    val i = Intent(this, SettingActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-            }
-            true
-        }
+        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
+        navigation.createNavigationDrawer()
 
     }
 

@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import com.example.freewill.databinding.ActivityMapBinding
+import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
 
 
@@ -33,6 +34,10 @@ class MapActivity : AppCompatActivity() {
         mapBinding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(mapBinding.root)
 
+        createNavigationMenu()
+    }
+
+    fun createNavigationMenu(){
         // assigning ID of the toolbar to a variable
         val toolbar: Toolbar = mapBinding.toolbar
 
@@ -40,39 +45,13 @@ class MapActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.toolbar_map)
         setSupportActionBar(toolbar)
 
-
         drawerLayout = findViewById(R.id.drawerLayout)
         drawerLayout.foreground.alpha = 0
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
         supportActionBar?.setDisplayShowHomeEnabled(true)
-
         val navView: NavigationView = findViewById(R.id.navView)
-        navView.itemIconTintList = null
-        navView.setNavigationItemSelectedListener{
-            when(it.itemId){
-                R.id.nav_schedule -> {
-                    val i = Intent(this, ScheduleActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-                R.id.nav_map -> {
-                    val i = Intent(this, MapActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-                R.id.nav_settings -> {
-                    val i = Intent(this, SettingActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-            }
-            true
-        }
-
+        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
+        navigation.createNavigationDrawer()
     }
 
     @SuppressLint("ClickableViewAccessibility", "InflateParams")

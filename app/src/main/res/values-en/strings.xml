@@ -62,5 +62,7 @@
     <string name="toolbar_map">Map</string>
     <string name="toolbar_settings">Settings</string>
     <string name="toolbar_change_schedule">Change Schedule</string>
+    <string name="log_out_alert">Do you really want to sign out?</string>
+    <string name="alert_header">Attention</string>
 
 </resources>
