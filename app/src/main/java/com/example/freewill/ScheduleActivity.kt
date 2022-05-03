@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.freewill.databinding.ActivityScheduleBinding
+import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.ScheduleAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -93,34 +94,10 @@ class ScheduleActivity : AppCompatActivity() {
 //      Navigation bar
         drawerLayout = findViewById(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-//        toggle.isDrawerIndicatorEnabled = true
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         val navView: NavigationView = findViewById(R.id.navView)
-        navView.itemIconTintList = null
-        navView.setNavigationItemSelectedListener{
-            when(it.itemId){
-                R.id.nav_schedule -> {
-                    val i = Intent(this, ScheduleActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-                R.id.nav_map -> {
-                    val i = Intent(this, MapActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-                R.id.nav_settings -> {
-                    val i = Intent(this, SettingActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                }
-            }
-            true
-        }
-
-
+        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
+        navigation.createNavigationDrawer()
     }
 
 
