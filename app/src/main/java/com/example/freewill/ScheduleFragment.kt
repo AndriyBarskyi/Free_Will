@@ -56,7 +56,7 @@ class ScheduleFragment : Fragment() {
         val referenceSchedule = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("Shedule")
-        referenceSchedule.child(user!!).get().addOnSuccessListener{
+        referenceSchedule.child(user!!).child("Понеділок").get().addOnSuccessListener{
             if(it.exists())
             {
                 val firstpara =it.child("firstpara").value
