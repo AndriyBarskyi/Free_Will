@@ -2,6 +2,6 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:buttonStyle">@style/ButtonStyle123</item>
+        <item name="android:buttonStyle">@style/SearchInMapButtonStyle</item>
     </style>
 </resources>
