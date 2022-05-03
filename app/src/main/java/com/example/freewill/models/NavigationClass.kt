@@ -12,6 +12,8 @@ import android.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class NavigationClass(
@@ -63,7 +65,7 @@ class NavigationClass(
         builder.setMessage(R.string.log_out_alert)
 
         builder.setPositiveButton("YES") { dialog, which ->
-            val firebaseAuth = FirebaseAuth.getInstance()
+            val firebaseAuth = Firebase.auth
             firebaseAuth.signOut()
             context.startActivity(Intent(context, LoginActivity::class.java))
             dialog.dismiss()
