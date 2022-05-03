@@ -56,7 +56,7 @@ class ScheduleActivity : AppCompatActivity() {
         //{
             //readGroup(user)
         //}
-        var userGrop="pmi_24"
+        //var userGrop="pmi_24"
         //readSchedule(userGrop)
 
         binding.ChangeBtn1.setOnClickListener {
