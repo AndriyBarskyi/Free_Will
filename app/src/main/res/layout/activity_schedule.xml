@@ -81,6 +81,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/schedule_up" />
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.634" />
+
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="220dp"
@@ -121,6 +135,7 @@
         android:layout_gravity="start"
         android:background="@drawable/nav_background"
         android:fitsSystemWindows="true"
+        android:visibility="gone"
         app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         app:itemIconSize="80dp"
         app:itemVerticalPadding="@dimen/item_vertical_margin"

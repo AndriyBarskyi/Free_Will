@@ -3,16 +3,19 @@ package com.example.freewill
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.example.freewill.databinding.ActivityScheduleBinding
-import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ScheduleAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 
 class ScheduleActivity : AppCompatActivity() {
@@ -23,11 +26,28 @@ class ScheduleActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var referenceSchedule: DatabaseReference
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var adapter: ScheduleAdapter
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScheduleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // assigning ID of the toolbar to a variable
+        val toolbar: Toolbar = binding.toolbar
+
+        // using toolbar as ActionBar
+        toolbar.setTitle(R.string.toolbar_schedule)
+        setSupportActionBar(toolbar)
+
+        val fragments: ArrayList<Fragment> = arrayListOf(
+            ScheduleFragment(),
+            ScheduleFragment2()
+        )
+        adapter = ScheduleAdapter(fragments, this)
+        viewPager = findViewById(R.id.pager)
+        viewPager.adapter=adapter
 
         //firebaseAuth = FirebaseAuth.getInstance()
         //val user = firebaseAuth.currentUser
@@ -36,7 +56,7 @@ class ScheduleActivity : AppCompatActivity() {
         //{
             //readGroup(user)
         //}
-        var userGrop="pmi_24"
+        //var userGrop="pmi_24"
         //readSchedule(userGrop)
 
         binding.ChangeBtn1.setOnClickListener {
@@ -65,24 +85,42 @@ class ScheduleActivity : AppCompatActivity() {
 //            }
 //        reference.addValueEventListener(postListener)
 
-//          Navigation bar
-        createNavigationMenu()
-    }
 
-    fun createNavigationMenu(){
-        // assigning ID of the toolbar to a variable
-        val toolbar: Toolbar = binding.toolbar
 
-        // using toolbar as ActionBar
-        toolbar.setTitle(R.string.toolbar_schedule)
-        setSupportActionBar(toolbar)
 
+
+
+//      Navigation bar
         drawerLayout = findViewById(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-        val navView: NavigationView = findViewById(R.id.navView)
+//        toggle.isDrawerIndicatorEnabled = true
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
-        navigation.createNavigationDrawer()
+        val navView: NavigationView = findViewById(R.id.navView)
+        navView.itemIconTintList = null
+        navView.setNavigationItemSelectedListener{
+            when(it.itemId){
+                R.id.nav_schedule -> {
+                    val i = Intent(this, ScheduleActivity::class.java)
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+                R.id.nav_map -> {
+                    val i = Intent(this, MapActivity::class.java)
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+                R.id.nav_settings -> {
+                    val i = Intent(this, SettingActivity::class.java)
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+            }
+            true
+        }
+
+
     }
 
 
