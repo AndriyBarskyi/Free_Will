@@ -53,7 +53,7 @@ class ScheduleFragment : Fragment() {
 
         private fun readSchedule(user: String?) {
 
-        val referenceSchedule = FirebaseDatabase
+        referenceSchedule = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("Shedule")
         referenceSchedule.child(user!!).child("Понеділок").get().addOnSuccessListener{
