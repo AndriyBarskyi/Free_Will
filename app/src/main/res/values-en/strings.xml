@@ -13,8 +13,9 @@
     <string name = "sound"> Notification \n sound </string>
     <string name = "language"> Language </string>
     <string name = "type_words"> Font size </string>
-    <string name = "on"> Enabled </string>
+    <string name = "on"> On </string>
     <string name = "off"> Off </string>
+    <string name = "vibro"> Vibro </string>
     <string name = "Ukraine"> Солов\'їна </string>
     <string name = "English"> English </string>
     <string name = "Big"> B </string>

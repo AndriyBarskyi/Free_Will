@@ -33,7 +33,7 @@ class SettingActivity : AppCompatActivity()
     val bigSize = 1.2f
 
     var chooseSizeKoef : Float? = null
-    var check :Boolean?=null
+    var count :Int?=null
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
     lateinit var chooseLang : String
@@ -46,15 +46,13 @@ class SettingActivity : AppCompatActivity()
     fun SetSizeFont(size_coef: Float)
     {
         val configuration = resources.configuration
-        configuration.fontScale = size_coef //0.85 small size, 1 normal size, 1,15 big etc
+        configuration.fontScale = size_coef
 
 
         val metrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(metrics)
         metrics.scaledDensity = configuration.fontScale * metrics.density
         baseContext.resources.updateConfiguration(configuration, metrics)
-        //TypedValue.COMPLEX_UNIT_DIP
-        //
 
     }
 
@@ -100,14 +98,32 @@ class SettingActivity : AppCompatActivity()
         setContentView(bindingClass.root)
 
 
-
+        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
+            count = resLang?.getInt("count", 1)!!
+            intSaver("count", count!!)
+            when(count){
+                0->{bindingClass.offOn.text=R.string.on.toString()
+                count=1}
+                1->{bindingClass.offOn.text=R.string.off.toString()
+                    count=2}
+                2->{bindingClass.offOn.text=R.string.vibro.toString()
+                    count=0}
+            }
+        })
         // change language
+        selectLanguage()
+        // change Font
+        selectFont()
+        //Navigation drawer
+        createNavigationMenu()
+    }
+
+    fun selectLanguage(){
         bindingClass.ukraineLanguage.setOnClickListener(View.OnClickListener
         {
             LocaleHelper.setLocale(this, mLanguageCodeUa)
             chooseLang = mLanguageCodeUa
             recreate()
-
         })
 
         bindingClass.englishLanguage.setOnClickListener(View.OnClickListener
@@ -116,43 +132,43 @@ class SettingActivity : AppCompatActivity()
             chooseLang = mLanguageCodeEn
             recreate()
         })
+    }
 
-        // change Font
+    fun selectFont(){
         bindingClass.buttonS.setOnClickListener(View.OnClickListener
         {
             chooseFont = small
             chooseSizeKoef = smallSize
             SetSizeFont(smallSize)
-           recreate()
+            recreate()
         })
-        bindingClass.buttonM.setOnClickListener(View.OnClickListener
-        {
+        bindingClass.buttonM.setOnClickListener(View.OnClickListener{
             chooseFont = medium
             chooseSizeKoef = mediumSize
             SetSizeFont(mediumSize)
             recreate()
 
         })
-        bindingClass.buttonB.setOnClickListener(View.OnClickListener
-        {
+        bindingClass.buttonB.setOnClickListener(View.OnClickListener{
             chooseFont = big
             chooseSizeKoef = bigSize
             SetSizeFont(bigSize)
             recreate()
-
         })
-
-        //Navigation drawer
-        createNavigationMenu()
     }
 
-    fun saveLanguageAndFont(resLanguage:String, resFont:String)
+    fun stringSaver(key:String, value: String)
     {
         val editor = resLang?.edit()
-        editor?.putString(keyLanguage, resLanguage)
-        editor?.putString(keyFont, resFont)
+        editor?.putString(key, value)
         editor?.apply()
+    }
 
+    fun intSaver(key:String, value: Int)
+    {
+        val editor = resLang?.edit()
+        editor?.putInt(key, value)
+        editor?.apply()
     }
 
     fun selectColorsFontSize(smallB : Int, mediumB : Int, bigB : Int)
@@ -191,7 +207,9 @@ class SettingActivity : AppCompatActivity()
     override fun onDestroy()
     {
         super.onDestroy()
-        saveLanguageAndFont(chooseLang, chooseFont)
+        //saveLanguageAndFont(chooseLang, chooseFont)
+        stringSaver(keyLanguage, chooseLang)
+        stringSaver(keyFont, chooseFont)
 
     }
 
