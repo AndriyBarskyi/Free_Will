@@ -171,7 +171,7 @@ class VisitedVertex {
 }
 
 public class Dijkstra {
-    public static ArrayList<Integer> Calculate(String startVertex, String endVertex, Context ctx) {
+    public static ArrayList<Float> Calculate(String startVertex, String endVertex, Context ctx) {
         GsonParser parser = new GsonParser(ctx);
 
         Root root = parser.parse();
@@ -182,6 +182,17 @@ public class Dijkstra {
         Graph graph = new Graph(root);
         graph.dsj(start);
 
-        return graph.getCoords(end);
+        ArrayList<Integer> a = graph.getCoords(end);
+        ArrayList<Float> res = new ArrayList<>();
+
+        for (int v : a) {
+            float temp=v;
+            res.add(temp);
+
+        }
+
+//        return graph.getCoords(end);
+        return res;
+
     }
 }

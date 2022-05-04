@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Picture
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -22,10 +26,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import com.example.freewill.databinding.ActivityMapBinding
 import com.example.freewill.search_point.Dijkstra
-import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import java.util.ArrayList
+import android.graphics.Canvas as Canvas
 
 
 class MapActivity : AppCompatActivity() {
@@ -33,16 +37,14 @@ class MapActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var mapBinding: ActivityMapBinding
+    val bitmap = Bitmap.createBitmap(913, 785, Bitmap.Config.ARGB_8888)
+    val canvas = Canvas(bitmap)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mapBinding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(mapBinding.root)
 
-        createNavigationMenu()
-    }
-
-    fun createNavigationMenu(){
         // assigning ID of the toolbar to a variable
         val toolbar: Toolbar = mapBinding.toolbar
 
@@ -50,17 +52,47 @@ class MapActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.toolbar_map)
         setSupportActionBar(toolbar)
 
+
         drawerLayout = findViewById(R.id.drawerLayout)
         drawerLayout.foreground.alpha = 0
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+
+
+        val map = Picture()
+        map.draw(canvas)
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
         val navView: NavigationView = findViewById(R.id.navView)
-        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
-        navigation.createNavigationDrawer()
+        navView.itemIconTintList = null
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_schedule -> {
+                    val i = Intent(this, ScheduleActivity::class.java)
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+                R.id.nav_map -> {
+                    val i = Intent(this, MapActivity::class.java)
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+                R.id.nav_settings -> {
+                    val i = Intent(this, SettingActivity::class.java)
+//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                }
+            }
+            true
+        }
+
     }
 
     @SuppressLint("ClickableViewAccessibility", "InflateParams")
-    fun onClickOpenPopUp(view:View) {
+    fun onClickOpenPopUp(view: View) {
         mapBinding = ActivityMapBinding.inflate(layoutInflater)
         val inflater =
             view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -82,24 +114,31 @@ class MapActivity : AppCompatActivity() {
         findDirectionBtn.setOnClickListener {
             var fromPlace: String = ""
             var toPlace: String = ""
-            val searchFromInput: TextInputEditText = popupWindow.contentView.findViewById(R.id.searchFromInput)
+            val searchFromInput: TextInputEditText =
+                popupWindow.contentView.findViewById(R.id.searchFromInput)
             fromPlace = searchFromInput.text.toString()
 
-            val searchToInput: TextInputEditText = popupWindow.contentView.findViewById(R.id.searchToInput)
+            val searchToInput: TextInputEditText =
+                popupWindow.contentView.findViewById(R.id.searchToInput)
             toPlace = searchToInput.text.toString()
             if (fromPlace != "" && toPlace != "") {
-                val points: ArrayList<Int>? = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
+                var points = mutableListOf<Float>()
+                points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
+                var paint = Paint()
+                paint.setColor(Color.parseColor("#FFFFFF"))
+                canvas.drawLines(points.toFloatArray(), paint)
                 if (points != null) {
-                    for (i in points){
+                    for (i in points) {
                         Log.d("Point123", i.toString())
                     }
                 }
             }
         }
     }
-    class InfoRoomFragment (_room : String): DialogFragment()
-    {
-        val room=_room
+
+
+    class InfoRoomFragment(_room: String) : DialogFragment() {
+        val room = _room
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {
                 val builder = AlertDialog.Builder(it)
@@ -109,71 +148,71 @@ class MapActivity : AppCompatActivity() {
             } ?: throw IllegalStateException("Activity cannot be null")
         }
     }
-    fun aud237(view: View)
-    {
+
+    fun aud237(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud238(view: View)
-    {
+
+    fun aud238(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("238")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud239(view: View)
-    {
+
+    fun aud239(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud240(view: View)
-    {
+
+    fun aud240(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud241(view: View)
-    {
+
+    fun aud241(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud241a(view: View)
-    {
+
+    fun aud241a(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud242(view: View)
-    {
+
+    fun aud242(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud243(view: View)
-    {
+
+    fun aud243(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud244(view: View)
-    {
+
+    fun aud244(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
         infoRoomFragment.show(manager, "myDialog")
     }
-    fun aud245(view: View)
-    {
+
+    fun aud245(view: View) {
         //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
         val infoRoomFragment = InfoRoomFragment("237")
         val manager = supportFragmentManager
