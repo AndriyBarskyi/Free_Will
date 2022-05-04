@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -16,6 +17,9 @@ import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 
 class SettingActivity : AppCompatActivity()
@@ -55,6 +59,7 @@ class SettingActivity : AppCompatActivity()
         baseContext.resources.updateConfiguration(configuration, metrics)
 
     }
+
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -162,7 +167,44 @@ class SettingActivity : AppCompatActivity()
         val editor = resLang?.edit()
         editor?.putString(key, value)
         editor?.apply()
+        //Navigation drawer
+        createNavigationMenu()
+        //Read User Information
+        readFirebaseUser()
     }
+
+    fun readFirebaseUser() {
+        val user = Firebase.auth.currentUser
+
+        user?.let {
+            val email = user.email
+            bindingClass.editGmail.setText(email.toString())
+            val uid = user.uid
+
+            val referenceSchedule = FirebaseDatabase
+                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Users")
+            referenceSchedule.child(uid).get().addOnSuccessListener {
+                if (it.exists()) {
+                    val group = it.child("groupName").value
+                    val userName = it.child("userName").value
+                    //val email = it.child("email").value
+
+                    bindingClass.editGroup.setText(group.toString())
+                    bindingClass.editLogin.setText(userName.toString())
+                    //bindingClass.editGmail.setText(email.toString())
+
+                    Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
+                }
+            }.addOnFailureListener {
+                Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
+
+            }
+        }
+    }
+
 
     fun intSaver(key:String, value: Int)
     {
