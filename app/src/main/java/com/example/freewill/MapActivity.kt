@@ -33,6 +33,8 @@ class MapActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var mapBinding: ActivityMapBinding
+    lateinit var fromPoint: String
+    lateinit var toPoint: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,10 @@ class MapActivity : AppCompatActivity() {
         setContentView(mapBinding.root)
 
         createNavigationMenu()
+        if (fromPoint != "" || toPoint != ""){
+            Log.d("Point123", fromPoint)
+            Log.d("Point123", toPoint)
+        }
     }
 
     fun createNavigationMenu(){
@@ -87,14 +93,16 @@ class MapActivity : AppCompatActivity() {
 
             val searchToInput: TextInputEditText = popupWindow.contentView.findViewById(R.id.searchToInput)
             toPlace = searchToInput.text.toString()
-            if (fromPlace != "" && toPlace != "") {
+            fromPoint = fromPlace
+            toPoint = toPlace
+/*            if (fromPlace != "" && toPlace != "") {
                 val points: ArrayList<Int>? = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
                 if (points != null) {
                     for (i in points){
                         Log.d("Point123", i.toString())
                     }
                 }
-            }
+            }*/
         }
     }
     class InfoRoomFragment (_room : String): DialogFragment()
