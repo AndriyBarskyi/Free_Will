@@ -69,9 +69,8 @@ class MapActivity : AppCompatActivity() {
                 val searchToInput: TextInputEditText =
                     popupWindow.contentView.findViewById(R.id.searchToInput)
                 toPlace = searchToInput.text.toString()
-                if (toPlace != "") {
-                    val text10: TextView = mapBinding.textView10
-                    text10.text = toPlace
+                if (toPlace != "" && fromPlace != "") {
+                    recreate()
                 }
                 popupWindow.dismiss()
             }
