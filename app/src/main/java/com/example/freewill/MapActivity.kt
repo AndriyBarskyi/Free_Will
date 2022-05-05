@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Picture
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -24,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import java.util.ArrayList
+import android.graphics.Canvas as Canvas
 
 
 class MapActivity : AppCompatActivity() {
@@ -31,6 +36,8 @@ class MapActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var mapBinding: ActivityMapBinding
+    val bitmap = Bitmap.createBitmap(913, 785, Bitmap.Config.ARGB_8888)
+    val canvas = Canvas(bitmap)
 
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,11 +77,19 @@ class MapActivity : AppCompatActivity() {
                     popupWindow.contentView.findViewById(R.id.searchToInput)
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
-                    recreate()
+                    drawLinesOnMap(fromPlace, toPlace)
                 }
                 popupWindow.dismiss()
             }
         }
+    }
+
+    fun drawLinesOnMap(start: String, end: String) {
+        var points = mutableListOf<Float>()
+        points = Dijkstra.Calculate(start, end, this.baseContext)
+        var paint = Paint()
+        paint.setColor(Color.parseColor("#FF0000"))
+        canvas.drawLines(points.toFloatArray(), paint)
     }
 
     fun createNavigationMenu() {
