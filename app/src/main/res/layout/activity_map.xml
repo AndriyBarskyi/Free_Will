@@ -16,6 +16,7 @@
 
         <!-- ********* TOOLBAR ************    -->
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +44,6 @@
             android:clickable="true"
             android:contentDescription="@android:string/search_go"
             android:focusable="true"
-            android:onClick="onClickOpenPopUp"
             android:scaleType="center"
             android:src="@drawable/ic_directions_fab"
             app:fabSize="auto"
