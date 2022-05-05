@@ -57,6 +57,8 @@
     <string name="agree">Agree</string>
     <string name="exit">Exit</string>
     <string name="enter_password">Enter password</string>
+    <string name="you_exit">You\'re out</string>
+    <string name="you_agree">Changes confirmed</string>
 
     <!--    navigation_drawer-->
     <string name = "open"> Open </string>

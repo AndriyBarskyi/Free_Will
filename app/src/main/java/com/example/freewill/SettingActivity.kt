@@ -11,10 +11,6 @@ import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.PopupWindow
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +24,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import android.view.ViewGroup.LayoutParams
+import android.widget.*
+import androidx.appcompat.widget.AppCompatImageView
 
 class SettingActivity : AppCompatActivity()
 {
@@ -69,7 +67,7 @@ class SettingActivity : AppCompatActivity()
     }
 
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
         chooseLang = resLang?.getString(keyLanguage, mLanguageCodeUa)!!
@@ -110,15 +108,20 @@ class SettingActivity : AppCompatActivity()
         // select sound/vibro
         bindingClass.soundButton.setOnClickListener(View.OnClickListener{
             count = resLang?.getInt("count", 1)!!
-            intSaver("count", count!!)
             when(count){
-                0->{bindingClass.offOn.text=R.string.on.toString()
-                count=1}
-                1->{bindingClass.offOn.text=R.string.off.toString()
-                    count=2}
-                2->{bindingClass.offOn.text=R.string.vibro.toString()
+                0->{bindingClass.offOn.setText(R.string.on)
+                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_on))
+                    count=1}
+                1-> {
+                    bindingClass.offOn.setText(R.string.off)
+                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_off))
+                    count = 2
+                }
+                2->{bindingClass.offOn.setText(R.string.vibro)
+                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_vibro))
                     count=0}
             }
+            intSaver("count", count!!)
         })
 
         // change language
@@ -135,9 +138,9 @@ class SettingActivity : AppCompatActivity()
         // checking the password
         var activityScreen = R.layout.activity_check_password
         //val result = CheckPassword(activityScreen, view)
+        //drawerLayout.foreground.alpha = 0
 
         // go to dialog where you can change the data
-        //drawerLayout.foreground.alpha = 0
         val result=true
         if (result){
             activityScreen = R.layout.activity_edit_setting
@@ -189,7 +192,6 @@ class SettingActivity : AppCompatActivity()
             drawerLayout.foreground.alpha = 0
             popupWindow.dismiss()
         })
-
         agree.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
             popupWindow.dismiss()

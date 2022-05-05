@@ -51,8 +51,10 @@
     <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження, після чого Ви зможете увійти.</b>
     <b>Вже очікуємо на Вас!</b></string>
     <string name="agree">Підтвердити</string>
-    <string name="exit">вийти</string>
+    <string name="exit">Вийти</string>
     <string name="enter_password">Введіть пароль</string>
+    <string name="you_exit">Ви вийшли</string>
+    <string name="you_agree">Зміни підтверджено</string>
 
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
