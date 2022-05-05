@@ -97,21 +97,6 @@ class MapActivity : AppCompatActivity() {
 
     }
 
-/*    @SuppressLint("ClickableViewAccessibility", "InflateParams")
-    fun onClickOpenPopUp(view: View) {
-
-            popupWindow.dismiss()
-*//*            if (fromPlace != "" && toPlace != "") {
-                val points: ArrayList<Int>? = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
-                if (points != null) {
-                    for (i in points){
-                        Log.d("Point123", i.toString())
-                    }
-                }
-            }*//*
-        }
-    }*/
-
     class InfoRoomFragment(_room: String) : DialogFragment() {
         val room = _room
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

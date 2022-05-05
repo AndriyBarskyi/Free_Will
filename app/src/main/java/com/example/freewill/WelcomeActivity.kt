@@ -13,14 +13,14 @@ class WelcomeActivity : AppCompatActivity() {
     private val SPLASH_TIME: Long = 3000
     val a = SettingActivity()
     var checking : SharedPreferences? = null
-    val editor = checking?.edit()
-    val checkk = "check"
 
     fun toSettingApp()
     {
-        a.resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
-        LocaleHelper.setLocale(this, a.resLang?.getString(a.keyLanguage, a.mLanguageCodeUa)!!)
-        when(a.resLang?.getString(a.keyFont, a.medium)!!){
+        val resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
+        val r = resLang.getString(a.keyLanguage, a.mLanguageCodeUa)
+        LocaleHelper.setLocale(this, r)
+        val t = resLang?.getString(a.keyFont, a.medium)!!
+        when(t){
             a.small->{SetSizeFont(a.smallSize)}
             a.medium->{SetSizeFont(a.mediumSize)}
             a.big->{SetSizeFont(a.bigSize) }

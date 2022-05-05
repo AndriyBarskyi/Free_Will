@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="200dp"
+    android:theme="@style/Theme.MaterialComponents.Light">
+
+    <RelativeLayout
+        android:id="@+id/search_direction_popup"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/ic_rounded_layout_corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        tools:ignore="UselessParent">
+
+        <Button
+            android:id="@+id/agree"
+            style="@style/SearchInMapButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="123dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/agree"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <Button
+            android:id="@+id/exit"
+            style="@style/SearchInMapButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/exit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+
+        <EditText
+            android:id="@+id/editGroup"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_above="@+id/editLogin"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/group"
+            android:textStyle="bold"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:hintTextColor="@color/dark_blue" />
+
+        <EditText
+            android:id="@+id/editLogin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_above="@+id/editGmail"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:hint="@string/login"
+            android:inputType="textPersonName"
+            android:textStyle="bold"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:hintTextColor="@color/dark_blue" />
+
+        <EditText
+            android:id="@+id/editGmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_above="@id/editPassword"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/gmail"
+            android:inputType="textEmailAddress"
+            android:textStyle="bold"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:hintTextColor="@color/dark_blue" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_above="@id/exit"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textStyle="bold"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:hintTextColor="@color/dark_blue" />
+
+    </RelativeLayout>
+
+</LinearLayout>
