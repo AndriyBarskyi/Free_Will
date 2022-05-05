@@ -49,6 +49,7 @@
     <b>Вже очікуємо на Вас!</b></string>
     <string name="agree">Підтвердити</string>
     <string name="exit">вийти</string>
+    <string name="enter_password">Введіть пароль</string>
 
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>

@@ -56,6 +56,7 @@
     <string name = "edit_schedule_plus"> + </string>
     <string name="agree">Agree</string>
     <string name="exit">Exit</string>
+    <string name="enter_password">Enter password</string>
 
     <!--    navigation_drawer-->
     <string name = "open"> Open </string>
@@ -66,7 +67,6 @@
     <string name="toolbar_change_schedule">Change Schedule</string>
     <string name="log_out_alert">Do you really want to sign out?</string>
     <string name="alert_header">Attention</string>
-    <string name="default_web_client_id">ХЗ шо тут</string>
 
 
 </resources>

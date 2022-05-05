@@ -132,30 +132,75 @@ class SettingActivity : AppCompatActivity()
 
     @SuppressLint("ClickableViewAccessibility", "InflateParams")
     fun changeB(view:View){
-        val inflater =
-            view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        // checking the password
+        var activityScreen = R.layout.activity_check_password
+        //val result = CheckPassword(activityScreen, view)
+
+        // go to dialog where you can change the data
+        //drawerLayout.foreground.alpha = 0
+        val result=true
+        if (result){
+            activityScreen = R.layout.activity_edit_setting
+            EditInformation(activityScreen, view)
+        }
+
+    }
+    fun CheckPassword(activityScreen:Int, view:View): Boolean {
+
+        val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         drawerLayout.foreground.alpha = 255
-
-        val popupView: View = inflater.inflate(R.layout.activity_edit_setting, null)
-        val width = LinearLayout.LayoutParams.MATCH_PARENT
-        val height = LinearLayout.LayoutParams.MATCH_PARENT
-        val focusable = true
-        val popupWindow = PopupWindow(popupView, width, height, focusable)
+        val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT, true)
 
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
+        // слухач кнопок
+        val exit = popupView.findViewById(R.id.exitFirst) as Button
+        val agree = popupView.findViewById(R.id.agreePassword) as Button
 
+        exit.setOnClickListener(View.OnClickListener(){
+            popupWindow.dismiss()
+        })
+
+        var res = false
+        agree.setOnClickListener(View.OnClickListener(){
+            res = true
+            popupWindow.dismiss()
+        })
+
+        return res
+    }
+
+    fun EditInformation(activityScreen:Int, view:View){
+        val popupView = wayScreenDisplay(activityScreen, view)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        drawerLayout.foreground.alpha = 255
+        val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT, true)
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+        popupWindow.isOutsideTouchable = true
+        // слухач кнопок
         val exit = popupView.findViewById(R.id.exit) as Button
         val agree = popupView.findViewById(R.id.agree) as Button
+
         exit.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
             popupWindow.dismiss()
         })
+
         agree.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
             popupWindow.dismiss()
         })
+    }
+
+    fun wayScreenDisplay(activityScreen:Int, view:View): View {
+        val inflater =
+            view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView: View = inflater.inflate(activityScreen, null)
+        return popupView
     }
 
 
