@@ -87,14 +87,7 @@ class MapActivity : AppCompatActivity() {
 
             val searchToInput: TextInputEditText = popupWindow.contentView.findViewById(R.id.searchToInput)
             toPlace = searchToInput.text.toString()
-            if (fromPlace != "" && toPlace != "") {
-                val points: ArrayList<Int>? = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
-                if (points != null) {
-                    for (i in points){
-                        Log.d("Point123", i.toString())
-                    }
-                }
-            }
+
         }
     }
     class InfoRoomFragment (_room : String): DialogFragment()

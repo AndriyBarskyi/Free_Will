@@ -47,6 +47,8 @@
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
     <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження, після чого Ви зможете увійти.</b>
     <b>Вже очікуємо на Вас!</b></string>
+    <string name="agree">Підтвердити</string>
+    <string name="exit">вийти</string>
 
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
@@ -64,6 +66,7 @@
     <string name="toolbar_change_schedule">Зміна розкладу</string>
     <string name="log_out_alert">Ви справді бажаєте вийти з акаунта?</string>
     <string name="alert_header">Попередження</string>
+
     <!-- TODO: Remove or change this placeholder text -->
 <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
 

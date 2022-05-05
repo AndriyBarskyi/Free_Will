@@ -38,6 +38,7 @@
     <string name = "entrance_login"> Login </string>
     <string name = "entrance_password"> Password </string>
     <string name = "entrance_btn"> Login </string>
+    <string name="registration">Registration</string>
     <string name = "entrance_without"> Sign in without authorization </string>
     <string name = "entrance_no_account"> I don\'t have an account yet </string>
     <string name = "entrance_registration"> Register </string>
@@ -45,16 +46,16 @@
     <string name = "schedule_btn"> Edit </string>
     <string name = "check_entrance"> <b> A login email has been sent to your mail. Use it to sign in. </b>
     <b> You can change your password in Settings. </b> </string>
-    <string name = "check_registr" >
-        <b> A confirmation email has been sent to your inbox so you can sign in. </b>
+    <string name = "check_registr" ><b> A confirmation email has been sent to your inbox so you can sign in. </b>
     <b> Looking forward to seeing you! </b> </string>
-
     <string name = "edit_schedule_mon"> Mon </string>
     <string name = "edit_schedule_tue"> Tue </string>
     <string name = "edit_schedule_wen"> Wed </string>
     <string name = "edit_schedule_thu"> Thu </string>
     <string name = "edit_schedule_fri"> Fri </string>
     <string name = "edit_schedule_plus"> + </string>
+    <string name="agree">Agree</string>
+    <string name="exit">Exit</string>
 
     <!--    navigation_drawer-->
     <string name = "open"> Open </string>
@@ -65,5 +66,7 @@
     <string name="toolbar_change_schedule">Change Schedule</string>
     <string name="log_out_alert">Do you really want to sign out?</string>
     <string name="alert_header">Attention</string>
+    <string name="default_web_client_id">ХЗ шо тут</string>
+
 
 </resources>

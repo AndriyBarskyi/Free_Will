@@ -19,7 +19,8 @@ class WelcomeActivity : AppCompatActivity() {
         val resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
         val r = resLang.getString(a.keyLanguage, a.mLanguageCodeUa)
         LocaleHelper.setLocale(this, r)
-        when(a.resLang?.getString(a.keyFont, a.medium)!!){
+        val t = resLang?.getString(a.keyFont, a.medium)!!
+        when(t){
             a.small->{SetSizeFont(a.smallSize)}
             a.medium->{SetSizeFont(a.mediumSize)}
             a.big->{SetSizeFont(a.bigSize) }
