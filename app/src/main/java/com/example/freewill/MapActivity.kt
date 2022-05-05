@@ -122,18 +122,23 @@ class MapActivity : AppCompatActivity() {
                 popupWindow.contentView.findViewById(R.id.searchToInput)
             toPlace = searchToInput.text.toString()
             if (fromPlace != "" && toPlace != "") {
-                var points = mutableListOf<Float>()
-                points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
-                var paint = Paint()
-                paint.setColor(Color.parseColor("#FFFFFF"))
-                canvas.drawLines(points.toFloatArray(), paint)
-                if (points != null) {
-                    for (i in points) {
-                        Log.d("Point123", i.toString())
-                    }
-                }
+                popupWindow.dismiss()
+                drawLinesOnMap(fromPlace, toPlace)
+//                if (points != null) {
+//                    for (i in points) {
+//                        Log.d("Point123", i.toString())
+//                    }
+//                }
             }
         }
+    }
+
+    fun drawLinesOnMap(start: String, end: String) {
+        var points = mutableListOf<Float>()
+        points = Dijkstra.Calculate(start, end, this.baseContext)
+        var paint = Paint()
+        paint.setColor(Color.parseColor("#FF0000"))
+        canvas.drawLines(points.toFloatArray(), paint)
     }
 
 
