@@ -33,19 +33,24 @@ class MapActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var mapBinding: ActivityMapBinding
-    lateinit var fromPoint: String
-    lateinit var toPoint: String
+    var toPlacePoint: String = ""
+    var fromPlacePoint: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mapBinding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(mapBinding.root)
-
-        createNavigationMenu()
-        if (fromPoint != "" || toPoint != ""){
-            Log.d("Point123", fromPoint)
-            Log.d("Point123", toPoint)
+        val text10: TextInputEditText = drawerLayout.findViewById(R.id.textView10)
+        if (toPlacePoint != ""){
+            text10.setText(toPlacePoint)
         }
+        createNavigationMenu()
+    }
+
+    @JvmName("setToPlace1")
+    fun setFromAndToPlacePoints(from: String, to: String){
+        fromPlacePoint = from
+        toPlacePoint = to
     }
 
     fun createNavigationMenu(){
@@ -93,8 +98,8 @@ class MapActivity : AppCompatActivity() {
 
             val searchToInput: TextInputEditText = popupWindow.contentView.findViewById(R.id.searchToInput)
             toPlace = searchToInput.text.toString()
-            fromPoint = fromPlace
-            toPoint = toPlace
+            setFromAndToPlacePoints(fromPlace, toPlace)
+            popupWindow.dismiss()
 /*            if (fromPlace != "" && toPlace != "") {
                 val points: ArrayList<Int>? = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
                 if (points != null) {
