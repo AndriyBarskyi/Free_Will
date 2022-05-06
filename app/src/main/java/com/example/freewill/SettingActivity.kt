@@ -43,6 +43,8 @@ class SettingActivity : AppCompatActivity()
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
+    var result:Boolean?=null
+    var resultInt:Int?=null
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
     lateinit var chooseLang : String
@@ -192,22 +194,13 @@ class SettingActivity : AppCompatActivity()
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     fun changeB(view:View){
-        // checking the password
-        var activityScreen = R.layout.activity_check_password
-        //val result = CheckPassword(activityScreen, view)
-
-        // go to dialog where you can change the data
-        //drawerLayout.foreground.alpha = 0
-        val result=true
-        if (result){
-            activityScreen = R.layout.activity_edit_setting
-            EditInformation(activityScreen, view)
-        }
+        // call checking the password
+        CheckPassword(R.layout.activity_check_password, view)
 
     }
 
-
-    fun CheckPassword(activityScreen:Int, view:View): Boolean {
+    // checking the password
+    fun CheckPassword(activityScreen:Int, view:View): Boolean? {
 
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
@@ -219,27 +212,31 @@ class SettingActivity : AppCompatActivity()
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
-        val agree = popupView.findViewById(R.id.agreePassword) as Button
+        val agree2 = popupView.findViewById(R.id.agreePassword) as Button
 
         popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
         }
 
-        var res = false
-        agree.setOnClickListener(View.OnClickListener(){
-            res = true
+        result = false
+        agree2.setOnClickListener(View.OnClickListener(){
+            result = true
             popupWindow.dismiss()
+            if(result as Boolean)
+                // call dialog where you can change the data
+                EditInformation(R.layout.activity_edit_setting, view)
         })
-        return res
+        val uuu = result
+        return uuu
     }
 
+    // go to dialog where you can change the data
     fun EditInformation(activityScreen:Int, view:View){
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
-        drawerLayout.foreground.alpha = 255
         val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT, true)
-
+        drawerLayout.foreground.alpha = 255
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
