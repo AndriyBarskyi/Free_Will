@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_schedule_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingLeft="0dp"
@@ -26,8 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="123dp"
-            android:layout_marginEnd="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginEnd="120dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/dark_blue"
             android:fontFamily="@font/comfortaa"
@@ -38,23 +40,6 @@
             android:textStyle="bold"
             app:cornerRadius="12dp" />
 
-        <Button
-            android:id="@+id/exit"
-            style="@style/SearchInMapButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="34dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/dark_blue"
-            android:fontFamily="@font/comfortaa"
-            android:text="@string/exit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:cornerRadius="12dp" />
 
 
         <EditText
@@ -124,7 +109,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_above="@id/exit"
+            android:layout_above="@id/agree"
             android:layout_alignParentStart="true"
             android:layout_marginStart="34dp"
             android:layout_marginEnd="36dp"

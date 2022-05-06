@@ -21,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ReadFirebase
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -43,11 +44,12 @@ class SettingActivity : AppCompatActivity()
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
+    var result:Boolean?=null
+    var resultInt:Int?=null
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
     lateinit var chooseLang : String
     var resLang : SharedPreferences? = null
-    private lateinit var binding: ActivityScheduleBinding
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
 
@@ -187,27 +189,18 @@ class SettingActivity : AppCompatActivity()
         navigation.createNavigationDrawer()
 
         //Read User Information
-        readFirebaseUser()
+        val ReadUser = ReadFirebase()
+        ReadUser.readFirebaseUser(bindingClass)
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     fun changeB(view:View){
-        // checking the password
-        var activityScreen = R.layout.activity_check_password
-        //val result = CheckPassword(activityScreen, view)
-
-        // go to dialog where you can change the data
-        //drawerLayout.foreground.alpha = 0
-        val result=true
-        if (result){
-            activityScreen = R.layout.activity_edit_setting
-            EditInformation(activityScreen, view)
-        }
-
+        // call checking the password
+        CheckPassword(R.layout.activity_check_password, view)
     }
 
-
-    fun CheckPassword(activityScreen:Int, view:View): Boolean {
+    // checking the password
+    fun CheckPassword(activityScreen:Int, view:View): Boolean? {
 
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
@@ -219,38 +212,39 @@ class SettingActivity : AppCompatActivity()
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
-        val exit = popupView.findViewById(R.id.exitFirst) as Button
-        val agree = popupView.findViewById(R.id.agreePassword) as Button
+        val agree2 = popupView.findViewById(R.id.agreePassword) as Button
 
-        exit.setOnClickListener(View.OnClickListener(){
-            popupWindow.dismiss()
-        })
+        popupWindow.setOnDismissListener {
+            drawerLayout.foreground.alpha = 0
+        }
 
-        var res = false
-        agree.setOnClickListener(View.OnClickListener(){
-            res = true
+        result = false
+        agree2.setOnClickListener(View.OnClickListener(){
+            result = true
             popupWindow.dismiss()
+            if(result as Boolean)
+                // call dialog where you can change the data
+                EditInformation(R.layout.activity_edit_setting, view)
         })
-        return res
+        val uuu = result
+        return uuu
     }
 
+    // go to dialog where you can change the data
     fun EditInformation(activityScreen:Int, view:View){
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
-        drawerLayout.foreground.alpha = 255
         val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT, true)
-
+        drawerLayout.foreground.alpha = 255
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
-        val exit = popupView.findViewById(R.id.exit) as Button
         val agree = popupView.findViewById(R.id.agree) as Button
 
-        exit.setOnClickListener(View.OnClickListener(){
+        popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
-            popupWindow.dismiss()
-        })
+        }
 
         agree.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
@@ -265,38 +259,6 @@ class SettingActivity : AppCompatActivity()
         return popupView
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
-    fun readFirebaseUser() {
-        val user = Firebase.auth.currentUser
-
-        user?.let {
-            val email = user.email
-            bindingClass.editGmail.setText(email.toString())
-            val uid = user.uid
-
-            val referenceSchedule = FirebaseDatabase
-                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Users")
-            referenceSchedule.child(uid).get().addOnSuccessListener {
-                if (it.exists()) {
-                    val group = it.child("groupName").value
-                    val userName = it.child("userName").value
-                    //val email = it.child("email").value
-
-                    bindingClass.editGroup.setText(group.toString())
-                    bindingClass.editLogin.setText(userName.toString())
-                    //bindingClass.editGmail.setText(email.toString())
-
-                    Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
-                }
-            }.addOnFailureListener {
-                Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
-
-            }
-        }
-    }
 
 
     fun saveLanguageAndFont(resLanguage:String, resFont:String)
