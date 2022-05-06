@@ -212,6 +212,7 @@ class SettingActivity : AppCompatActivity()
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         drawerLayout.foreground.alpha = 255
+
         val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT, true)
 
@@ -230,7 +231,6 @@ class SettingActivity : AppCompatActivity()
             res = true
             popupWindow.dismiss()
         })
-
         return res
     }
 
