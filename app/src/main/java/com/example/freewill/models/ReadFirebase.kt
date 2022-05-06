@@ -10,10 +10,10 @@ import com.google.firebase.ktx.Firebase
 
 class ReadFirebase {
 
-
+    var group: String ="1"
     fun readGroupUser(): String {
         val user = Firebase.auth.currentUser
-        var group:String =""
+
         user?.let {
             val uid = user.uid
 
@@ -22,9 +22,13 @@ class ReadFirebase {
                 .getReference("Users")
             referenceUser.child(uid).get().addOnSuccessListener {
                 if (it.exists()) {
+                    group = "4"
                     group = it.child("groupName").value.toString()
-                } else {}
-            }.addOnFailureListener {}
+                } else {
+                    group = "2"
+                }
+            }.addOnFailureListener { group = "3" }
+
         }
         return group
     }

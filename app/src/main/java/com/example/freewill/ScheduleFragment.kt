@@ -49,8 +49,9 @@ class ScheduleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ReadGroup = ReadFirebase()
-
-        readSchedule(ReadGroup.readGroupUser())
+        binding.class5.setText(ReadGroup.readGroupUser())
+        val group="ПМІ-24"
+        readSchedule(group)
     }
 
         private fun readSchedule(user: String?) {
