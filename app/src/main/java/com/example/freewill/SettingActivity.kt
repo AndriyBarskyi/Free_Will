@@ -219,12 +219,11 @@ class SettingActivity : AppCompatActivity()
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
-        val exit = popupView.findViewById(R.id.exitFirst) as Button
         val agree = popupView.findViewById(R.id.agreePassword) as Button
 
-        exit.setOnClickListener(View.OnClickListener(){
-            popupWindow.dismiss()
-        })
+        popupWindow.setOnDismissListener {
+            drawerLayout.foreground.alpha = 0
+        }
 
         var res = false
         agree.setOnClickListener(View.OnClickListener(){
@@ -244,13 +243,11 @@ class SettingActivity : AppCompatActivity()
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
-        val exit = popupView.findViewById(R.id.exit) as Button
         val agree = popupView.findViewById(R.id.agree) as Button
 
-        exit.setOnClickListener(View.OnClickListener(){
+        popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
-            popupWindow.dismiss()
-        })
+        }
 
         agree.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
