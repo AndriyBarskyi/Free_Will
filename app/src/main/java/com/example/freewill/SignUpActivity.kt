@@ -113,7 +113,8 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun checkGroup(groupName: String): Boolean{
-        val groupList = listOf("ПМІ-14", "ПМІ-15", "ПМІ-13", "ПМІ-21")
+        val groupList = listOf("ПМІ-11", "ПМІ-12", "ПМІ-13", "ПМІ-14", "ПМІ-14", "ПМІ-16", "ПМО-21", "ПМК-21",
+                                "ПМІ-21", "ПМІ-22", "ПМІ-23", "ПМІ-24", "ПМІ-25", "ПМО-21", "ПМК-21",)
 
         return groupName in groupList
     }
