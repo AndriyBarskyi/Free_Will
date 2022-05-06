@@ -7,8 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.DisplayMetrics
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 class WelcomeActivity : AppCompatActivity() {
+    private lateinit var firebaseAuth: FirebaseAuth
 
     private val SPLASH_TIME: Long = 3000
     val a = SettingActivity()
@@ -30,11 +36,14 @@ class WelcomeActivity : AppCompatActivity() {
         toSettingApp()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
+        firebaseAuth = FirebaseAuth.getInstance()
+
 
         Handler().postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
+            checkUser()
             finish()
         }, SPLASH_TIME)
+
 
     }
 
@@ -48,6 +57,26 @@ class WelcomeActivity : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(metrics)
         metrics.scaledDensity = configuration.fontScale * metrics.density
         baseContext.resources.updateConfiguration(configuration, metrics)
+
+    }
+
+    private fun checkUser() {
+        val user = firebaseAuth.currentUser
+        if(user != null){
+            if(user!!.isEmailVerified)
+            {
+                startActivity(Intent(this, ScheduleActivity::class.java))
+                finish()
+            }
+            else{
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
+        else{
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
     }
 }

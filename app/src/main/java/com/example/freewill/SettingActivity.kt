@@ -74,6 +74,7 @@ class SettingActivity : AppCompatActivity()
         bindingClass = ActivitySettingBinding.inflate(layoutInflater)
 
 
+
         // language selection after restart
         when(chooseLang) {
             mLanguageCodeEn->{bindingClass.ukraineLanguage.setBackgroundResource(R.color.less_blue)
@@ -104,7 +105,10 @@ class SettingActivity : AppCompatActivity()
 
         setContentView(bindingClass.root)
 
-
+        //Toolbar
+        val toolbar: Toolbar = bindingClass.toolbar
+        toolbar.setTitle(R.string.toolbar_schedule)
+        setSupportActionBar(toolbar)
 
         // change language
         bindingClass.ukraineLanguage.setOnClickListener(View.OnClickListener
@@ -147,8 +151,16 @@ class SettingActivity : AppCompatActivity()
 
         })
 
+
+
         //Navigation drawer
-        createNavigationMenu()
+        drawerLayout = findViewById(R.id.drawerLayout)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        val navView: NavigationView = findViewById(R.id.navView)
+        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
+        navigation.createNavigationDrawer()
+
         //Read User Information
         readFirebaseUser()
     }
@@ -201,32 +213,6 @@ class SettingActivity : AppCompatActivity()
         bindingClass.buttonM.setBackgroundResource(mediumB)
         bindingClass.buttonB.setBackgroundResource(bigB)
     }
-
-
-
-    fun createNavigationMenu()
-    {
-        drawerLayout = findViewById(R.id.drawerLayout)
-
-        // assigning ID of the toolbar to a variable
-        val toolbar: Toolbar = bindingClass.toolbar
-
-        // using toolbar as ActionBar
-        toolbar.setTitle(R.string.toolbar_settings)
-        setSupportActionBar(toolbar)
-//        actionBar?.setDisplayHomeAsUpEnabled(true)
-//        actionBar?.setDisplayShowHomeEnabled(true)
-
-        //      Navigation bar
-        drawerLayout = findViewById(R.id.drawerLayout)
-        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-        val navView: NavigationView = findViewById(R.id.navView)
-
-        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
-        navigation.createNavigationDrawer()
-
-    }
-
 
     override fun onDestroy()
     {

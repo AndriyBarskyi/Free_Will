@@ -7,8 +7,7 @@
     <string name="gmail">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="confirm">Підтвердити</string>
-    <string name="confirm_info"><b>На Вашу пошту  був надісланий лист з кодом для підтвердження.</b>
-    <b>Введіть ці чотири цифри - і Ви вже у своєму акаунті!</b></string>
+    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <u>Надіслати</u> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити вашу електронну пошту.</b></string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>

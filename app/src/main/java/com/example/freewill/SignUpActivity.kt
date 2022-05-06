@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.example.freewill.databinding.ActivitySignUpBinding
 import com.example.freewill.models.User
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -88,9 +89,13 @@ class SignUpActivity : AppCompatActivity() {
 
                     if(task.isSuccessful){
                         updateUserInfo()
-                        Toast.makeText(this, "User added successfully", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, ScheduleActivity::class.java))
+                        startActivity(Intent(this, LetterEntranceActivity::class.java))
                         finish()
+
+
+//                        Toast.makeText(this, "User added successfully", Toast.LENGTH_SHORT).show()
+//                        startActivity(Intent(this, ScheduleActivity::class.java))
+//                        finish()
                     }
                     else{
                         Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
@@ -100,7 +105,6 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun updateUserInfo() {
-        progressDialog.setMessage("Saving user info")
 
         val userID = firebaseAuth.uid
 
@@ -121,12 +125,10 @@ class SignUpActivity : AppCompatActivity() {
         reference.child(userID!!).setValue(user)
             .addOnSuccessListener {
                 //data successfully added to database
-                progressDialog.dismiss()
                 Toast.makeText(this, "Account created...", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{ e ->
                 //failed setting data in database
-                progressDialog.dismiss()
                 Toast.makeText(this, "Failed saving user info due to ${e.message}", Toast.LENGTH_SHORT).show()
 
             }
