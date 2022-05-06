@@ -5,7 +5,8 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    android:foreground="@drawable/popup_foreground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -95,7 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        app:srcCompat="@drawable/ic_ball_to_the_left"/>
+                        app:srcCompat="@drawable/ic_ball_to_the_left" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -106,8 +107,8 @@
                         app:srcCompat="@drawable/ic_ball_right" />
                 </RelativeLayout>
 
-                <EditText
-                    android:id="@+id/editGroup"
+                <TextView
+                    android:id="@+id/textGroup"
                     android:layout_width="255dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="80dp"
@@ -118,7 +119,6 @@
                     android:ems="10"
                     android:fontFamily="@font/comfortaa_light"
                     android:hint="@string/group"
-                    android:inputType="textPersonName"
                     android:paddingStart="5dp"
                     android:textAlignment="textStart"
                     android:textColor="@color/white"
@@ -129,8 +129,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
                     tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck,EditableContentDescCheck" />
 
-                <EditText
-                    android:id="@+id/editLogin"
+                <TextView
+                    android:id="@+id/textLogin"
                     android:layout_width="255dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="80dp"
@@ -141,7 +141,6 @@
                     android:ems="10"
                     android:fontFamily="@font/comfortaa_light"
                     android:hint="@string/login"
-                    android:inputType="textPersonName"
                     android:paddingStart="5dp"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -151,8 +150,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/editGroup"
                     tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
 
-                <EditText
-                    android:id="@+id/editGmail"
+                <TextView
+                    android:id="@+id/textGmail"
                     android:layout_width="255dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="80dp"
@@ -163,7 +162,6 @@
                     android:ems="10"
                     android:fontFamily="@font/comfortaa_light"
                     android:hint="@string/gmail"
-                    android:inputType="textPersonName"
                     android:paddingStart="5dp"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -191,12 +189,13 @@
                         android:layout_marginTop="25dp"
                         android:background="@drawable/btn_shape"
                         android:fontFamily="@font/comfortaa_light"
+                        android:onClick="changeB"
                         android:text="@string/change"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
 
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
                         tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
@@ -277,13 +276,13 @@
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/on"
                         android:textColor="@color/white"
-                        app:layout_constraintEnd_toStartOf="@+id/off_on"
+                        app:layout_constraintEnd_toStartOf="@+id/offOn"
                         app:layout_constraintTop_toBottomOf="@+id/sound"
                         app:srcCompat="@drawable/ic_sound_on"
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck" />
 
                     <TextView
-                        android:id="@+id/off_on"
+                        android:id="@+id/offOn"
                         android:layout_width="103dp"
                         android:layout_height="39dp"
                         android:layout_marginTop="8dp"
