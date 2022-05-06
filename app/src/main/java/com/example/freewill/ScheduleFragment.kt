@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.freewill.databinding.FragmentEditScheduleBinding
 import com.example.freewill.databinding.FragmentScheduleBinding
+import com.example.freewill.models.ReadFirebase
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -47,8 +48,9 @@ class ScheduleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var userGrop="pmi_24"
-        readSchedule(userGrop)
+        val ReadGroup = ReadFirebase()
+
+        readSchedule(ReadGroup.readGroupUser())
     }
 
         private fun readSchedule(user: String?) {
