@@ -35,6 +35,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -326,19 +327,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/remember">
 
+
                     <RadioButton
                         android:id="@+id/five_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
+                        android:backgroundTintMode="multiply"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/five_minute"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/remember"
                         tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
-
 
                     <RadioButton
                         android:id="@+id/fifteen_minute"
@@ -348,6 +351,7 @@
                         android:layout_marginEnd="120dp"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/fifteen_minute"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/remember"
@@ -375,6 +379,7 @@
                         android:layout_marginTop="3dp"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/ten_minute"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/five_minute"
@@ -387,7 +392,9 @@
                         android:layout_marginTop="3dp"
                         android:layout_marginEnd="120dp"
                         android:fontFamily="@font/comfortaa_light"
+                        android:shadowColor="@color/dark_blue"
                         android:text="@string/twelve_minute"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fifteen_minute"

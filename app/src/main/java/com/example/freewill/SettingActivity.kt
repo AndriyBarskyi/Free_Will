@@ -7,7 +7,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +42,7 @@ class SettingActivity : AppCompatActivity()
     val bigSize = 1.2f
 
     var chooseSizeKoef : Float? = null
-    var check :Boolean?=null
+    var count :Int?=null
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
     lateinit var chooseLang : String
@@ -104,6 +109,8 @@ class SettingActivity : AppCompatActivity()
         }
 
         setContentView(bindingClass.root)
+        //set background
+        findViewById<DrawerLayout>(R.id.drawerLayout).foreground.alpha=0
 
         //Toolbar
         val toolbar: Toolbar = bindingClass.toolbar
@@ -150,6 +157,24 @@ class SettingActivity : AppCompatActivity()
             recreate()
 
         })
+        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
+            count = resLang?.getInt("count", 1)!!
+            intSaver("count", count!!)
+            when(count){
+                0->{bindingClass.offOn.setText(R.string.on)
+                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_on))
+                    count=1}
+                1-> {
+                    bindingClass.offOn.setText(R.string.off)
+                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_off))
+                    count = 2
+                }
+                2->{bindingClass.offOn.setText(R.string.vibro)
+                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_vibro))
+                    count=0}
+            }
+            intSaver("count", count!!)
+        })
 
 
 
@@ -165,12 +190,88 @@ class SettingActivity : AppCompatActivity()
         readFirebaseUser()
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    fun changeB(view:View){
+        // checking the password
+        var activityScreen = R.layout.activity_check_password
+        //val result = CheckPassword(activityScreen, view)
+
+        // go to dialog where you can change the data
+        //drawerLayout.foreground.alpha = 0
+        val result=true
+        if (result){
+            activityScreen = R.layout.activity_edit_setting
+            EditInformation(activityScreen, view)
+        }
+
+    }
+
+
+    fun CheckPassword(activityScreen:Int, view:View): Boolean {
+
+        val popupView = wayScreenDisplay(activityScreen, view)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        drawerLayout.foreground.alpha = 255
+        val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT, true)
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+        popupWindow.isOutsideTouchable = true
+        // слухач кнопок
+        val exit = popupView.findViewById(R.id.exitFirst) as Button
+        val agree = popupView.findViewById(R.id.agreePassword) as Button
+
+        exit.setOnClickListener(View.OnClickListener(){
+            popupWindow.dismiss()
+        })
+
+        var res = false
+        agree.setOnClickListener(View.OnClickListener(){
+            res = true
+            popupWindow.dismiss()
+        })
+
+        return res
+    }
+
+    fun EditInformation(activityScreen:Int, view:View){
+        val popupView = wayScreenDisplay(activityScreen, view)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        drawerLayout.foreground.alpha = 255
+        val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT, true)
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+        popupWindow.isOutsideTouchable = true
+        // слухач кнопок
+        val exit = popupView.findViewById(R.id.exit) as Button
+        val agree = popupView.findViewById(R.id.agree) as Button
+
+        exit.setOnClickListener(View.OnClickListener(){
+            drawerLayout.foreground.alpha = 0
+            popupWindow.dismiss()
+        })
+
+        agree.setOnClickListener(View.OnClickListener(){
+            drawerLayout.foreground.alpha = 0
+            popupWindow.dismiss()
+        })
+    }
+
+    fun wayScreenDisplay(activityScreen:Int, view:View): View {
+        val inflater =
+            view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView: View = inflater.inflate(activityScreen, null)
+        return popupView
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
     fun readFirebaseUser() {
         val user = Firebase.auth.currentUser
 
         user?.let {
             val email = user.email
-            bindingClass.editGmail.setText(email.toString())
+            bindingClass.textGmail.setText(email.toString())
             val uid = user.uid
 
             val referenceSchedule = FirebaseDatabase
@@ -182,8 +283,8 @@ class SettingActivity : AppCompatActivity()
                     val userName = it.child("userName").value
                     //val email = it.child("email").value
 
-                    bindingClass.editGroup.setText(group.toString())
-                    bindingClass.editLogin.setText(userName.toString())
+                    bindingClass.textGroup.setText(group.toString())
+                    bindingClass.textLogin.setText(userName.toString())
                     //bindingClass.editGmail.setText(email.toString())
 
                     Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
@@ -206,6 +307,16 @@ class SettingActivity : AppCompatActivity()
         editor?.apply()
 
     }
+    fun stringfSaver(key:String, value: String){
+        val editor = resLang?.edit()
+        editor?.putString(key, value)
+        editor?.apply()
+    }
+    fun intSaver(key:String, value: Int){
+        val editor = resLang?.edit()
+        editor?.putInt(key, value)
+        editor?.apply()
+    }
 
     fun selectColorsFontSize(smallB : Int, mediumB : Int, bigB : Int)
     {
@@ -218,8 +329,12 @@ class SettingActivity : AppCompatActivity()
     {
         super.onDestroy()
         saveLanguageAndFont(chooseLang, chooseFont)
+        stringfSaver(keyLanguage, chooseLang)
+        stringfSaver(keyFont, chooseFont)
 
     }
+
+
 
 }
 
