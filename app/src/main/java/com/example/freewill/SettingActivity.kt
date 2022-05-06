@@ -196,7 +196,6 @@ class SettingActivity : AppCompatActivity()
     fun changeB(view:View){
         // call checking the password
         CheckPassword(R.layout.activity_check_password, view)
-
     }
 
     // checking the password
