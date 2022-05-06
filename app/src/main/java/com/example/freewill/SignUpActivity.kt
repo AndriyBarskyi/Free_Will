@@ -42,6 +42,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         //configure progress dialog
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait")
@@ -64,6 +65,7 @@ class SignUpActivity : AppCompatActivity() {
         val _email = binding.emailEditText.text.toString().trim()
         val _password = binding.passwordEditText.text.toString().trim()
 
+
         if(!Patterns.EMAIL_ADDRESS.matcher(_email).matches()){
             //invalid email
             binding.emailEditText.error = "Invalid email format"
@@ -80,6 +82,9 @@ class SignUpActivity : AppCompatActivity() {
         }
         else if(TextUtils.isEmpty(_groupName)){
             binding.groupNameEditText.error = "Please enter your group"
+        }
+        else if(!isGroupCorrect(_groupName)){
+            binding.groupNameEditText.error = "Enter group like 'ПМІ-14'"
         }
         else
         {
@@ -103,6 +108,16 @@ class SignUpActivity : AppCompatActivity() {
                 }
         }
     }
+    private fun isGroupCorrect(groupName: String): Boolean{
+        return groupName != "" && checkGroup(groupName)
+    }
+
+    private fun checkGroup(groupName: String): Boolean{
+        val groupList = listOf("ПМІ-14", "ПМІ-15", "ПМІ-13", "ПМІ-21")
+
+        return groupName in groupList
+    }
+
 
     private fun updateUserInfo() {
 

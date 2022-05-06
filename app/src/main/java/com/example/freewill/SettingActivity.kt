@@ -271,7 +271,7 @@ class SettingActivity : AppCompatActivity()
 
         user?.let {
             val email = user.email
-            bindingClass.textGmail.setText(email.toString())
+            bindingClass.editGmail.setText(email.toString())
             val uid = user.uid
 
             val referenceSchedule = FirebaseDatabase
@@ -283,8 +283,8 @@ class SettingActivity : AppCompatActivity()
                     val userName = it.child("userName").value
                     //val email = it.child("email").value
 
-                    bindingClass.textGroup.setText(group.toString())
-                    bindingClass.textLogin.setText(userName.toString())
+                    bindingClass.editGroup.setText(group.toString())
+                    bindingClass.editLogin.setText(userName.toString())
                     //bindingClass.editGmail.setText(email.toString())
 
                     Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()

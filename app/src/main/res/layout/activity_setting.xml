@@ -109,7 +109,7 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/textGroup"
+                    android:id="@+id/editGroup"
                     android:layout_width="255dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="80dp"
@@ -131,7 +131,7 @@
                     tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck,EditableContentDescCheck" />
 
                 <TextView
-                    android:id="@+id/textLogin"
+                    android:id="@+id/editLogin"
                     android:layout_width="255dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="80dp"
@@ -152,7 +152,7 @@
                     tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
 
                 <TextView
-                    android:id="@+id/textGmail"
+                    android:id="@+id/editGmail"
                     android:layout_width="255dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="80dp"
