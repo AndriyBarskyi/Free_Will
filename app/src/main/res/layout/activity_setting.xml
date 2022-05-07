@@ -57,7 +57,7 @@
                     android:text="@string/setting"
                     android:textAlignment="center"
                     android:textColor="@color/blue"
-                    android:textSize="40sp"
+                    android:textSize="48sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sideBar"
@@ -247,7 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/comfortaa_bold"
                     android:text="@string/sound"
                     android:textColor="@color/black"
@@ -267,36 +267,49 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sound">
 
+                    <TextView
+                        android:id="@+id/startTextView"
+                        android:layout_width="20dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/rounded_border_dark_blue"
+                        app:layout_constraintEnd_toStartOf="@+id/soundButton"
+                        android:layout_marginStart="45dp"
+                        tools:layout_editor_absoluteY="383dp" />
+
                     <ImageButton
                         android:id="@+id/soundButton"
-                        android:layout_width="219dp"
-                        android:layout_height="39dp"
-                        android:layout_marginStart="45dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/rounded_border_dark_blue"
-                        android:fontFamily="@font/comfortaa_light"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="3dp"
                         android:text="@string/on"
                         android:textColor="@color/white"
+                        android:background="@drawable/ic_sound_on"
+                        app:layout_constraintEnd_toStartOf="@+id/middleTextView"
+                        tools:layout_editor_absoluteY="383dp" />
+
+                    <TextView
+                        android:id="@+id/middleTextView"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:background="@color/dark_blue"
                         app:layout_constraintEnd_toStartOf="@+id/offOn"
-                        app:layout_constraintTop_toBottomOf="@+id/sound"
-                        app:srcCompat="@drawable/ic_sound_on"
-                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck" />
+                        tools:layout_editor_absoluteY="383dp" />
 
                     <TextView
                         android:id="@+id/offOn"
                         android:layout_width="103dp"
-                        android:layout_height="39dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="72dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/for_sound"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/on"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sound"
-                        tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck" />
+                        android:layout_marginTop="3dp"
+                        app:layout_constraintEnd_toEndOf="@+id/SoundLinearLayout"
+                        tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck"
+                        tools:layout_editor_absoluteY="383dp" />
+
 
                 </LinearLayout>
 
@@ -316,6 +329,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
+
+
                 <LinearLayout
                     android:id="@+id/time1LinearLayout"
                     android:layout_width="match_parent"
@@ -328,12 +343,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/remember">
 
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/five_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:backgroundTintMode="multiply"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/five_minute"
@@ -343,11 +359,12 @@
                         app:layout_constraintTop_toBottomOf="@+id/remember"
                         tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/fifteen_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginEnd="120dp"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/fifteen_minute"
@@ -371,7 +388,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/ten_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
@@ -385,7 +402,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/five_minute"
                         tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/twelve_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"

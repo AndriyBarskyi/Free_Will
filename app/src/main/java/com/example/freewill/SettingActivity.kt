@@ -70,7 +70,7 @@ class SettingActivity : AppCompatActivity()
     }
 
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor", "CutPasteId", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
@@ -161,18 +161,17 @@ class SettingActivity : AppCompatActivity()
         })
         bindingClass.soundButton.setOnClickListener(View.OnClickListener{
             count = resLang?.getInt("count", 1)!!
-            intSaver("count", count!!)
             when(count){
                 0->{bindingClass.offOn.setText(R.string.on)
-                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_on))
+                    bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_on)
                     count=1}
                 1-> {
                     bindingClass.offOn.setText(R.string.off)
-                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_off))
+                    bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_off)
                     count = 2
                 }
                 2->{bindingClass.offOn.setText(R.string.vibro)
-                    bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_vibro))
+                    bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_vibro)
                     count=0}
             }
             intSaver("count", count!!)
@@ -199,7 +198,7 @@ class SettingActivity : AppCompatActivity()
     }
 
     // checking the password
-    fun CheckPassword(activityScreen:Int, view:View): Boolean? {
+    fun CheckPassword(activityScreen:Int, view:View) {
 
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
@@ -225,8 +224,6 @@ class SettingActivity : AppCompatActivity()
                 // call dialog where you can change the data
                 EditInformation(R.layout.activity_edit_setting, view)
         })
-        val uuu = result
-        return uuu
     }
 
     // go to dialog where you can change the data
@@ -292,7 +289,7 @@ class SettingActivity : AppCompatActivity()
     }
 
 
-    fun saveLanguageAndFont(resLanguage:String, resFont:String)
+    private fun saveLanguageAndFont(resLanguage:String, resFont:String)
     {
         val editor = resLang?.edit()
         editor?.putString(keyLanguage, resLanguage)
@@ -300,18 +297,18 @@ class SettingActivity : AppCompatActivity()
         editor?.apply()
 
     }
-    fun stringfSaver(key:String, value: String){
+    private fun stringfSaver(key:String, value: String){
         val editor = resLang?.edit()
         editor?.putString(key, value)
         editor?.apply()
     }
-    fun intSaver(key:String, value: Int){
+    private fun intSaver(key:String, value: Int){
         val editor = resLang?.edit()
         editor?.putInt(key, value)
         editor?.apply()
     }
 
-    fun selectColorsFontSize(smallB : Int, mediumB : Int, bigB : Int)
+    private fun selectColorsFontSize(smallB : Int, mediumB : Int, bigB : Int)
     {
         bindingClass.buttonS.setBackgroundResource(smallB)
         bindingClass.buttonM.setBackgroundResource(mediumB)
