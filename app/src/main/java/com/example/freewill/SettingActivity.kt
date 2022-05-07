@@ -2,11 +2,13 @@ package com.example.freewill
 
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -19,8 +21,11 @@ import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.ReadFirebase
+import com.example.freewill.models.User
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
@@ -219,7 +224,7 @@ class SettingActivity : AppCompatActivity()
 
         agree2.setOnClickListener(View.OnClickListener(){
             val user = Firebase.auth.currentUser
-            result = false
+            result = true
             user?.let {
                 val uid = user.uid
 
@@ -273,7 +278,73 @@ class SettingActivity : AppCompatActivity()
         agree.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
             popupWindow.dismiss()
+
+            val user = Firebase.auth.currentUser
+
+            val profileUpdates = userProfileChangeRequest {
+                displayName = "Jane Q. User"
+
+            }
+            user!!.updateProfile(profileUpdates)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "User profile updated.")
+                    }
+                }
+
+            user!!.updateEmail("user@gmail.com")
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "User email address updated.")
+                    }
+                }
+            val newPassword = "SOME-SECURE-PASSWORD"
+            user!!.updatePassword(newPassword)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "User password updated.")
+                    }
+                }
+            user?.let {
+                val uid = user.uid
+
+                val reference = FirebaseDatabase
+                    .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                    .getReference("Users")
+
+                //add user data to database
+                reference.child(uid).child("groupName"!!).setValue("ФВІФІ")
+                    .addOnSuccessListener {}
+                    .addOnFailureListener {}
+            }
         })
+    }
+    lateinit var firebaseAuth: FirebaseAuth
+    private fun updateUserInfo() {
+
+        val userID = firebaseAuth.uid
+
+        //prepare data to add in database
+//        val userName = binding.userNameEditText.text.toString()
+//        val checkPassword = popupView.findViewById(R.id.checkPassword) as EditText
+//        val email = binding.emailEditText.text.toString()
+//        val password = binding.passwordEditText.text.toString()
+//        val user = User(userName, groupName, email, password)
+
+        val reference = FirebaseDatabase
+            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("Users")
+        //add user data to database
+//        reference.child(userID!!).setValue(user)
+//            .addOnSuccessListener {
+//                //data successfully added to database
+//                Toast.makeText(this, "Account created...", Toast.LENGTH_SHORT).show()
+//            }
+//            .addOnFailureListener{ e ->
+//                //failed setting data in database
+//                Toast.makeText(this, "Failed saving user info due to ${e.message}", Toast.LENGTH_SHORT).show()
+//
+//            }
     }
 
     fun wayScreenDisplay(activityScreen:Int, view:View): View {
