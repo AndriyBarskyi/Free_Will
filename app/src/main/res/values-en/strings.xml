@@ -21,7 +21,7 @@
     <string name = "Big"> B </string>
     <string name = "Medium"> C </string>
     <string name = "Small"> M </string>
-    <string name = "five_minute"> in 5 minutes </string>
+    <string name = "five_minute"> in 5  minutes </string>
     <string name = "ten_minute"> in 10 minutes </string>
     <string name = "fifteen_minute"> in 15 minutes </string>
     <string name = "twelve_minute"> in 20 minutes </string>

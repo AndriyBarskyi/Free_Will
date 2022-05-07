@@ -1,10 +1,10 @@
 package com.example.freewill
 
-
+import java.text.SimpleDateFormat
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Gravity
@@ -13,22 +13,18 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.PopupWindow
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.ReadFirebase
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
+import java.util.*
 
 
-class SettingActivity : AppCompatActivity()
+open class SettingActivity : AppCompatActivity()
 {
     val baseForSetting = "LANGUAGE"
     val keyLanguage = "chooseLang"
@@ -41,6 +37,10 @@ class SettingActivity : AppCompatActivity()
     val smallSize = 0.80f
     val mediumSize = 1.0f
     val bigSize = 1.2f
+    val five = "five"
+    val ten = "ten"
+    val fifteen = "fifteen"
+    val twelve = "twelve"
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
@@ -110,7 +110,19 @@ class SettingActivity : AppCompatActivity()
             }
         }
 
+        // select sound after restart
+        count = resLang?.getInt("count", 1)!!
+        SoundButton(count!!)
+
+        // saved checkBox
+        bindingClass.fiveMinute.isChecked = resLang?.getBoolean(five, false)!!
+        bindingClass.tenMinute.isChecked = resLang?.getBoolean(ten, false)!!
+        bindingClass.fifteenMinute.isChecked = resLang?.getBoolean(fifteen, false)!!
+        bindingClass.twelveMinute.isChecked = resLang?.getBoolean(twelve, false)!!
+
         setContentView(bindingClass.root)
+
+
         //set background
         findViewById<DrawerLayout>(R.id.drawerLayout).foreground.alpha=0
 
@@ -162,20 +174,16 @@ class SettingActivity : AppCompatActivity()
         bindingClass.soundButton.setOnClickListener(View.OnClickListener{
             count = resLang?.getInt("count", 1)!!
             when(count){
-                0->{bindingClass.offOn.setText(R.string.on)
-                    bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_on)
-                    count=1}
-                1-> {
-                    bindingClass.offOn.setText(R.string.off)
-                    bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_off)
-                    count = 2
-                }
-                2->{bindingClass.offOn.setText(R.string.vibro)
-                    bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_vibro)
-                    count=0}
+                0->{count=1}
+                1->{count=2}
+                2->{count=0
+                    rememberCheckBox()}
             }
+            SoundButton(count!!)
             intSaver("count", count!!)
+
         })
+
 
 
 
@@ -190,6 +198,33 @@ class SettingActivity : AppCompatActivity()
         //Read User Information
         val ReadUser = ReadFirebase()
         ReadUser.readFirebaseUser(bindingClass)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun rememberCheckBox(){
+        val fiveMin = bindingClass.fiveMinute.isChecked
+        val tenMinute = bindingClass.tenMinute.isChecked
+        val fifteenMinute = bindingClass.fifteenMinute.isChecked
+        val twelveMinute = bindingClass.twelveMinute.isChecked
+
+        val fiveMedia: MediaPlayer = MediaPlayer.create(this, R.raw.audio_five_minutes)
+        if (fiveMin){
+            soundPlay(fiveMedia)
+        }
+    }
+    fun soundPlay(sound: MediaPlayer) {
+        sound.start()
+    }
+
+    fun SoundButton(count:Int){
+        when(count){
+            0->{bindingClass.offOn.setText(R.string.on)
+                bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_on)}
+            1-> {bindingClass.offOn.setText(R.string.off)
+                bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_off)}
+            2->{bindingClass.offOn.setText(R.string.vibro)
+                bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_vibro)}
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -276,6 +311,11 @@ class SettingActivity : AppCompatActivity()
         editor?.putInt(key, value)
         editor?.apply()
     }
+    private fun boolSaver(key:String, value: Boolean){
+        val editor = resLang?.edit()
+        editor?.putBoolean(key, value)
+        editor?.apply()
+    }
 
     private fun selectColorsFontSize(smallB : Int, mediumB : Int, bigB : Int)
     {
@@ -290,6 +330,10 @@ class SettingActivity : AppCompatActivity()
         saveLanguageAndFont(chooseLang, chooseFont)
         stringfSaver(keyLanguage, chooseLang)
         stringfSaver(keyFont, chooseFont)
+        boolSaver(five, bindingClass.fiveMinute.isChecked)
+        boolSaver(ten, bindingClass.tenMinute.isChecked)
+        boolSaver(fifteen, bindingClass.fifteenMinute.isChecked)
+        boolSaver(twelve, bindingClass.twelveMinute.isChecked)
 
     }
 
