@@ -168,68 +168,23 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginToFirebase(){
+        firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                firebaseAuth = FirebaseAuth.getInstance()
                 val firebaseUser = firebaseAuth.currentUser
-                if(firebaseUser!!.isEmailVerified){
-                    //user successfully signed in
-                    val email = firebaseUser.email
-                    Toast.makeText(this, "Logged as $email", Toast.LENGTH_SHORT).show()
+                //user successfully signed in
+                val email = firebaseUser!!.email
+                Toast.makeText(this, "Logged as $email", Toast.LENGTH_SHORT).show()
 
-                    //move to main app activity
-                    startActivity(Intent(this, ScheduleActivity::class.java))
-                    finish()
-                }
-                else{
-                    Toast.makeText(this, "User's email is not verified", Toast.LENGTH_SHORT).show()
-                    val user = firebaseAuth.currentUser
-                    user!!.sendEmailVerification()
-                        .addOnSuccessListener {
-                            Toast.makeText(this, "Verification link was sent", Toast.LENGTH_SHORT).show()
-                        }
-                        .addOnFailureListener {
-                            Toast.makeText(this, "Failed to send a verification link", Toast.LENGTH_SHORT).show()
-                        }
-                }
+                //move to main app activity
+                startActivity(Intent(this, ScheduleActivity::class.java))
+                finish()
 
             }
             .addOnFailureListener{ e->
                 //user not signed in
-                Toast.makeText(this, "Please, sign up firstly", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Wrong Email or Password", Toast.LENGTH_SHORT).show()
             }
     }
 
-//    private fun isVerified() {
-//        firebaseAuth = Firebase.auth
-//        val user = firebaseAuth.currentUser
-//        if(user!!.isEmailVerified)
-//        {
-//            startActivity(Intent(this, ScheduleActivity::class.java))
-//        }
-//        else{
-//            Toast.makeText(this, "User's email is not verified", Toast.LENGTH_SHORT).show()
-//        }
-
-
-//    private fun extraDataDialog(){
-//        val builder: AlertDialog.Builder = android.app.AlertDialog.Builder(this)
-//        builder.setTitle("Title")
-//
-//// Set up the input
-//        val input = EditText(this)
-//// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-//        input.setHint("Enter Text")
-//        input.inputType = InputType.TYPE_CLASS_TEXT
-//        builder.setView(input)
-//
-//// Set up the buttons
-//        builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-//            // Here you get get input text from the Edittext
-//            var m_Text = input.text.toString()
-//        })
-//        builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
-//
-//        builder.show()
-//    }
 }

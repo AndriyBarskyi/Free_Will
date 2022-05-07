@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_edit_setting.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_setting.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_schedule.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/sign_in_dialog.xml" value="0.1513157894736842" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1796875" />
