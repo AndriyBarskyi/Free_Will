@@ -47,7 +47,7 @@ class ReadFirebase {
             referenceUser.child(uid).get().addOnSuccessListener {
                 if (it.exists()) {
                     val group = it.child("groupName").value
-                    val userName = it.child("userName").value
+                    val userName = it.child("password").value
                     //val email = it.child("email").value
 
                     binding.editGroup.setText(group.toString())

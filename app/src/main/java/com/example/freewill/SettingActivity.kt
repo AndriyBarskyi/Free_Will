@@ -10,10 +10,7 @@ import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.PopupWindow
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -213,18 +210,45 @@ class SettingActivity : AppCompatActivity()
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
         val agree2 = popupView.findViewById(R.id.agreePassword) as Button
+        val checkPassword = popupView.findViewById(R.id.checkPassword) as EditText
 
         popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
         }
 
-        result = false
+
         agree2.setOnClickListener(View.OnClickListener(){
-            result = true
-            popupWindow.dismiss()
-            if(result as Boolean)
+            val user = Firebase.auth.currentUser
+            result = false
+            user?.let {
+                val uid = user.uid
+
+                val referenceUser = FirebaseDatabase
+                    .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                    .getReference("Users")
+                referenceUser.child(uid).get().addOnSuccessListener {
+                    if (it.exists()) {
+
+                        val userName = it.child("password").value
+                        if (userName.toString() == checkPassword.toString())
+                            result = true
+
+                        //Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
+                    } else {
+                        //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
+                        result = true
+                    }
+                }.addOnFailureListener {
+                    //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
+                    result = true
+                }
+
+
+                popupWindow.dismiss()
+                if (result as Boolean)
                 // call dialog where you can change the data
-                EditInformation(R.layout.activity_edit_setting, view)
+                    EditInformation(R.layout.activity_edit_setting, view)
+            }
         })
         val uuu = result
         return uuu
