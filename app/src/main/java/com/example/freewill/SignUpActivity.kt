@@ -12,6 +12,7 @@ import com.example.freewill.databinding.ActivitySignUpBinding
 import com.example.freewill.models.User
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -30,12 +31,10 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
-    private var userName = ""
     private var group = ""
-    private var corporateEmail = ""
     private var password = ""
 
-    private var user: User = User(userName, group, corporateEmail, password)
+    private var user: User = User(group, password)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -125,11 +124,17 @@ class SignUpActivity : AppCompatActivity() {
         val userID = firebaseAuth.uid
 
         //prepare data to add in database
-        val userName = binding.userNameEditText.text.toString()
         val groupName = binding.groupNameEditText.text.toString()
-        val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
-        val user = User(userName, groupName, email, password)
+        val userName = binding.userNameEditText.text.toString()
+        val user = User(groupName, password)
+
+        val profileUpdates = userProfileChangeRequest {
+            displayName = userName
+        }
+
+        val firebaseUser = firebaseAuth.currentUser
+        firebaseUser!!.updateProfile(profileUpdates)
 
         //init reference of database
         database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
