@@ -10,26 +10,24 @@ import com.google.firebase.ktx.Firebase
 
 class ReadFirebase {
 
-    var group: String ="1"
+    var group: String ="0"
     fun readGroupUser(): String {
         val user = Firebase.auth.currentUser
+        val uid = user!!.uid
 
-        user?.let {
-            val uid = user.uid
+        val referenceUser = FirebaseDatabase
+            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("Users")
+        referenceUser.child(uid).get().addOnSuccessListener {
+            if (it.exists()) {
+                group = "4"
+                group = it.child("groupName").value.toString()
+            } else {
+                group = "2"
+            }
+        }.addOnFailureListener { group = "3" }
 
-            val referenceUser = FirebaseDatabase
-                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Users")
-            referenceUser.child(uid).get().addOnSuccessListener {
-                if (it.exists()) {
-                    group = "4"
-                    group = it.child("groupName").value.toString()
-                } else {
-                    group = "2"
-                }
-            }.addOnFailureListener { group = "3" }
 
-        }
         return group
     }
 
@@ -38,7 +36,9 @@ class ReadFirebase {
 
         user?.let {
             val email = user.email
+            val name = user.displayName
             binding.editGmail.setText(email.toString())
+            binding.editLogin.setText(name.toString())
             val uid = user.uid
 
             val referenceUser = FirebaseDatabase
@@ -47,21 +47,9 @@ class ReadFirebase {
             referenceUser.child(uid).get().addOnSuccessListener {
                 if (it.exists()) {
                     val group = it.child("groupName").value
-                    val userName = it.child("password").value
-                    //val email = it.child("email").value
-
                     binding.editGroup.setText(group.toString())
-                    binding.editLogin.setText(userName.toString())
-                    //bindingClass.editGmail.setText(email.toString())
-
-                    //Toast.makeText(activity, "User information read...", Toast.LENGTH_SHORT).show()
-                } else {
-                    //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
-                }
-            }.addOnFailureListener {
-                //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
-
-            }
+                } else {}
+            }.addOnFailureListener {}
         }
     }
 }

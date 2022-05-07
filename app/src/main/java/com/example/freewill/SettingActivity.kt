@@ -54,7 +54,7 @@ class SettingActivity : AppCompatActivity()
     var resLang : SharedPreferences? = null
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
-
+    lateinit var firebaseAuth: FirebaseAuth
 
     fun SetSizeFont(size_coef: Float)
     {
@@ -225,35 +225,34 @@ class SettingActivity : AppCompatActivity()
         agree2.setOnClickListener(View.OnClickListener(){
             val user = Firebase.auth.currentUser
             result = true
-            user?.let {
-                val uid = user.uid
+            val uid = user!!.uid
 
-                val referenceUser = FirebaseDatabase
-                    .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                    .getReference("Users")
-                referenceUser.child(uid).get().addOnSuccessListener {
-                    if (it.exists()) {
+            val referenceUser = FirebaseDatabase
+                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Users")
+            referenceUser.child(uid).get().addOnSuccessListener {
+                if (it.exists()) {
 
-                        val userName = it.child("password").value
-                        if (userName.toString() == checkPassword.toString())
-                            result = true
-
-                        //Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
-                    } else {
-                        //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
+                    val userName = it.child("password").value
+                    if (userName.toString() == checkPassword.toString())
                         result = true
-                    }
-                }.addOnFailureListener {
-                    //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
+
+                    //Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
+                } else {
+                    //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
                     result = true
                 }
-
-
-                popupWindow.dismiss()
-                if (result as Boolean)
-                // call dialog where you can change the data
-                    EditInformation(R.layout.activity_edit_setting, view)
+            }.addOnFailureListener {
+                //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
+                result = true
             }
+
+
+            popupWindow.dismiss()
+            if (result as Boolean)
+            // call dialog where you can change the data
+                EditInformation(R.layout.activity_edit_setting, view)
+
         })
         val uuu = result
         return uuu
@@ -280,72 +279,38 @@ class SettingActivity : AppCompatActivity()
             popupWindow.dismiss()
 
             val user = Firebase.auth.currentUser
+            val uid = user!!.uid
+            //не працює
+            //val userID = firebaseAuth.uid
+
+            val groupName = popupView.findViewById(R.id.editGroup) as EditText
+            val password = popupView.findViewById(R.id.editPassword) as EditText
+            val userName = popupView.findViewById(R.id.editLogin) as EditText
+
+            val passwor = password.text.toString()
+
+            val users = User(groupName.text.toString(), password.text.toString())
 
             val profileUpdates = userProfileChangeRequest {
-                displayName = "Jane Q. User"
-
+                displayName = userName.text.toString()
             }
             user!!.updateProfile(profileUpdates)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "User profile updated.")
-                    }
-                }
 
+
+            //не працює
             user!!.updateEmail("user@gmail.com")
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "User email address updated.")
-                    }
-                }
-            val newPassword = "SOME-SECURE-PASSWORD"
-            user!!.updatePassword(newPassword)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "User password updated.")
-                    }
-                }
-            user?.let {
-                val uid = user.uid
+            user!!.updatePassword(passwor)
 
-                val reference = FirebaseDatabase
-                    .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                    .getReference("Users")
 
-                //add user data to database
-                reference.child(uid).child("groupName"!!).setValue("ФВІФІ")
-                    .addOnSuccessListener {}
-                    .addOnFailureListener {}
-            }
+            val reference = FirebaseDatabase
+                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Users")
+
+            reference.child(uid!! ).setValue(users)
+
         })
     }
-    lateinit var firebaseAuth: FirebaseAuth
-    private fun updateUserInfo() {
 
-        val userID = firebaseAuth.uid
-
-        //prepare data to add in database
-//        val userName = binding.userNameEditText.text.toString()
-//        val checkPassword = popupView.findViewById(R.id.checkPassword) as EditText
-//        val email = binding.emailEditText.text.toString()
-//        val password = binding.passwordEditText.text.toString()
-//        val user = User(userName, groupName, email, password)
-
-        val reference = FirebaseDatabase
-            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-            .getReference("Users")
-        //add user data to database
-//        reference.child(userID!!).setValue(user)
-//            .addOnSuccessListener {
-//                //data successfully added to database
-//                Toast.makeText(this, "Account created...", Toast.LENGTH_SHORT).show()
-//            }
-//            .addOnFailureListener{ e ->
-//                //failed setting data in database
-//                Toast.makeText(this, "Failed saving user info due to ${e.message}", Toast.LENGTH_SHORT).show()
-//
-//            }
-    }
 
     fun wayScreenDisplay(activityScreen:Int, view:View): View {
         val inflater =

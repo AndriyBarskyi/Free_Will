@@ -41,7 +41,6 @@
             app:cornerRadius="12dp" />
 
 
-
         <EditText
             android:id="@+id/editGroup"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
