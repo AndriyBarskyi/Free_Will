@@ -1,5 +1,6 @@
 package com.example.freewill
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -12,21 +13,24 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 
 class WelcomeActivity : AppCompatActivity() {
-    private lateinit var firebaseAuth: FirebaseAuth
 
     private val SPLASH_TIME: Long = 3000
     val a = SettingActivity()
     var checking : SharedPreferences? = null
-    val editor = checking?.edit()
-    val checkk = "check"
 
     fun toSettingApp()
     {
-        a.resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
-        LocaleHelper.setLocale(this, a.resLang?.getString(a.keyLanguage, a.mLanguageCodeUa)!!)
-        when(a.resLang?.getString(a.keyFont, a.medium)!!){
+        val resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
+        val r = resLang.getString(a.keyLanguage, a.mLanguageCodeUa)
+        LocaleHelper.setLocale(this, r)
+        val t = resLang?.getString(a.keyFont, a.medium)!!
+        when(t){
             a.small->{SetSizeFont(a.smallSize)}
             a.medium->{SetSizeFont(a.mediumSize)}
             a.big->{SetSizeFont(a.bigSize) }
@@ -36,15 +40,19 @@ class WelcomeActivity : AppCompatActivity() {
         toSettingApp()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-        firebaseAuth = FirebaseAuth.getInstance()
-
 
         Handler().postDelayed({
-            checkUser()
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, SPLASH_TIME)
-
-
+        val imageViewOnTouchListener = View.OnLongClickListener{
+            val myDialogFragment = MyDialogFragment()
+            val manager = supportFragmentManager
+            myDialogFragment.show(manager, "myDialog")
+            true
+        }
+        val imageSecret: ImageView = findViewById(R.id.imageView4)
+        imageSecret.setOnLongClickListener(imageViewOnTouchListener)
     }
 
     fun SetSizeFont(size_coef: Float)
@@ -59,24 +67,18 @@ class WelcomeActivity : AppCompatActivity() {
         baseContext.resources.updateConfiguration(configuration, metrics)
 
     }
+    class MyDialogFragment : DialogFragment() {
 
-    private fun checkUser() {
-        val user = firebaseAuth.currentUser
-        if(user != null){
-            if(user!!.isEmailVerified)
-            {
-                startActivity(Intent(this, ScheduleActivity::class.java))
-                finish()
-            }
-            else{
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            return activity?.let {
+                val builder = AlertDialog.Builder(it)
+                builder.setTitle("Картинка, яку має побачити кожен!")
+                    .setIcon(R.drawable.tarasuk)
+                    .setPositiveButton("Побачив") {
+                            dialog, id ->  dialog.cancel()
+                    }
+                builder.create()
+            } ?: throw IllegalStateException("Activity cannot be null")
         }
-        else{
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
-
     }
 }
