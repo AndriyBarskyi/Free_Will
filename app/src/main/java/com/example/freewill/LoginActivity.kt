@@ -57,12 +57,12 @@ class LoginActivity : AppCompatActivity() {
 
         // [START config_signin]
         // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(getString(R.string.default_web_client_id))
+//            .requestEmail()
+//            .build()
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+//        googleSignInClient = GoogleSignIn.getClient(this, gso)
         // [END config_signin]
         //if no account open SingUpActivity
         binding.noAccountText.setOnClickListener {
@@ -74,15 +74,15 @@ class LoginActivity : AppCompatActivity() {
             validateUser()
         }
 
-        binding.loginWithoutPasswordButton.setOnClickListener {
-            startActivity(Intent(this, ScheduleActivity::class.java))
-        }
+//        binding.loginWithoutPasswordButton.setOnClickListener {
+//            startActivity(Intent(this, ScheduleActivity::class.java))
+//        }
 
-        binding.loginWithGoogle.setOnClickListener {
-//            signInWithGoogle()
-            signIn()
-//            extraDataDialog()
-        }
+//        binding.loginWithGoogle.setOnClickListener {
+////            signInWithGoogle()
+//            signIn()
+////            extraDataDialog()
+//        }
     }
 
     //new realisation
@@ -94,23 +94,23 @@ class LoginActivity : AppCompatActivity() {
 //    // [END on_start_check_user]
 
     // [START onactivityresult]
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
-                Toast.makeText(this, "firebaseAuthWithGoogle:" + account.id, Toast.LENGTH_SHORT).show()
-                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+//        if (requestCode == RC_SIGN_IN) {
+//            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+//            try {
+//                // Google Sign In was successful, authenticate with Firebase
+//                val account = task.getResult(ApiException::class.java)!!
+//                Toast.makeText(this, "firebaseAuthWithGoogle:" + account.id, Toast.LENGTH_SHORT).show()
+//                firebaseAuthWithGoogle(account.idToken!!)
+//            } catch (e: ApiException) {
+//                // Google Sign In failed, update UI appropriately
+//                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
     // [END onactivityresult]
 
     // [START auth_with_google]
@@ -137,16 +137,16 @@ class LoginActivity : AppCompatActivity() {
     // [END auth_with_google]
 
     // [START signin]
-    private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
+//    private fun signIn() {
+//        val signInIntent = googleSignInClient.signInIntent
+//        startActivityForResult(signInIntent, RC_SIGN_IN)
+//    }
     // [END signin]
 
-    companion object {
-        private const val TAG = "GoogleActivity"
-        private const val RC_SIGN_IN = 9001
-    }
+//    companion object {
+//        private const val TAG = "GoogleActivity"
+//        private const val RC_SIGN_IN = 9001
+//    }
 
     private fun validateUser(){
         email = binding.emailEditText.text.toString()

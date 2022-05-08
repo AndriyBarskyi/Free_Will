@@ -70,33 +70,33 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/loginWithoutPasswordButton"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/noAccountText"
-        android:layout_marginHorizontal="130dp"
-        android:layout_marginTop="126dp"
-        android:background="@drawable/btn_shape"
-        android:fontFamily="@font/comfortaa"
-        android:text="@string/entrance_without"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+<!--    <Button-->
+<!--        android:id="@+id/loginWithoutPasswordButton"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/noAccountText"-->
+<!--        android:layout_marginHorizontal="130dp"-->
+<!--        android:layout_marginTop="126dp"-->
+<!--        android:background="@drawable/btn_shape"-->
+<!--        android:fontFamily="@font/comfortaa"-->
+<!--        android:text="@string/entrance_without"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="12sp"-->
+<!--        android:textStyle="bold" />-->
 
-    <Button
-        android:id="@+id/loginWithGoogle"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below = "@id/noAccountText"
-        android:layout_marginHorizontal="155dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_shape"
-        android:fontFamily="@font/comfortaa"
-        android:text="Sign in with Google"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+<!--    <Button-->
+<!--        android:id="@+id/loginWithGoogle"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/noAccountText"-->
+<!--        android:layout_marginHorizontal="155dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@drawable/btn_shape"-->
+<!--        android:fontFamily="@font/comfortaa"-->
+<!--        android:text="Sign in with Google"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="12sp"-->
+<!--        android:textStyle="bold" />-->
 
     <Button
         android:id="@+id/loginButton"
