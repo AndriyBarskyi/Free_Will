@@ -2,37 +2,40 @@ package com.example.freewill
 
 
 import android.annotation.SuppressLint
-import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.content.Context
-import android.content.DialogInterface
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.DialogFragment
+import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ReadFirebase
+import com.example.freewill.models.User
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-import android.view.ViewGroup.LayoutParams
-import android.widget.*
-import androidx.appcompat.widget.AppCompatImageView
+
 
 class SettingActivity : AppCompatActivity()
 {
     val baseForSetting = "LANGUAGE"
     val keyLanguage = "chooseLang"
     val keyFont ="font"
-    private val mLanguageCodeEn = "en"
+    val mLanguageCodeEn = "en"
     val mLanguageCodeUa = "ua"
     val small = "small"
     val medium = "medium"
@@ -43,43 +46,49 @@ class SettingActivity : AppCompatActivity()
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
+    var result:Boolean?=null
+    var resultInt:Int?=null
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
-    lateinit var settingBinding: ActivitySettingBinding
     lateinit var chooseLang : String
     var resLang : SharedPreferences? = null
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
-
-
-
+    lateinit var firebaseAuth: FirebaseAuth
 
     fun SetSizeFont(size_coef: Float)
     {
         val configuration = resources.configuration
-        configuration.fontScale = size_coef
+        configuration.fontScale = size_coef //0.85 small size, 1 normal size, 1,15 big etc
+
 
         val metrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(metrics)
         metrics.scaledDensity = configuration.fontScale * metrics.density
         baseContext.resources.updateConfiguration(configuration, metrics)
+        //TypedValue.COMPLEX_UNIT_DIP
+        //
 
     }
 
 
-    @SuppressLint("ResourceAsColor", "UseCompatLoadingForDrawables")
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
+
         resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
         chooseLang = resLang?.getString(keyLanguage, mLanguageCodeUa)!!
         LocaleHelper.setLocale(this, chooseLang)
-        super.onCreate(savedInstanceState)
 
+        super.onCreate(savedInstanceState)
         bindingClass = ActivitySettingBinding.inflate(layoutInflater)
+
+
+
         // language selection after restart
         when(chooseLang) {
             mLanguageCodeEn->{bindingClass.ukraineLanguage.setBackgroundResource(R.color.less_blue)
                 bindingClass.englishLanguage.setBackgroundResource(R.color.dark_blue)}
-            mLanguageCodeUa->{bindingClass.ukraineLanguage.setBackgroundResource(R.color.dark_blue)
+            mLanguageCodeUa->{ bindingClass.ukraineLanguage.setBackgroundResource(R.color.dark_blue)
                 bindingClass.englishLanguage.setBackgroundResource(R.color.less_blue)}
         }
 
@@ -89,25 +98,72 @@ class SettingActivity : AppCompatActivity()
             small ->{
                 selectColorsFontSize(R.drawable.circle_button_dark_blue, R.drawable.circle_button,
                     R.drawable.circle_button)
+                SetSizeFont(smallSize)
             }
             medium ->{
                 selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button_dark_blue,
                     R.drawable.circle_button)
+                SetSizeFont(mediumSize)
             }
             big ->{
                 selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button,
                     R.drawable.circle_button_dark_blue)
+                SetSizeFont(bigSize)
             }
         }
 
         setContentView(bindingClass.root)
-        // set background
+        //set background
         findViewById<DrawerLayout>(R.id.drawerLayout).foreground.alpha=0
 
+        //Toolbar
+        val toolbar: Toolbar = bindingClass.toolbar
+        toolbar.setTitle(R.string.toolbar_schedule)
+        setSupportActionBar(toolbar)
 
-        // select sound/vibro
+        // change language
+        bindingClass.ukraineLanguage.setOnClickListener(View.OnClickListener
+        {
+            LocaleHelper.setLocale(this, mLanguageCodeUa)
+            chooseLang = mLanguageCodeUa
+            recreate()
+
+        })
+
+        bindingClass.englishLanguage.setOnClickListener(View.OnClickListener
+        {
+            LocaleHelper.setLocale(this, mLanguageCodeEn)
+            chooseLang = mLanguageCodeEn
+            recreate()
+        })
+
+        // change Font
+        bindingClass.buttonS.setOnClickListener(View.OnClickListener
+        {
+            chooseFont = small
+            chooseSizeKoef = smallSize
+            SetSizeFont(smallSize)
+           recreate()
+        })
+        bindingClass.buttonM.setOnClickListener(View.OnClickListener
+        {
+            chooseFont = medium
+            chooseSizeKoef = mediumSize
+            SetSizeFont(mediumSize)
+            recreate()
+
+        })
+        bindingClass.buttonB.setOnClickListener(View.OnClickListener
+        {
+            chooseFont = big
+            chooseSizeKoef = bigSize
+            SetSizeFont(bigSize)
+            recreate()
+
+        })
         bindingClass.soundButton.setOnClickListener(View.OnClickListener{
             count = resLang?.getInt("count", 1)!!
+            intSaver("count", count!!)
             when(count){
                 0->{bindingClass.offOn.setText(R.string.on)
                     bindingClass.soundButton.setBackgroundDrawable(resources.getDrawable(R.drawable.ic_sound_on))
@@ -124,79 +180,137 @@ class SettingActivity : AppCompatActivity()
             intSaver("count", count!!)
         })
 
-        // change language
-        selectLanguage()
-        // change Font
-        selectFont()
+
+
         //Navigation drawer
-        createNavigationMenu()
+        drawerLayout = findViewById(R.id.drawerLayout)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        val navView: NavigationView = findViewById(R.id.navView)
+        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
+        navigation.createNavigationDrawer()
 
+        //Read User Information
+        val ReadUser = ReadFirebase()
+        ReadUser.readFirebaseUser(bindingClass)
     }
 
-    @SuppressLint("ClickableViewAccessibility", "InflateParams")
+    /////////////////////////////////////////////////////////////////////////////////////////////
     fun changeB(view:View){
-        // checking the password
-        var activityScreen = R.layout.activity_check_password
-        //val result = CheckPassword(activityScreen, view)
-        //drawerLayout.foreground.alpha = 0
-
-        // go to dialog where you can change the data
-        val result=true
-        if (result){
-            activityScreen = R.layout.activity_edit_setting
-            EditInformation(activityScreen, view)
-        }
-
+        // call checking the password
+        CheckPassword(R.layout.activity_check_password, view)
     }
-    fun CheckPassword(activityScreen:Int, view:View): Boolean {
+
+    // checking the password
+    fun CheckPassword(activityScreen:Int, view:View): Boolean? {
 
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         drawerLayout.foreground.alpha = 255
+
         val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT, true)
 
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
-        val exit = popupView.findViewById(R.id.exitFirst) as Button
-        val agree = popupView.findViewById(R.id.agreePassword) as Button
+        val agree2 = popupView.findViewById(R.id.agreePassword) as Button
+        val checkPassword = popupView.findViewById(R.id.checkPassword) as EditText
 
-        exit.setOnClickListener(View.OnClickListener(){
+        popupWindow.setOnDismissListener {
+            drawerLayout.foreground.alpha = 0
+        }
+
+
+        agree2.setOnClickListener(View.OnClickListener(){
+            val user = Firebase.auth.currentUser
+            result = true
+            val uid = user!!.uid
+
+            val referenceUser = FirebaseDatabase
+                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Users")
+            referenceUser.child(uid).get().addOnSuccessListener {
+                if (it.exists()) {
+
+                    val userName = it.child("password").value
+                    if (userName.toString() == checkPassword.toString())
+                        result = true
+
+                    //Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
+                } else {
+                    //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
+                    result = true
+                }
+            }.addOnFailureListener {
+                //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
+                result = true
+            }
+
+
             popupWindow.dismiss()
-        })
+            if (result as Boolean)
+            // call dialog where you can change the data
+                EditInformation(R.layout.activity_edit_setting, view)
 
-        var res = false
-        agree.setOnClickListener(View.OnClickListener(){
-            res = true
-            popupWindow.dismiss()
         })
-
-        return res
+        val uuu = result
+        return uuu
     }
 
+    // go to dialog where you can change the data
     fun EditInformation(activityScreen:Int, view:View){
         val popupView = wayScreenDisplay(activityScreen, view)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
-        drawerLayout.foreground.alpha = 255
         val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT, true)
-
+        drawerLayout.foreground.alpha = 255
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
-        val exit = popupView.findViewById(R.id.exit) as Button
         val agree = popupView.findViewById(R.id.agree) as Button
 
-        exit.setOnClickListener(View.OnClickListener(){
+        popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
-            popupWindow.dismiss()
-        })
+        }
+
         agree.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
             popupWindow.dismiss()
+
+            val user = Firebase.auth.currentUser
+            val uid = user!!.uid
+            //не працює
+            //val userID = firebaseAuth.uid
+
+            val groupName = popupView.findViewById(R.id.editGroup) as EditText
+            val password = popupView.findViewById(R.id.editPassword) as EditText
+            val userName = popupView.findViewById(R.id.editLogin) as EditText
+
+            val passwor = password.text.toString()
+
+            val users = User(groupName.text.toString(), password.text.toString())
+
+            val profileUpdates = userProfileChangeRequest {
+                displayName = userName.text.toString()
+            }
+            user!!.updateProfile(profileUpdates)
+
+
+            //не працює
+            user!!.updateEmail("user@gmail.com")
+            user!!.updatePassword(passwor)
+
+
+            val reference = FirebaseDatabase
+                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Users")
+
+            reference.child(uid!! ).setValue(users)
+
         })
     }
+
 
     fun wayScreenDisplay(activityScreen:Int, view:View): View {
         val inflater =
@@ -206,91 +320,21 @@ class SettingActivity : AppCompatActivity()
     }
 
 
-    fun selectLanguage(){
-        bindingClass.ukraineLanguage.setOnClickListener(View.OnClickListener
-        {
-            LocaleHelper.setLocale(this, mLanguageCodeUa)
-            chooseLang = mLanguageCodeUa
-            recreate()
-        })
 
-        bindingClass.englishLanguage.setOnClickListener(View.OnClickListener
-        {
-            LocaleHelper.setLocale(this, mLanguageCodeEn)
-            chooseLang = mLanguageCodeEn
-            recreate()
-        })
-    }
-
-    fun selectFont(){
-        bindingClass.buttonS.setOnClickListener(View.OnClickListener
-        {
-            chooseFont = small
-            chooseSizeKoef = smallSize
-            SetSizeFont(smallSize)
-            recreate()
-        })
-        bindingClass.buttonM.setOnClickListener(View.OnClickListener{
-            chooseFont = medium
-            chooseSizeKoef = mediumSize
-            SetSizeFont(mediumSize)
-            recreate()
-
-        })
-        bindingClass.buttonB.setOnClickListener(View.OnClickListener{
-            chooseFont = big
-            chooseSizeKoef = bigSize
-            SetSizeFont(bigSize)
-            recreate()
-        })
-    }
-
-    fun stringSaver(key:String, value: String)
+    fun saveLanguageAndFont(resLanguage:String, resFont:String)
     {
+        val editor = resLang?.edit()
+        editor?.putString(keyLanguage, resLanguage)
+        editor?.putString(keyFont, resFont)
+        editor?.apply()
+
+    }
+    fun stringfSaver(key:String, value: String){
         val editor = resLang?.edit()
         editor?.putString(key, value)
         editor?.apply()
-        //Navigation drawer
-        createNavigationMenu()
-        //Read User Information
-        readFirebaseUser()
     }
-
-    fun readFirebaseUser() {
-        val user = Firebase.auth.currentUser
-
-        user?.let {
-            val email = user.email
-            bindingClass.textGmail.setText(email.toString())
-            val uid = user.uid
-
-            val referenceSchedule = FirebaseDatabase
-                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Users")
-            referenceSchedule.child(uid).get().addOnSuccessListener {
-                if (it.exists()) {
-                    val group = it.child("groupName").value
-                    val userName = it.child("userName").value
-                    //val email = it.child("email").value
-
-                    bindingClass.textGroup.setText(group.toString())
-                    bindingClass.textLogin.setText(userName.toString())
-                    //bindingClass.editGmail.setText(email.toString())
-
-                    Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
-                }
-            }.addOnFailureListener {
-                Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
-
-            }
-        }
-    }
-
-
-    fun intSaver(key:String, value: Int)
-    {
+    fun intSaver(key:String, value: Int){
         val editor = resLang?.edit()
         editor?.putInt(key, value)
         editor?.apply()
@@ -303,40 +347,15 @@ class SettingActivity : AppCompatActivity()
         bindingClass.buttonB.setBackgroundResource(bigB)
     }
 
-
-
-    fun createNavigationMenu()
-    {
-        drawerLayout = findViewById(R.id.drawerLayout)
-
-        // assigning ID of the toolbar to a variable
-        val toolbar: Toolbar = bindingClass.toolbar
-
-        // using toolbar as ActionBar
-        toolbar.setTitle(R.string.toolbar_settings)
-        setSupportActionBar(toolbar)
-//        actionBar?.setDisplayHomeAsUpEnabled(true)
-//        actionBar?.setDisplayShowHomeEnabled(true)
-
-        //      Navigation bar
-        drawerLayout = findViewById(R.id.drawerLayout)
-        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-        val navView: NavigationView = findViewById(R.id.navView)
-
-        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
-        navigation.createNavigationDrawer()
-
-    }
-
-
     override fun onDestroy()
     {
         super.onDestroy()
-        //saveLanguageAndFont(chooseLang, chooseFont)
-        stringSaver(keyLanguage, chooseLang)
-        stringSaver(keyFont, chooseFont)
+        saveLanguageAndFont(chooseLang, chooseFont)
+        stringfSaver(keyLanguage, chooseLang)
+        stringfSaver(keyFont, chooseFont)
 
     }
+
 
 
 }

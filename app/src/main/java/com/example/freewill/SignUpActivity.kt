@@ -10,7 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.example.freewill.databinding.ActivitySignUpBinding
 import com.example.freewill.models.User
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -29,17 +31,16 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
-    private var userName = ""
     private var group = ""
-    private var corporateEmail = ""
     private var password = ""
 
-    private var user: User = User(userName, group, corporateEmail, password)
+    private var user: User = User(group, password)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         //configure progress dialog
         progressDialog = ProgressDialog(this)
@@ -63,6 +64,7 @@ class SignUpActivity : AppCompatActivity() {
         val _email = binding.emailEditText.text.toString().trim()
         val _password = binding.passwordEditText.text.toString().trim()
 
+
         if(!Patterns.EMAIL_ADDRESS.matcher(_email).matches()){
             //invalid email
             binding.emailEditText.error = "Invalid email format"
@@ -80,6 +82,9 @@ class SignUpActivity : AppCompatActivity() {
         else if(TextUtils.isEmpty(_groupName)){
             binding.groupNameEditText.error = "Please enter your group"
         }
+        else if(!isGroupCorrect(_groupName)){
+            binding.groupNameEditText.error = "Enter group like 'ПМІ-14'"
+        }
         else
         {
             //everything is correct
@@ -88,9 +93,13 @@ class SignUpActivity : AppCompatActivity() {
 
                     if(task.isSuccessful){
                         updateUserInfo()
-                        Toast.makeText(this, "User added successfully", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, ScheduleActivity::class.java))
+                        startActivity(Intent(this, LetterEntranceActivity::class.java))
                         finish()
+
+
+//                        Toast.makeText(this, "User added successfully", Toast.LENGTH_SHORT).show()
+//                        startActivity(Intent(this, ScheduleActivity::class.java))
+//                        finish()
                     }
                     else{
                         Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
@@ -98,18 +107,34 @@ class SignUpActivity : AppCompatActivity() {
                 }
         }
     }
+    private fun isGroupCorrect(groupName: String): Boolean{
+        return groupName != "" && checkGroup(groupName)
+    }
+
+    private fun checkGroup(groupName: String): Boolean{
+        val groupList = listOf("ПМІ-11", "ПМІ-12", "ПМІ-13", "ПМІ-14", "ПМІ-14", "ПМІ-16", "ПМО-21", "ПМК-21",
+                                "ПМІ-21", "ПМІ-22", "ПМІ-23", "ПМІ-24", "ПМІ-25", "ПМО-21", "ПМК-21",)
+
+        return groupName in groupList
+    }
+
 
     private fun updateUserInfo() {
-        progressDialog.setMessage("Saving user info")
 
         val userID = firebaseAuth.uid
 
         //prepare data to add in database
-        val userName = binding.userNameEditText.text.toString()
         val groupName = binding.groupNameEditText.text.toString()
-        val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
-        val user = User(userName, groupName, email, password)
+        val userName = binding.userNameEditText.text.toString()
+        val user = User(groupName, password)
+
+        val profileUpdates = userProfileChangeRequest {
+            displayName = userName
+        }
+
+        val firebaseUser = firebaseAuth.currentUser
+        firebaseUser!!.updateProfile(profileUpdates)
 
         //init reference of database
         database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -121,12 +146,10 @@ class SignUpActivity : AppCompatActivity() {
         reference.child(userID!!).setValue(user)
             .addOnSuccessListener {
                 //data successfully added to database
-                progressDialog.dismiss()
                 Toast.makeText(this, "Account created...", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{ e ->
                 //failed setting data in database
-                progressDialog.dismiss()
                 Toast.makeText(this, "Failed saving user info due to ${e.message}", Toast.LENGTH_SHORT).show()
 
             }
