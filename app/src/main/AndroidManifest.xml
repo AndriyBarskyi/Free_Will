@@ -31,6 +31,9 @@
             android:name=".CheckEmailMessageActivity"
             android:exported="false" />
         <activity
+            android:name=".WelcomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".GuestOrStudentActivity"
             android:exported="false" />
         <activity
@@ -46,7 +49,7 @@
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".LinkActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

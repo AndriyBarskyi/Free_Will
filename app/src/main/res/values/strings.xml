@@ -1,4 +1,10 @@
 <resources>
+    <string name="selected_item">Selected item:</string>
+    <string-array name="Subjects">
+        <item>Програмування</item>
+        <item>ДВВС</item>
+        <item>Алгоритми</item>
+    </string-array>
     <string name="app_name">Free Will</string>
     <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
     <string name="setting">Налаштування</string>
@@ -71,6 +77,7 @@
     <string name="toolbar_change_schedule">Зміна розкладу</string>
     <string name="log_out_alert">Ви справді бажаєте вийти з акаунта?</string>
     <string name="alert_header">Попередження</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->

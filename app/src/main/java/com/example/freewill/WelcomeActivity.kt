@@ -68,7 +68,6 @@ class WelcomeActivity : AppCompatActivity() {
 
     }
     class MyDialogFragment : DialogFragment() {
-
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {
                 val builder = AlertDialog.Builder(it)
