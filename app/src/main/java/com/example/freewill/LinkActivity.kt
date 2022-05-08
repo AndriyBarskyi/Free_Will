@@ -7,15 +7,29 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class LinkActivity : AppCompatActivity() {
-
+    private lateinit var referenceSubject: DatabaseReference
+    var arrayWithSubjectsCheck= arrayOf("d","e","w")
+    lateinit var arrayWithSubjects:Array<String>
+    fun readSubjects() {
+        referenceSubject = FirebaseDatabase
+            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("Shedule")
+        referenceSubject.child("Links").get().addOnSuccessListener {
+            if (it.exists()) {
+                arrayWithSubjects+=it.value.toString()
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_link)
         // access the items of the list
-        val languages = resources.getStringArray(R.array.Subjects)
-
+        //val languages = resources.getStringArray(R.array.Subjects)
+        val languages=arrayWithSubjectsCheck
         // access the spinner
         val spinner = findViewById<Spinner>(R.id.spinner)
         if (spinner != null) {
@@ -28,7 +42,7 @@ class LinkActivity : AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
                     Toast.makeText(this@LinkActivity,
-                        getString(R.string.selected_item) + " " +
+                        "Selected_item: "+
                                 "" + languages[position], Toast.LENGTH_SHORT).show()
                 }
 

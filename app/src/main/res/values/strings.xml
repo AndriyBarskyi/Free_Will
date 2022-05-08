@@ -1,10 +1,4 @@
 <resources>
-    <string name="selected_item">Selected item:</string>
-    <string-array name="Subjects">
-        <item>Програмування</item>
-        <item>ДВВС</item>
-        <item>Алгоритми</item>
-    </string-array>
     <string name="app_name">Free Will</string>
     <string name="no_account">Я ще не маю акаунта.\n<b><u>Зареєструватись</u></b></string>
     <string name="setting">Налаштування</string>
