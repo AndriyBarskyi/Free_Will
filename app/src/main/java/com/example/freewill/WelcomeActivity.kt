@@ -1,5 +1,6 @@
 package com.example.freewill
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.DisplayMetrics
+import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -35,7 +40,14 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, SPLASH_TIME)
-
+        val imageViewOnTouchListener = View.OnLongClickListener{
+            val myDialogFragment = MyDialogFragment()
+            val manager = supportFragmentManager
+            myDialogFragment.show(manager, "myDialog")
+            true
+        }
+        val imageSecret: ImageView = findViewById(R.id.imageView4)
+        imageSecret.setOnLongClickListener(imageViewOnTouchListener)
     }
 
     fun SetSizeFont(size_coef: Float)
@@ -49,5 +61,19 @@ class WelcomeActivity : AppCompatActivity() {
         metrics.scaledDensity = configuration.fontScale * metrics.density
         baseContext.resources.updateConfiguration(configuration, metrics)
 
+    }
+    class MyDialogFragment : DialogFragment() {
+
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            return activity?.let {
+                val builder = AlertDialog.Builder(it)
+                builder.setTitle("Картинка, яку має побачити кожен!")
+                    .setIcon(R.drawable.tarasuk)
+                    .setPositiveButton("Побачив") {
+                            dialog, id ->  dialog.cancel()
+                    }
+                builder.create()
+            } ?: throw IllegalStateException("Activity cannot be null")
+        }
     }
 }
