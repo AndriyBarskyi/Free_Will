@@ -3,17 +3,12 @@ package com.example.freewill
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Picture
+import android.graphics.*
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
+import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.View.OnTouchListener
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -21,14 +16,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
+import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
-import com.example.freewill.search_point.Dijkstra
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.search_point.Dijkstra
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
-import java.util.ArrayList
-import android.graphics.Canvas as Canvas
+import com.google.firebase.database.FirebaseDatabase
 
 
 class MapActivity : AppCompatActivity() {
@@ -82,6 +77,17 @@ class MapActivity : AppCompatActivity() {
                 popupWindow.dismiss()
             }
         }
+        val switchInfo: Switch = findViewById(R.id.switch1)
+        switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
+            if (isChecked) {
+                val imageMap: ImageView = findViewById(R.id.imageView16)
+                imageMap.setOnTouchListener(imageViewOnTouchListener)
+            }
+            else
+            {
+
+            }
+        }
     }
 
     fun drawLinesOnMap(start: String, end: String) {
@@ -116,81 +122,34 @@ class MapActivity : AppCompatActivity() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {
                 val builder = AlertDialog.Builder(it)
-                builder.setTitle("Інформація про ${room} ауд.")
-                    .setMessage("Кафедра...")
+                lateinit var info:String
+                val infoAboutRoom = FirebaseDatabase
+                    .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                    .getReference("Rooms")
+                infoAboutRoom.child("237").get().addOnSuccessListener {
+                    if (it.exists()) {
+                        info=it.child("к-ть місць").value.toString()
+                        Log.d("information123",info)
+                    }
+                }
+                builder.setTitle("Інформація про ${room} ауд.").setMessage(info)
                 builder.create()
             } ?: throw IllegalStateException("Activity cannot be null")
         }
     }
 
-    fun aud237(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud238(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("238")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud239(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud240(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud241(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud241a(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud242(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud243(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud244(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
-    fun aud245(view: View) {
-        //Toast.makeText(this,"Aud 237 Information", Toast.LENGTH_SHORT).show()
-        val infoRoomFragment = InfoRoomFragment("237")
-        val manager = supportFragmentManager
-        infoRoomFragment.show(manager, "myDialog")
-    }
-
+    @SuppressLint("ClickableViewAccessibility")
+    private val imageViewOnTouchListener =
+            OnTouchListener { view, event ->
+                val x = event.x.toInt()
+                val y = event.y.toInt()
+                if (5 <= x && x <= 200) {
+                    val infoRoomFragment = InfoRoomFragment("238")
+                    val manager = supportFragmentManager
+                    infoRoomFragment.show(manager, "myDialog")
+                    //val intent = Intent(this, NextActivity::class.java)
+                    //context.startActivity(intent)
+                }
+                true
+            }
 }
