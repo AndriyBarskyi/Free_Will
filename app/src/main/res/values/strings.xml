@@ -30,6 +30,8 @@
     <string name="from">Від</string>
     <string name="to">До</string>
     <string name="search">Пошук</string>
+
+    <!--    authentication part-->
     <string name="choose_page">Ласкаво просимо</string>
     <string name="choose_page_btn1">Студент</string>
     <string name="choose_page_btn2">Гість</string>
@@ -54,6 +56,8 @@
     <string name="enter_password">Введіть пароль</string>
     <string name="you_exit">Ви вийшли</string>
     <string name="you_agree">Зміни підтверджено</string>
+    <string name="reset_password">Скинути пароль</string>
+
 
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>

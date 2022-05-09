@@ -31,26 +31,13 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
-    private var group = ""
-    private var password = ""
-
-    private var user: User = User(group, password)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        //configure progress dialog
-        progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Please wait")
-        progressDialog.setMessage("Logging In...")
-        progressDialog.setCanceledOnTouchOutside(false)
-
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
-
 
         //sign up button event
         binding.signUpButton.setOnClickListener{
@@ -96,10 +83,6 @@ class SignUpActivity : AppCompatActivity() {
                         startActivity(Intent(this, LetterEntranceActivity::class.java))
                         finish()
 
-
-//                        Toast.makeText(this, "User added successfully", Toast.LENGTH_SHORT).show()
-//                        startActivity(Intent(this, ScheduleActivity::class.java))
-//                        finish()
                     }
                     else{
                         Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
