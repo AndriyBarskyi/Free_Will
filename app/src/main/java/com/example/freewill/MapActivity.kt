@@ -83,10 +83,6 @@ class MapActivity : AppCompatActivity() {
                 val imageMap: ImageView = findViewById(R.id.imageView16)
                 imageMap.setOnTouchListener(imageViewOnTouchListener)
             }
-            else
-            {
-
-            }
         }
     }
 
@@ -119,17 +115,18 @@ class MapActivity : AppCompatActivity() {
 
     class InfoRoomFragment(_room: String) : DialogFragment() {
         val room = _room
+        var info="ss"
+        lateinit var infoAboutRoom:DatabaseReference
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {
                 val builder = AlertDialog.Builder(it)
-                lateinit var info:String
-                val infoAboutRoom = FirebaseDatabase
+                infoAboutRoom = FirebaseDatabase
                     .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                     .getReference("Rooms")
                 infoAboutRoom.child("237").get().addOnSuccessListener {
                     if (it.exists()) {
-                        info=it.child("к-ть місць").value.toString()
-                        Log.d("information123",info)
+                        info=it.value.toString()
+
                     }
                 }
                 builder.setTitle("Інформація про ${room} ауд.").setMessage(info)

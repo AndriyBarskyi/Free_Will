@@ -12,13 +12,12 @@ import com.google.firebase.database.FirebaseDatabase
 
 class LinkActivity : AppCompatActivity() {
     private lateinit var referenceSubject: DatabaseReference
-    var arrayWithSubjectsCheck= arrayOf("d","e","w")
     lateinit var arrayWithSubjects:Array<String>
     fun readSubjects() {
         referenceSubject = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-            .getReference("Shedule")
-        referenceSubject.child("Links").get().addOnSuccessListener {
+            .getReference("Links")
+        referenceSubject.child("Програмування").get().addOnSuccessListener {
             if (it.exists()) {
                 arrayWithSubjects+=it.value.toString()
             }
@@ -29,7 +28,8 @@ class LinkActivity : AppCompatActivity() {
         setContentView(R.layout.activity_link)
         // access the items of the list
         //val languages = resources.getStringArray(R.array.Subjects)
-        val languages=arrayWithSubjectsCheck
+        readSubjects()
+        val languages=arrayWithSubjects
         // access the spinner
         val spinner = findViewById<Spinner>(R.id.spinner)
         if (spinner != null) {
