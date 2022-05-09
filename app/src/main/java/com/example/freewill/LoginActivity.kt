@@ -66,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
         //if no account open SingUpActivity
         binding.noAccountText.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
         }
 
         //if login successfully open main app
