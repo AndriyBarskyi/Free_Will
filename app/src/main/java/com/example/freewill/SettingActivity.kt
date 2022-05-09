@@ -174,27 +174,27 @@ open class SettingActivity : AppCompatActivity()
             recreate()
 
         })
-        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
-            count = resLang?.getInt("count", 1)!!
-            when(count){
-                0->{count=1}
-                1->{count=2}
-                2->{count=0
-                    rememberCheckBox()
-                }
-            }
-            SoundButton(count!!)
-            intSaver("count", count!!)
-
-        })
+//        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
+//            count = resLang?.getInt("count", 1)!!
+//            when(count){
+//                0->{count=1}
+//                1->{count=2}
+//                2->{count=0
+//                    rememberCheckBox()
+//                }
+//            }
+//            SoundButton(count!!)
+//            intSaver("count", count!!)
+//
+//        })
         val hour:IntArray= intArrayOf(8,10,11,13)
         val minute:IntArray= intArrayOf(30,10,50,30)
         val time=20
-//        val setAlarm = findViewById<Button>(R.id.soundButton)
-//        setAlarm.setOnClickListener(View.OnClickListener {v: View? ->
-//            Alarmm(hour, minute, time)
-//
-//        })
+        val setAlarm = findViewById<Button>(R.id.soundButton)
+        setAlarm.setOnClickListener(View.OnClickListener {v: View? ->
+            Alarmm(hour, minute, time)
+
+        })
 
 
 
@@ -210,7 +210,7 @@ open class SettingActivity : AppCompatActivity()
         val ReadUser = ReadFirebase()
         ReadUser.readFirebaseUser(bindingClass)
     }
-/*
+
     // alarm for remember
     fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
         val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
@@ -284,7 +284,7 @@ open class SettingActivity : AppCompatActivity()
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             return PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
-*/
+
 
 
 
