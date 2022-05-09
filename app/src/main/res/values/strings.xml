@@ -7,7 +7,7 @@
     <string name="gmail">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="confirm">Підтвердити</string>
-    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <u>Надіслати</u> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити вашу електронну пошту.</b></string>
+    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color = "#00b4d8">Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>
@@ -27,6 +27,7 @@
     <string name="fifteen_minute">за 15 хв</string>
     <string name="twelve_minute">за 20 хв</string>
     <string name="remember">нагадати</string>
+    <string name="send">Надіслати</string>
     <string name="from">Від</string>
     <string name="to">До</string>
     <string name="search">Пошук</string>
@@ -47,7 +48,7 @@
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
-    <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження, після чого Ви зможете увійти.</b>
+    <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження. Перейдіть, будь ласка, за посиланням щоб завершити вхід.</b>
     <b>Вже очікуємо на Вас!</b></string>
     <string name="agree">Підтвердити</string>
     <string name="exit">Вийти</string>
