@@ -7,10 +7,6 @@
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1796875" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
-        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/drawable/rounded_border.xml" value="0.2285" />
-        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/activity_map.xml" value="0.18614130434782608" />
-        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.23596014492753623" />
-        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/activity_search_popup.xml" value="0.264" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/_____.xml" value="0.137" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/_______.xml" value="0.1785" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/________________.xml" value="0.1245" />
@@ -30,10 +26,13 @@
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout-hdpi/activity_schedule_page.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_email_entrance.xml" value="0.13595553655408293" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_email_message.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_entrance.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_entrance.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_password.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_choose_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_edit_schedule.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_edit_setting.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_guest_or_student.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_letter_entrance.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_map.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1" />
