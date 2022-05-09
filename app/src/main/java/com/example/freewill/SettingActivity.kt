@@ -188,7 +188,7 @@ class SettingActivity : AppCompatActivity()
         supportActionBar?.setDisplayShowHomeEnabled(true)
         val navView: NavigationView = findViewById(R.id.navView)
         val navigation = NavigationClass(drawerLayout, toggle, navView, this)
-        navigation.createNavigationDrawer()
+        navigation.createNavigationDrawer(this)
 
         //Read User Information
         val ReadUser = ReadFirebase()
