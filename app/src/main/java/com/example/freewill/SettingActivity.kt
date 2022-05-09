@@ -294,7 +294,6 @@ class SettingActivity : AppCompatActivity()
             if (result as Boolean)
             // call dialog where you can change the data
                 EditInformation(R.layout.activity_edit_setting, view)
-
         })
     }
 
