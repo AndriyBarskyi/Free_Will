@@ -187,14 +187,7 @@ open class SettingActivity : AppCompatActivity()
             intSaver("count", count!!)
 
         })
-        val hour:IntArray= intArrayOf(8,10,11,13)
-        val minute:IntArray= intArrayOf(30,10,50,30)
-        val time=20
-//        val setAlarm = findViewById<Button>(R.id.soundButton)
-//        setAlarm.setOnClickListener(View.OnClickListener {v: View? ->
-//            Alarmm(hour, minute, time)
-//
-//        })
+
 
 
 
@@ -210,99 +203,6 @@ open class SettingActivity : AppCompatActivity()
         val ReadUser = ReadFirebase()
         ReadUser.readFirebaseUser(bindingClass)
     }
-/*
-    // alarm for remember
-    fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        var hour1 = hour
-        var minute1 = minute
-        for (i in 0..(hour.size - 1)) {
-            if (minute[i] - time < 0) {
-                hour1[i] -= 1
-                minute1[i] = 60 + (minute1[i] - time)
-            } else {
-                minute1[i] -= time
-            }
-            val materialTimePicker = MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setHour(hour1[i])
-                .setMinute(minute1[i])
-                .setTitleText("Будильник задзвенить о ")
-                .build()
-            materialTimePicker.addOnPositiveButtonClickListener { view: View? ->
-                val calendar = Calendar.getInstance()
-                calendar[Calendar.SECOND] = 0
-                calendar[Calendar.MILLISECOND] = 0
-                calendar[Calendar.MINUTE] = materialTimePicker.minute
-                calendar[Calendar.HOUR_OF_DAY] = materialTimePicker.hour
-                val alarmManager =
-                    getSystemService(ALARM_SERVICE) as AlarmManager
-                val alarmClockInfo = AlarmManager.AlarmClockInfo(
-                    calendar.timeInMillis,
-                    alarmInfoPendingIntent
-                )
-                alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
-                Toast.makeText(
-                    this,
-                    "Будильник встановлений на " + sdf.format(calendar.time),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            materialTimePicker.show(supportFragmentManager, "tag_picker")
-        }
-
-
-        /* Якщо не працює будильник у android 10,
-        потрібно запитати дозвіл на показ вікон поверх інших програм
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!Settings.canDrawOverlays(this)) {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                        Uri.parse("package:" + getPackageName()));
-                startActivity(intent);
-                }
-        }
-    */
-    }
-
-
-    private val alarmInfoPendingIntent: PendingIntent
-        @SuppressLint("UnspecifiedImmutableFlag")
-        get() {
-            val alarmInfoIntent = Intent(this, SettingActivity::class.java)
-            alarmInfoIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            return PendingIntent.getActivity(
-                this,
-                0,
-                alarmInfoIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
-            )
-        }
-    private val alarmActionPendingIntent: PendingIntent
-        @SuppressLint("UnspecifiedImmutableFlag")
-        get() {
-            val intent = Intent(this, AlarmActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            return PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @SuppressLint("SimpleDateFormat")

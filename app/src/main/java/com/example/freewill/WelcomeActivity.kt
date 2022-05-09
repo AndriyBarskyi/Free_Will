@@ -18,7 +18,6 @@ class WelcomeActivity : AppCompatActivity() {
 
     private val SPLASH_TIME: Long = 3000
     val a = SettingActivity()
-    var checking : SharedPreferences? = null
 
     fun toSettingApp()
     {
