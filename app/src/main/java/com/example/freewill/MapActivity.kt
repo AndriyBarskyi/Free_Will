@@ -113,26 +113,31 @@ class MapActivity : AppCompatActivity() {
 
     }
 
-    class InfoRoomFragment(_room: String) : DialogFragment() {
+    class InfoRoomFragment(_room: String, _info:String) : DialogFragment() {
         val room = _room
-        var info="ss"
-        lateinit var infoAboutRoom:DatabaseReference
+        var info=_info
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {
                 val builder = AlertDialog.Builder(it)
-                infoAboutRoom = FirebaseDatabase
-                    .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                    .getReference("Rooms")
-                infoAboutRoom.child("237").get().addOnSuccessListener {
-                    if (it.exists()) {
-                        info=it.value.toString()
-
-                    }
-                }
                 builder.setTitle("Інформація про ${room} ауд.").setMessage(info)
                 builder.create()
-            } ?: throw IllegalStateException("Activity cannot be null")
+            }  ?: throw IllegalStateException("Activity cannot be null")
         }
+    }
+    fun readRomm(_room:String):String {
+        var info=""
+        val infoAboutRoom = FirebaseDatabase
+            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("Rooms")
+        infoAboutRoom.child("237").get().addOnSuccessListener {
+            when(it.exists()) {
+                true-> info=it.value.toString()
+                else->info=""
+            }
+            Log.d("add","1")
+        }
+        Log.d("add","2")
+        return info
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -141,7 +146,8 @@ class MapActivity : AppCompatActivity() {
                 val x = event.x.toInt()
                 val y = event.y.toInt()
                 if (5 <= x && x <= 200) {
-                    val infoRoomFragment = InfoRoomFragment("238")
+
+                    val infoRoomFragment = InfoRoomFragment("237",readRomm("237"))
                     val manager = supportFragmentManager
                     infoRoomFragment.show(manager, "myDialog")
                     //val intent = Intent(this, NextActivity::class.java)
