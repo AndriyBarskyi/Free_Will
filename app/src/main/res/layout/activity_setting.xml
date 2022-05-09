@@ -271,27 +271,30 @@
                         android:id="@+id/startTextView"
                         android:layout_width="20dp"
                         android:layout_height="40dp"
+                        android:layout_marginBottom="0dp"
                         android:background="@drawable/rounded_border_dark_blue"
-                        app:layout_constraintEnd_toStartOf="@+id/soundButton"
+                        app:layout_constraintEnd_toStartOf="@+id/ImageMiddleTextView"
                         android:layout_marginStart="45dp"
                         tools:layout_editor_absoluteY="383dp" />
 
-                    <ImageButton
-                        android:id="@+id/soundButton"
+                    <ImageView
+                        android:id="@+id/ImageMiddleTextView"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="10dp"
                         android:text="@string/on"
                         android:textColor="@color/white"
+
                         android:background="@drawable/ic_sound_on"
-                        app:layout_constraintEnd_toStartOf="@+id/middleTextView"
+                        app:layout_constraintEnd_toStartOf="@+id/soundButton"
                         tools:layout_editor_absoluteY="383dp" />
 
-                    <TextView
-                        android:id="@+id/middleTextView"
+                    <Button
+                        android:id="@+id/soundButton"
                         android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:background="@color/dark_blue"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintEnd_toStartOf="@+id/offOn"
                         tools:layout_editor_absoluteY="383dp" />
 
@@ -299,13 +302,13 @@
                         android:id="@+id/offOn"
                         android:layout_width="103dp"
                         android:layout_height="40dp"
+                        android:layout_marginTop="3dp"
                         android:background="@drawable/for_sound"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/on"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
-                        android:layout_marginTop="3dp"
                         app:layout_constraintEnd_toEndOf="@+id/SoundLinearLayout"
                         tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck"
                         tools:layout_editor_absoluteY="383dp" />
@@ -591,6 +594,7 @@
         android:layout_gravity="start"
         android:background="@drawable/nav_background"
         android:fitsSystemWindows="true"
+        android:onClick="ChangeSoundColor"
         app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         app:itemIconSize="80dp"
         app:itemVerticalPadding="@dimen/item_vertical_margin"

@@ -19,8 +19,6 @@ class WelcomeActivity : AppCompatActivity() {
     private val SPLASH_TIME: Long = 3000
     val a = SettingActivity()
     var checking : SharedPreferences? = null
-    val editor = checking?.edit()
-    val checkk = "check"
 
     fun toSettingApp()
     {
@@ -50,7 +48,7 @@ class WelcomeActivity : AppCompatActivity() {
     fun SetSizeFont(size_coef: Float)
     {
         val configuration = resources.configuration
-        configuration.fontScale = size_coef //0.85 small size, 1 normal size, 1,15 big etc
+        configuration.fontScale = size_coef
 
 
         val metrics = DisplayMetrics()
