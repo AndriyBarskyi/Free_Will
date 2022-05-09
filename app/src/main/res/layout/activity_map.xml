@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".MapActivity"
     android:foreground="@drawable/popup_foreground" >
+    <com.example.freewill.ZoomImage
+        android:id="@+id/imageView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ourrrmap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,39 +65,25 @@
             app:layout_constraintVertical_bias="0.948"
             app:tint="@color/white" />
 
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="394dp"
-            android:layout_height="826dp"
-            app:srcCompat="@drawable/ourrrmap"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="5dp" />
-
-        <Button
-            android:id="@+id/button3"
-            style="@style/Widget.MaterialComponents.TimePicker.Button"
-            android:layout_width="88dp"
-            android:layout_height="69dp"
-            android:onClick="aud237"
-            app:layout_constraintBottom_toTopOf="@+id/button6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/button6"
-            style="@style/Widget.MaterialComponents.TimePicker.Button"
-            android:layout_width="87dp"
-            android:layout_height="46dp"
-            android:onClick="aud238"
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:checked="false"
+            android:text="Інформація"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.003"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.454" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView16"-->
+        <!--            android:layout_width="394dp"-->
+        <!--            android:layout_height="826dp"-->
+        <!--            app:srcCompat="@drawable/ourrrmap"-->
+        <!--            tools:layout_editor_absoluteX="8dp"-->
+        <!--            tools:layout_editor_absoluteY="0dp" />-->
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

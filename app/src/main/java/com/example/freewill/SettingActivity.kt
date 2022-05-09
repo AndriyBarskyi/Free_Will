@@ -2,6 +2,7 @@ package com.example.freewill
 
 import java.text.SimpleDateFormat
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -10,6 +11,7 @@ import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -21,13 +23,19 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.ReadFirebase
+import com.example.freewill.models.User
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.util.*
 
 
-open class SettingActivity : AppCompatActivity()
+class SettingActivity : AppCompatActivity()
 {
     val baseForSetting = "LANGUAGE"
     val keyLanguage = "chooseLang"
@@ -55,7 +63,7 @@ open class SettingActivity : AppCompatActivity()
     var resLang : SharedPreferences? = null
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
-
+    lateinit var firebaseAuth: FirebaseAuth
 
     fun SetSizeFont(size_coef: Float)
     {
@@ -197,7 +205,7 @@ open class SettingActivity : AppCompatActivity()
         supportActionBar?.setDisplayShowHomeEnabled(true)
         val navView: NavigationView = findViewById(R.id.navView)
         val navigation = NavigationClass(drawerLayout, toggle, navView, this)
-        navigation.createNavigationDrawer()
+        navigation.createNavigationDrawer(this)
 
         //Read User Information
         val ReadUser = ReadFirebase()
@@ -249,18 +257,44 @@ open class SettingActivity : AppCompatActivity()
         popupWindow.isOutsideTouchable = true
         // слухач кнопок
         val agree2 = popupView.findViewById(R.id.agreePassword) as Button
+        val checkPassword = popupView.findViewById(R.id.checkPassword) as EditText
 
         popupWindow.setOnDismissListener {
             drawerLayout.foreground.alpha = 0
         }
 
-        result = false
+
         agree2.setOnClickListener(View.OnClickListener(){
+            val user = Firebase.auth.currentUser
             result = true
+            val uid = user!!.uid
+
+            val referenceUser = FirebaseDatabase
+                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Users")
+            referenceUser.child(uid).get().addOnSuccessListener {
+                if (it.exists()) {
+
+                    val userName = it.child("password").value
+                    if (userName.toString() == checkPassword.toString())
+                        result = true
+
+                    //Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
+                } else {
+                    //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
+                    result = true
+                }
+            }.addOnFailureListener {
+                //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
+                result = true
+            }
+
+
             popupWindow.dismiss()
-            if(result as Boolean)
-                // call dialog where you can change the data
+            if (result as Boolean)
+            // call dialog where you can change the data
                 EditInformation(R.layout.activity_edit_setting, view)
+
         })
     }
 
@@ -283,8 +317,40 @@ open class SettingActivity : AppCompatActivity()
         agree.setOnClickListener(View.OnClickListener(){
             drawerLayout.foreground.alpha = 0
             popupWindow.dismiss()
+
+            val user = Firebase.auth.currentUser
+            val uid = user!!.uid
+            //не працює
+            //val userID = firebaseAuth.uid
+
+            val groupName = popupView.findViewById(R.id.editGroup) as EditText
+            val password = popupView.findViewById(R.id.editPassword) as EditText
+            val userName = popupView.findViewById(R.id.editLogin) as EditText
+
+            val passwor = password.text.toString()
+
+            val users = User(groupName.text.toString(), password.text.toString())
+
+            val profileUpdates = userProfileChangeRequest {
+                displayName = userName.text.toString()
+            }
+            user!!.updateProfile(profileUpdates)
+
+
+            //не працює
+            user!!.updateEmail("user@gmail.com")
+            user!!.updatePassword(passwor)
+
+
+            val reference = FirebaseDatabase
+                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Users")
+
+            reference.child(uid!! ).setValue(users)
+
         })
     }
+
 
     fun wayScreenDisplay(activityScreen:Int, view:View): View {
         val inflater =

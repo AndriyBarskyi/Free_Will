@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.navigation.NavigationView
 import android.view.View
 import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.*
 import com.google.firebase.auth.FirebaseAuth
@@ -27,7 +28,7 @@ class NavigationClass(
     val navView = _navView
     val context = _context
 
-    fun createNavigationDrawer(){
+    fun createNavigationDrawer(activityClass: AppCompatActivity){
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -36,21 +37,24 @@ class NavigationClass(
             when(it.itemId){
                 R.id.nav_schedule -> {
                     val i = Intent(context, ScheduleActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     context.startActivity(i)
+                    activityClass.finish()
                 }
                 R.id.nav_map -> {
                     val i = Intent(context, MapActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     context.startActivity(i)
+                    activityClass.finish()
+
                 }
                 R.id.nav_settings -> {
                     val i = Intent(context, SettingActivity::class.java)
-//                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     context.startActivity(i)
+                    activityClass.finish()
+
                 }
                 R.id.nav_log_out -> {
-                    showAlertMessage()
+                    showAlertMessage(activityClass)
+
                 }
 
             }
@@ -58,7 +62,7 @@ class NavigationClass(
         }
     }
 
-    fun showAlertMessage(){
+    fun showAlertMessage(activityClass: AppCompatActivity){
         val builder = AlertDialog.Builder(context)
 
         builder.setTitle(R.string.alert_header)
@@ -69,6 +73,8 @@ class NavigationClass(
             firebaseAuth.signOut()
             context.startActivity(Intent(context, LoginActivity::class.java))
             dialog.dismiss()
+            activityClass.finish()
+
         }
 
         builder.setNegativeButton(

@@ -1,19 +1,26 @@
 package com.example.freewill
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.DisplayMetrics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 
 class WelcomeActivity : AppCompatActivity() {
+
     private lateinit var firebaseAuth: FirebaseAuth
 
     private val SPLASH_TIME: Long = 3000
@@ -35,13 +42,19 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
         firebaseAuth = FirebaseAuth.getInstance()
 
-
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             checkUser()
             finish()
         }, SPLASH_TIME)
 
-
+        val imageViewOnTouchListener = View.OnLongClickListener{
+            val myDialogFragment = MyDialogFragment()
+            val manager = supportFragmentManager
+            myDialogFragment.show(manager, "myDialog")
+            true
+        }
+        val imageSecret: ImageView = findViewById(R.id.imageView4)
+        imageSecret.setOnLongClickListener(imageViewOnTouchListener)
     }
 
     fun SetSizeFont(size_coef: Float)
@@ -60,7 +73,7 @@ class WelcomeActivity : AppCompatActivity() {
     private fun checkUser() {
         val user = firebaseAuth.currentUser
         if(user != null){
-            if(user!!.isEmailVerified)
+            if(user.isEmailVerified)
             {
                 startActivity(Intent(this, ScheduleActivity::class.java))
                 finish()
@@ -71,9 +84,24 @@ class WelcomeActivity : AppCompatActivity() {
             }
         }
         else{
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, GuestOrStudentActivity::class.java))
             finish()
         }
 
+    }
+
+    class MyDialogFragment : DialogFragment() {
+
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            return activity?.let {
+                val builder = AlertDialog.Builder(it)
+                builder.setTitle("Картинка, яку має побачити кожен!")
+                    .setIcon(R.drawable.tarasuk)
+                    .setPositiveButton("Побачив") {
+                            dialog, id ->  dialog.cancel()
+                    }
+                builder.create()
+            } ?: throw IllegalStateException("Activity cannot be null")
+        }
     }
 }

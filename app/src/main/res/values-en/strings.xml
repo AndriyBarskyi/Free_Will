@@ -29,6 +29,8 @@
     <string name = "from"> From </string>
     <string name = "to"> To </string>
     <string name = "search"> Search </string>
+
+<!--    authentication part-->
     <string name = "choose_page"> Welcome </string>
     <string name = "choose_page_btn1"> Student </string>
     <string name = "choose_page_btn2"> Guest </string>
@@ -59,6 +61,8 @@
     <string name="enter_password">Enter password</string>
     <string name="you_exit">You\'re out</string>
     <string name="you_agree">Changes confirmed</string>
+    <string name="reset_password">Reset Password</string>
+
 
     <!--    navigation_drawer-->
     <string name = "open"> Open </string>
