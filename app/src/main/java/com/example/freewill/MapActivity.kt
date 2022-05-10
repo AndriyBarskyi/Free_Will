@@ -124,20 +124,19 @@ class MapActivity : AppCompatActivity() {
             }  ?: throw IllegalStateException("Activity cannot be null")
         }
     }
-    fun readRomm(_room:String):String {
-        var info=""
+    fun readRoom(_room:String, onSuccess:(String)->Unit) {
+        //var info=""
         val infoAboutRoom = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("Rooms")
         infoAboutRoom.child("237").get().addOnSuccessListener {
-            when(it.exists()) {
-                true-> info=it.value.toString()
-                else->info=""
+            val info=when(it.exists()) {
+                true-> it.value.toString()
+                else->""
             }
-            Log.d("add","1")
+            onSuccess(info)
         }
-        Log.d("add","2")
-        return info
+        Log.d("InfoRoom","2")
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -147,9 +146,9 @@ class MapActivity : AppCompatActivity() {
                 val y = event.y.toInt()
                 if (5 <= x && x <= 200) {
 
-                    val infoRoomFragment = InfoRoomFragment("237",readRomm("237"))
+                    val info:String
                     val manager = supportFragmentManager
-                    infoRoomFragment.show(manager, "myDialog")
+                    readRoom("237"){info->InfoRoomFragment("237",info).show(manager, "myDialog")}
                     //val intent = Intent(this, NextActivity::class.java)
                     //context.startActivity(intent)
                 }
