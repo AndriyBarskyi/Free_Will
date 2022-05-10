@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.freewill.databinding.FragmentEditScheduleBinding
 import com.example.freewill.databinding.FragmentScheduleBinding
 import com.example.freewill.models.ReadFirebase
 import com.google.firebase.database.DatabaseReference
@@ -58,20 +57,32 @@ class ScheduleFragment : Fragment() {
             referenceSchedule = FirebaseDatabase
                 .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Shedule")
-            referenceSchedule.child(user!!).child("Понеділок").get().addOnSuccessListener{
+            referenceSchedule.child(user!!).child("MONDAY").get().addOnSuccessListener{
                 if(it.exists())
                 {
-                    val firstpara =it.child("firstpara").value
-                    val secondpara =it.child("secondpara").value
-                    val thirdpara =it.child("thirdpara").value
-                    val fourthpara =it.child("fourthpara").value
-                    val fifthpara =it.child("fifthpara").value
+                    val firstpara =it.child("firstpara").child("para").value
+                    val secondpara =it.child("secondpara").child("para").value
+                    val thirdpara =it.child("thirdpara").child("para").value
+                    val fourthpara =it.child("fourthpara").child("para").value
+                    val fifthpara =it.child("fifthpara").child("para").value
+
+                    val audut1 =it.child("firstpara").child("audutoria").value
+                    val audut2 =it.child("secondpara").child("audutoria").value
+                    val audut3 =it.child("thirdpara").child("audutoria").value
+                    val audut4 =it.child("fourthpara").child("audutoria").value
+                    val audut5 =it.child("fifthpara").child("audutoria").value
 
                     binding.class1.setText(firstpara.toString())
                     binding.class2.setText(secondpara.toString())
                     binding.class3.setText(thirdpara.toString())
                     binding.class4.setText(fourthpara.toString())
                     binding.class5.setText(fifthpara.toString())
+
+                    binding.aud1.setText(audut1.toString())
+                    binding.aud2.setText(audut2.toString())
+                    binding.aud3.setText(audut3.toString())
+                    binding.aud4.setText(audut4.toString())
+                    binding.aud5.setText(audut5.toString())
                     Toast.makeText(activity, "Shedule read...", Toast.LENGTH_SHORT).show()
                 }
                 else
