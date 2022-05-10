@@ -399,31 +399,18 @@ class SettingActivity : AppCompatActivity()
 //                true->
 //            }
             val groupName = popupView.findViewById(R.id.editGroup)as EditText
-
-
-            //val password = popupView.findViewById(R.id.editPassword) as EditText
             val userName = popupView.findViewById(R.id.editLogin) as EditText
-
-            //val passwor = password.text.toString()
-
-            //val users = User(groupName.text.toString(), password.text.toString())
+            val users = User(groupName.text.toString().trim())
 
             val profileUpdates = userProfileChangeRequest {
-                displayName = userName.text.toString()
+                displayName = userName.text.toString().trim()
             }
             user!!.updateProfile(profileUpdates)
-
-
-            //не працює
-            user!!.updateEmail("user@gmail.com")
-            //user!!.updatePassword(passwor)
-
-
             val reference = FirebaseDatabase
                 .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Users")
 
-            //reference.child(uid!! ).setValue(users)
+            reference.child(uid!! ).setValue(users)
 
         })
     }
