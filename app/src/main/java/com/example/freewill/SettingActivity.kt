@@ -98,7 +98,6 @@ class SettingActivity : AppCompatActivity()
         bindingClass = ActivitySettingBinding.inflate(layoutInflater)
 
 
-
         // language selection after restart
         when(chooseLang) {
             mLanguageCodeEn->{bindingClass.ukraineLanguage.setBackgroundResource(R.color.less_blue)
