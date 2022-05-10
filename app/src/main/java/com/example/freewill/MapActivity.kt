@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
+import com.example.freewill.models.DrawPoints
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.search_point.Dijkstra
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -72,7 +73,8 @@ class MapActivity : AppCompatActivity() {
                     popupWindow.contentView.findViewById(R.id.searchToInput)
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
-//                    (fromPlace, toPlace)
+                    val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
+                    setContentView(DrawPoints(this, points))
                 }
                 popupWindow.dismiss()
             }
