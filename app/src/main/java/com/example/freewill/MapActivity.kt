@@ -72,7 +72,7 @@ class MapActivity : AppCompatActivity() {
                     popupWindow.contentView.findViewById(R.id.searchToInput)
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
-                    drawLinesOnMap(fromPlace, toPlace)
+//                    (fromPlace, toPlace)
                 }
                 popupWindow.dismiss()
             }
@@ -90,13 +90,6 @@ class MapActivity : AppCompatActivity() {
         }
     }
 
-    fun drawLinesOnMap(start: String, end: String) {
-        var points = mutableListOf<Float>()
-        points = Dijkstra.Calculate(start, end, this.baseContext)
-        var paint = Paint()
-        paint.setColor(Color.parseColor("#FF0000"))
-        canvas.drawLines(points.toFloatArray(), paint)
-    }
 
     fun createNavigationMenu() {
         // assigning ID of the toolbar to a variable
