@@ -73,10 +73,11 @@ class MapActivity : AppCompatActivity() {
                     popupWindow.contentView.findViewById(R.id.searchToInput)
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
+                    popupWindow.dismiss()
                     val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
                     setContentView(DrawPoints(this, points))
                 }
-                popupWindow.dismiss()
+
             }
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
