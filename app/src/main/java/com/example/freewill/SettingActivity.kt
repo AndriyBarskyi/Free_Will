@@ -145,7 +145,7 @@ class SettingActivity : AppCompatActivity()
 
         //Toolbar
         val toolbar: Toolbar = bindingClass.toolbar
-        toolbar.setTitle(R.string.toolbar_schedule)
+        toolbar.setTitle(R.string.toolbar_settings)
         setSupportActionBar(toolbar)
 
         // change language
@@ -350,22 +350,16 @@ class SettingActivity : AppCompatActivity()
                 .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Users")
             referenceUser.child(uid).get().addOnSuccessListener {
-                if (it.exists()) {
-
-                    val userName = it.child("password").value
-                    if (userName.toString() == checkPassword.toString())
-                        result = true
-
-                    //Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
-                } else {
-                    //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
-                    result = true
+                result = when (it.exists()) {
+                    true->
+                    {
+                        val userPassword = it.child("password").value
+                        if (userPassword.toString() == checkPassword.toString()) {true}
+                        else{false}
+                    }
+                    false->false
                 }
-            }.addOnFailureListener {
-                //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
-                result = true
             }
-
 
             popupWindow.dismiss()
             if (result as Boolean)
@@ -399,7 +393,11 @@ class SettingActivity : AppCompatActivity()
             //не працює
             //val userID = firebaseAuth.uid
 
-            val groupName = popupView.findViewById(R.id.editGroup) as EditText
+//            val groupName = when(popupView.findViewById(R.id.editGroup).text.toString() =="")
+//            {
+//                true->
+//            }
+            val groupName = popupView.findViewById(R.id.editGroup)as EditText
             val password = popupView.findViewById(R.id.editPassword) as EditText
             val userName = popupView.findViewById(R.id.editLogin) as EditText
 
