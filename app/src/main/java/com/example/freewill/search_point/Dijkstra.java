@@ -103,11 +103,16 @@ class Graph {
         ArrayList<Integer> vectorResult = getWay(endVertex);
         ArrayList<Integer> coords = new ArrayList<>();
 
-        for (int integer : vectorResult) {
-            Point p = root.getPointById(root.getKeyByValue(integer));
+        for (int i = 0; i < vectorResult.size()-1; i ++) {
+            Point p = root.getPointById(root.getKeyByValue(vectorResult.get(i)));
 
             coords.add(p.getX());
             coords.add(p.getY());
+
+            Point p1 = root.getPointById(root.getKeyByValue(vectorResult.get(i+1)));
+
+            coords.add(p1.getX());
+            coords.add(p1.getY());
         }
         return coords;
     }

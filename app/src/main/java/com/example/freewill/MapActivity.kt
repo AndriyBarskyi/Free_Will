@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
+import com.example.freewill.models.DrawPoints
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.search_point.Dijkstra
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -72,9 +73,11 @@ class MapActivity : AppCompatActivity() {
                     popupWindow.contentView.findViewById(R.id.searchToInput)
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
-                    drawLinesOnMap(fromPlace, toPlace)
+                    popupWindow.dismiss()
+                    val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
+                    setContentView(DrawPoints(this, points))
                 }
-                popupWindow.dismiss()
+
             }
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
@@ -90,13 +93,6 @@ class MapActivity : AppCompatActivity() {
         }
     }
 
-    fun drawLinesOnMap(start: String, end: String) {
-        var points = mutableListOf<Float>()
-        points = Dijkstra.Calculate(start, end, this.baseContext)
-        var paint = Paint()
-        paint.setColor(Color.parseColor("#FF0000"))
-        canvas.drawLines(points.toFloatArray(), paint)
-    }
 
     fun createNavigationMenu() {
         // assigning ID of the toolbar to a variable
