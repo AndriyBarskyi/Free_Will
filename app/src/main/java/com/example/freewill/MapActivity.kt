@@ -59,26 +59,39 @@ class MapActivity : AppCompatActivity() {
             popupWindow.setOnDismissListener {
                 drawerLayout.foreground.alpha = 0
             }
-
             val searchFromToButton: Button =
                 popupWindow.contentView.findViewById(R.id.searchFromToButton)
+            val searchFromInput: TextInputEditText =
+                popupWindow.contentView.findViewById(R.id.searchFromInput)
+            val searchToInput: TextInputEditText =
+                popupWindow.contentView.findViewById(R.id.searchToInput)
             searchFromToButton.setOnClickListener {
                 var fromPlace: String = ""
                 var toPlace: String = ""
-                val searchFromInput: TextInputEditText =
-                    popupWindow.contentView.findViewById(R.id.searchFromInput)
-                fromPlace = searchFromInput.text.toString()
 
-                val searchToInput: TextInputEditText =
-                    popupWindow.contentView.findViewById(R.id.searchToInput)
+                fromPlace = searchFromInput.text.toString()
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
                     popupWindow.dismiss()
                     val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
                     setContentView(DrawPoints(this, points))
                 }
-
             }
+
+            searchFromInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    searchToInput.requestFocus()
+                    return@OnKeyListener true
+                }
+                false
+            })
+            searchToInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    searchFromToButton.performClick()
+                    return@OnKeyListener true
+                }
+                false
+            })
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
