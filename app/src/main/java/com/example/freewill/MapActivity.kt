@@ -73,9 +73,20 @@ class MapActivity : AppCompatActivity() {
                     popupWindow.contentView.findViewById(R.id.searchToInput)
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
-                    popupWindow.dismiss()
                     val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
-                    setContentView(DrawPoints(this, points))
+                    if (points.size == 2) {
+                        if (points[0] == (-1).toFloat()) {
+
+                        }
+
+                        if (points[1] == (-1).toFloat()) {
+
+                        }
+                    } else {
+                        popupWindow.dismiss()
+
+                        setContentView(DrawPoints(this, points))
+                    }
                 }
 
             }
