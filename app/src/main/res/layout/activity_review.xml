@@ -5,7 +5,8 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    tools:context=".ReviewActivity">
     <!--android:foreground="@drawable/popup_foreground"-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,17 +48,17 @@
                 android:orientation="vertical"/>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <!--<com.google.android.material.navigation.NavigationView
-        android:id="@+id/navView"
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@drawable/nav_background"
-        android:fitsSystemWindows="true"
-        app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
-        app:itemIconSize="80dp"
-        app:itemVerticalPadding="@dimen/item_vertical_margin"
-        app:menu="@menu/nav_menu">
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/navView"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:background="@drawable/nav_background"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        app:itemHorizontalPadding="@dimen/activity_horizontal_margin"-->
+<!--        app:itemIconSize="80dp"-->
+<!--        app:itemVerticalPadding="@dimen/item_vertical_margin"-->
+<!--        app:menu="@menu/nav_menu">-->
 
-    </com.google.android.material.navigation.NavigationView>-->
+<!--    </com.google.android.material.navigation.NavigationView>-->
 </androidx.drawerlayout.widget.DrawerLayout>
