@@ -1,4 +1,5 @@
 package com.example.freewill
+import android.graphics.Canvas
 import com.example.freewill.databinding.FragmentScheduleBinding
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.freewill.models.ReadFirebase
+import com.example.freewill.models.ShowAudience
+import com.example.freewill.search_point.Dijkstra
 import com.google.firebase.database.FirebaseDatabase
 
 
@@ -14,7 +17,7 @@ const val ARG_OBJECT = "object"
 
 class ScheduleFragment : Fragment() {
     private lateinit var binding: FragmentScheduleBinding
-
+    private lateinit var schedule:ScheduleActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,9 +34,26 @@ class ScheduleFragment : Fragment() {
             val textDay =getString(ARG_OBJECT)
             ReadGroup.readGroupUser(){group->readSchedule(group,textDay.toString())}
             binding.class1.setText(textDay.toString())
+
             //binding.aud1.setText(position.toString())
         }
+        showAudience()
 //ReadGroup.readGroupUser(){group->ReadGroup.ReadSchedule(group,activity ,binding)}
+    }
+//не працює
+    private fun showAudience()
+    {
+        var aud1 = binding.aud1.text.toString()
+        aud1="240"
+        binding.aud1.setOnClickListener {
+            schedule = ScheduleActivity()
+            schedule.setContentView(
+                ShowAudience(
+                    schedule.applicationContext,
+                    Dijkstra.getCoord(aud1, activity)
+                ),
+            )
+        }
     }
 
     private fun readSchedule(user: String?, day:String?) {
