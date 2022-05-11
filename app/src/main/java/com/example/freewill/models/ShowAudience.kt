@@ -35,7 +35,9 @@ class ShowAudience(
             val mapHeight = 785
 
             val topRetreat = 500
-            val bottomRetreat = 500
+            val bottomRetreat = height - topRetreat
+            val bottomRetreatPoint = 500
+
 
             canvas.drawBitmap(
                 mapBitmap,
@@ -45,9 +47,10 @@ class ShowAudience(
             )
 
             if (audience[0] != (-1).toFloat()) {
-                drawPoint(
+                drawCircle(
                     (audience[0] / mapWidth) * width,
-                    (audience[1] / mapHeight) * (height - topRetreat - bottomRetreat) + topRetreat,
+                    (audience[1] / mapHeight) * (height - topRetreat - bottomRetreatPoint) + topRetreat,
+                    20f,
                     painter
                 )
             }
@@ -55,19 +58,4 @@ class ShowAudience(
         }
 
     }
-
-//        @SuppressLint("ClickableViewAccessibility")
-//        override fun onTouchEvent(event: MotionEvent): Boolean {
-//            var motionTouchEventX = event.x
-//            var motionTouchEventY = event.y
-//
-////            drawCircle(motionTouchEventX,motionTouchEventY,300f,painter)
-//
-////            when (event.action) {
-////                MotionEvent.ACTION_DOWN -> touchStart()
-////                MotionEvent.ACTION_MOVE -> touchMove()
-////                MotionEvent.ACTION_UP -> touchUp()
-////            }
-//            return true
-//        }
 }

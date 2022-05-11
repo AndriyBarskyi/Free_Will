@@ -199,6 +199,10 @@ public class Dijkstra {
             return res;
         }
 
+        if (startVertex.equals(endVertex)) {
+            return getCoord(startVertex,ctx);
+        }
+
         int start = root.getDisplayFromId().get(startVertex);
         int end = root.getDisplayFromId().get(endVertex);
 
