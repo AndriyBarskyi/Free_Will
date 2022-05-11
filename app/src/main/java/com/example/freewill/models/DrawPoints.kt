@@ -52,7 +52,7 @@ class DrawPoints(
                 if (i % 2 == 1) {
                     continue;
                 }
-                drawPoint(p[i], p[i + 1], painter)
+                drawCircle(p[i], p[i + 1], 15f,painter)
             }
 
 

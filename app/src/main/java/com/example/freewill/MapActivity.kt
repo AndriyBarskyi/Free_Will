@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
 import com.example.freewill.models.DrawPoints
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ShowAudience
 import com.example.freewill.search_point.Dijkstra
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -72,9 +73,22 @@ class MapActivity : AppCompatActivity() {
                 fromPlace = searchFromInput.text.toString()
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
-                    popupWindow.dismiss()
                     val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
-                    setContentView(DrawPoints(this, points))
+                    if (points.size == 2) {
+                        if (points[0] == (-1).toFloat()) {
+
+                        } else if (points[1] == (-1).toFloat()) {
+
+                        } else {
+                            popupWindow.dismiss()
+
+                            setContentView(ShowAudience(this, points))
+                        }
+                    } else {
+                        popupWindow.dismiss()
+
+                        setContentView(DrawPoints(this, points))
+                    }
                 }
             }
 
