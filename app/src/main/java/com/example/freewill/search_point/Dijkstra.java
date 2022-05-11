@@ -181,6 +181,24 @@ public class Dijkstra {
 
         Root root = parser.parse();
 
+        if (!root.isAudience(startVertex) || !root.isAudience(endVertex)) {
+            ArrayList<Float> res = new ArrayList<>();
+
+            if (!root.isAudience(startVertex)) {
+                res.add((float) -1);
+            } else {
+                res.add((float) 0);
+            }
+
+            if (!root.isAudience(endVertex)) {
+                res.add((float) -1);
+            } else {
+                res.add((float) 0);
+            }
+
+            return res;
+        }
+
         int start = root.getDisplayFromId().get(startVertex);
         int end = root.getDisplayFromId().get(endVertex);
 
@@ -191,7 +209,7 @@ public class Dijkstra {
         ArrayList<Float> res = new ArrayList<>();
 
         for (int v : a) {
-            float temp=v;
+            float temp = v;
             res.add(temp);
 
         }
@@ -199,5 +217,27 @@ public class Dijkstra {
 //        return graph.getCoords(end);
         return res;
 
+    }
+
+    public static ArrayList<Float> getCoord(String audience, Context ctx) {
+        GsonParser parser = new GsonParser(ctx);
+
+        Root root = parser.parse();
+
+        if (!root.isAudience(audience)) {
+            ArrayList<Float> res = new ArrayList<>();
+
+            res.add((float) -1);
+
+            return res;
+        }
+
+        ArrayList<Float> res = new ArrayList<>();
+
+        res.add((float) root.getPointById(audience).getX());
+        res.add((float) root.getPointById(audience).getY());
+
+//        return graph.getCoords(end);
+        return res;
     }
 }
