@@ -55,18 +55,17 @@ class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hour:IntArray= intArrayOf(5,10,11,13)
-    val minute:IntArray= intArrayOf(25,10,50,30)
+    val hour:IntArray= intArrayOf(8,10,11,13)
+    val minute:IntArray= intArrayOf(55,10,50,30)
     val time:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
     var result:Boolean?=null
-    var resultInt:Int?=null
+    var resLang : SharedPreferences? = null
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
     lateinit var chooseLang : String
-    var resLang : SharedPreferences? = null
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var firebaseAuth: FirebaseAuth
@@ -187,6 +186,23 @@ class SettingActivity : AppCompatActivity()
             recreate()
 
         })
+
+
+        bindingClass.forgotPasswordSetting.setOnClickListener{
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+            finish()
+        }
+        bindingClass.fiveMinute.setOnClickListener(View.OnClickListener
+        {recreate()})
+        bindingClass.tenMinute.setOnClickListener(View.OnClickListener
+        {recreate()})
+        bindingClass.fifteenMinute.setOnClickListener(View.OnClickListener
+        {recreate()})
+        bindingClass.twelveMinute.setOnClickListener(View.OnClickListener
+        {recreate()})
+
+
+
         bindingClass.soundButton.setOnClickListener(View.OnClickListener{
             count = resLang?.getInt("count", 1)!!
             when(count){
@@ -200,10 +216,6 @@ class SettingActivity : AppCompatActivity()
             intSaver("count", count!!)
         })
 
-        bindingClass.forgotPasswordSetting.setOnClickListener{
-            startActivity(Intent(this, ForgotPasswordActivity::class.java))
-            finish()
-        }
 
 
         //Navigation drawer
@@ -218,10 +230,13 @@ class SettingActivity : AppCompatActivity()
         val ReadUser = ReadFirebase()
         ReadUser.readFirebaseUser(bindingClass)
     }
+
+
+
     fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
         val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        var hour1 = hour
-        var minute1 = minute
+        var hour1 = hour.clone()
+        var minute1 = minute.clone()
         for (i in 0..(hour.size - 1)) {
             if (minute[i] - time < 0) {
                 hour1[i] -= 1
@@ -229,12 +244,7 @@ class SettingActivity : AppCompatActivity()
             } else {
                 minute1[i] -= time
             }
-            val materialTimePicker = MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setHour(hour1[i])
-                .setMinute(minute1[i])
-                .setTitleText("Будильник задзвенить о: ")
-                .build()
+
             val calendar = Calendar.getInstance()
             calendar[Calendar.SECOND] = 0
             calendar[Calendar.MILLISECOND] = 0
@@ -256,11 +266,11 @@ class SettingActivity : AppCompatActivity()
 
         // Якщо не працює будильник у android 10,
         //потрібно запитати дозвіл на показ вікон поверх інших програм
-        if (!Settings.canDrawOverlays(this)) {
-            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                Uri.parse("package:$packageName"))
-            startActivity(intent)
-        }
+//        if (!Settings.canDrawOverlays(this)) {
+//            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//                Uri.parse("package:$packageName"))
+//            startActivity(intent)
+//        }
 
     }
 
@@ -307,11 +317,11 @@ class SettingActivity : AppCompatActivity()
     fun SoundButton(count:Int){
         when(count){
             0->{bindingClass.offOn.setText(R.string.on)
-                bindingClass.ImageMiddleTextView.setBackgroundResource(R.drawable.ic_sound_on)}
+                bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_on)}
             1-> {bindingClass.offOn.setText(R.string.off)
-                bindingClass.ImageMiddleTextView.setBackgroundResource(R.drawable.ic_sound_off)}
+                bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_off)}
             2->{bindingClass.offOn.setText(R.string.vibro)
-                bindingClass.ImageMiddleTextView.setBackgroundResource(R.drawable.ic_sound_vibro)}
+                bindingClass.soundButton.setBackgroundResource(R.drawable.ic_sound_vibro)}
         }
     }
 

@@ -7,8 +7,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
 class AlarmActivity : AppCompatActivity() {
-    var ringtone: Ringtone? = null
-    var fiveMedia: MediaPlayer? = null
+    val a = SettingActivity()
+    private var fiveMedia: MediaPlayer? = null
+    private var tenMedia: MediaPlayer? = null
+    private var fifteenMedia: MediaPlayer? = null
+    private var twelveMedia: MediaPlayer? = null
 
     fun soundPlay(sound: MediaPlayer) {
         sound.start()
@@ -17,21 +20,18 @@ class AlarmActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
-        /*
-        var notificationUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-        ringtone = RingtoneManager.getRingtone(this, notificationUri)
-        if (ringtone == null) {
-            notificationUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
-            ringtone = RingtoneManager.getRingtone(this, notificationUri)
-        }
-        if (ringtone != null) {
-            //ringtone!!.play()
-            soundPlay(fiveMedia)
-        }
-         */
         fiveMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
-        soundPlay(fiveMedia!!)
-
+        tenMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
+        fifteenMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
+        twelveMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
+        if (a.bindingClass.fiveMinute.isChecked)
+            soundPlay(fiveMedia!!)
+        if (a.bindingClass.fiveMinute.isChecked)
+            soundPlay(tenMedia!!)
+        if (a.bindingClass.fiveMinute.isChecked)
+            soundPlay(fifteenMedia!!)
+        if (a.bindingClass.fiveMinute.isChecked)
+            soundPlay(twelveMedia!!)
     }
 
     override fun onDestroy() {
