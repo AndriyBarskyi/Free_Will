@@ -36,7 +36,7 @@ class EditScheduleActivity : AppCompatActivity() ,  View.OnClickListener
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             binding = ActivityEditScheduleBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+            this.setContentView(binding.root)
 
             binding.monday.setOnClickListener(this)
             binding.tuesday.setOnClickListener(this)

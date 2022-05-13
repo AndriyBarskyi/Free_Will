@@ -29,6 +29,7 @@
     <string name = "from"> From </string>
     <string name = "to"> To </string>
     <string name = "search"> Search </string>
+    <string name="room_not_exists">Such room does not exist!</string>
 
 <!--    authentication part-->
     <string name = "choose_page"> Welcome </string>
