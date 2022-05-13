@@ -5,6 +5,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.appcompat.app.AppCompatViewInflater
+import com.example.freewill.ReviewActivity
+import com.example.freewill.databinding.ActivityReviewBinding
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.databinding.FragmentScheduleBinding
 import com.google.firebase.auth.ktx.auth
@@ -98,5 +100,15 @@ class ReadFirebase {
                 } else {}
             }.addOnFailureListener {}
         }
+    }
+
+    fun readReview(binding: ActivityReviewBinding){
+        val user = Firebase.auth.currentUser
+
+    }
+
+    fun addReview(review: String?){
+        val user = Firebase.auth.currentUser
+
     }
 }

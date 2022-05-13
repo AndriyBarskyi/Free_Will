@@ -32,21 +32,10 @@
                 tools:layout_editor_absoluteY="0dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
-        <ScrollView
+
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:id="@+id/reviewsLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-        </ScrollView>
+            android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 <!--    <com.google.android.material.navigation.NavigationView-->
 <!--        android:id="@+id/navView"-->
