@@ -36,6 +36,7 @@ class WelcomeActivity : AppCompatActivity() {
             a.big->{SetSizeFont(a.bigSize) }
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         toSettingApp()
         super.onCreate(savedInstanceState)

@@ -107,9 +107,9 @@ class SignUpActivity : AppCompatActivity() {
         val userID = firebaseAuth.uid
 
         //prepare data to add in database
-        val groupName = binding.groupNameEditText.text.toString()
-        val password = binding.passwordEditText.text.toString()
-        val userName = binding.userNameEditText.text.toString()
+        val groupName = binding.groupNameEditText.text.toString().trim()
+        val password = binding.passwordEditText.text.toString().trim()
+        val userName = binding.userNameEditText.text.toString().trim()
         val user = User(groupName, password)
 
         val profileUpdates = userProfileChangeRequest {

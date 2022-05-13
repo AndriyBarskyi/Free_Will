@@ -9,7 +9,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.media.MediaPlayer
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Gravity
@@ -52,6 +55,9 @@ class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
+    val hour:IntArray= intArrayOf(5,10,11,13)
+    val minute:IntArray= intArrayOf(25,10,50,30)
+    val time:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
@@ -90,7 +96,6 @@ class SettingActivity : AppCompatActivity()
 
         super.onCreate(savedInstanceState)
         bindingClass = ActivitySettingBinding.inflate(layoutInflater)
-
 
 
         // language selection after restart
@@ -139,7 +144,7 @@ class SettingActivity : AppCompatActivity()
 
         //Toolbar
         val toolbar: Toolbar = bindingClass.toolbar
-        toolbar.setTitle(R.string.toolbar_schedule)
+        toolbar.setTitle(R.string.toolbar_settings)
         setSupportActionBar(toolbar)
 
         // change language
@@ -164,7 +169,7 @@ class SettingActivity : AppCompatActivity()
             chooseFont = small
             chooseSizeKoef = smallSize
             SetSizeFont(smallSize)
-           recreate()
+            recreate()
         })
         bindingClass.buttonM.setOnClickListener(View.OnClickListener
         {
@@ -193,10 +198,12 @@ class SettingActivity : AppCompatActivity()
             }
             SoundButton(count!!)
             intSaver("count", count!!)
-
         })
 
-
+        bindingClass.forgotPasswordSetting.setOnClickListener{
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+            finish()
+        }
 
 
         //Navigation drawer
@@ -211,6 +218,72 @@ class SettingActivity : AppCompatActivity()
         val ReadUser = ReadFirebase()
         ReadUser.readFirebaseUser(bindingClass)
     }
+    fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+        var hour1 = hour
+        var minute1 = minute
+        for (i in 0..(hour.size - 1)) {
+            if (minute[i] - time < 0) {
+                hour1[i] -= 1
+                minute1[i] = 60 + (minute1[i] - time)
+            } else {
+                minute1[i] -= time
+            }
+            val materialTimePicker = MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(hour1[i])
+                .setMinute(minute1[i])
+                .setTitleText("Будильник задзвенить о: ")
+                .build()
+            val calendar = Calendar.getInstance()
+            calendar[Calendar.SECOND] = 0
+            calendar[Calendar.MILLISECOND] = 0
+            calendar[Calendar.MINUTE] = minute1[i]
+            calendar[Calendar.HOUR_OF_DAY] = hour1[i]
+            val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+            val alarmClockInfo = AlarmManager.AlarmClockInfo(
+                calendar.timeInMillis,
+                alarmInfoPendingIntent
+            )
+            alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
+            Toast.makeText(
+                this,
+                "Нагадування встановлене на " + sdf.format(calendar.time),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+
+        // Якщо не працює будильник у android 10,
+        //потрібно запитати дозвіл на показ вікон поверх інших програм
+        if (!Settings.canDrawOverlays(this)) {
+            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                Uri.parse("package:$packageName"))
+            startActivity(intent)
+        }
+
+    }
+
+
+    private val alarmInfoPendingIntent: PendingIntent
+        @SuppressLint("UnspecifiedImmutableFlag")
+        get() {
+            val alarmInfoIntent = Intent(this, SettingActivity::class.java)
+            alarmInfoIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            return PendingIntent.getActivity(
+                this,
+                0,
+                alarmInfoIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
+    private val alarmActionPendingIntent: PendingIntent
+        @SuppressLint("UnspecifiedImmutableFlag")
+        get() {
+            val intent = Intent(this, AlarmActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            return PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
 
 
     @SuppressLint("SimpleDateFormat")
@@ -220,9 +293,14 @@ class SettingActivity : AppCompatActivity()
         val fifteenMinute = bindingClass.fifteenMinute.isChecked
         val twelveMinute = bindingClass.twelveMinute.isChecked
 
-        val fiveMedia: MediaPlayer = MediaPlayer.create(this, R.raw.audio_five_minutes)
-        if (fiveMin){
-        }
+        if (fiveMin)
+            Alarmm(hour, minute, time[0])
+        if (tenMinute)
+            Alarmm(hour, minute, time[1])
+        if (fifteenMinute)
+            Alarmm(hour, minute, time[2])
+        if (twelveMinute)
+            Alarmm(hour, minute, time[3])
     }
 
 
@@ -273,22 +351,16 @@ class SettingActivity : AppCompatActivity()
                 .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Users")
             referenceUser.child(uid).get().addOnSuccessListener {
-                if (it.exists()) {
-
-                    val userName = it.child("password").value
-                    if (userName.toString() == checkPassword.toString())
-                        result = true
-
-                    //Toast.makeText(this, "User information read...", Toast.LENGTH_SHORT).show()
-                } else {
-                    //Toast.makeText(this, "User isn't in firebase!!!", Toast.LENGTH_SHORT).show()
-                    result = true
+                result = when (it.exists()) {
+                    true->
+                    {
+                        val userPassword = it.child("password").value
+                        if (userPassword.toString() == checkPassword.toString()) {true}
+                        else{false}
+                    }
+                    false->false
                 }
-            }.addOnFailureListener {
-                //Toast.makeText(this, "Failed read User ", Toast.LENGTH_SHORT).show()
-                result = true
             }
-
 
             popupWindow.dismiss()
             if (result as Boolean)
@@ -322,25 +394,18 @@ class SettingActivity : AppCompatActivity()
             //не працює
             //val userID = firebaseAuth.uid
 
-            val groupName = popupView.findViewById(R.id.editGroup) as EditText
-            val password = popupView.findViewById(R.id.editPassword) as EditText
+//            val groupName = when(popupView.findViewById(R.id.editGroup).text.toString() =="")
+//            {
+//                true->
+//            }
+            val groupName = popupView.findViewById(R.id.editGroup)as EditText
             val userName = popupView.findViewById(R.id.editLogin) as EditText
-
-            val passwor = password.text.toString()
-
-            val users = User(groupName.text.toString(), password.text.toString())
+            val users = User(groupName.text.toString().trim())
 
             val profileUpdates = userProfileChangeRequest {
-                displayName = userName.text.toString()
+                displayName = userName.text.toString().trim()
             }
             user!!.updateProfile(profileUpdates)
-
-
-            //не працює
-            user!!.updateEmail("user@gmail.com")
-            user!!.updatePassword(passwor)
-
-
             val reference = FirebaseDatabase
                 .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Users")
@@ -349,6 +414,7 @@ class SettingActivity : AppCompatActivity()
 
         })
     }
+
 
 
     fun wayScreenDisplay(activityScreen:Int, view:View): View {
@@ -397,7 +463,3 @@ class SettingActivity : AppCompatActivity()
 
 
 }
-
-
-
-
