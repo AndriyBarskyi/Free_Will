@@ -76,9 +76,9 @@ class MapActivity : AppCompatActivity() {
                     val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
                     if (points.size == 2) {
                         if (points[0] == (-1).toFloat()) {
-
+                            searchFromInput.error = getString(R.string.room_not_exists)
                         } else if (points[1] == (-1).toFloat()) {
-
+                            searchToInput.error = getString(R.string.room_not_exists)
                         } else {
                             popupWindow.dismiss()
 
