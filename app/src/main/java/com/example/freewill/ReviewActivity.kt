@@ -7,7 +7,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.databinding.ActivityReviewBinding
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.Teacher
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 
 lateinit var toggle: ActionBarDrawerToggle
 lateinit var reviewBinding: ActivityReviewBinding
@@ -40,4 +46,25 @@ class ReviewActivity : AppCompatActivity() {
         navigation.createNavigationDrawer(this)
 
     }
+
+    private fun getUsersData() {
+        val dbref = FirebaseDatabase.getInstance().getReference("Teachers")
+        dbref.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    for(teacherSnapshot in snapshot.children){
+                        val teacher = teacherSnapshot.getValue(Teacher::class.java)
+                    }
+                }
+                else{
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
 }
