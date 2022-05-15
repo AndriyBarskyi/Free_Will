@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
 
@@ -87,11 +88,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun validateUser(){
-        email = binding.emailEditText.text.toString()
+        email = binding.emailEditText.text.toString().trim()
         password = binding.passwordEditText.text.toString().trim()
 
         //check whether user's data is correct
-        if(TextUtils.isEmpty(email))
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            //invalid email
+            binding.emailEditText.error = "Invalid email format"
+        }
+        else if(TextUtils.isEmpty(email))
         {
             binding.emailEditText.error = "Please enter your nickname"
         }

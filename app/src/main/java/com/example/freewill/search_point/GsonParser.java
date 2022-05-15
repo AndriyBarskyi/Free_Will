@@ -119,6 +119,11 @@ class Root {
         return new Point();
     }
 
+    public boolean isAudience(String id) {
+        getDisplayFromId();
+        return displayFromId.containsKey(id);
+    }
+
 }
 
 class Point {

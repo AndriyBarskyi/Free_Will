@@ -55,8 +55,8 @@ class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hour:IntArray= intArrayOf(8,10,11,13)
-    val minute:IntArray= intArrayOf(30,10,50,30)
+    val hour:IntArray= intArrayOf(5,10,11,13)
+    val minute:IntArray= intArrayOf(25,10,50,30)
     val time:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
@@ -96,7 +96,6 @@ class SettingActivity : AppCompatActivity()
 
         super.onCreate(savedInstanceState)
         bindingClass = ActivitySettingBinding.inflate(layoutInflater)
-
 
 
         // language selection after restart
@@ -201,7 +200,10 @@ class SettingActivity : AppCompatActivity()
             intSaver("count", count!!)
         })
 
-
+        bindingClass.forgotPasswordSetting.setOnClickListener{
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+            finish()
+        }
 
 
         //Navigation drawer
@@ -238,8 +240,7 @@ class SettingActivity : AppCompatActivity()
             calendar[Calendar.MILLISECOND] = 0
             calendar[Calendar.MINUTE] = minute1[i]
             calendar[Calendar.HOUR_OF_DAY] = hour1[i]
-            val alarmManager =
-                getSystemService(ALARM_SERVICE) as AlarmManager
+            val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
             val alarmClockInfo = AlarmManager.AlarmClockInfo(
                 calendar.timeInMillis,
                 alarmInfoPendingIntent
@@ -398,24 +399,13 @@ class SettingActivity : AppCompatActivity()
 //                true->
 //            }
             val groupName = popupView.findViewById(R.id.editGroup)as EditText
-            val password = popupView.findViewById(R.id.editPassword) as EditText
             val userName = popupView.findViewById(R.id.editLogin) as EditText
-
-            val passwor = password.text.toString()
-
-            val users = User(groupName.text.toString(), password.text.toString())
+            val users = User(groupName.text.toString().trim())
 
             val profileUpdates = userProfileChangeRequest {
-                displayName = userName.text.toString()
+                displayName = userName.text.toString().trim()
             }
             user!!.updateProfile(profileUpdates)
-
-
-            //не працює
-            user!!.updateEmail("user@gmail.com")
-            user!!.updatePassword(passwor)
-
-
             val reference = FirebaseDatabase
                 .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Users")
@@ -424,6 +414,7 @@ class SettingActivity : AppCompatActivity()
 
         })
     }
+
 
 
     fun wayScreenDisplay(activityScreen:Int, view:View): View {
