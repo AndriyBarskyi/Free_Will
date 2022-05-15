@@ -7,7 +7,7 @@
     tools:context=".TeachersActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/search_here"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginStart="30dp"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginStart="300dp"
