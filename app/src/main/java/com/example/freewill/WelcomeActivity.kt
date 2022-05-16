@@ -74,15 +74,8 @@ class WelcomeActivity : AppCompatActivity() {
     private fun checkUser() {
         val user = firebaseAuth.currentUser
         if(user != null){
-            if(user.isEmailVerified)
-            {
-                startActivity(Intent(this, ScheduleActivity::class.java))
-                finish()
-            }
-            else{
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
+            startActivity(Intent(this, ScheduleActivity::class.java))
+            finish()
         }
         else{
             startActivity(Intent(this, GuestOrStudentActivity::class.java))

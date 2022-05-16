@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreeWill">
         <activity
-            android:name=".ReviewActivity"
+            android:name=".NewsActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
