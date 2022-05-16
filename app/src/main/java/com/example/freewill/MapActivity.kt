@@ -36,7 +36,7 @@ class MapActivity : AppCompatActivity() {
     val bitmap = Bitmap.createBitmap(913, 785, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
 
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "UseSwitchCompatOrMaterialCode", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mapBinding = ActivityMapBinding.inflate(layoutInflater)
@@ -108,10 +108,14 @@ class MapActivity : AppCompatActivity() {
             })
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
+        val imageMap: ImageView = findViewById(R.id.imageView16)
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
             if (isChecked) {
-                val imageMap: ImageView = findViewById(R.id.imageView16)
                 imageMap.setOnTouchListener(imageViewOnTouchListener)
+            }
+            else
+            {
+                imageMap.setOnTouchListener(null)
             }
         }
     }

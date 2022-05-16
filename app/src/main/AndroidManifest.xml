@@ -55,7 +55,7 @@
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".LinkActivity"
+            android:name=".LinksPreviewActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
