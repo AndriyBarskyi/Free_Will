@@ -7,7 +7,7 @@
     <string name="gmail">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="confirm">Підтвердити</string>
-    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color = "#00b4d8">Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
+    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>
