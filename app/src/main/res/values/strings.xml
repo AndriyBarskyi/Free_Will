@@ -7,7 +7,7 @@
     <string name="gmail">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="confirm">Підтвердити</string>
-    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <u>Надіслати</u> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити вашу електронну пошту.</b></string>
+    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>
@@ -27,9 +27,13 @@
     <string name="fifteen_minute">за 15 хв</string>
     <string name="twelve_minute">за 20 хв</string>
     <string name="remember">нагадати</string>
+    <string name="send">Надіслати</string>
     <string name="from">Від</string>
     <string name="to">До</string>
     <string name="search">Пошук</string>
+    <string name="room_not_exists">Кімнати з таким номером немає!</string>
+
+    <!--    authentication part-->
     <string name="choose_page">Ласкаво просимо</string>
     <string name="choose_page_btn1">Студент</string>
     <string name="choose_page_btn2">Гість</string>
@@ -47,13 +51,15 @@
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
-    <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження, після чого Ви зможете увійти.</b>
+    <string name="check_registr"><b>На Вашу пошту був надісланий лист для підтвердження. Перейдіть, будь ласка, за посиланням щоб завершити вхід.</b>
     <b>Вже очікуємо на Вас!</b></string>
     <string name="agree">Підтвердити</string>
     <string name="exit">Вийти</string>
     <string name="enter_password">Введіть пароль</string>
     <string name="you_exit">Ви вийшли</string>
     <string name="you_agree">Зміни підтверджено</string>
+    <string name="reset_password">Скинути пароль</string>
+
 
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
@@ -74,6 +80,28 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+
+    <string name="links_preview">Оберіть предмет</string>
+
+    <string name="teachers_preview">Шукай тут</string>
+    <string name="characteristic1">сучасність</string>
+    <string name="characteristic2">вибагливість</string>
+    <string name="characteristic3">лояльність</string>
+    <string name="characteristic4">викладання</string>
+
+    <string name="shcherbyna_name">Щербина Юрій Миколайович</string>
+    <string name="shcherbyna_subject">математична логіка</string>
+
+    <string name="golovatyy_name">Головатий Юрій Данилович</string>
+    <string name="golovatyy_subject">диференціальні рівняння</string>
+
+    <string name="malets_name">Малець Романна Богданівна</string>
+    <string name="malets_subject">бази даних</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->

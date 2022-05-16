@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
 
@@ -33,12 +34,10 @@ import java.security.AccessController
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var email_text: String
 
     //ViewBinding
     private lateinit var binding: ActivityLoginBinding
-
-    //ActionBar
-//    private lateinit var actionBar: ActionBar
 
     //Firebase Authorization
     private lateinit var firebaseAuth: FirebaseAuth
@@ -64,9 +63,11 @@ class LoginActivity : AppCompatActivity() {
 
 //        googleSignInClient = GoogleSignIn.getClient(this, gso)
         // [END config_signin]
+
         //if no account open SingUpActivity
         binding.noAccountText.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
         }
 
         //if login successfully open main app
@@ -74,9 +75,10 @@ class LoginActivity : AppCompatActivity() {
             validateUser()
         }
 
-//        binding.loginWithoutPasswordButton.setOnClickListener {
-//            startActivity(Intent(this, ScheduleActivity::class.java))
-//        }
+        binding.forgotPassword.setOnClickListener{
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+            finish()
+        }
 
 //        binding.loginWithGoogle.setOnClickListener {
 ////            signInWithGoogle()
@@ -84,6 +86,70 @@ class LoginActivity : AppCompatActivity() {
 ////            extraDataDialog()
 //        }
     }
+
+    private fun validateUser(){
+        email = binding.emailEditText.text.toString().trim()
+        password = binding.passwordEditText.text.toString().trim()
+
+        //check whether user's data is correct
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            //invalid email
+            binding.emailEditText.error = "Invalid email format"
+        }
+        else if(TextUtils.isEmpty(email))
+        {
+            binding.emailEditText.error = "Please enter your nickname"
+        }
+        else if(TextUtils.isEmpty(password))
+        {
+            binding.passwordEditText.error = "Please enter your password"
+        }
+        else
+        {
+            loginToFirebase()
+        }
+    }
+
+    private fun loginToFirebase(){
+        firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnSuccessListener {
+                val firebaseUser = firebaseAuth.currentUser
+                //user successfully signed in
+                val email = firebaseUser!!.email
+                Toast.makeText(this, "Logged as $email", Toast.LENGTH_SHORT).show()
+
+                //move to main app activity
+                startActivity(Intent(this, ScheduleActivity::class.java))
+                finish()
+
+            }
+            .addOnFailureListener{ e->
+                //user not signed in
+                Toast.makeText(this, "There is no such user", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+//    private fun showEmailDialog(){
+//        val builder: AlertDialog.Builder = android.app.AlertDialog.Builder(this)
+//        builder.setTitle("Enter your email:")
+//
+//        // Set up the input
+//        val input = EditText(this)
+//        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+//        input.setHint("Enter Text")
+//        input.inputType = InputType.TYPE_CLASS_TEXT
+//        builder.setView(input)
+//
+//        // Set up the buttons
+//        builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
+//            // Here you get get input text from the Edittext
+//            email_text = input.text.toString().trim()
+//        })
+//        builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+//
+//        builder.show()
+//    }
 
     //new realisation
     // [START on_start_check_user]
@@ -114,26 +180,26 @@ class LoginActivity : AppCompatActivity() {
     // [END onactivityresult]
 
     // [START auth_with_google]
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        val user = firebaseAuth.currentUser
-        firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    if(user!!.isEmailVerified){
-                        // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(this, "User is verified", Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        Toast.makeText(this, "User is not verified", Toast.LENGTH_SHORT).show()
-                    }
-
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(this, "signInWithCredential:failure", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
+//    private fun firebaseAuthWithGoogle(idToken: String) {
+//        val credential = GoogleAuthProvider.getCredential(idToken, null)
+//        val user = firebaseAuth.currentUser
+//        firebaseAuth.signInWithCredential(credential)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    if(user!!.isEmailVerified){
+//                        // Sign in success, update UI with the signed-in user's information
+//                        Toast.makeText(this, "User is verified", Toast.LENGTH_SHORT).show()
+//                    }
+//                    else{
+//                        Toast.makeText(this, "User is not verified", Toast.LENGTH_SHORT).show()
+//                    }
+//
+//                } else {
+//                    // If sign in fails, display a message to the user.
+//                    Toast.makeText(this, "signInWithCredential:failure", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//    }
     // [END auth_with_google]
 
     // [START signin]
@@ -148,43 +214,6 @@ class LoginActivity : AppCompatActivity() {
 //        private const val RC_SIGN_IN = 9001
 //    }
 
-    private fun validateUser(){
-        email = binding.emailEditText.text.toString()
-        password = binding.passwordEditText.text.toString().trim()
 
-        //check whether user's data is correct
-        if(TextUtils.isEmpty(email))
-        {
-            binding.emailEditText.error = "Please enter your nickname"
-        }
-        else if(TextUtils.isEmpty(password))
-        {
-            binding.passwordEditText.error = "Please enter your password"
-        }
-        else
-        {
-            loginToFirebase()
-        }
-    }
-
-    private fun loginToFirebase(){
-        firebaseAuth = FirebaseAuth.getInstance()
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnSuccessListener {
-                val firebaseUser = firebaseAuth.currentUser
-                //user successfully signed in
-                val email = firebaseUser!!.email
-                Toast.makeText(this, "Logged as $email", Toast.LENGTH_SHORT).show()
-
-                //move to main app activity
-                startActivity(Intent(this, ScheduleActivity::class.java))
-                finish()
-
-            }
-            .addOnFailureListener{ e->
-                //user not signed in
-                Toast.makeText(this, "Wrong Email or Password", Toast.LENGTH_SHORT).show()
-            }
-    }
 
 }

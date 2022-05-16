@@ -29,11 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="100dp"
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/comfortaa"
-        android:text="Надіслати"
+        android:text="@string/send"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -42,13 +42,12 @@
         app:layout_constraintTop_toBottomOf="@+id/confirm_info" />
 
 
-
     <TextView
         android:id="@+id/confirm_info"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/comfortaa"
         android:text="@string/confirm_info"
@@ -64,10 +63,12 @@
         android:id="@+id/imageView24"
         android:layout_width="140dp"
         android:layout_height="147dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmButton"
         app:srcCompat="@drawable/letters_right" />
 
     <ImageView
@@ -75,7 +76,7 @@
         android:layout_width="140dp"
         android:layout_height="145dp"
         android:layout_marginStart="35dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/confirm_info"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/letters_left" />

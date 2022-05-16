@@ -18,7 +18,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
 import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
+import com.example.freewill.models.DrawPoints
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ShowAudience
 import com.example.freewill.search_point.Dijkstra
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -58,24 +60,52 @@ class MapActivity : AppCompatActivity() {
             popupWindow.setOnDismissListener {
                 drawerLayout.foreground.alpha = 0
             }
-
             val searchFromToButton: Button =
                 popupWindow.contentView.findViewById(R.id.searchFromToButton)
+            val searchFromInput: TextInputEditText =
+                popupWindow.contentView.findViewById(R.id.searchFromInput)
+            val searchToInput: TextInputEditText =
+                popupWindow.contentView.findViewById(R.id.searchToInput)
             searchFromToButton.setOnClickListener {
                 var fromPlace: String = ""
                 var toPlace: String = ""
-                val searchFromInput: TextInputEditText =
-                    popupWindow.contentView.findViewById(R.id.searchFromInput)
-                fromPlace = searchFromInput.text.toString()
 
-                val searchToInput: TextInputEditText =
-                    popupWindow.contentView.findViewById(R.id.searchToInput)
+                fromPlace = searchFromInput.text.toString()
                 toPlace = searchToInput.text.toString()
                 if (toPlace != "" && fromPlace != "") {
-                    drawLinesOnMap(fromPlace, toPlace)
+                    val points = Dijkstra.Calculate(fromPlace, toPlace, this.baseContext)
+                    if (points.size == 2) {
+                        if (points[0] == (-1).toFloat()) {
+                            searchFromInput.error = getString(R.string.room_not_exists)
+                        } else if (points[1] == (-1).toFloat()) {
+                            searchToInput.error = getString(R.string.room_not_exists)
+                        } else {
+                            popupWindow.dismiss()
+
+                            setContentView(ShowAudience(this, points))
+                        }
+                    } else {
+                        popupWindow.dismiss()
+
+                        setContentView(DrawPoints(this, points))
+                    }
                 }
-                popupWindow.dismiss()
             }
+
+            searchFromInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    searchToInput.requestFocus()
+                    return@OnKeyListener true
+                }
+                false
+            })
+            searchToInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    searchFromToButton.performClick()
+                    return@OnKeyListener true
+                }
+                false
+            })
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
@@ -86,13 +116,6 @@ class MapActivity : AppCompatActivity() {
         }
     }
 
-    fun drawLinesOnMap(start: String, end: String) {
-        var points = mutableListOf<Float>()
-        points = Dijkstra.Calculate(start, end, this.baseContext)
-        var paint = Paint()
-        paint.setColor(Color.parseColor("#FF0000"))
-        canvas.drawLines(points.toFloatArray(), paint)
-    }
 
     fun createNavigationMenu() {
         // assigning ID of the toolbar to a variable
@@ -109,7 +132,7 @@ class MapActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         val navView: NavigationView = findViewById(R.id.navView)
         val navigation = NavigationClass(drawerLayout, toggle, navView, this)
-        navigation.createNavigationDrawer()
+        navigation.createNavigationDrawer(this)
 
     }
 

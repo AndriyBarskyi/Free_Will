@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.DisplayMetrics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,31 +21,33 @@ import androidx.fragment.app.DialogFragment
 
 class WelcomeActivity : AppCompatActivity() {
 
+    private lateinit var firebaseAuth: FirebaseAuth
+
     private val SPLASH_TIME: Long = 3000
     val a = SettingActivity()
-    var checking : SharedPreferences? = null
 
     fun toSettingApp()
     {
-        val resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
-        val r = resLang.getString(a.keyLanguage, a.mLanguageCodeUa)
-        LocaleHelper.setLocale(this, r)
-        val t = resLang?.getString(a.keyFont, a.medium)!!
-        when(t){
+        a.resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
+        LocaleHelper.setLocale(this, a.resLang?.getString(a.keyLanguage, a.mLanguageCodeUa)!!)
+        when(a.resLang?.getString(a.keyFont, a.medium)!!){
             a.small->{SetSizeFont(a.smallSize)}
             a.medium->{SetSizeFont(a.mediumSize)}
             a.big->{SetSizeFont(a.bigSize) }
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         toSettingApp()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        Handler().postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
+        Handler(Looper.getMainLooper()).postDelayed({
+            checkUser()
             finish()
         }, SPLASH_TIME)
+
         val imageViewOnTouchListener = View.OnLongClickListener{
             val myDialogFragment = MyDialogFragment()
             val manager = supportFragmentManager
@@ -58,7 +61,7 @@ class WelcomeActivity : AppCompatActivity() {
     fun SetSizeFont(size_coef: Float)
     {
         val configuration = resources.configuration
-        configuration.fontScale = size_coef //0.85 small size, 1 normal size, 1,15 big etc
+        configuration.fontScale = size_coef
 
 
         val metrics = DisplayMetrics()
@@ -67,6 +70,27 @@ class WelcomeActivity : AppCompatActivity() {
         baseContext.resources.updateConfiguration(configuration, metrics)
 
     }
+
+    private fun checkUser() {
+        val user = firebaseAuth.currentUser
+        if(user != null){
+            if(user.isEmailVerified)
+            {
+                startActivity(Intent(this, ScheduleActivity::class.java))
+                finish()
+            }
+            else{
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
+        else{
+            startActivity(Intent(this, GuestOrStudentActivity::class.java))
+            finish()
+        }
+
+    }
+
     class MyDialogFragment : DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {

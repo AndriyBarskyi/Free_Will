@@ -1,5 +1,10 @@
 package com.example.freewill.models
 
-data class User(val groupName: String? = null,
-                val password: String? = null){
+class User(groupName: String){
+    val GroupName: String = groupName
+    //var Password: String = ""
+
+    constructor(groupName: String, password: String) : this(groupName){
+        //Password = password
+    }
 }

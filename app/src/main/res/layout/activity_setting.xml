@@ -52,12 +52,12 @@
                     android:id="@+id/setting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="50dp"
                     android:fontFamily="@font/comfortaa_light"
                     android:text="@string/setting"
                     android:textAlignment="center"
                     android:textColor="@color/blue"
-                    android:textSize="40sp"
+                    android:textSize="36sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sideBar"
@@ -200,13 +200,28 @@
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
                         tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
+                    <TextView
+                        android:id="@+id/forgotPasswordSetting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/comfortaa"
+                        android:text="@string/forget_pass"
+                        android:textSize="14sp"
+
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/change"
+                        tools:ignore="SmallSp,TextContrastCheck,TouchTargetSizeCheck" />
+
                 </LinearLayout>
 
                 <RelativeLayout
                     android:id="@+id/GeneralSettingRelativeLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     app:layout_constraintBottom_toTopOf="@+id/sound"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -247,7 +262,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/comfortaa_bold"
                     android:text="@string/sound"
                     android:textColor="@color/black"
@@ -267,36 +282,49 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sound">
 
+                    <TextView
+                        android:id="@+id/startTextView"
+                        android:layout_width="20dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/rounded_border_dark_blue"
+                        app:layout_constraintEnd_toStartOf="@+id/soundButton"
+                        android:layout_marginStart="45dp"
+                        tools:layout_editor_absoluteY="383dp" />
+
                     <ImageButton
                         android:id="@+id/soundButton"
-                        android:layout_width="219dp"
-                        android:layout_height="39dp"
-                        android:layout_marginStart="45dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/rounded_border_dark_blue"
-                        android:fontFamily="@font/comfortaa_light"
-                        android:text="@string/on"
-                        android:textColor="@color/white"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/ic_sound_on"
+                        app:layout_constraintEnd_toStartOf="@+id/ImageMiddleTextView"
+                        tools:layout_editor_absoluteY="383dp" />
+
+                    <TextView
+                        android:id="@+id/ImageMiddleTextView"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:background="@color/dark_blue"
+                        android:layout_marginTop="0dp"
                         app:layout_constraintEnd_toStartOf="@+id/offOn"
-                        app:layout_constraintTop_toBottomOf="@+id/sound"
-                        app:srcCompat="@drawable/ic_sound_on"
-                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck" />
+                        tools:layout_editor_absoluteY="383dp" />
 
                     <TextView
                         android:id="@+id/offOn"
                         android:layout_width="103dp"
-                        android:layout_height="39dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="72dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="2dp"
                         android:background="@drawable/for_sound"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/on"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sound"
-                        tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck" />
+                        app:layout_constraintEnd_toEndOf="@+id/SoundLinearLayout"
+                        tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck"
+                        tools:layout_editor_absoluteY="383dp" />
+
 
                 </LinearLayout>
 
@@ -316,11 +344,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
+
+
                 <LinearLayout
                     android:id="@+id/time1LinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="3dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -328,12 +358,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/remember">
 
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/five_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:backgroundTintMode="multiply"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/five_minute"
@@ -343,11 +374,12 @@
                         app:layout_constraintTop_toBottomOf="@+id/remember"
                         tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/fifteen_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginEnd="120dp"
                         android:fontFamily="@font/comfortaa_light"
                         android:text="@string/fifteen_minute"
@@ -371,7 +403,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/ten_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
@@ -385,7 +417,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/five_minute"
                         tools:ignore="MissingConstraints,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/twelve_minute"
                         android:layout_width="106dp"
                         android:layout_height="wrap_content"
@@ -514,12 +546,12 @@
                         android:layout_marginStart="36dp"
                         android:background="@drawable/circle_button"
                         android:fontFamily="@font/comfortaa_light"
-                        android:onClick="bigFont"
                         android:text="@string/Big"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="25sp"
                         android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
@@ -532,12 +564,12 @@
                         android:layout_marginEnd="80dp"
                         android:background="@drawable/circle_button_dark_blue"
                         android:fontFamily="@font/comfortaa_light"
-                        android:onClick="mediumFont"
                         android:text="@string/Medium"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="25sp"
                         android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/button_S"
                         app:layout_constraintStart_toEndOf="@+id/button_B"
@@ -550,12 +582,12 @@
                         android:layout_marginEnd="36dp"
                         android:background="@drawable/circle_button"
                         android:fontFamily="@font/comfortaa_light"
-                        android:onClick="smallFont"
                         android:text="@string/Small"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="25sp"
                         android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
@@ -574,6 +606,7 @@
         android:layout_gravity="start"
         android:background="@drawable/nav_background"
         android:fitsSystemWindows="true"
+        android:onClick="ChangeSoundColor"
         app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         app:itemIconSize="80dp"
         app:itemVerticalPadding="@dimen/item_vertical_margin"

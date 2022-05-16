@@ -21,7 +21,7 @@
     <string name = "Big"> B </string>
     <string name = "Medium"> C </string>
     <string name = "Small"> M </string>
-    <string name = "five_minute"> in 5 minutes </string>
+    <string name = "five_minute"> in 5  minutes </string>
     <string name = "ten_minute"> in 10 minutes </string>
     <string name = "fifteen_minute"> in 15 minutes </string>
     <string name = "twelve_minute"> in 20 minutes </string>
@@ -29,6 +29,9 @@
     <string name = "from"> From </string>
     <string name = "to"> To </string>
     <string name = "search"> Search </string>
+    <string name="room_not_exists">Such room does not exist!</string>
+
+<!--    authentication part-->
     <string name = "choose_page"> Welcome </string>
     <string name = "choose_page_btn1"> Student </string>
     <string name = "choose_page_btn2"> Guest </string>
@@ -59,6 +62,8 @@
     <string name="enter_password">Enter password</string>
     <string name="you_exit">You\'re out</string>
     <string name="you_agree">Changes confirmed</string>
+    <string name="reset_password">Reset Password</string>
+
 
     <!--    navigation_drawer-->
     <string name = "open"> Open </string>
