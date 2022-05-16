@@ -609,7 +609,7 @@
         android:onClick="ChangeSoundColor"
         app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         app:itemIconSize="80dp"
-        app:itemVerticalPadding="@dimen/item_vertical_margin"
+        app:itemVerticalPadding="10dp"
         app:menu="@menu/nav_menu">
 
     </com.google.android.material.navigation.NavigationView>
