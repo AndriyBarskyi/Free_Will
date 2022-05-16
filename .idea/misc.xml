@@ -7,9 +7,17 @@
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1796875" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
-
-        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/drawable/popup_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/drawable/rounded_all_borders_dark.xml" value="0.1" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/drawable/rounded_border.xml" value="0.133" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/drawable/teacher_card_stroke.xml" value="0.173" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/drawable/white_regt_schedule.xml" value="0.1" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/activity_review.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/activity_search_popup.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/activity_teachers.xml" value="0.25" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/fragment_feedback_teacher.xml" value="0.25" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/teacher.xml" value="0.264" />
+        <entry key="..\:/Users/Andrii/StudioProjects/Free_Will/app/src/main/res/layout/teacher_card.xml" value="0.264" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/rounded_border.xml" value="0.1" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/rounded_border_white.xml" value="0.1" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_password.xml" value="0.33" />
@@ -18,7 +26,7 @@
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_search_popup.xml" value="0.12006079027355623" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_setting.xml" value="0.246875" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/test.xml" value="0.33" />
-
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/_____.xml" value="0.137" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/_______.xml" value="0.1785" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/________________.xml" value="0.1245" />
@@ -98,7 +106,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.16666666666666666" />
+        <option name="scale" value="0.4" />
       </ProjectState>
     </option>
   </component>

@@ -33,6 +33,47 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <EditText
+            android:id="@+id/search_here"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="75dp"
+            android:background="@drawable/rounded_all_borders_dark"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:hint="@string/teachers_preview"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/search" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="563dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_here"
+            tools:layout_editor_absoluteX="0dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 <!--    <com.google.android.material.navigation.NavigationView-->
 <!--        android:id="@+id/navView"-->

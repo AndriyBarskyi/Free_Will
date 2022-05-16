@@ -75,6 +75,9 @@
     <string name="toolbar_change_schedule">Change Schedule</string>
     <string name="log_out_alert">Do you really want to sign out?</string>
     <string name="alert_header">Attention</string>
+    <string name="zero_stars">0/5</string>
+    <string name="department_name">Department</string>
+    <string name="full_name">Surname Name Patronymic</string>
 
 
 </resources>
