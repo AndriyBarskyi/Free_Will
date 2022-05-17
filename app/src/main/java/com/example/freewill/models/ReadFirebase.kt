@@ -173,8 +173,6 @@ class ReadFirebase {
         val referenceTeacher =
             FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Teachers")
-        val teacher: Teacher = Teacher(fullName, department)
-        referenceTeacher.child(fullName)
     }
 
     fun updateRating(fullName: String, department: String) { // TODO

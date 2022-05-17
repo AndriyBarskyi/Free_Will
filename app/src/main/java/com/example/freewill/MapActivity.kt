@@ -7,7 +7,6 @@ import android.graphics.*
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
-import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
 import com.example.freewill.models.DrawPoints
 import com.example.freewill.models.NavigationClass

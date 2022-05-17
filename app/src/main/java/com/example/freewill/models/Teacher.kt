@@ -5,18 +5,13 @@ import kotlin.math.roundToInt
 
 class Teacher {
     private var fullName
-            : String?
+            : String? = null
     private var ratings
             : MutableMap<String, Int>? = null
     private var ratingsCount: Int = 0
     private var reviews: MutableMap<String, String>? = null
     private var department: String? = null
     private var avgRating: Int = 0
-
-    constructor(fullName: String?, department: String?) {
-        this.fullName = fullName
-        this.department = department
-    }
 
     constructor(
         fullName: String?,
