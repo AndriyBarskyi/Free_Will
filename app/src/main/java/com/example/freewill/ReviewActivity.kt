@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freewill.databinding.ActivityReviewBinding
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ReadFirebase
 import com.example.freewill.models.TeacherCard
 import com.example.freewill.models.TeacherDataAdapter
 import com.google.android.material.navigation.NavigationView
@@ -33,7 +34,7 @@ class ReviewActivity : AppCompatActivity() {
         teachersRecyclerView.setHasFixedSize(true)
 
         teachersArrayList = arrayListOf<TeacherCard>()
-        getTeachersData()
+        val cards = getTeacherCards()
     }
 
 
@@ -53,26 +54,6 @@ class ReviewActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.navView)
         val navigation = NavigationClass(drawerLayout, toggle, navView, this)
         navigation.createNavigationDrawer(this)
-
-    }
-
-    private fun getTeachersData() {
-        dbref = FirebaseDatabase.getInstance().getReference("Teachers")
-        dbref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (teacherSnapshot in snapshot.children) {
-                        val teacher = teacherSnapshot.getValue(TeacherCard::class.java)
-                        teachersArrayList.add(teacher!!)
-                    }
-                    teachersRecyclerView.adapter = TeacherDataAdapter(teachersArrayList)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
     }
 
 }

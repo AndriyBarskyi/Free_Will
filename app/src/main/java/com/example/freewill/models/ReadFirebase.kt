@@ -1,9 +1,7 @@
 package com.example.freewill.models
 
-import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.freewill.ReviewActivity
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.databinding.FragmentScheduleBinding
 import com.google.firebase.auth.ktx.auth
@@ -11,25 +9,25 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class ReadFirebase {
-    val FirebaseData=FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+    val firebaseData =
+        FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
 
-    fun ReadSchedule(group: String?, day:String?,binding: FragmentScheduleBinding) {
+    fun ReadSchedule(group: String?, day: String?, binding: FragmentScheduleBinding) {
 
-        val referenceSchedule = FirebaseData.getReference("Shedule")
-        referenceSchedule.child(group!!).child(day!!).get().addOnSuccessListener{
-            if(it.exists())
-            {
-                val firstpara =it.child("firstpara").child("para").value
-                val secondpara =it.child("secondpara").child("para").value
-                val thirdpara =it.child("thirdpara").child("para").value
-                val fourthpara =it.child("fourthpara").child("para").value
-                val fifthpara =it.child("fifthpara").child("para").value
+        val referenceSchedule = firebaseData.getReference("Shedule")
+        referenceSchedule.child(group!!).child(day!!).get().addOnSuccessListener {
+            if (it.exists()) {
+                val firstpara = it.child("firstpara").child("para").value
+                val secondpara = it.child("secondpara").child("para").value
+                val thirdpara = it.child("thirdpara").child("para").value
+                val fourthpara = it.child("fourthpara").child("para").value
+                val fifthpara = it.child("fifthpara").child("para").value
 
-                val audut1 =it.child("firstpara").child("audutoria").value
-                val audut2 =it.child("secondpara").child("audutoria").value
-                val audut3 =it.child("thirdpara").child("audutoria").value
-                val audut4 =it.child("fourthpara").child("audutoria").value
-                val audut5 =it.child("fifthpara").child("audutoria").value
+                val audut1 = it.child("firstpara").child("audutoria").value
+                val audut2 = it.child("secondpara").child("audutoria").value
+                val audut3 = it.child("thirdpara").child("audutoria").value
+                val audut4 = it.child("fourthpara").child("audutoria").value
+                val audut5 = it.child("fifthpara").child("audutoria").value
 
                 binding.class1.setText(firstpara.toString())
                 binding.class2.setText(secondpara.toString())
@@ -43,9 +41,7 @@ class ReadFirebase {
                 binding.aud4.setText(audut4.toString())
                 binding.aud5.setText(audut5.toString())
                 //Toast.makeText(activity, "Shedule read...", Toast.LENGTH_SHORT).show()
-            }
-            else
-            {
+            } else {
                 //Toast.makeText(activity, "Shedule not read!!!", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener {
@@ -54,36 +50,33 @@ class ReadFirebase {
 
         val user = Firebase.auth.currentUser
         val uid = user!!.uid
-        val referenceScheduleUser = FirebaseData.getReference("Users")
-        referenceScheduleUser.child(uid!!).child("Shedule").child(day).get().addOnSuccessListener{
-            if(it.exists())
-            {
-                val firstpara =it.child("firstpara").value
-                val secondpara =it.child("secondpara").value
-                val thirdpara =it.child("thirdpara").value
-                val fourthpara =it.child("fourthpara").value
-                val fifthpara =it.child("fifthpara").value
+        val referenceScheduleUser = firebaseData.getReference("Users")
+        referenceScheduleUser.child(uid!!).child("Shedule").child(day).get().addOnSuccessListener {
+            if (it.exists()) {
+                val firstpara = it.child("firstpara").value
+                val secondpara = it.child("secondpara").value
+                val thirdpara = it.child("thirdpara").value
+                val fourthpara = it.child("fourthpara").value
+                val fifthpara = it.child("fifthpara").value
 
-                if(firstpara.toString()!="") {
+                if (firstpara.toString() != "") {
                     binding.class1.setText(firstpara.toString())
                 }
-                if(secondpara.toString()!="") {
+                if (secondpara.toString() != "") {
                     binding.class2.setText(secondpara.toString())
                 }
-                if(thirdpara.toString()!="") {
+                if (thirdpara.toString() != "") {
                     binding.class3.setText(thirdpara.toString())
                 }
-                if(fourthpara.toString()!="") {
+                if (fourthpara.toString() != "") {
                     binding.class4.setText(fourthpara.toString())
                 }
-                if(fifthpara.toString()!="") {
+                if (fifthpara.toString() != "") {
                     binding.class5.setText(fifthpara.toString())
                 }
 
                 //Toast.makeText(activity, "Shedule read from User...", Toast.LENGTH_SHORT).show()
-            }
-            else
-            {
+            } else {
                 //Toast.makeText(activity, "Shedule not from user read!!!", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener {
@@ -91,30 +84,33 @@ class ReadFirebase {
         }
     }
 
-    fun UpdateShedule(monday: Day, ChangeDay: String ,activityClass: AppCompatActivity)
-    {
+    fun UpdateShedule(monday: Day, ChangeDay: String, activityClass: AppCompatActivity) {
         val user = Firebase.auth.currentUser
         val uid = user!!.uid
 
-        val referenceShedule = FirebaseData.getReference("Users")
+        val referenceShedule = firebaseData.getReference("Users")
 
         //add user data to database
         referenceShedule.child(uid).child("Shedule").child(ChangeDay!!).setValue(monday)
             .addOnSuccessListener {
                 Toast.makeText(activityClass, "Change of shedule add...", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener{ e ->
-                Toast.makeText(activityClass, "Failed saving shedule due to ${e.message}", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    activityClass,
+                    "Failed saving shedule due to ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
-    fun readGroupUser(onSuccess:(String)->Unit) {
+    fun readGroupUser(onSuccess: (String) -> Unit) {
         val user = Firebase.auth.currentUser
         val uid = user!!.uid
-        var group:String=""
-        val referenceUser = FirebaseData.getReference("Users")
+        var group: String = ""
+        val referenceUser = firebaseData.getReference("Users")
         referenceUser.child(uid).child("groupName").get().addOnSuccessListener {
-            group= when (it.exists()) {
+            group = when (it.exists()) {
                 true -> it.value.toString()
                 false -> ""
             }
@@ -122,7 +118,7 @@ class ReadFirebase {
         }
     }
 
-    fun readFirebaseUser( binding: ActivitySettingBinding) {
+    fun readFirebaseUser(binding: ActivitySettingBinding) {
         val user = Firebase.auth.currentUser
 
         user?.let {
@@ -132,12 +128,13 @@ class ReadFirebase {
             binding.editLogin.setText(name.toString())
             val uid = user.uid
 
-            val referenceUser = FirebaseData.getReference("Users")
+            val referenceUser = firebaseData.getReference("Users")
             referenceUser.child(uid).get().addOnSuccessListener {
                 if (it.exists()) {
                     val group = it.child("groupName").value
                     binding.editGroup.setText(group.toString())
-                } else {}
+                } else {
+                }
             }.addOnFailureListener {}
         }
     }
@@ -167,6 +164,22 @@ class ReadFirebase {
                     ).show()
                 }
         }
+    }
+
+    fun getTeachersCards(): ArrayList<TeacherCard> {
+        val teachersArrayList: ArrayList<TeacherCard> = ArrayList<TeacherCard>()
+        val referenceTeacher =
+            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Teachers")
+        referenceTeacher.get().addOnSuccessListener {
+            if (it.exists()) {
+                for (teacherSnapshot in it.children) {
+                    val teacher = teacherSnapshot.getValue(TeacherCard::class.java)
+                    teachersArrayList.add(teacher!!)
+                }
+            }
+        }
+        return teachersArrayList
     }
 
     fun addRating(fullName: String, department: String) { // TODO
