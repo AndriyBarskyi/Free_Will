@@ -38,7 +38,7 @@
             android:name=".CheckEmailMessageActivity"
             android:exported="false" />
         <activity
-            android:name=".LinksPreviewActivity"
+            android:name="Links.LinksPreviewActivity"
             android:exported="false" />
         <activity
             android:name=".GuestOrStudentActivity"
