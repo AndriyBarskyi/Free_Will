@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/teacherCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:cardCornerRadius="40dp"
-    app:cardElevation="10dp"
+    app:cardElevation="8dp"
     app:strokeColor="@color/less_blue"
-    app:strokeWidth="8dp">
+    app:strokeWidth="8dp"
+    android:layout_marginTop="3dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/teacherPhoto"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/teacherFullName"
@@ -53,23 +57,24 @@
         style="@android:style/Widget.Material.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="10dp"
-        android:max="5" />
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginBottom="6dp"
+        android:progressTint="@color/dark_blue"
+        android:rating="0" />
 
     <TextView
         android:id="@+id/teacherAvgRating"
         android:layout_width="60dp"
         android:layout_height="35dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="316dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/circle_button_dark_blue"
         android:fontFamily="@font/comfortaa"
-        android:textAlignment="center"
         android:text="@string/zero_stars"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"

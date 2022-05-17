@@ -63,8 +63,9 @@ class NavigationClass(
 
                 }
                 R.id.nav_feedback -> {
-//                    val i = Intent(context, SettingActivity::class.java)
-//                    context.startActivity(i)
+                    val i = Intent(context, ReviewActivity::class.java)
+                    context.startActivity(i)
+                    activityClass.finish()
 
                 }
                 R.id.nav_useful_links -> {
