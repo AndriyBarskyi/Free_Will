@@ -1,20 +1,11 @@
 package com.example.freewill
 
-import java.text.SimpleDateFormat
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.MediaPlayer
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +14,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.work.WorkerParameters
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.ReadFirebase
@@ -33,8 +25,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
 import java.util.*
 
 
@@ -234,66 +224,20 @@ class SettingActivity : AppCompatActivity()
 
 
     fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        var hour1 = hour.clone()
-        var minute1 = minute.clone()
-        for (i in 0..(hour.size - 1)) {
-            if (minute[i] - time < 0) {
-                hour1[i] -= 1
-                minute1[i] = 60 + (minute1[i] - time)
-            } else {
-                minute1[i] -= time
-            }
-
-            val calendar = Calendar.getInstance()
-            calendar[Calendar.SECOND] = 0
-            calendar[Calendar.MILLISECOND] = 0
-            calendar[Calendar.MINUTE] = minute1[i]
-            calendar[Calendar.HOUR_OF_DAY] = hour1[i]
-            val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-            val alarmClockInfo = AlarmManager.AlarmClockInfo(
-                calendar.timeInMillis,
-                alarmInfoPendingIntent
-            )
-            alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
-            Toast.makeText(
-                this,
-                "Нагадування встановлене на " + sdf.format(calendar.time),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-
-        // Якщо не працює будильник у android 10,
+        // Якщо не працює будильник у android,
         //потрібно запитати дозвіл на показ вікон поверх інших програм
 //        if (!Settings.canDrawOverlays(this)) {
 //            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
 //                Uri.parse("package:$packageName"))
 //            startActivity(intent)
 //        }
+        // worker- бібліотека
+        //  android developer
+        // DOwork - метод
 
-    }
-
-
-    private val alarmInfoPendingIntent: PendingIntent
-        @SuppressLint("UnspecifiedImmutableFlag")
-        get() {
-            val alarmInfoIntent = Intent(this, SettingActivity::class.java)
-            alarmInfoIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            return PendingIntent.getActivity(
-                this,
-                0,
-                alarmInfoIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
-            )
         }
-    private val alarmActionPendingIntent: PendingIntent
-        @SuppressLint("UnspecifiedImmutableFlag")
-        get() {
-            val intent = Intent(this, AlarmActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            return PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
+
+
 
 
     @SuppressLint("SimpleDateFormat")
@@ -354,7 +298,7 @@ class SettingActivity : AppCompatActivity()
 
         agree2.setOnClickListener(View.OnClickListener(){
             val user = Firebase.auth.currentUser
-            result = true
+            var result = true
             val uid = user!!.uid
 
             val referenceUser = FirebaseDatabase
@@ -463,7 +407,5 @@ class SettingActivity : AppCompatActivity()
         boolSaver(twelve, bindingClass.twelveMinute.isChecked)
 
     }
-
-
 
 }

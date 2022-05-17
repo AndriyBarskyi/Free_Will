@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import android.media.Ringtone
 import android.media.RingtoneManager
 import android.os.Bundle
+import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 
 class AlarmActivity : AppCompatActivity() {
@@ -24,16 +25,18 @@ class AlarmActivity : AppCompatActivity() {
         tenMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
         fifteenMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
         twelveMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
-        if (a.bindingClass.fiveMinute.isChecked)
-            soundPlay(fiveMedia!!)
-        if (a.bindingClass.fiveMinute.isChecked)
-            soundPlay(tenMedia!!)
-        if (a.bindingClass.fiveMinute.isChecked)
-            soundPlay(fifteenMedia!!)
-        if (a.bindingClass.fiveMinute.isChecked)
-            soundPlay(twelveMedia!!)
-    }
 
+        if (a.resLang?.getBoolean(a.five, false) == true)
+            soundPlay(fiveMedia!!)
+        if (a.resLang?.getBoolean(a.ten, false) == true)
+            soundPlay(tenMedia!!)
+        if (a.resLang?.getBoolean(a.fifteen, false) == true)
+            soundPlay(fifteenMedia!!)
+        if (a.resLang?.getBoolean(a.twelve, false) == true)
+            soundPlay(twelveMedia!!)
+
+        soundPlay(fiveMedia!!)
+    }
     override fun onDestroy() {
         fiveMedia!!.stop()
         super.onDestroy()
