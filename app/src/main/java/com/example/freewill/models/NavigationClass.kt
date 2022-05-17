@@ -68,9 +68,9 @@ class NavigationClass(
 
                 }
                 R.id.nav_useful_links -> {
-//                    val i = Intent(context, SettingActivity::class.java)
-//                    context.startActivity(i)
-
+                    val i = Intent(context, LinksPreviewActivity::class.java)
+                    context.startActivity(i)
+                    activityClass.finish()
                 }
 
             }
