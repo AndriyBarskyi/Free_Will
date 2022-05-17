@@ -56,6 +56,22 @@ class NavigationClass(
                     showAlertMessage(activityClass)
 
                 }
+                R.id.nav_news -> {
+                    val i = Intent(context, NewsActivity::class.java)
+                    context.startActivity(i)
+                    activityClass.finish()
+
+                }
+                R.id.nav_feedback -> {
+//                    val i = Intent(context, SettingActivity::class.java)
+//                    context.startActivity(i)
+
+                }
+                R.id.nav_useful_links -> {
+//                    val i = Intent(context, SettingActivity::class.java)
+//                    context.startActivity(i)
+
+                }
 
             }
             true

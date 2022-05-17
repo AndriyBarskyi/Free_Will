@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_edit_schedule.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_edit_setting.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_setting.xml" value="0.14780701754385964" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_edit_schedule_.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1796875" />
@@ -27,10 +31,14 @@
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/circles_down_right.xml" value="0.1025" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/circles_up_1.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/circles_up_2.xml" value="0.1025" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/ic_rounded_layout_corners.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/lion.xml" value="0.1595" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/lion1.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/progress_bar.xml" value="0.1595" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/progress_bar_background.xml" value="0.1" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/rounded_all_borders_dark.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/rounded_border.xml" value="0.1" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/drawable/rounded_border_dark_blue.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/font/comfortaa.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout-hdpi/activity_schedule_page.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_email_entrance.xml" value="0.13595553655408293" />
@@ -42,6 +50,7 @@
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_edit_setting.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_guest_or_student.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_letter_entrance.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_links_preview.xml" value="0.1280701754385965" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_map.xml" value="0.1" />
         <entry key="..\:/Users/Marta/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_profile.xml" value="0.1" />
