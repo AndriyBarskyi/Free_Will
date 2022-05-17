@@ -166,21 +166,28 @@ class ReadFirebase {
         }
     }
 
-    fun getTeachersCards(): ArrayList<TeacherCard> {
+/*    fun getTeachersCards(): ArrayList<TeacherCard> {
         val teachersArrayList: ArrayList<TeacherCard> = ArrayList<TeacherCard>()
-        val referenceTeacher =
-            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Teachers")
-        referenceTeacher.get().addOnSuccessListener {
+        val referenceTeacher = firebaseData.getReference("Teachers")
+        referenceTeacher.child("Головатий Юрій Данилович").get().addOnSuccessListener {
+            var tc: TeacherCard = TeacherCard(
+                it.child("avgRating").value as Double?,
+                it.child("department").value as String?,
+                it.child("fullName").value as String?,
+                it.child("photo").value as String?
+            )
+            teachersArrayList.add(tc)
+        }
+*//*        referenceTeacher.get().addOnSuccessListener {
             if (it.exists()) {
                 for (teacherSnapshot in it.children) {
                     val teacher = teacherSnapshot.getValue(TeacherCard::class.java)
                     teachersArrayList.add(teacher!!)
                 }
             }
-        }
+        }*//*
         return teachersArrayList
-    }
+    }*/
 
     fun addRating(fullName: String, department: String) { // TODO
         val referenceTeacher =

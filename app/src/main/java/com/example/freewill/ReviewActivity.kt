@@ -9,15 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freewill.databinding.ActivityReviewBinding
 import com.example.freewill.models.NavigationClass
-import com.example.freewill.models.ReadFirebase
 import com.example.freewill.models.TeacherCard
 import com.example.freewill.models.TeacherDataAdapter
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.database.*
+import com.google.firebase.database.FirebaseDatabase
 
-private lateinit var dbref: DatabaseReference
 private lateinit var teachersRecyclerView: RecyclerView
-private lateinit var teachersArrayList: ArrayList<TeacherCard>
+lateinit var teachersArrayList: ArrayList<TeacherCard>
 lateinit var toggle: ActionBarDrawerToggle
 lateinit var reviewBinding: ActivityReviewBinding
 lateinit var drawerLayout: DrawerLayout
@@ -26,19 +24,44 @@ class ReviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         reviewBinding = ActivityReviewBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_review)
+        setContentView(reviewBinding.root)
         createNavigationMenu()
 
-        teachersRecyclerView = findViewById(R.id.teachersRecycler)
+        teachersRecyclerView = reviewBinding.teachersRecycler
         teachersRecyclerView.layoutManager = LinearLayoutManager(this)
         teachersRecyclerView.setHasFixedSize(true)
-
-        teachersArrayList = arrayListOf<TeacherCard>()
-        val cards = getTeacherCards()
+        teachersArrayList = ArrayList()
+        val referenceTeacher =
+            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Teachers")
+        referenceTeacher.get().addOnSuccessListener {
+            for (teacherSnapshot in it.children) {
+                val teacher = TeacherCard(
+                    teacherSnapshot.child("avgRating").value as String?,
+                    teacherSnapshot.child("department").value as String?,
+                    teacherSnapshot.child("fullName").value as String?,
+                    reviewBinding.root.resources.getIdentifier("@drawable/" + teacherSnapshot.child("photo").value as String?, null,
+                        packageName
+                    ).toString()
+                )
+                teachersArrayList.add(teacher)
+            }
+/*            var tc: TeacherCard = TeacherCard(
+                it.child("avgRating").value as Double?,
+                it.child("department").value as String?,
+                it.child("fullName").value as String?,
+                it.child("photo").value as String?
+            )*/
+            //teachersArrayList.add(tc)
+            teachersRecyclerView.adapter = TeacherDataAdapter(teachersArrayList)
+        }
     }
 
+    fun getThis(): ReviewActivity {
+        return this
+    }
 
-    fun createNavigationMenu() {
+    private fun createNavigationMenu() {
         // assigning ID of the toolbar to a variable
         val toolbar: Toolbar = reviewBinding.toolbar
 

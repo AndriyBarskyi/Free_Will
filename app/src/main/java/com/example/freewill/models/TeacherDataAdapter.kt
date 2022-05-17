@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.freewill.R
 import com.google.android.material.imageview.ShapeableImageView
 
+
 class TeacherDataAdapter(private var teacherCardList: ArrayList<TeacherCard>) :
     RecyclerView.Adapter<TeacherDataAdapter.TeacherViewHolder>() {
 
@@ -23,11 +24,13 @@ class TeacherDataAdapter(private var teacherCardList: ArrayList<TeacherCard>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TeacherViewHolder, position: Int) {
         val currentItem = teacherCardList[position]
-        holder.avgStarsRating.rating = currentItem.avgRating!!
+        holder.avgStarsRating.rating = currentItem.avgRating?.toFloat()!!
         holder.avgRating.text = "${currentItem.avgRating}/5"
         holder.department.text = currentItem.department
         holder.fullName.text = currentItem.fullName
-        holder.photo.setImageURI(Uri.parse(currentItem.photo))
+        //holder.photo.setImageURI(null)
+        currentItem.photo?.let { holder.photo.setImageResource(it.toInt()) }
+
     }
 
     override fun getItemCount(): Int {
