@@ -43,14 +43,6 @@ class ScheduleActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.toolbar_schedule)
         setSupportActionBar(toolbar)
 
-        adapter = ScheduleAdapter(this,)
-        viewPager = findViewById(R.id.pager)
-        viewPager.adapter=adapter
-        binding.ChangeBtn1.setOnClickListener {
-            startActivity(Intent(this, EditScheduleActivity::class.java))
-        }
-
-
 //      Navigation bar
         drawerLayout = findViewById(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
@@ -58,6 +50,16 @@ class ScheduleActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.navView)
         val navigation = NavigationClass(drawerLayout, toggle, navView, this)
         navigation.createNavigationDrawer(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter = ScheduleAdapter(this)
+        viewPager = findViewById(R.id.pager)
+        viewPager.adapter=adapter
+        binding.ChangeBtn1.setOnClickListener {
+            startActivity(Intent(this, EditScheduleActivity::class.java))
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

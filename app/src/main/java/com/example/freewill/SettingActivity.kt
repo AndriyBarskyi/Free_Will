@@ -316,9 +316,9 @@ class SettingActivity : AppCompatActivity()
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
-    fun changeB(view:View){
-        // call checking the password
-        CheckPassword(R.layout.activity_check_password, view)
+    fun changeB(view: View) {
+            // call checking the password
+            CheckPassword(R.layout.activity_check_password, view)
     }
 
     // checking the password
@@ -394,14 +394,8 @@ class SettingActivity : AppCompatActivity()
             //не працює
             //val userID = firebaseAuth.uid
 
-//            val groupName = when(popupView.findViewById(R.id.editGroup).text.toString() =="")
-//            {
-//                true->
-//            }
             val groupName = popupView.findViewById(R.id.editGroup)as EditText
             val userName = popupView.findViewById(R.id.editLogin) as EditText
-            val users = User(groupName.text.toString().trim())
-
             val profileUpdates = userProfileChangeRequest {
                 displayName = userName.text.toString().trim()
             }
@@ -410,7 +404,7 @@ class SettingActivity : AppCompatActivity()
                 .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                 .getReference("Users")
 
-            reference.child(uid!! ).setValue(users)
+            reference.child(uid!! ).child("groupName").setValue(groupName.text.toString().trim())
 
         })
     }
