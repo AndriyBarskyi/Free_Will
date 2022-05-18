@@ -1,8 +1,10 @@
 package com.example.freewill
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +15,7 @@ import com.example.freewill.models.TeacherCard
 import com.example.freewill.models.TeacherDataAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.FirebaseDatabase
+
 
 private lateinit var teachersRecyclerView: RecyclerView
 lateinit var teachersArrayList: ArrayList<TeacherCard>
@@ -55,10 +58,11 @@ class ReviewActivity : AppCompatActivity() {
             //teachersArrayList.add(tc)
             teachersRecyclerView.adapter = TeacherDataAdapter(teachersArrayList)
         }
-    }
 
-    fun getThis(): ReviewActivity {
-        return this
+        /*reviewBinding.search.setOnClickListener {
+            reviewBinding.toolbar.title = ""
+            reviewBinding.searchHere.isVisible
+        }*/
     }
 
     private fun createNavigationMenu() {
