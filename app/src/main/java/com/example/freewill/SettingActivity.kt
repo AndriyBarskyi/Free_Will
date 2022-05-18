@@ -14,19 +14,25 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.work.WorkerParameters
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.ReadFirebase
-import com.example.freewill.models.User
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import android.widget.Button
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.os.Build
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
+import java.text.SimpleDateFormat
 import java.util.*
-
 
 class SettingActivity : AppCompatActivity()
 {
@@ -45,9 +51,9 @@ class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hour:IntArray= intArrayOf(8,10,11,13)
-    val minute:IntArray= intArrayOf(55,10,50,30)
-    val time:IntArray= intArrayOf(5,10,15,20)
+    val hours:IntArray= intArrayOf(11,10,11,13)
+    val minutes:IntArray= intArrayOf(47,10,50,30)
+    val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
@@ -75,7 +81,7 @@ class SettingActivity : AppCompatActivity()
 
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceAsColor", "CutPasteId", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -193,17 +199,22 @@ class SettingActivity : AppCompatActivity()
 
 
 
-        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
-            count = resLang?.getInt("count", 1)!!
-            when(count){
-                0->{count=1}
-                1->{count=2}
-                2->{count=0
-                    rememberCheckBox()
-                }
-            }
-            SoundButton(count!!)
-            intSaver("count", count!!)
+//        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
+//            count = resLang?.getInt("count", 1)!!
+//            when(count){
+//                0->{count=1}
+//                1->{count=2}
+//                2->{count=0
+//                    rememberCheckBox()
+//                }
+//            }
+//            SoundButton(count!!)
+//            intSaver("count", count!!)
+//        })
+        val setAlarm = findViewById<ImageButton>(R.id.soundButton);
+        setAlarm?.setOnClickListener(View.OnClickListener { v: View? ->
+            val res = ResultTime(timesTo[0],0)
+            Alarmm(res[0],res[1])
         })
 
 
@@ -221,9 +232,81 @@ class SettingActivity : AppCompatActivity()
         ReadUser.readFirebaseUser(bindingClass)
     }
 
+    fun ResultTime(time: Int, i: Int): IntArray {
+        val tempHours: IntArray = hours.copyOf()
+        val tempMinutes: IntArray = minutes.copyOf()
+        if (tempMinutes[i] - time >= 0) {
+            tempMinutes[i] -= time
+        } else {
+            tempMinutes[i] = 60 + tempMinutes[i] - time
+            tempHours[i] -= 1
+        }
+        return intArrayOf(tempHours[i], tempMinutes[i]);
+    }
 
 
-    fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun Alarmm(hour:Int, minute:Int){
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val materialTimePicker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setHour(12)
+            .setMinute(0)
+            .setTitleText("Нагадування")
+            .build()
+
+        val calendar = Calendar.getInstance()
+        calendar[Calendar.SECOND] = 0
+        calendar[Calendar.MILLISECOND] = 0
+        calendar[Calendar.MINUTE] = minute
+        calendar[Calendar.HOUR_OF_DAY] = hour
+
+        val alarmManager =
+            getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
+        val alarmClockInfo = AlarmManager.AlarmClockInfo(
+            calendar.timeInMillis,
+            alarmInfoPendingIntent
+        )
+
+        alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
+        Toast.makeText(
+            this,
+            "Нагадування встановлене о " + sdf.format(calendar.time),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private val alarmInfoPendingIntent: PendingIntent
+        @SuppressLint("UnspecifiedImmutableFlag") get() {
+            val alarmInfoIntent = Intent(this, SettingActivity::class.java)
+            alarmInfoIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            return PendingIntent.getActivity(
+                this,
+                0,
+                alarmInfoIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
+    private val alarmActionPendingIntent: PendingIntent
+        @SuppressLint("UnspecifiedImmutableFlag") get() {
+            val intent = Intent(this, AlarmActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            return PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
         // Якщо не працює будильник у android,
         //потрібно запитати дозвіл на показ вікон поверх інших програм
 //        if (!Settings.canDrawOverlays(this)) {
@@ -235,26 +318,38 @@ class SettingActivity : AppCompatActivity()
         //  android developer
         // DOwork - метод
 
+//        }
+
+
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("SimpleDateFormat")
+    fun rememberCheckBox(){
+        for (i in 0..(hours.size-1)){
+            if (bindingClass.fiveMinute.isChecked)
+            {
+                val res = ResultTime(timesTo[0],0)
+                Alarmm(res[0],res[1])
+            }
+            if (bindingClass.tenMinute.isChecked)
+            {
+                val res = ResultTime(timesTo[1],0)
+                Alarmm(res[0],res[1])
+            }
+            if (bindingClass.fifteenMinute.isChecked)
+            {
+                val res = ResultTime(timesTo[2],0)
+                Alarmm(res[0],res[1])
+            }
+            if (bindingClass.twelveMinute.isChecked)
+            {
+                val res = ResultTime(timesTo[3],0)
+                Alarmm(res[0],res[1])
+            }
         }
 
 
-
-
-    @SuppressLint("SimpleDateFormat")
-    fun rememberCheckBox(){
-        val fiveMin = bindingClass.fiveMinute.isChecked
-        val tenMinute = bindingClass.tenMinute.isChecked
-        val fifteenMinute = bindingClass.fifteenMinute.isChecked
-        val twelveMinute = bindingClass.twelveMinute.isChecked
-
-        if (fiveMin)
-            Alarmm(hour, minute, time[0])
-        if (tenMinute)
-            Alarmm(hour, minute, time[1])
-        if (fifteenMinute)
-            Alarmm(hour, minute, time[2])
-        if (twelveMinute)
-            Alarmm(hour, minute, time[3])
     }
 
 
