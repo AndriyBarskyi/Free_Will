@@ -1,18 +1,14 @@
 package com.example.freewill.models
 
-import android.app.Activity
+import Links.LinksPreviewActivity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.navigation.NavigationView
-import android.view.View
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.*
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -68,9 +64,9 @@ class NavigationClass(
 
                 }
                 R.id.nav_useful_links -> {
-//                    val i = Intent(context, SettingActivity::class.java)
-//                    context.startActivity(i)
-
+                    val i = Intent(context, LinksPreviewActivity::class.java)
+                    context.startActivity(i)
+                    activityClass.finish()
                 }
 
             }

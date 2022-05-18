@@ -29,13 +29,16 @@
             android:name=".EditScheduleActivity"
             android:exported="false" />
         <activity
-            android:name=".MapActivity"
+            android:name=".WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".ScheduleActivity"
             android:exported="false" />
         <activity
             android:name=".CheckEmailMessageActivity"
+            android:exported="false" />
+        <activity
+            android:name="Links.LinksPreviewActivity"
             android:exported="false" />
         <activity
             android:name=".GuestOrStudentActivity"
@@ -53,7 +56,7 @@
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".MapActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

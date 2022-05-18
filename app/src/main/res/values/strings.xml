@@ -77,6 +77,7 @@
     <string name="toolbar_change_schedule">Зміна розкладу</string>
     <string name="log_out_alert">Ви справді бажаєте вийти з акаунта?</string>
     <string name="alert_header">Попередження</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 
     <string name="links_preview">Оберіть предмет</string>
