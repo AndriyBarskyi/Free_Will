@@ -56,9 +56,6 @@
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".AlarmActivity"
-            android:exported="false" />
-        <activity
             android:name=".WelcomeActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -68,6 +65,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AlarmActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
