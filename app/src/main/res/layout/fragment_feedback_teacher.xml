@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".search_point.LinksFragment">
+    tools:context=".LinksFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,9 +15,10 @@
             android:layout_width="110dp"
             android:layout_height="105dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="50dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/yuriygolovaty" />
@@ -32,7 +33,7 @@
             android:background="@drawable/rounded_border"
             android:fontFamily="@font/comfortaa"
             android:paddingStart="10dp"
-            android:text="@string/golovatyy_name"
+            android:text="@string/full_name"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -218,12 +219,12 @@
             app:srcCompat="@drawable/plus" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="391dp"
+            android:layout_width="match_parent"
             android:layout_height="274dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="567dp"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="445dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

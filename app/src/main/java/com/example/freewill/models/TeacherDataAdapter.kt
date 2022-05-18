@@ -28,7 +28,6 @@ class TeacherDataAdapter(private var teacherCardList: ArrayList<TeacherCard>) :
         holder.avgRating.text = "${currentItem.avgRating}/5"
         holder.department.text = currentItem.department
         holder.fullName.text = currentItem.fullName
-        //holder.photo.setImageURI(null)
         currentItem.photo?.let { holder.photo.setImageResource(it.toInt()) }
 
     }

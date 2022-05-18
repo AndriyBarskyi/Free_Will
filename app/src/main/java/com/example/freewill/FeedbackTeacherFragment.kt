@@ -1,4 +1,4 @@
-package com.example.freewill.search_point
+package com.example.freewill
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
