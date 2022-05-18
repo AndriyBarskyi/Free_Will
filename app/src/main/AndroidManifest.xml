@@ -41,6 +41,9 @@
             android:name=".CheckEmailMessageActivity"
             android:exported="false" />
         <activity
+            android:name="Links.LinksPreviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".GuestOrStudentActivity"
             android:exported="false" />
         <activity

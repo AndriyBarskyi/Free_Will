@@ -24,7 +24,7 @@ class ScheduleFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, завантаженийInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, InstanceState: Bundle?) {
         val ReadGroup = ReadFirebase()
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             //val position = getInt(ARG_OBJECT)
