@@ -27,8 +27,12 @@
             android:id="@+id/tvTitle"
             android:layout_width="335dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="75"
-            android:layout_marginTop="10"
-            android:text="TextView" />
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="ggggg"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
