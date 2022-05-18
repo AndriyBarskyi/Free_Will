@@ -26,7 +26,9 @@ import com.google.firebase.ktx.Firebase
 import android.widget.Button
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.net.Uri
 import android.os.Build
+import android.provider.Settings
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -51,8 +53,8 @@ class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(11,10,11,13)
-    val minutes:IntArray= intArrayOf(47,10,50,30)
+    val hours:IntArray= intArrayOf(1,11,11,13)
+    val minutes:IntArray= intArrayOf(15,20,50,30)
     val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
@@ -69,7 +71,7 @@ class SettingActivity : AppCompatActivity()
     fun SetSizeFont(size_coef: Float)
     {
         val configuration = resources.configuration
-        configuration.fontScale = size_coef //0.85 small size, 1 normal size, 1,15 big etc
+        configuration.fontScale = size_coef
 
 
         val metrics = DisplayMetrics()
@@ -199,23 +201,23 @@ class SettingActivity : AppCompatActivity()
 
 
 
-//        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
-//            count = resLang?.getInt("count", 1)!!
-//            when(count){
-//                0->{count=1}
-//                1->{count=2}
-//                2->{count=0
-//                    rememberCheckBox()
-//                }
-//            }
-//            SoundButton(count!!)
-//            intSaver("count", count!!)
-//        })
-        val setAlarm = findViewById<ImageButton>(R.id.soundButton);
-        setAlarm?.setOnClickListener(View.OnClickListener { v: View? ->
-            val res = ResultTime(timesTo[0],0)
-            Alarmm(res[0],res[1])
+        bindingClass.soundButton.setOnClickListener(View.OnClickListener{
+            count = resLang?.getInt("count", 1)!!
+            when(count){
+                0->{count=1}
+                1->{count=2}
+                2->{count=0
+                    ActivateCheckBox()
+                }
+            }
+            SoundButton(count!!)
+            intSaver("count", count!!)
         })
+//        val setAlarm = findViewById<ImageButton>(R.id.soundButton);
+//        setAlarm?.setOnClickListener(View.OnClickListener { v: View? ->
+//            val res = ResultTime(timesTo[0],0)
+//            Alarmm(res[0],res[1])
+//        })
 
 
 
@@ -232,17 +234,7 @@ class SettingActivity : AppCompatActivity()
         ReadUser.readFirebaseUser(bindingClass)
     }
 
-    fun ResultTime(time: Int, i: Int): IntArray {
-        val tempHours: IntArray = hours.copyOf()
-        val tempMinutes: IntArray = minutes.copyOf()
-        if (tempMinutes[i] - time >= 0) {
-            tempMinutes[i] -= time
-        } else {
-            tempMinutes[i] = 60 + tempMinutes[i] - time
-            tempHours[i] -= 1
-        }
-        return intArrayOf(tempHours[i], tempMinutes[i]);
-    }
+
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -296,62 +288,50 @@ class SettingActivity : AppCompatActivity()
 
 
 
-
-
-
-
-
-
-
-
-
-
-//    fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
+    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("SimpleDateFormat")
+    fun ActivateCheckBox(){
         // Якщо не працює будильник у android,
         //потрібно запитати дозвіл на показ вікон поверх інших програм
 //        if (!Settings.canDrawOverlays(this)) {
-//            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//            val intent = Intent(
+//                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
 //                Uri.parse("package:$packageName"))
 //            startActivity(intent)
 //        }
-        // worker- бібліотека
-        //  android developer
-        // DOwork - метод
-
-//        }
-
-
-
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    @SuppressLint("SimpleDateFormat")
-    fun rememberCheckBox(){
-        for (i in 0..(hours.size-1)){
-            if (bindingClass.fiveMinute.isChecked)
-            {
-                val res = ResultTime(timesTo[0],0)
-                Alarmm(res[0],res[1])
-            }
-            if (bindingClass.tenMinute.isChecked)
-            {
-                val res = ResultTime(timesTo[1],0)
-                Alarmm(res[0],res[1])
-            }
-            if (bindingClass.fifteenMinute.isChecked)
-            {
-                val res = ResultTime(timesTo[2],0)
-                Alarmm(res[0],res[1])
-            }
-            if (bindingClass.twelveMinute.isChecked)
-            {
-                val res = ResultTime(timesTo[3],0)
-                Alarmm(res[0],res[1])
-            }
+        if (bindingClass.fiveMinute.isChecked)
+        {
+            val res = ResultTime(timesTo[0],0)
+            Alarmm(res[0],res[1])
         }
-
-
+        if (bindingClass.tenMinute.isChecked)
+        {
+            val res = ResultTime(timesTo[1],0)
+            Alarmm(res[0],res[1])
+        }
+        if (bindingClass.fifteenMinute.isChecked)
+        {
+            val res = ResultTime(timesTo[2],0)
+            Alarmm(res[0],res[1])
+        }
+        if (bindingClass.twelveMinute.isChecked)
+        {
+            val res = ResultTime(timesTo[3],0)
+            Alarmm(res[0],res[1])
+        }
     }
 
+    fun ResultTime(time: Int, i: Int): IntArray {
+        val tempHours: IntArray = hours.copyOf()
+        val tempMinutes: IntArray = minutes.copyOf()
+        if (tempMinutes[i] - time >= 0) {
+            tempMinutes[i] -= time
+        } else {
+            tempMinutes[i] = 60 + tempMinutes[i] - time
+            tempHours[i] -= 1
+        }
+        return intArrayOf(tempHours[i], tempMinutes[i]);
+    }
 
     fun SoundButton(count:Int){
         when(count){
