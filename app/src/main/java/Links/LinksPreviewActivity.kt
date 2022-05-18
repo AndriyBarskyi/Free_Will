@@ -7,6 +7,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.example.freewill.EditSchedule_Fragment
 import com.example.freewill.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -33,10 +35,19 @@ class LinksPreviewActivity : AppCompatActivity() {
             onSuccess(array)
         }
     }
+    private fun OpenFrag(f:Fragment, idHolder:Int) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(idHolder,f)
+            .commit()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_links_preview)
+        OpenFrag(LinkFragment.newInstance(), R.id.frame)
         readSubjects(){array->CreateItem(array)}
+
+        //supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView4, LinkFragment.newInstance()).commit()
     }
     fun CreateItem(languages:Array<String>)
     {
