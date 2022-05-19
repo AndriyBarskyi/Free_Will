@@ -4,20 +4,26 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freewill.databinding.ActivityLoginBinding
 import com.example.freewill.databinding.ActivityNewsBinding
+import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.NewsAdapter
 import com.example.freewill.models.NewsModel
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 
 class NewsActivity : AppCompatActivity() {
 
 //    private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityNewsBinding
-    private lateinit var database: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
     private lateinit var newsList: ArrayList<NewsModel>
     private lateinit var newsAdapter: NewsAdapter
 
@@ -25,38 +31,45 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
 
-        //reference of table 'Users'
-        databaseReference = database.getReference("News")
+        val newsRecycler = binding.newsRecycler
+        newsRecycler.layoutManager = LinearLayoutManager(this)
+        newsRecycler.setHasFixedSize(true)
+        //recyclerView.adapter = newsAdapter
 
-//        newsList = ArrayList()
-
-//        newsAdapter = NewsAdapter(this, newsList)
-        getData()
-        val recyclerView = binding.recylerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.setHasFixedSize(true)
-//        recyclerView.adapter = newsAdapter
-    }
-
-
-    private fun getData(){
-        val newsList = ArrayList<NewsModel>()
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                for(data in dataSnapshot.children){
-                    var model = data.getValue(NewsModel::class.java)
-                    newsList.add(model as NewsModel)
-                }
+        newsList = ArrayList()
+        val referenceNews =
+            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("News")
+        referenceNews.get().addOnSuccessListener {
+            for (newsSnapshot in it.children) {
+                val news = NewsModel(
+                    newsSnapshot.child("Header").value as String,
+                    newsSnapshot.child("Description").value as String,
+                    newsSnapshot.child("Date").value as String,
+                    //it.child("Url").value as ImageView
+                )
+                newsList.add(news)
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
-            }
+            newsRecycler.adapter = NewsAdapter(this,newsList)
         }
-        databaseReference.addValueEventListener(postListener)
+
+
+        // assigning ID of the toolbar to a variable
+        val toolbar: Toolbar = binding.toolbar
+
+        // using toolbar as ActionBar
+        toolbar.setTitle(R.string.toolbar_schedule)
+        setSupportActionBar(toolbar)
+
+//      Navigation bar
+        drawerLayout = findViewById(R.id.drawerLayout)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        val navView: NavigationView = findViewById(R.id.navView)
+        val navigation = NavigationClass(drawerLayout, toggle, navView, this)
+        navigation.createNavigationDrawer(this)
     }
+
 }
