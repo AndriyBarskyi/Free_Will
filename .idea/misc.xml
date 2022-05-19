@@ -5,9 +5,19 @@
       <map>
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_links_preview.xml" value="0.1" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_news.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_review.xml" value="0.1513157894736842" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_schedule.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_teachers.xml" value="0.1513157894736842" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/feedback.xml" value="0.1513157894736842" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_edit_schedule_.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_feedback_teacher.xml" value="0.1513157894736842" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_link.xml" value="0.1513157894736842" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_schedule.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/link.xml" value="0.1" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/news_recycleview_item.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/sign_in_dialog.xml" value="0.1513157894736842" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/teacher.xml" value="0.1513157894736842" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/teacher_card.xml" value="0.1513157894736842" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_news.xml" value="0.1" />

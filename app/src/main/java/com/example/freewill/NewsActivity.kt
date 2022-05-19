@@ -24,8 +24,6 @@ class NewsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewsBinding
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
-    private lateinit var database: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
     private lateinit var newsList: ArrayList<NewsModel>
     private lateinit var newsAdapter: NewsAdapter
 
@@ -33,6 +31,11 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val newsRecycler = binding.newsRecycler
+        newsRecycler.layoutManager = LinearLayoutManager(this)
+        newsRecycler.setHasFixedSize(true)
+        //recyclerView.adapter = newsAdapter
 
         newsList = ArrayList()
         val referenceNews =
@@ -44,19 +47,13 @@ class NewsActivity : AppCompatActivity() {
                     newsSnapshot.child("Header").value as String,
                     newsSnapshot.child("Description").value as String,
                     newsSnapshot.child("Date").value as String,
-                    newsSnapshot.child("Url").value as ImageView
+                    //it.child("Url").value as ImageView
                 )
                 newsList.add(news)
             }
 
-
-
-//        newsAdapter = NewsAdapter(this, newsList)
-        //getData()
-        val recyclerView = binding.recylerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.setHasFixedSize(true)
-//        recyclerView.adapter = newsAdapter
+            newsRecycler.adapter = NewsAdapter(this,newsList)
+        }
 
 
         // assigning ID of the toolbar to a variable
@@ -75,23 +72,4 @@ class NewsActivity : AppCompatActivity() {
         navigation.createNavigationDrawer(this)
     }
 
-
-    fun getData(){
-        val newsList = ArrayList<NewsModel>()
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                for(data in dataSnapshot.children){
-                    var model = data.getValue(NewsModel::class.java)
-                    newsList.add(model as NewsModel)
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        databaseReference.addValueEventListener(postListener)
-    }
 }
