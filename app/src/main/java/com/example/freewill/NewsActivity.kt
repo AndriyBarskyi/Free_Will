@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -32,15 +33,26 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        database = FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
 
-        //reference of table 'Users'
-        databaseReference = database.getReference("News")
+        newsList = ArrayList()
+        val referenceNews =
+            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("News")
+        referenceNews.get().addOnSuccessListener {
+            for (newsSnapshot in it.children) {
+                val news = NewsModel(
+                    newsSnapshot.child("Header").value as String,
+                    newsSnapshot.child("Description").value as String,
+                    newsSnapshot.child("Date").value as String,
+                    newsSnapshot.child("Url").value as ImageView
+                )
+                newsList.add(news)
+            }
 
-//        newsList = ArrayList()
+
 
 //        newsAdapter = NewsAdapter(this, newsList)
-        getData()
+        //getData()
         val recyclerView = binding.recylerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 //        recyclerView.setHasFixedSize(true)
@@ -64,7 +76,7 @@ class NewsActivity : AppCompatActivity() {
     }
 
 
-    private fun getData(){
+    fun getData(){
         val newsList = ArrayList<NewsModel>()
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
