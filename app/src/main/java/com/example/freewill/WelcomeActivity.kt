@@ -30,7 +30,7 @@ class WelcomeActivity : AppCompatActivity() {
     {
         a.resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
         LocaleHelper.setLocale(this, a.resLang?.getString(a.keyLanguage, a.mLanguageCodeUa)!!)
-        when(a.resLang?.getString(a.keyFont, a.medium)!!){
+        when(a.resLang!!.getString(a.keyFont, a.medium)!!){
             a.small->{SetSizeFont(a.smallSize)}
             a.medium->{SetSizeFont(a.mediumSize)}
             a.big->{SetSizeFont(a.bigSize) }

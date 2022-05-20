@@ -26,9 +26,7 @@ import com.google.firebase.ktx.Firebase
 import android.widget.Button
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.net.Uri
 import android.os.Build
-import android.provider.Settings
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -36,8 +34,10 @@ import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SettingActivity : AppCompatActivity()
+open class SettingActivity : AppCompatActivity()
 {
+    val period = "period"
+    val clockIndex = "index"
     val baseForSetting = "LANGUAGE"
     val keyLanguage = "chooseLang"
     val keyFont ="font"
@@ -53,9 +53,9 @@ class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(1,11,11,13)
-    val minutes:IntArray= intArrayOf(15,20,50,30)
-    val timesTo:IntArray= intArrayOf(5,10,15,20)
+    val hours:IntArray= intArrayOf(13,13,11,13)
+    val minutes:IntArray= intArrayOf(0,2,50,30)
+    val timesTo:IntArray= intArrayOf(0,10,15,20)
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
@@ -72,15 +72,10 @@ class SettingActivity : AppCompatActivity()
     {
         val configuration = resources.configuration
         configuration.fontScale = size_coef
-
-
         val metrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(metrics)
         metrics.scaledDensity = configuration.fontScale * metrics.density
         baseContext.resources.updateConfiguration(configuration, metrics)
-        //TypedValue.COMPLEX_UNIT_DIP
-        //
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -133,7 +128,11 @@ class SettingActivity : AppCompatActivity()
         bindingClass.fifteenMinute.isChecked = resLang?.getBoolean(fifteen, false)!!
         bindingClass.twelveMinute.isChecked = resLang?.getBoolean(twelve, false)!!
 
+
         setContentView(bindingClass.root)
+
+
+
 
 
         //set background
@@ -190,34 +189,52 @@ class SettingActivity : AppCompatActivity()
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
             finish()
         }
+
         bindingClass.fiveMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(bindingClass.fiveMinute.isChecked,
+                false,false,false)
+        })
         bindingClass.tenMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(false,
+                bindingClass.tenMinute.isChecked,false,false)
+        })
         bindingClass.fifteenMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(false,
+                false, bindingClass.fifteenMinute.isChecked,false)
+        })
         bindingClass.twelveMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(false,
+                false,false, bindingClass.twelveMinute.isChecked)
+        })
 
 
 
         bindingClass.soundButton.setOnClickListener(View.OnClickListener{
             count = resLang?.getInt("count", 1)!!
             when(count){
-                0->{count=1}
-                1->{count=2}
-                2->{count=0
-                    ActivateCheckBox()
+                0->{
+                    count=1
+                    selectCheckBox(false,false,false,false)
+                    intSaver(clockIndex, 0)
+                }
+                1->{
+                    count=2
+
+                }
+                2->{
+                    count=0
+                    val alert = ActivateCheckBox(resLang!!)
+                    if (alert != null)
+                        Alarmm(alert[0],alert[1])
                 }
             }
             SoundButton(count!!)
             intSaver("count", count!!)
         })
-//        val setAlarm = findViewById<ImageButton>(R.id.soundButton);
-//        setAlarm?.setOnClickListener(View.OnClickListener { v: View? ->
-//            val res = ResultTime(timesTo[0],0)
-//            Alarmm(res[0],res[1])
-//        })
 
 
 
@@ -238,8 +255,7 @@ class SettingActivity : AppCompatActivity()
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun Alarmm(hour:Int, minute:Int){
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+    fun Alarmm(hour: Int, minute:Int){
         val materialTimePicker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_24H)
             .setHour(12)
@@ -253,13 +269,16 @@ class SettingActivity : AppCompatActivity()
         calendar[Calendar.MINUTE] = minute
         calendar[Calendar.HOUR_OF_DAY] = hour
 
+        if (calendar.timeInMillis <= System.currentTimeMillis())
+            calendar.add(Calendar.DAY_OF_YEAR, 1)
+
         val alarmManager =
             getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
         val alarmClockInfo = AlarmManager.AlarmClockInfo(
             calendar.timeInMillis,
             alarmInfoPendingIntent
         )
-
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
         alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
         Toast.makeText(
             this,
@@ -290,7 +309,7 @@ class SettingActivity : AppCompatActivity()
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat")
-    fun ActivateCheckBox(){
+    fun ActivateCheckBox(foundIndex : SharedPreferences): IntArray? {
         // Якщо не працює будильник у android,
         //потрібно запитати дозвіл на показ вікон поверх інших програм
 //        if (!Settings.canDrawOverlays(this)) {
@@ -299,26 +318,29 @@ class SettingActivity : AppCompatActivity()
 //                Uri.parse("package:$packageName"))
 //            startActivity(intent)
 //        }
-        if (bindingClass.fiveMinute.isChecked)
+        var index = foundIndex.getInt(clockIndex, 0)
+        if (foundIndex?.getBoolean(five, false) == true)
         {
-            val res = ResultTime(timesTo[0],0)
-            Alarmm(res[0],res[1])
+            val res = ResultTime(timesTo[0], index)
+            return intArrayOf(res[0],res[1])
         }
-        if (bindingClass.tenMinute.isChecked)
+        if (foundIndex?.getBoolean(ten, false) == true)
         {
-            val res = ResultTime(timesTo[1],0)
-            Alarmm(res[0],res[1])
+            val res = ResultTime(timesTo[1],index)
+            return intArrayOf(res[0],res[1])
         }
-        if (bindingClass.fifteenMinute.isChecked)
+        if (foundIndex?.getBoolean(fifteen, false) == true)
         {
-            val res = ResultTime(timesTo[2],0)
-            Alarmm(res[0],res[1])
+            val res = ResultTime(timesTo[2],index)
+            return intArrayOf(res[0],res[1])
         }
-        if (bindingClass.twelveMinute.isChecked)
+        if (foundIndex?.getBoolean(twelve, false) == true)
         {
-            val res = ResultTime(timesTo[3],0)
-            Alarmm(res[0],res[1])
+            val res = ResultTime(timesTo[3],index)
+            return intArrayOf(res[0],res[1])
         }
+
+        return null
     }
 
     fun ResultTime(time: Int, i: Int): IntArray {
@@ -452,7 +474,7 @@ class SettingActivity : AppCompatActivity()
         editor?.putString(key, value)
         editor?.apply()
     }
-    fun intSaver(key:String, value: Int){
+    fun intSaver(key:String, value: Int, ){
         val editor = resLang?.edit()
         editor?.putInt(key, value)
         editor?.apply()
@@ -470,6 +492,26 @@ class SettingActivity : AppCompatActivity()
         bindingClass.buttonM.setBackgroundResource(mediumB)
         bindingClass.buttonB.setBackgroundResource(bigB)
     }
+    private fun selectCheckBox(fiveBox: Boolean,tenBox: Boolean,
+                               fifteenBox: Boolean,twelveBox: Boolean,)
+    {
+        bindingClass.fiveMinute.isChecked = fiveBox
+        bindingClass.tenMinute.isChecked = tenBox
+        bindingClass.fifteenMinute.isChecked = fifteenBox
+        bindingClass.twelveMinute.isChecked = twelveBox
+        recreate()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onResume() {
+        super.onResume()
+        if(resLang?.getBoolean(period,false)==true){
+            boolSaver(period,false)
+            val alert = ActivateCheckBox(resLang!!)
+            if (alert !=null)
+                Alarmm(alert[0], alert[1])
+        }
+    }
 
     override fun onDestroy()
     {
@@ -482,5 +524,9 @@ class SettingActivity : AppCompatActivity()
         boolSaver(twelve, bindingClass.twelveMinute.isChecked)
 
     }
+
+
+
+
 
 }

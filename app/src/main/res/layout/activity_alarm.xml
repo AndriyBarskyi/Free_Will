@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/alarm"
         android:textColor="@color/dark_blue"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintLeft_toLeftOf="parent"
