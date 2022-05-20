@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment
 import com.example.freewill.EditSchedule_Fragment
 import com.example.freewill.R
 import com.example.freewill.databinding.ActivityLinksPreviewBinding
-import com.example.freewill.databinding.ActivityNewsBinding
 import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DatabaseReference
