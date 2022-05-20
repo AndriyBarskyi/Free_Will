@@ -44,7 +44,6 @@ class LinksPreviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_links_preview)
-        OpenFrag(LinkFragment.newInstance(), R.id.frame)
         readSubjects(){array->CreateItem(array)}
 
         //supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView4, LinkFragment.newInstance()).commit()
@@ -63,6 +62,7 @@ class LinksPreviewActivity : AppCompatActivity() {
                     Toast.makeText(this@LinksPreviewActivity,
                         "Обраний предмет: "+
                                 "" + languages[position], Toast.LENGTH_SHORT).show()
+                    OpenFrag(LinkFragment.newInstance(languages[position]), R.id.frame)
                 }
                 override fun onNothingSelected(parent: AdapterView<*>) {
                 }

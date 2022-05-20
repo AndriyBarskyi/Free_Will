@@ -13,9 +13,10 @@ import com.example.freewill.databinding.FragmentLinkBinding
 
 
 
-class LinkFragment : Fragment() {
+class LinkFragment (_subject:String): Fragment() {
     private lateinit var binding: com.example.freewill.databinding.FragmentLinkBinding
     private val adapter = LinksAdapter()
+    private val subject=_subject
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +32,12 @@ class LinkFragment : Fragment() {
         binding.apply {
             recView.layoutManager=LinearLayoutManager(activity)
             recView.adapter = adapter
-            adapter.AddLinks("Python")
+            adapter.AddLinks(subject)
         }
     }
     companion object {
         @JvmStatic
-        fun newInstance()=LinkFragment()
+        fun newInstance(subject:String)=LinkFragment(subject)
     }
 
 }
