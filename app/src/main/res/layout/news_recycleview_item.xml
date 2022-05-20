@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
             android:text="Header"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold">
 
         </TextView>
@@ -44,15 +44,14 @@
         </TextView>
 
         <TextView
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/date"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="125dp"
             android:text="25/05/22"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="270dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/description">
+            android:textStyle="bold">
 
         </TextView>
     </RelativeLayout>
