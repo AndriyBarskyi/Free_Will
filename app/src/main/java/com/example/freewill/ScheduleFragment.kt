@@ -1,5 +1,7 @@
 package com.example.freewill
 import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Paint.UNDERLINE_TEXT_FLAG
 import com.example.freewill.databinding.FragmentScheduleBinding
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +14,7 @@ import com.example.freewill.search_point.Dijkstra
 
 const val ARG_OBJECT = "object"
 
+@Suppress("UNREACHABLE_CODE")
 class ScheduleFragment : Fragment() {
     private lateinit var binding: FragmentScheduleBinding
     private lateinit var schedule:ScheduleActivity

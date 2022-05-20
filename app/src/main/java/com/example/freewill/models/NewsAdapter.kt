@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.example.freewill.R
 
 
@@ -26,9 +26,9 @@ class NewsAdapter(private val context: Context, private val newsList: ArrayList<
         holder.description.text = currentNews.description
         holder.date.text = currentNews.date
 
-        Glide.with(context)
-            .load(currentNews.newsImage)
-            .into(holder.newsImage)
+//        Glide.with(context)
+//            .load(currentNews.newsImage)
+//            .into(holder.newsImage)
     }
 
     override fun getItemCount(): Int {
@@ -39,7 +39,7 @@ class NewsAdapter(private val context: Context, private val newsList: ArrayList<
         val header : TextView = itemView.findViewById(R.id.header)
         val description : TextView = itemView.findViewById(R.id.description)
         val date : TextView = itemView.findViewById(R.id.date)
-        val newsImage: ImageView = itemView.findViewById(R.id.newsImage)
+        //val newsImage: ImageView = itemView.findViewById(R.id.newsImage)
     }
 
 
