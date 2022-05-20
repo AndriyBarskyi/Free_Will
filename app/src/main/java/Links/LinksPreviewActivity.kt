@@ -32,7 +32,7 @@ class LinksPreviewActivity : AppCompatActivity() {
             val array=when (it.exists()) {
                 true->
                 {
-                    var arrayKeys= emptyArray<String>()
+                    var arrayKeys= Array<String>(1){"Оберіть предмет:"}
                     it.children.forEach {
                         arrayKeys+=it.key.toString()
                     }
@@ -85,7 +85,10 @@ class LinksPreviewActivity : AppCompatActivity() {
                     Toast.makeText(this@LinksPreviewActivity,
                         "Обраний предмет: "+
                                 "" + languages[position], Toast.LENGTH_SHORT).show()
-                    OpenFrag(LinkFragment.newInstance(languages[position]), R.id.frame)
+                    if(languages[position]!="Оберіть предмет:")
+                    {
+                        OpenFrag(LinkFragment.newInstance(languages[position]), R.id.frame)
+                    }
                 }
                 override fun onNothingSelected(parent: AdapterView<*>) {
                 }
