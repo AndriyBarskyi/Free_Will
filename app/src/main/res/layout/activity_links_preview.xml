@@ -90,7 +90,7 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.navigation.NavigationView
+    <com.google.android.material.navigation.NavigationView
 
         android:id="@+id/navView"
         android:layout_width="120dp"
@@ -98,11 +98,10 @@
         android:layout_gravity="start"
         android:background="@drawable/nav_background"
         android:fitsSystemWindows="true"
-        android:visibility="visible"
         app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         app:itemIconSize="80dp"
         app:itemVerticalPadding="10dp"
         app:menu="@menu/nav_menu">
 
-        </com.google.android.material.navigation.NavigationView>
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
