@@ -30,6 +30,8 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="75dp"
             android:layout_marginTop="10dp"
+            android:autoLink="web"
+            android:clickable="true"
             android:fontFamily="@font/comfortaa"
             android:text="ggggg"
             android:textColor="@color/black"
