@@ -80,7 +80,7 @@ open class SettingActivity : AppCompatActivity()
         //потрібно запитати дозвіл на показ вікон поверх інших програм
         //
         //
-        if (true) {
+        if (resLang?.getBoolean("setting", true) == true) {
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             val uri = Uri.fromParts("package", packageName, null)
