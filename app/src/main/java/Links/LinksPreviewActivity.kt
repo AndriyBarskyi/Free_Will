@@ -2,6 +2,7 @@ package Links
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -53,7 +54,7 @@ class LinksPreviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLinksPreviewBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_links_preview)
+        setContentView(binding.root)
         readSubjects(){array->CreateItem(array)}
 
         // assigning ID of the toolbar to a variable
@@ -94,5 +95,12 @@ class LinksPreviewActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

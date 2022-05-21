@@ -1,16 +1,11 @@
 package com.example.freewill
 
-import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.freewill.databinding.ActivityLoginBinding
 import com.example.freewill.databinding.ActivityNewsBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.NewsAdapter
@@ -47,7 +42,7 @@ class NewsActivity : AppCompatActivity() {
                     newsSnapshot.child("Header").value as String,
                     newsSnapshot.child("Description").value as String,
                     newsSnapshot.child("Date").value as String,
-                    //it.child("Url").value as ImageView
+                    newsSnapshot.child("Url").value as String
                 )
                 newsList.add(news)
             }
