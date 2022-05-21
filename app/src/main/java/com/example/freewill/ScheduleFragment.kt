@@ -1,7 +1,4 @@
 package com.example.freewill
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Paint.UNDERLINE_TEXT_FLAG
 import com.example.freewill.databinding.FragmentScheduleBinding
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,7 +29,7 @@ class ScheduleFragment : Fragment() {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             //val position = getInt(ARG_OBJECT)
             val textDay =getString(ARG_OBJECT)
-            ReadGroup.readGroupUser(){group->ReadGroup.ReadSchedule(group,textDay.toString(),binding)}
+            ReadGroup.readGroupUser(){group->ReadGroup.readSchedule(group,textDay.toString(),binding)}
 
         //binding.class1.setText(textDay.toString())
             //binding.aud1.setText(position.toString())
