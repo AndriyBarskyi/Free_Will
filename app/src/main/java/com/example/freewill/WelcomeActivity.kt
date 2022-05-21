@@ -30,7 +30,7 @@ class WelcomeActivity : AppCompatActivity() {
     {
         a.resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
         LocaleHelper.setLocale(this, a.resLang?.getString(a.keyLanguage, a.mLanguageCodeUa)!!)
-        when(a.resLang?.getString(a.keyFont, a.medium)!!){
+        when(a.resLang!!.getString(a.keyFont, a.medium)!!){
             a.small->{SetSizeFont(a.smallSize)}
             a.medium->{SetSizeFont(a.mediumSize)}
             a.big->{SetSizeFont(a.bigSize) }
@@ -74,15 +74,8 @@ class WelcomeActivity : AppCompatActivity() {
     private fun checkUser() {
         val user = firebaseAuth.currentUser
         if(user != null){
-            if(user.isEmailVerified)
-            {
-                startActivity(Intent(this, ScheduleActivity::class.java))
-                finish()
-            }
-            else{
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
+            startActivity(Intent(this, ScheduleActivity::class.java))
+            finish()
         }
         else{
             startActivity(Intent(this, GuestOrStudentActivity::class.java))
@@ -92,7 +85,6 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     class MyDialogFragment : DialogFragment() {
-
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {
                 val builder = AlertDialog.Builder(it)

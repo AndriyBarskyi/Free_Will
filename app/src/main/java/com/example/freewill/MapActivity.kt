@@ -36,7 +36,7 @@ class MapActivity : AppCompatActivity() {
     lateinit var mapBinding: ActivityMapBinding
     private var showing = false
 
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "UseSwitchCompatOrMaterialCode", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mapBinding = ActivityMapBinding.inflate(layoutInflater)
@@ -109,12 +109,16 @@ class MapActivity : AppCompatActivity() {
             })
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
-        switchInfo.setOnCheckedChangeListener { ImageView, isChecked ->
-            if (isChecked) {
-                val imageMap: ImageView = findViewById(R.id.imageView16)
-                imageMap.setOnTouchListener(imageViewOnTouchListener)
-            } else {
 
+        val imageMap: ImageView = findViewById(R.id.imageView16)
+        switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
+          
+            if (isChecked) {
+                imageMap.setOnTouchListener(imageViewOnTouchListener
+            }
+            else
+            {
+                imageMap.setOnTouchListener(null)
             }
         }
     }
@@ -158,25 +162,30 @@ class MapActivity : AppCompatActivity() {
 
     }
 
-    class InfoRoomFragment(_room: String) : DialogFragment() {
+    class InfoRoomFragment(_room: String, _info:String) : DialogFragment() {
         val room = _room
+        var info=_info
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             return activity?.let {
                 val builder = AlertDialog.Builder(it)
-                lateinit var info:String
-                val infoAboutRoom = FirebaseDatabase
-                    .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                    .getReference("Rooms")
-                infoAboutRoom.child("237").get().addOnSuccessListener {
-                    if (it.exists()) {
-                        info=it.child("к-ть місць").value.toString()
-                        Log.d("information123",info)
-                    }
-                }
                 builder.setTitle("Інформація про ${room} ауд.").setMessage(info)
                 builder.create()
-            } ?: throw IllegalStateException("Activity cannot be null")
+            }  ?: throw IllegalStateException("Activity cannot be null")
         }
+    }
+    fun readRoom(_room:String, onSuccess:(String)->Unit) {
+        //var info=""
+        val infoAboutRoom = FirebaseDatabase
+            .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference("Rooms")
+        infoAboutRoom.child("237").get().addOnSuccessListener {
+            val info=when(it.exists()) {
+                true-> it.value.toString()
+                else->""
+            }
+            onSuccess(info)
+        }
+        Log.d("InfoRoom","2")
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -185,9 +194,10 @@ class MapActivity : AppCompatActivity() {
                 val x = event.x.toInt()
                 val y = event.y.toInt()
                 if (5 <= x && x <= 200) {
-                    val infoRoomFragment = InfoRoomFragment("238")
+
+                    val info:String
                     val manager = supportFragmentManager
-                    infoRoomFragment.show(manager, "myDialog")
+                    readRoom("237"){info->InfoRoomFragment("237",info).show(manager, "myDialog")}
                     //val intent = Intent(this, NextActivity::class.java)
                     //context.startActivity(intent)
                 }

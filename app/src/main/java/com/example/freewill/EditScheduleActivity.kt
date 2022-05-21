@@ -26,8 +26,7 @@ import com.google.firebase.ktx.Firebase
 class EditScheduleActivity : AppCompatActivity() ,  View.OnClickListener
     {
         private lateinit var binding: ActivityEditScheduleBinding
-        private lateinit var toggle: ActionBarDrawerToggle
-        private lateinit var drawerLayout: DrawerLayout
+
 //        val listClic = mutableListOf<TextView>(binding.monday,binding.tuesday,binding.wednesday,
 //            binding.thursday,binding.friday)
 
@@ -69,26 +68,13 @@ class EditScheduleActivity : AppCompatActivity() ,  View.OnClickListener
         }
 
 
-
-
         override fun onClick(v: View?) {
             when (v?.getId()) {
-
-                R.id.monday , R.id.tuesday,R.id.wednesday,R.id.thursday,R.id.friday ->{
+                R.id.monday ,R.id.tuesday,R.id.wednesday,R.id.thursday,R.id.friday ->{
                     v.setBackgroundColor(Color.BLACK)
                     OpenFrag(EditSchedule_Fragment.newInstance(), R.id.FramLayout)
-//                    val _textId: TextView = findViewById(v.id)
-//                    val text= _textId.text.toString()
-                    dataModel.message.observe(this, {
-                        val ReadGroup = ReadFirebase()
-                        ReadGroup.UpdateShedule(it, v.id.toString(),this)
-
-                    })
+                    dataModel.message.value = (v as TextView).contentDescription.toString()
                 }
             }
         }
     }
-
-
-
-
