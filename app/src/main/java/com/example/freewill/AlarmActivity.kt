@@ -4,58 +4,30 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.media.MediaPlayer
-import android.media.Ringtone
-import android.media.RingtoneManager
 import android.os.Build
 import android.os.Bundle
-import android.widget.CheckBox
-import android.widget.TextView
+import android.os.VibrationEffect
+import android.os.Vibrator
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.freewill.databinding.ActivityAlarmBinding
-import com.example.freewill.databinding.ActivitySettingBinding
-
-
-import android.content.Intent
-
-import android.util.DisplayMetrics
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.*
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
-import com.example.freewill.models.NavigationClass
-import com.example.freewill.models.ReadFirebase
-import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
-import android.widget.Button
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.net.Uri
-import android.provider.Settings
-import android.widget.Toast
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AlarmActivity : AppCompatActivity() {
     val a = SettingActivity()
     lateinit var binding: ActivityAlarmBinding
+    var v: Vibrator? = null
     private var fiveMedia: MediaPlayer? = null
     private var tenMedia: MediaPlayer? = null
     private var fifteenMedia: MediaPlayer? = null
     private var twelveMedia: MediaPlayer? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun soundPlay(sound: MediaPlayer, resLang: SharedPreferences) {
-        sound.start()
+    fun soundPlay(sound: MediaPlayer, resLang: SharedPreferences, count:Int) {
+        v = getSystemService(VIBRATOR_SERVICE) as Vibrator?
+        when(count){
+            0->{sound.start()}
+            2->{v!!.vibrate(VibrationEffect.createOneShot(2000,VibrationEffect.DEFAULT_AMPLITUDE))}
+        }
         val editor = resLang.edit()
         var index = resLang.getInt(a.clockIndex,0)
         index +=1
@@ -86,29 +58,34 @@ class AlarmActivity : AppCompatActivity() {
         twelveMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
         val resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
 
+        val count = resLang.getInt("count", 1)
+
         if (resLang?.getBoolean(a.five, false) == true)
         {
             binding.AlarmText.setText(R.string.rest_five)
-            soundPlay(fiveMedia!!, resLang)
+            soundPlay(fiveMedia!!, resLang, count)
         }
         if (resLang?.getBoolean(a.ten, false) == true)
         {
             binding.AlarmText.setText(R.string.rest_ten)
-            soundPlay(tenMedia!!, resLang)
+            soundPlay(tenMedia!!, resLang, count)
         }
         if (resLang?.getBoolean(a.fifteen, false) == true)
         {
             binding.AlarmText.setText(R.string.rest_fifteen)
-            soundPlay(fifteenMedia!!, resLang)
+            soundPlay(fifteenMedia!!, resLang,count)
         }
         if (resLang?.getBoolean(a.twelve, false) == true)
         {
             binding.AlarmText.setText(R.string.rest_twelve)
-            soundPlay(twelveMedia!!, resLang)
+            soundPlay(twelveMedia!!, resLang,count)
         }
+
+
     }
     override fun onDestroy() {
         fiveMedia!!.stop()
+        v?.cancel()
         super.onDestroy()
     }
 }
