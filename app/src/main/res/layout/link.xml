@@ -8,8 +8,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
+        android:layout_height="100dp"
+        android:background="@drawable/background_teachers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -27,15 +27,29 @@
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="335dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="75dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="50dp"
             android:autoLink="web"
             android:clickable="true"
             android:fontFamily="@font/comfortaa"
+            android:paddingLeft="5dp"
             android:text="ggggg"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="335dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/comfortaa"
+            android:paddingLeft="5dp"
+            android:text="name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
