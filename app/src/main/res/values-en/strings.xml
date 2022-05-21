@@ -69,6 +69,7 @@
     <string name = "open"> Open </string>
     <string name = "close"> Close </string>
     <string name="toolbar_schedule">Schedule</string>
+    <string name="toolbar_link">Usefull Link</string>
     <string name="toolbar_map">Map</string>
     <string name="toolbar_reviews">Reviews</string>
     <string name="toolbar_settings">Settings</string>

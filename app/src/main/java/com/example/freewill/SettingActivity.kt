@@ -1,35 +1,43 @@
 package com.example.freewill
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.work.WorkerParameters
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.ReadFirebase
-import com.example.freewill.models.User
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
 import java.util.*
 
-
-class SettingActivity : AppCompatActivity()
+open class SettingActivity : AppCompatActivity()
 {
+    val period = "period"
+    val clockIndex = "index"
     val baseForSetting = "LANGUAGE"
     val keyLanguage = "chooseLang"
     val keyFont ="font"
@@ -45,40 +53,47 @@ class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hour:IntArray= intArrayOf(8,10,11,13)
-    val minute:IntArray= intArrayOf(55,10,50,30)
-    val time:IntArray= intArrayOf(5,10,15,20)
+    val hours:IntArray= intArrayOf(8,10,11,13)
+    val minutes:IntArray= intArrayOf(30,10,50,30)
+    val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
-    var result:Boolean?=null
     var resLang : SharedPreferences? = null
     lateinit var chooseFont : String
     lateinit var bindingClass: ActivitySettingBinding
     lateinit var chooseLang : String
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
-    lateinit var firebaseAuth: FirebaseAuth
 
     fun SetSizeFont(size_coef: Float)
     {
         val configuration = resources.configuration
-        configuration.fontScale = size_coef //0.85 small size, 1 normal size, 1,15 big etc
-
-
+        configuration.fontScale = size_coef
         val metrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(metrics)
         metrics.scaledDensity = configuration.fontScale * metrics.density
         baseContext.resources.updateConfiguration(configuration, metrics)
-        //TypedValue.COMPLEX_UNIT_DIP
+    }
+    fun setOption(){
+        // Якщо не працює будильник у android,
+        //потрібно запитати дозвіл на показ вікон поверх інших програм
         //
-
+        //
+        if (resLang?.getBoolean("setting", true) == true) {
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+            boolSaver("setting", false)
+        }
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceAsColor", "CutPasteId", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        setOption()
         resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
         chooseLang = resLang?.getString(keyLanguage, mLanguageCodeUa)!!
         LocaleHelper.setLocale(this, chooseLang)
@@ -125,7 +140,11 @@ class SettingActivity : AppCompatActivity()
         bindingClass.fifteenMinute.isChecked = resLang?.getBoolean(fifteen, false)!!
         bindingClass.twelveMinute.isChecked = resLang?.getBoolean(twelve, false)!!
 
+
         setContentView(bindingClass.root)
+
+
+
 
 
         //set background
@@ -182,25 +201,44 @@ class SettingActivity : AppCompatActivity()
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
             finish()
         }
+
         bindingClass.fiveMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(bindingClass.fiveMinute.isChecked,
+                false,false,false)
+        })
         bindingClass.tenMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(false,
+                bindingClass.tenMinute.isChecked,false,false)
+        })
         bindingClass.fifteenMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(false,
+                false, bindingClass.fifteenMinute.isChecked,false)
+        })
         bindingClass.twelveMinute.setOnClickListener(View.OnClickListener
-        {recreate()})
+        {
+            selectCheckBox(false,
+                false,false, bindingClass.twelveMinute.isChecked)
+        })
 
 
 
         bindingClass.soundButton.setOnClickListener(View.OnClickListener{
             count = resLang?.getInt("count", 1)!!
             when(count){
-                0->{count=1}
-                1->{count=2}
-                2->{count=0
-                    rememberCheckBox()
+                0->{
+                    count=1
+                    selectCheckBox(false,false,false,false)
+                    intSaver(clockIndex, 0)
                 }
+                1->{
+                    count=2
+                }
+                2->{
+                    count=0
+               }
             }
             SoundButton(count!!)
             intSaver("count", count!!)
@@ -223,40 +261,99 @@ class SettingActivity : AppCompatActivity()
 
 
 
-    fun Alarmm(hour:IntArray, minute:IntArray, time:Int){
-        // Якщо не працює будильник у android,
-        //потрібно запитати дозвіл на показ вікон поверх інших програм
-//        if (!Settings.canDrawOverlays(this)) {
-//            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-//                Uri.parse("package:$packageName"))
-//            startActivity(intent)
-//        }
-        // worker- бібліотека
-        //  android developer
-        // DOwork - метод
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun Alarmm(hour: Int, minute:Int){
+        val materialTimePicker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setHour(12)
+            .setMinute(0)
+            .setTitleText("Нагадування")
+            .build()
+
+        val calendar = Calendar.getInstance()
+        calendar[Calendar.SECOND] = 0
+        calendar[Calendar.MILLISECOND] = 0
+        calendar[Calendar.MINUTE] = minute
+        calendar[Calendar.HOUR_OF_DAY] = hour
+
+        if (calendar.timeInMillis <= System.currentTimeMillis())
+            calendar.add(Calendar.DAY_OF_YEAR, 1)
+
+        val alarmManager =
+            getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
+        val alarmClockInfo = AlarmManager.AlarmClockInfo(
+            calendar.timeInMillis,
+            alarmInfoPendingIntent
+        )
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+        alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
+        Toast.makeText(
+            this,
+            "Нагадування встановлене о " + sdf.format(calendar.time),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private val alarmInfoPendingIntent: PendingIntent
+        @SuppressLint("UnspecifiedImmutableFlag") get() {
+            val alarmInfoIntent = Intent(this, SettingActivity::class.java)
+            alarmInfoIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            return PendingIntent.getActivity(
+                this,
+                0,
+                alarmInfoIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
+    private val alarmActionPendingIntent: PendingIntent
+        @SuppressLint("UnspecifiedImmutableFlag") get() {
+            val intent = Intent(this, AlarmActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            return PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
 
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat")
-    fun rememberCheckBox(){
-        val fiveMin = bindingClass.fiveMinute.isChecked
-        val tenMinute = bindingClass.tenMinute.isChecked
-        val fifteenMinute = bindingClass.fifteenMinute.isChecked
-        val twelveMinute = bindingClass.twelveMinute.isChecked
+    fun ActivateCheckBox(foundIndex : SharedPreferences): IntArray? {
+        var index = foundIndex.getInt(clockIndex, 0)
+        if (foundIndex?.getBoolean(five, false) == true)
+        {
+            val res = ResultTime(timesTo[0], index)
+            return intArrayOf(res[0],res[1])
+        }
+        if (foundIndex?.getBoolean(ten, false) == true)
+        {
+            val res = ResultTime(timesTo[1],index)
+            return intArrayOf(res[0],res[1])
+        }
+        if (foundIndex?.getBoolean(fifteen, false) == true)
+        {
+            val res = ResultTime(timesTo[2],index)
+            return intArrayOf(res[0],res[1])
+        }
+        if (foundIndex?.getBoolean(twelve, false) == true)
+        {
+            val res = ResultTime(timesTo[3],index)
+            return intArrayOf(res[0],res[1])
+        }
 
-        if (fiveMin)
-            Alarmm(hour, minute, time[0])
-        if (tenMinute)
-            Alarmm(hour, minute, time[1])
-        if (fifteenMinute)
-            Alarmm(hour, minute, time[2])
-        if (twelveMinute)
-            Alarmm(hour, minute, time[3])
+        return null
     }
 
+    fun ResultTime(time: Int, i: Int): IntArray {
+        val tempHours: IntArray = hours.copyOf()
+        val tempMinutes: IntArray = minutes.copyOf()
+        if (tempMinutes[i] - time >= 0) {
+            tempMinutes[i] -= time
+        } else {
+            tempMinutes[i] = 60 + tempMinutes[i] - time
+            tempHours[i] -= 1
+        }
+        return intArrayOf(tempHours[i], tempMinutes[i]);
+    }
 
     fun SoundButton(count:Int){
         when(count){
@@ -271,57 +368,10 @@ class SettingActivity : AppCompatActivity()
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     fun changeB(view: View) {
-            // call checking the password
-            CheckPassword(R.layout.activity_check_password, view)
+        // call checking the password
+        EditInformation(R.layout.activity_check_password, view)
     }
 
-    // checking the password
-    fun CheckPassword(activityScreen:Int, view:View) {
-
-        val popupView = wayScreenDisplay(activityScreen, view)
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
-        drawerLayout.foreground.alpha = 255
-
-        val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT, true)
-
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
-        popupWindow.isOutsideTouchable = true
-        // слухач кнопок
-        val agree2 = popupView.findViewById(R.id.agreePassword) as Button
-        val checkPassword = popupView.findViewById(R.id.checkPassword) as EditText
-
-        popupWindow.setOnDismissListener {
-            drawerLayout.foreground.alpha = 0
-        }
-
-
-        agree2.setOnClickListener(View.OnClickListener(){
-            val user = Firebase.auth.currentUser
-            var result = true
-            val uid = user!!.uid
-
-            val referenceUser = FirebaseDatabase
-                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Users")
-            referenceUser.child(uid).get().addOnSuccessListener {
-                result = when (it.exists()) {
-                    true->
-                    {
-                        val userPassword = it.child("password").value
-                        if (userPassword.toString() == checkPassword.toString()) {true}
-                        else{false}
-                    }
-                    false->false
-                }
-            }
-
-            popupWindow.dismiss()
-            if (result as Boolean)
-            // call dialog where you can change the data
-                EditInformation(R.layout.activity_edit_setting, view)
-        })
-    }
 
     // go to dialog where you can change the data
     fun EditInformation(activityScreen:Int, view:View){
@@ -377,7 +427,7 @@ class SettingActivity : AppCompatActivity()
         editor?.putString(key, value)
         editor?.apply()
     }
-    fun intSaver(key:String, value: Int){
+    fun intSaver(key: String, value: Int){
         val editor = resLang?.edit()
         editor?.putInt(key, value)
         editor?.apply()
@@ -395,17 +445,61 @@ class SettingActivity : AppCompatActivity()
         bindingClass.buttonM.setBackgroundResource(mediumB)
         bindingClass.buttonB.setBackgroundResource(bigB)
     }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun selectCheckBox(
+        fiveBox: Boolean, tenBox: Boolean,
+        fifteenBox: Boolean, twelveBox: Boolean,
+    )
+    {
+        if(bindingClass.offOn.text == getString(R.string.off)){
+            bindingClass.fiveMinute.isChecked = false
+            bindingClass.tenMinute.isChecked = false
+            bindingClass.fifteenMinute.isChecked = false
+            bindingClass.twelveMinute.isChecked = false
+        }
+        else{
+            bindingClass.fiveMinute.isChecked = fiveBox
+            bindingClass.tenMinute.isChecked = tenBox
+            bindingClass.fifteenMinute.isChecked = fifteenBox
+            bindingClass.twelveMinute.isChecked = twelveBox
+        }
+        boolSaver(five, bindingClass.fiveMinute.isChecked)
+        boolSaver(ten, bindingClass.tenMinute.isChecked)
+        boolSaver(fifteen, bindingClass.fifteenMinute.isChecked)
+        boolSaver(twelve, bindingClass.twelveMinute.isChecked)
+
+        val alert = ActivateCheckBox(resLang!!)
+        if (alert != null)
+            Alarmm(alert[0],alert[1])
+
+        onResume()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onResume() {
+        super.onResume()
+        if(resLang?.getBoolean(period,false)==true){
+            boolSaver(period,false)
+            val alert = ActivateCheckBox(resLang!!)
+            if (alert !=null)
+                Alarmm(alert[0], alert[1])
+        }
+    }
 
     override fun onDestroy()
     {
         super.onDestroy()
         stringfSaver(keyLanguage, chooseLang)
         stringfSaver(keyFont, chooseFont)
-        boolSaver(five, bindingClass.fiveMinute.isChecked)
-        boolSaver(ten, bindingClass.tenMinute.isChecked)
-        boolSaver(fifteen, bindingClass.fifteenMinute.isChecked)
-        boolSaver(twelve, bindingClass.twelveMinute.isChecked)
+//        boolSaver(five, bindingClass.fiveMinute.isChecked)
+//        boolSaver(ten, bindingClass.tenMinute.isChecked)
+//        boolSaver(fifteen, bindingClass.fifteenMinute.isChecked)
+//        boolSaver(twelve, bindingClass.twelveMinute.isChecked)
 
     }
+
+
+
+
 
 }

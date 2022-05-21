@@ -59,6 +59,12 @@
     <string name="you_exit">Ви вийшли</string>
     <string name="you_agree">Зміни підтверджено</string>
     <string name="reset_password">Скинути пароль</string>
+    <string name="alarm">Alarm!!!</string>
+    <string name="rest_five">Пара за 5 хвилин</string>
+    <string name="rest_ten">Пара за 10 хвилин</string>
+    <string name="rest_fifteen">Пара за 15 хвилин</string>
+    <string name="rest_twelve">Пара за 20 хвилин</string>
+
 
 
     <string name="edit_schedule_mon">пн</string>
@@ -72,6 +78,7 @@
     <string name="open"> Open </string>
     <string name="close"> Close </string>
     <string name="toolbar_schedule">Розклад</string>
+    <string name="toolbar_link">Корисні посилання</string>
     <string name="toolbar_map">Карта</string>
     <string name="toolbar_reviews">Відгуки</string>
     <string name="toolbar_settings">Налаштування</string>

@@ -1,7 +1,10 @@
 package com.example.freewill.models
 
+import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.appcompat.app.AppCompatViewInflater
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.databinding.FragmentScheduleBinding
 import com.google.firebase.auth.ktx.auth
@@ -50,29 +53,41 @@ class ReadFirebase {
 
         val user = Firebase.auth.currentUser
         val uid = user!!.uid
-        val referenceScheduleUser = firebaseData.getReference("Users")
-        referenceScheduleUser.child(uid!!).child("Shedule").child(day).get().addOnSuccessListener {
-            if (it.exists()) {
-                val firstpara = it.child("firstpara").value
-                val secondpara = it.child("secondpara").value
-                val thirdpara = it.child("thirdpara").value
-                val fourthpara = it.child("fourthpara").value
-                val fifthpara = it.child("fifthpara").value
+        val referenceScheduleUser = FirebaseData.getReference("Users")
+        referenceScheduleUser.child(uid!!).child("Shedule").child(day).get().addOnSuccessListener{
+            if(it.exists())
+            {
+                val firstpara =it.child("firstpara").child("para").value
+                val secondpara =it.child("secondpara").child("para").value
+                val thirdpara =it.child("thirdpara").child("para").value
+                val fourthpara =it.child("fourthpara").child("para").value
+                val fifthpara =it.child("fifthpara").child("para").value
+
+                val audut1 =it.child("firstpara").child("audutoria").value
+                val audut2 =it.child("secondpara").child("audutoria").value
+                val audut3 =it.child("thirdpara").child("audutoria").value
+                val audut4 =it.child("fourthpara").child("audutoria").value
+                val audut5 =it.child("fifthpara").child("audutoria").value
 
                 if (firstpara.toString() != "") {
                     binding.class1.setText(firstpara.toString())
+                    binding.aud1.setText(audut1.toString())
                 }
                 if (secondpara.toString() != "") {
                     binding.class2.setText(secondpara.toString())
+                    binding.aud2.setText(audut2.toString())
                 }
                 if (thirdpara.toString() != "") {
                     binding.class3.setText(thirdpara.toString())
+                    binding.aud3.setText(audut3.toString())
                 }
                 if (fourthpara.toString() != "") {
                     binding.class4.setText(fourthpara.toString())
+                    binding.aud4.setText(audut4.toString())
                 }
                 if (fifthpara.toString() != "") {
                     binding.class5.setText(fifthpara.toString())
+                    binding.aud5.setText(audut5.toString())
                 }
 
                 //Toast.makeText(activity, "Shedule read from User...", Toast.LENGTH_SHORT).show()
