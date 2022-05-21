@@ -13,34 +13,34 @@ import com.google.firebase.database.FirebaseDatabase
 class LinksAdapter:RecyclerView.Adapter<LinksAdapter.LinksHolder>() {
     private lateinit var referenceLink: DatabaseReference
     val linksList=ArrayList<Links>()
-    fun readLinks(subject:String,onSuccess:(Array<String>)->Unit) {
+    fun readLinks(subject:String,onSuccess:(Map<String, String>)->Unit) {
         referenceLink = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("Links")
         referenceLink.child(subject).get().addOnSuccessListener {
-            val array = when (it.exists()) {
+             val map = when (it.exists()) {
                 true -> {
-                    var arrayKeys = emptyArray<String>()
+                    var map : Map<String, String> = mapOf()
                     it.children.forEach {
-                        arrayKeys += it.value.toString()
+                        map += Pair(it.key.toString(),it.value.toString())
                     }
-                    arrayKeys
+                    map
 
                 }
-                false -> arrayOf(" ")
+                false -> mapOf()
             }
-            onSuccess(array)
+            onSuccess(map)
         }
     }
     fun AddLinks(subject:String)
     {
-        readLinks(subject){array->createList(array)}
+        readLinks(subject){map->createList(map)}
     }
     @SuppressLint("NotifyDataSetChanged")
-    fun createList(array:Array<String>)
+    fun createList(map:Map<String, String>)
     {
-        array.forEach{
-            linksList.add(Links(it))
+        map.forEach{
+            linksList.add(Links(it.key,it.value))
             notifyDataSetChanged()
         }
     }
@@ -49,7 +49,8 @@ class LinksAdapter:RecyclerView.Adapter<LinksAdapter.LinksHolder>() {
         val binding = LinkBinding.bind(item)
         fun bind(link: Links)
         {
-            binding.tvTitle.text=link.title
+            binding.textView18.text=link.title
+            binding.tvTitle.text=link.link
         }
     }
 
