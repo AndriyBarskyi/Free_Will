@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreeWill">
         <activity
+            android:name=".FeedbackTeacherActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReviewActivity"
             android:exported="false" />
         <activity

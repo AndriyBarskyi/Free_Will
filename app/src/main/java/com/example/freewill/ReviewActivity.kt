@@ -56,7 +56,7 @@ class ReviewActivity : AppCompatActivity() {
                 it.child("photo").value as String?
             )*/
             //teachersArrayList.add(tc)
-            teachersRecyclerView.adapter = TeacherDataAdapter(teachersArrayList)
+            teachersRecyclerView.adapter = TeacherDataAdapter(this,teachersArrayList)
         }
 
         /*reviewBinding.search.setOnClickListener {
