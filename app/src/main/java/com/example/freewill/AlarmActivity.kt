@@ -26,7 +26,7 @@ class AlarmActivity : AppCompatActivity() {
         v = getSystemService(VIBRATOR_SERVICE) as Vibrator?
         when(count){
             0->{sound.start()}
-            2->{v!!.vibrate(VibrationEffect.createOneShot(2000,VibrationEffect.DEFAULT_AMPLITUDE))}
+            2->{v!!.vibrate(VibrationEffect.createOneShot(5000,VibrationEffect.DEFAULT_AMPLITUDE))}
         }
         val editor = resLang.edit()
         var index = resLang.getInt(a.clockIndex,0)
@@ -52,36 +52,46 @@ class AlarmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAlarmBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        fiveMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
-        tenMedia = MediaPlayer.create(this, R.raw.audio_ten_minut)
-        fifteenMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
-        twelveMedia = MediaPlayer.create(this, R.raw.audio_five_minutes)
         val resLang = getSharedPreferences(a.baseForSetting, Context.MODE_PRIVATE)
-
         val count = resLang.getInt("count", 1)
 
         if (resLang?.getBoolean(a.five, false) == true)
         {
+            val med = randomAuduo(R.raw.yulik,R.raw.ksenia)
+            fiveMedia = MediaPlayer.create(this, med)
             binding.AlarmText.setText(R.string.rest_five)
             soundPlay(fiveMedia!!, resLang, count)
         }
         if (resLang?.getBoolean(a.ten, false) == true)
         {
+            val med = randomAuduo(R.raw.diana,R.raw.andriy)
+            tenMedia = MediaPlayer.create(this, med)
             binding.AlarmText.setText(R.string.rest_ten)
             soundPlay(tenMedia!!, resLang, count)
         }
         if (resLang?.getBoolean(a.fifteen, false) == true)
         {
+            val med = randomAuduo(R.raw.olenka,R.raw.marta)
+            fifteenMedia = MediaPlayer.create(this, R.raw.yulik)
             binding.AlarmText.setText(R.string.rest_fifteen)
             soundPlay(fifteenMedia!!, resLang,count)
         }
         if (resLang?.getBoolean(a.twelve, false) == true)
         {
+            val med = randomAuduo(R.raw.olesya,R.raw.andrew)
+            twelveMedia = MediaPlayer.create(this, med)
             binding.AlarmText.setText(R.string.rest_twelve)
             soundPlay(twelveMedia!!, resLang,count)
         }
 
 
+    }
+    fun randomAuduo(first:Int, second:Int): Int {
+        when((1..2).random()){
+            1->{return first}
+            2->{return second}
+        }
+        return second
     }
     override fun onDestroy() {
         fiveMedia!!.stop()

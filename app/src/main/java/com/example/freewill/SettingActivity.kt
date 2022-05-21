@@ -53,9 +53,9 @@ open class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(12,12,12,12)
-    val minutes:IntArray= intArrayOf(23,26,4,6)
-    val timesTo:IntArray= intArrayOf(0,10,15,20)
+    val hours:IntArray= intArrayOf(13,13,11,13)
+    val minutes:IntArray= intArrayOf(33,6,50,30)
+    val timesTo:IntArray= intArrayOf(0,0,15,20)
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
@@ -368,57 +368,10 @@ open class SettingActivity : AppCompatActivity()
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     fun changeB(view: View) {
-            // call checking the password
-            CheckPassword(R.layout.activity_check_password, view)
+        // call checking the password
+        EditInformation(R.layout.activity_check_password, view)
     }
 
-    // checking the password
-    fun CheckPassword(activityScreen:Int, view:View) {
-
-        val popupView = wayScreenDisplay(activityScreen, view)
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
-        drawerLayout.foreground.alpha = 255
-
-        val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT, true)
-
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
-        popupWindow.isOutsideTouchable = true
-        // слухач кнопок
-        val agree2 = popupView.findViewById(R.id.agreePassword) as Button
-        val checkPassword = popupView.findViewById(R.id.checkPassword) as EditText
-
-        popupWindow.setOnDismissListener {
-            drawerLayout.foreground.alpha = 0
-        }
-
-
-        agree2.setOnClickListener(View.OnClickListener(){
-            val user = Firebase.auth.currentUser
-            var result = true
-            val uid = user!!.uid
-
-            val referenceUser = FirebaseDatabase
-                .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Users")
-            referenceUser.child(uid).get().addOnSuccessListener {
-                result = when (it.exists()) {
-                    true->
-                    {
-                        val userPassword = it.child("password").value
-                        if (userPassword.toString() == checkPassword.toString()) {true}
-                        else{false}
-                    }
-                    false->false
-                }
-            }
-
-            popupWindow.dismiss()
-            if (result as Boolean)
-            // call dialog where you can change the data
-                EditInformation(R.layout.activity_edit_setting, view)
-        })
-    }
 
     // go to dialog where you can change the data
     fun EditInformation(activityScreen:Int, view:View){
