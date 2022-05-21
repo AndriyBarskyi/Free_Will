@@ -53,7 +53,7 @@ class ReviewActivity : AppCompatActivity() {
                 )
                 teachersArrayList.add(teacher)
             }
-            teachersRecyclerView.adapter = TeacherDataAdapter(this.baseContext, teachersArrayList)
+            teachersRecyclerView.adapter = TeacherDataAdapter(this, teachersArrayList)
         }
     }
 
@@ -102,7 +102,7 @@ class ReviewActivity : AppCompatActivity() {
         } else {
             // at last we are passing that filtered
             // list to our adapter class.
-            teachersRecyclerView.adapter = TeacherDataAdapter(this.baseContext, teachersArrayList)
+            teachersRecyclerView.adapter = TeacherDataAdapter(this, teachersArrayList)
             (teachersRecyclerView.adapter as TeacherDataAdapter).filterList(filteredList)
         }
     }

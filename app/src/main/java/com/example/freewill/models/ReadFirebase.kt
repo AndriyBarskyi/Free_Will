@@ -1,10 +1,7 @@
 package com.example.freewill.models
 
-import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.appcompat.app.AppCompatViewInflater
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.databinding.FragmentScheduleBinding
 import com.google.firebase.auth.ktx.auth
@@ -53,21 +50,20 @@ class ReadFirebase {
 
         val user = Firebase.auth.currentUser
         val uid = user!!.uid
-        val referenceScheduleUser = FirebaseData.getReference("Users")
-        referenceScheduleUser.child(uid!!).child("Shedule").child(day).get().addOnSuccessListener{
-            if(it.exists())
-            {
-                val firstpara =it.child("firstpara").child("para").value
-                val secondpara =it.child("secondpara").child("para").value
-                val thirdpara =it.child("thirdpara").child("para").value
-                val fourthpara =it.child("fourthpara").child("para").value
-                val fifthpara =it.child("fifthpara").child("para").value
+        val referenceScheduleUser = firebaseData.getReference("Users")
+        referenceScheduleUser.child(uid!!).child("Shedule").child(day).get().addOnSuccessListener {
+            if (it.exists()) {
+                val firstpara = it.child("firstpara").child("para").value
+                val secondpara = it.child("secondpara").child("para").value
+                val thirdpara = it.child("thirdpara").child("para").value
+                val fourthpara = it.child("fourthpara").child("para").value
+                val fifthpara = it.child("fifthpara").child("para").value
 
-                val audut1 =it.child("firstpara").child("audutoria").value
-                val audut2 =it.child("secondpara").child("audutoria").value
-                val audut3 =it.child("thirdpara").child("audutoria").value
-                val audut4 =it.child("fourthpara").child("audutoria").value
-                val audut5 =it.child("fifthpara").child("audutoria").value
+                val audut1 = it.child("firstpara").child("audutoria").value
+                val audut2 = it.child("secondpara").child("audutoria").value
+                val audut3 = it.child("thirdpara").child("audutoria").value
+                val audut4 = it.child("fourthpara").child("audutoria").value
+                val audut5 = it.child("fifthpara").child("audutoria").value
 
                 if (firstpara.toString() != "") {
                     binding.class1.setText(firstpara.toString())
