@@ -1,4 +1,5 @@
 package com.example.freewill
+import android.content.Intent
 import android.graphics.Canvas
 import com.example.freewill.databinding.FragmentScheduleBinding
 import android.os.Bundle
@@ -18,6 +19,8 @@ const val ARG_OBJECT = "object"
 class ScheduleFragment : Fragment() {
     private lateinit var binding: FragmentScheduleBinding
     private lateinit var schedule:ScheduleActivity
+    private var showing = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +46,7 @@ class ScheduleFragment : Fragment() {
 //не працює
     private fun showAudience()
     {
+        showing=true
         var aud1 = binding.aud1.text.toString()
         aud1="240"
         binding.aud1.setOnClickListener {
@@ -97,5 +101,18 @@ class ScheduleFragment : Fragment() {
             Toast.makeText(activity, "Failed read shedule ", Toast.LENGTH_SHORT).show()
         }
     }
+
+//    override fun onBackPressed() {
+//        if (showing) {
+//            showing = false
+//
+//            setContentView(R.layout.activity_schedule)
+//            val i = Intent(baseContext, MapActivity::class.java)
+//            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//
+//            baseContext.startActivity(i)
+//            finish()
+//        }
+//    }
 
 }
