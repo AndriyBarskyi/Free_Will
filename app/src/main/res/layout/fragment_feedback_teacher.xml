@@ -47,13 +47,14 @@
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/background_name"
                 app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/background_name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="64dp"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="35dp"
@@ -89,12 +90,12 @@
                 app:layout_constraintVertical_bias="0.652" />
 
             <TextView
-                android:id="@+id/subject_name"
-                android:layout_width="200dp"
+                android:id="@+id/department_name"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="200dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 android:fontFamily="@font/comfortaa"
                 android:text="@string/department_name"
                 android:textColor="@color/white"

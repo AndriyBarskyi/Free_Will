@@ -38,7 +38,7 @@ class TeacherDataAdapter(private val context: Context, private var teacherCardLi
             val mIntent = Intent(context, FeedbackTeacherActivity::class.java)
             mIntent.putExtra("fullName",  holder.fullName.text)
             mIntent.putExtra("department", holder.department.text)
-            mIntent.putExtra("photo", holder.photo.toString())
+            mIntent.putExtra("photo", currentItem.photo)
             mIntent.putExtra("avgRating", holder.avgRating.text)
             context.startActivity(mIntent)
         }

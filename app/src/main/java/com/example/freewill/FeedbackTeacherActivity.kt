@@ -1,7 +1,7 @@
 package com.example.freewill
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.freewill.databinding.ActivityFeedbackTeacherBinding
 
 class FeedbackTeacherActivity : AppCompatActivity() {
@@ -19,9 +19,11 @@ class FeedbackTeacherActivity : AppCompatActivity() {
 
         /**call text and images*/
         binding.backgroundName.text = fullName
-        binding.subjectName.text = department
+        binding.departmentName.text = department
         binding.rate.text = avgRating
-        //binding.feedbackTeacherPhoto.let {photo.setImageResource(it.toInt()) }
-        //img.loadImage(animalImg, getProgessDrawable(this))
+        if (photo != null) {
+            binding.feedbackTeacherPhoto.setImageResource(photo.toInt())
+            //img.loadImage(animalImg, getProgessDrawable(this))
+        }
     }
 }
