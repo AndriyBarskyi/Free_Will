@@ -3,11 +3,13 @@ package com.example.freewill
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
-import android.graphics.*
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.Gravity
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
-import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
 import com.example.freewill.models.DrawPoints
 import com.example.freewill.models.NavigationClass
@@ -33,8 +34,7 @@ class MapActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var mapBinding: ActivityMapBinding
-    val bitmap = Bitmap.createBitmap(913, 785, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
+    private var showing = false
 
     @SuppressLint("InflateParams", "UseSwitchCompatOrMaterialCode", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,6 +86,7 @@ class MapActivity : AppCompatActivity() {
                         }
                     } else {
                         popupWindow.dismiss()
+                        showing = true
 
                         setContentView(DrawPoints(this, points))
                     }
@@ -108,15 +109,36 @@ class MapActivity : AppCompatActivity() {
             })
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
+
         val imageMap: ImageView = findViewById(R.id.imageView16)
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
+          
             if (isChecked) {
-                imageMap.setOnTouchListener(imageViewOnTouchListener)
+                imageMap.setOnTouchListener(imageViewOnTouchListener
             }
             else
             {
                 imageMap.setOnTouchListener(null)
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
+
+            setContentView(R.layout.activity_map)
+            val i = Intent(baseContext, MapActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
         }
     }
 

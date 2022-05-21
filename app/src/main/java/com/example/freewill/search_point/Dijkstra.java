@@ -213,12 +213,9 @@ public class Dijkstra {
         ArrayList<Float> res = new ArrayList<>();
 
         for (int v : a) {
-            float temp = v;
-            res.add(temp);
-
+            res.add((float)v);
         }
 
-//        return graph.getCoords(end);
         return res;
 
     }
@@ -231,7 +228,7 @@ public class Dijkstra {
         if (!root.isAudience(audience)) {
             ArrayList<Float> res = new ArrayList<>();
 
-            res.add((float) -1);
+            res.add(-1f);
 
             return res;
         }
@@ -241,7 +238,6 @@ public class Dijkstra {
         res.add((float) root.getPointById(audience).getX());
         res.add((float) root.getPointById(audience).getY());
 
-//        return graph.getCoords(end);
         return res;
     }
 }
