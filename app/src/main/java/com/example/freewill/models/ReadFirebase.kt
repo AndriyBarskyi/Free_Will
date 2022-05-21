@@ -152,10 +152,7 @@ class ReadFirebase {
     }
 
     fun addReview(fullName: String, review: String, activityClass: AppCompatActivity) {
-        if (fullName.isNotEmpty() && review.isNotEmpty()) {
-            val referenceTeacher =
-                FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                    .getReference("Teachers")
+            val referenceTeacher = firebaseData.getReference("Teachers")
             referenceTeacher.child(fullName).child("review").setValue(review).addOnSuccessListener {
                 Toast.makeText(activityClass, "Review add...", Toast.LENGTH_SHORT).show()
             }
@@ -166,6 +163,19 @@ class ReadFirebase {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-        }
+    }
+
+    fun addRatings(fullName: String, modernity: String, demanding: String, loyalty: String, teachingSkills: String, activityClass: AppCompatActivity) {
+            val referenceTeacher = firebaseData.getReference("Teachers")
+            referenceTeacher.child(fullName).child("modernity").setValue(modernity).addOnSuccessListener {
+                Toast.makeText(activityClass, "Review add...", Toast.LENGTH_SHORT).show()
+            }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        activityClass,
+                        "Failed saving review due to ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
     }
 }

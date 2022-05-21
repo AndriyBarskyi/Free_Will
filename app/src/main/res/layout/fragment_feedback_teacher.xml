@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feedbackLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LinksFragment">
+    android:foreground="@drawable/popup_foreground"
+    tools:context=".FeedbackTeacherActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFeedbackFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:maxImageSize="36dp"
         android:layout_gravity='end|bottom'
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
@@ -25,6 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:maxImageSize="36dp"
         app:tint="@color/white" />
 
     <androidx.core.widget.NestedScrollView
@@ -43,11 +45,11 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="50dp"
+                app:layout_constraintBottom_toTopOf="@id/background_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/background_name"
                 app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -246,4 +248,4 @@
                 tools:listitem="@layout/feedback_card" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-</FrameLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -45,8 +45,6 @@ class MapActivity : AppCompatActivity() {
         findDirectionButton.setOnClickListener {
             val inflater =
                 it.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            drawerLayout = findViewById(R.id.drawerLayout)
-            drawerLayout.foreground.alpha = 255
             val popupView: View = inflater.inflate(R.layout.activity_search_popup, null)
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
@@ -55,13 +53,10 @@ class MapActivity : AppCompatActivity() {
 
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
             popupWindow.isOutsideTouchable = true
-            popupWindow.setOnDismissListener {
-                drawerLayout.foreground.alpha = 0
-            }
             val searchFromToButton: Button =
                 popupWindow.contentView.findViewById(R.id.searchFromToButton)
             val searchFromInput: TextInputEditText =
-                popupWindow.contentView.findViewById(R.id.searchFromInput)
+                popupWindow.contentView.findViewById(R.id.feedbackText)
             val searchToInput: TextInputEditText =
                 popupWindow.contentView.findViewById(R.id.searchToInput)
             searchFromToButton.setOnClickListener {

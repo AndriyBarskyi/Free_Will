@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingTop="140dp"
+    android:paddingRight="0dp"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:background="@color/transparent_black">
+
+    <RelativeLayout
+        android:id="@+id/addFeedbackPopUp"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@drawable/ic_rounded_layout_corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.254"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/addModernity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="200dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/modernity"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addDemanding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addModernity"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="200dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/demanding"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addLoyalty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addDemanding"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/loyality"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addTeachingSkills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addLoyalty"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/teaching_skills"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/addModernityRating"
+            style="?android:attr/ratingBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="16dp"
+            android:max="5"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintStart_toEndOf="@+id/addModernity" />
+
+        <RatingBar
+            android:id="@+id/addDemandingRating"
+            style="?android:attr/ratingBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="56dp"
+            android:max="5"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintStart_toEndOf="@+id/addDemanding" />
+
+        <RatingBar
+            android:id="@+id/addLoyaltyRating"
+            style="?android:attr/ratingBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="96dp"
+            android:max="5"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintStart_toEndOf="@+id/addLoyalty" />
+
+        <RatingBar
+            android:id="@+id/addTeachingSkillsRating"
+            style="?android:attr/ratingBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addDemandingRating"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="22dp"
+            android:max="5"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintStart_toEndOf="@+id/addTeachingSkills" />
+
+        <Button
+            android:id="@+id/addFeedbackBtn"
+            style="@style/SearchInMapButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="117dp"
+            android:layout_marginEnd="117dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/comfortaa"
+            android:paddingBottom="5dp"
+            android:text="@string/add_feedback"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="200dp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@color/dark_blue"
+            app:boxStrokeErrorColor="@color/red"
+            app:hintEnabled="false"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+            app:hintTextColor="@color/dark_blue">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/feedbackText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="top|left"
+                android:hint="@string/write_feedback"
+                android:singleLine="false"
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

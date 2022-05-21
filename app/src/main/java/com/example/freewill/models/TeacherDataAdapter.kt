@@ -41,6 +41,7 @@ class TeacherDataAdapter(private val context: Context, private var teacherCardLi
             mIntent.putExtra("photo", currentItem.photo)
             mIntent.putExtra("avgRating", holder.avgRating.text)
             context.startActivity(mIntent)
+
         }
     }
 

@@ -30,48 +30,6 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp"
                 app:menu="@menu/search_menu">
-
-<!--                <androidx.appcompat.widget.SearchView
-                    android:id="@+id/teacherSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="12dp"
-                    android:layoutDirection="rtl"
-                    app:iconifiedByDefault="true"
-                    android:animateLayoutChanges="true"
-                    app:queryBackground="@android:color/transparent"
-                    />-->
-
-<!--                <EditText
-                    android:id="@+id/search_here"
-                    android:layout_width="220dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="80dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="75dp"
-                    android:background="@drawable/rounded_all_borders_dark"
-                    android:ems="10"
-                    android:fontFamily="@font/comfortaa"
-                    android:hint="@string/teachers_preview"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry"
-                    android:visibility="visible"/>
-
-                <ImageView
-                    android:id="@+id/search"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="300dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@android:drawable/ic_menu_search" />-->
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -79,7 +37,9 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/teachersRecycler"
@@ -96,15 +56,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+
         android:id="@+id/navView"
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@drawable/nav_background"
         android:fitsSystemWindows="true"
+        android:visibility="visible"
         app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         app:itemIconSize="80dp"
-        app:itemVerticalPadding="@dimen/item_vertical_margin"
+        app:itemVerticalPadding="10dp"
         app:menu="@menu/nav_menu">
 
     </com.google.android.material.navigation.NavigationView>
