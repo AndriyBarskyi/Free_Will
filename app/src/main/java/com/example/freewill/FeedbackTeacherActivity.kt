@@ -3,7 +3,6 @@ package com.example.freewill
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.freewill.databinding.ActivityFeedbackTeacherBinding
-import com.example.freewill.databinding.ActivityScheduleBinding
 
 class FeedbackTeacherActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFeedbackTeacherBinding
@@ -12,11 +11,11 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         binding = ActivityFeedbackTeacherBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val TeacherIntent = intent
-        val fullName = TeacherIntent.getStringExtra("fullName")
-        val department = TeacherIntent.getStringExtra("department")
-        val avgRating = TeacherIntent.getStringExtra("avgRating")
-        val photo = TeacherIntent.getStringExtra("photo")
+        val teacherIntent = intent
+        val fullName = teacherIntent.getStringExtra("fullName")
+        val department = teacherIntent.getStringExtra("department")
+        val avgRating = teacherIntent.getStringExtra("avgRating")
+        val photo = teacherIntent.getStringExtra("photo")
 
         /**call text and images*/
         binding.backgroundName.text = fullName

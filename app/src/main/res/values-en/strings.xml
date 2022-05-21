@@ -19,8 +19,8 @@
     <string name = "Ukraine"> Солов\'їна </string>
     <string name = "English"> English </string>
     <string name = "Big"> B </string>
-    <string name = "Medium"> C </string>
-    <string name = "Small"> M </string>
+    <string name = "Medium">" M"</string>
+    <string name = "Small">" S"</string>
     <string name = "five_minute"> in 5  minutes </string>
     <string name = "ten_minute"> in 10 minutes </string>
     <string name = "fifteen_minute"> in 15 minutes </string>
@@ -79,6 +79,16 @@
     <string name="department_name">Department</string>
     <string name="full_name">Surname Name Patronymic</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_info"><b>Welcome! </b><b>Press the button <font color="#00b4d8">Send</font> and we will send a letter to your email. Please, click on the link in the letter.</b></string>
+    <string name="send">Send</string>
+    <string name="links_preview">Choose the course</string>
+    <string name="teachers_preview">Search here</string>
+    <string name="modernity">modernity</string>
+    <string name="demanding">demanding</string>
+    <string name="loyality">loyalty</string>
+    <string name="teaching_skills">teaching skills</string>
+    <string name="teachers_not_found">Teachers not found</string>
 
 
 </resources>

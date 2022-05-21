@@ -1,7 +1,9 @@
 package com.example.freewill
 
 import android.os.Bundle
-import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -15,6 +17,8 @@ import com.example.freewill.models.TeacherCard
 import com.example.freewill.models.TeacherDataAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.FirebaseDatabase
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 private lateinit var teachersRecyclerView: RecyclerView
@@ -49,20 +53,58 @@ class ReviewActivity : AppCompatActivity() {
                 )
                 teachersArrayList.add(teacher)
             }
-/*            var tc: TeacherCard = TeacherCard(
-                it.child("avgRating").value as Double?,
-                it.child("department").value as String?,
-                it.child("fullName").value as String?,
-                it.child("photo").value as String?
-            )*/
-            //teachersArrayList.add(tc)
-            teachersRecyclerView.adapter = TeacherDataAdapter(this,teachersArrayList)
+            teachersRecyclerView.adapter = TeacherDataAdapter(this.baseContext, teachersArrayList)
         }
+    }
 
-        /*reviewBinding.search.setOnClickListener {
-            reviewBinding.toolbar.title = ""
-            reviewBinding.searchHere.isVisible
-        }*/
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.search_menu, menu)
+
+        val searchItem: MenuItem = menu.findItem(R.id.actionSearch)
+
+        // getting search view of our item.
+        val searchView = searchItem.actionView as SearchView
+
+        // below line is to call set on query text listener method.
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                // inside on query text change method we are
+                // calling a method to filter our recycler view.
+                filter(newText)
+                return false
+            }
+        })
+        return true
+    }
+
+    private fun filter(text: String) {
+        // creating a new array list to filter our data.
+        val filteredList: ArrayList<TeacherCard> = ArrayList()
+
+        // running a for loop to compare elements.
+        for (item in teachersArrayList) {
+            // checking if the entered string matched with any item of our recycler view.
+            if (item.fullName?.lowercase(Locale.ROOT)?.contains(text.lowercase(Locale.getDefault())) == true || item.department?.lowercase(Locale.ROOT)?.contains(text.lowercase(Locale.getDefault())) == true) {
+                // if the item is matched we are
+                // adding it to our filtered list.
+                filteredList.add(item)
+            }
+        }
+        if (filteredList.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            Toast.makeText(this, R.string.teachers_not_found, Toast.LENGTH_SHORT).show()
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            teachersRecyclerView.adapter = TeacherDataAdapter(this.baseContext, teachersArrayList)
+            (teachersRecyclerView.adapter as TeacherDataAdapter).filterList(filteredList)
+        }
     }
 
     private fun createNavigationMenu() {

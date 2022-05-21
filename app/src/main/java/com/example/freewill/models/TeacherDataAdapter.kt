@@ -55,4 +55,10 @@ class TeacherDataAdapter(private val context: Context, private var teacherCardLi
         val avgStarsRating: RatingBar = itemView.findViewById(R.id.teacherRatingBar)
         val avgRating: TextView = itemView.findViewById(R.id.teacherAvgRating)
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun filterList(filteredList: ArrayList<TeacherCard>) {
+        teacherCardList = filteredList
+        notifyDataSetChanged()
+    }
 }
