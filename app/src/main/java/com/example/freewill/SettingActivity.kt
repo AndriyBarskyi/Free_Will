@@ -53,9 +53,9 @@ open class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(13,13,11,13)
-    val minutes:IntArray= intArrayOf(33,6,50,30)
-    val timesTo:IntArray= intArrayOf(0,0,15,20)
+    val hours:IntArray= intArrayOf(8,10,11,13)
+    val minutes:IntArray= intArrayOf(30,10,50,30)
+    val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
     var count :Int?=null
@@ -80,7 +80,7 @@ open class SettingActivity : AppCompatActivity()
         //потрібно запитати дозвіл на показ вікон поверх інших програм
         //
         //
-        if (resLang?.getBoolean("setting", true) == true) {
+        if (true) {
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             val uri = Uri.fromParts("package", packageName, null)
