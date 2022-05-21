@@ -66,7 +66,6 @@
     <string name="rest_twelve">Пара за 20 хвилин</string>
 
 
-
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
     <string name="edit_schedule_wen">ср</string>
@@ -80,6 +79,7 @@
     <string name="toolbar_schedule">Розклад</string>
     <string name="toolbar_link">Корисні посилання</string>
     <string name="toolbar_map">Карта</string>
+    <string name="toolbar_news">Новини</string>
     <string name="toolbar_settings">Налаштування</string>
     <string name="toolbar_change_schedule">Зміна розкладу</string>
     <string name="log_out_alert">Ви справді бажаєте вийти з акаунта?</string>
