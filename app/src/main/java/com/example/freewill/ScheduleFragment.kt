@@ -35,7 +35,7 @@ class ScheduleFragment : Fragment() {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             //val position = getInt(ARG_OBJECT)
             val textDay =getString(ARG_OBJECT)
-            ReadGroup.readGroupUser(){group->ReadGroup.ReadSchedule(group,textDay.toString(),binding)}
+            ReadGroup.readGroupUser(){group->ReadGroup.readSchedule(group,textDay.toString(),binding)}
 
         //binding.class1.setText(textDay.toString())
             //binding.aud1.setText(position.toString())

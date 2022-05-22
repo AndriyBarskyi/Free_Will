@@ -59,7 +59,7 @@
             app:hintTextColor="@color/dark_blue">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/feedbackText"
+                android:id="@+id/searchFromInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/comfortaa"
