@@ -6,6 +6,9 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.freewill.databinding.ActivityOpenNewsBinding
 import com.example.freewill.image_tools.loadImage
+import com.example.freewill.models.NewsAdapter
+import com.example.freewill.models.NewsModel
+import com.google.firebase.database.FirebaseDatabase
 
 class OpenNewsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOpenNewsBinding
@@ -25,5 +28,20 @@ class OpenNewsActivity : AppCompatActivity() {
         Glide.with(this)
             .load(animalImg)
             .into(binding.imgNews)
+
+//        val referenceNews =
+//            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+//                .getReference("News")
+//        referenceNews.get().addOnSuccessListener {
+//            for (newsSnapshot in it.children) {
+//                val news = NewsModel(
+//                    newsSnapshot.child("Header").value as String,
+//                    newsSnapshot.child("Description").value as String,
+//                    newsSnapshot.child("Date").value as String,
+//                    newsSnapshot.child("Url").value as String
+//                )
+//
+//            }
+//        }
     }
 }

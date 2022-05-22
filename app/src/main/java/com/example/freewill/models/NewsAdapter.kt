@@ -43,7 +43,7 @@ class NewsAdapter(private val context: Context, private val newsList: ArrayList<
             val mIntent = Intent(context, OpenNewsActivity::class.java)
             mIntent.putExtra("header",holder.header.text)
             mIntent.putExtra("date",holder.date.text)
-            mIntent.putExtra("description",holder.description.text)
+            mIntent.putExtra("description",currentNews.description)
             mIntent.putExtra("img",currentNews.newsImage)
             context.startActivity(mIntent)
 

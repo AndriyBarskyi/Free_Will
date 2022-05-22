@@ -5,19 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OpenNewsActivity">
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="isData"-->
-<!--            type="com.example.freewill.models.NewsModel" />-->
 
-
-<!--    </data>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".OpenNewsActivity">
-        <ScrollView
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
@@ -63,14 +58,14 @@
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_height="403dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/comfortaa"
-                    android:textAlignment="gravity"
                     android:text="@{isData.description}"
+                    android:textAlignment="gravity"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     android:textStyle="bold|normal" />
@@ -79,7 +74,7 @@
             </LinearLayout>
 
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
 </RelativeLayout>

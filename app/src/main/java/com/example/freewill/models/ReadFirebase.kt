@@ -1,10 +1,13 @@
 package com.example.freewill.models
 
 import android.content.Context
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.appcompat.app.AppCompatViewInflater
+import com.example.freewill.databinding.ActivityNewsBinding
 import com.example.freewill.databinding.ActivitySettingBinding
 import com.example.freewill.databinding.FragmentScheduleBinding
 import com.google.firebase.auth.ktx.auth
@@ -32,11 +35,16 @@ class ReadFirebase {
                 val audut4 =it.child("fourthpara").child("audutoria").value
                 val audut5 =it.child("fifthpara").child("audutoria").value
 
-                binding.class1.setText(firstpara.toString())
+                //binding.class1.setText(firstpara.toString())
                 binding.class2.setText(secondpara.toString())
                 binding.class3.setText(thirdpara.toString())
                 binding.class4.setText(fourthpara.toString())
                 binding.class5.setText(fifthpara.toString())
+
+                val mSpannableString = SpannableString(firstpara.toString())
+                mSpannableString.setSpan(UnderlineSpan(), 0, mSpannableString.length, 0)
+                binding.class1.setText(mSpannableString)
+                //mTextView.text = mSpannableString
 
                 binding.aud1.setText(audut1.toString())
                 binding.aud2.setText(audut2.toString())
@@ -153,4 +161,22 @@ class ReadFirebase {
             }.addOnFailureListener {}
         }
     }
+
+//    fun ReadNews(context: Context,newsList: ArrayList<NewsModel>,binding: ActivitySettingBinding) {
+//        val newsRecycler = binding.newsRecycler
+//        val referenceNews = FirebaseData.getReference("News")
+//        referenceNews.get().addOnSuccessListener {
+//            for (newsSnapshot in it.children) {
+//                val news = NewsModel(
+//                    newsSnapshot.child("Header").value as String,
+//                    newsSnapshot.child("Description").value as String,
+//                    newsSnapshot.child("Date").value as String,
+//                    newsSnapshot.child("Url").value as String
+//                )
+//                newsList.add(news)
+//            }
+//
+//            newsRecycler.adapter = NewsAdapter(context,newsList)
+//        }
+//    }
 }
