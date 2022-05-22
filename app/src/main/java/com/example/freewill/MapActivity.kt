@@ -114,7 +114,7 @@ class MapActivity : AppCompatActivity() {
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
           
             if (isChecked) {
-                imageMap.setOnTouchListener(imageViewOnTouchListener
+                imageMap.setOnTouchListener(imageViewOnTouchListener)
             }
             else
             {
