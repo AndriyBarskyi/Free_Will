@@ -14,6 +14,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.freewill.databinding.ActivityScheduleBinding
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ShowAudience
+import com.example.freewill.search_point.Dijkstra
 import com.google.android.material.navigation.NavigationView
 
 
@@ -59,6 +61,7 @@ class ScheduleActivity : AppCompatActivity() {
         viewPager.adapter=adapter
         binding.ChangeBtn1.setOnClickListener {
             startActivity(Intent(this, EditScheduleActivity::class.java))
+            //setContentView(ShowAudience(this, Dijkstra.getCoord("241",  this.baseContext)))
         }
     }
 

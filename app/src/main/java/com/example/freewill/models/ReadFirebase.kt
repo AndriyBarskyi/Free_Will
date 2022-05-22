@@ -35,15 +35,15 @@ class ReadFirebase {
                 val audut4 =it.child("fourthpara").child("audutoria").value
                 val audut5 =it.child("fifthpara").child("audutoria").value
 
-                //binding.class1.setText(firstpara.toString())
+                binding.class1.setText(firstpara.toString())
                 binding.class2.setText(secondpara.toString())
                 binding.class3.setText(thirdpara.toString())
                 binding.class4.setText(fourthpara.toString())
                 binding.class5.setText(fifthpara.toString())
 
-                val mSpannableString = SpannableString(firstpara.toString())
-                mSpannableString.setSpan(UnderlineSpan(), 0, mSpannableString.length, 0)
-                binding.class1.setText(mSpannableString)
+                //val mSpannableString = SpannableString(firstpara.toString())
+                //mSpannableString.setSpan(UnderlineSpan(), 0, mSpannableString.length, 0)
+                //binding.class1.setText(mSpannableString)
                 //mTextView.text = mSpannableString
 
                 binding.aud1.setText(audut1.toString())
