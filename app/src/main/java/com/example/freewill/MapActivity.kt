@@ -3,10 +3,13 @@ package com.example.freewill
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
-import android.graphics.*
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.Gravity
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -31,8 +34,7 @@ class MapActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var mapBinding: ActivityMapBinding
-    val bitmap = Bitmap.createBitmap(913, 785, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
+    private var showing = false
 
     @SuppressLint("InflateParams", "UseSwitchCompatOrMaterialCode", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +47,8 @@ class MapActivity : AppCompatActivity() {
         findDirectionButton.setOnClickListener {
             val inflater =
                 it.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            drawerLayout = findViewById(R.id.drawerLayout)
+            drawerLayout.foreground.alpha = 255
             val popupView: View = inflater.inflate(R.layout.activity_search_popup, null)
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
@@ -53,10 +57,13 @@ class MapActivity : AppCompatActivity() {
 
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
             popupWindow.isOutsideTouchable = true
+            popupWindow.setOnDismissListener {
+                drawerLayout.foreground.alpha = 0
+            }
             val searchFromToButton: Button =
                 popupWindow.contentView.findViewById(R.id.searchFromToButton)
             val searchFromInput: TextInputEditText =
-                popupWindow.contentView.findViewById(R.id.feedbackText)
+                popupWindow.contentView.findViewById(R.id.searchFromInput)
             val searchToInput: TextInputEditText =
                 popupWindow.contentView.findViewById(R.id.searchToInput)
             searchFromToButton.setOnClickListener {
@@ -79,6 +86,7 @@ class MapActivity : AppCompatActivity() {
                         }
                     } else {
                         popupWindow.dismiss()
+                        showing = true
 
                         setContentView(DrawPoints(this, points))
                     }
@@ -101,8 +109,10 @@ class MapActivity : AppCompatActivity() {
             })
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
+
         val imageMap: ImageView = findViewById(R.id.imageView16)
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
+          
             if (isChecked) {
                 imageMap.setOnTouchListener(imageViewOnTouchListener)
             }
@@ -110,6 +120,25 @@ class MapActivity : AppCompatActivity() {
             {
                 imageMap.setOnTouchListener(null)
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
+
+            setContentView(R.layout.activity_map)
+            val i = Intent(baseContext, MapActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
         }
     }
 

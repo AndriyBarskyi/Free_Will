@@ -143,10 +143,6 @@ open class SettingActivity : AppCompatActivity()
 
         setContentView(bindingClass.root)
 
-
-
-
-
         //set background
         findViewById<DrawerLayout>(R.id.drawerLayout).foreground.alpha=0
 
@@ -369,7 +365,7 @@ open class SettingActivity : AppCompatActivity()
     /////////////////////////////////////////////////////////////////////////////////////////////
     fun changeB(view: View) {
         // call checking the password
-        EditInformation(R.layout.activity_check_password, view)
+        EditInformation(R.layout.activity_edit_setting, view)
     }
 
 
@@ -491,11 +487,6 @@ open class SettingActivity : AppCompatActivity()
         super.onDestroy()
         stringfSaver(keyLanguage, chooseLang)
         stringfSaver(keyFont, chooseFont)
-//        boolSaver(five, bindingClass.fiveMinute.isChecked)
-//        boolSaver(ten, bindingClass.tenMinute.isChecked)
-//        boolSaver(fifteen, bindingClass.fifteenMinute.isChecked)
-//        boolSaver(twelve, bindingClass.twelveMinute.isChecked)
-
     }
 
 
