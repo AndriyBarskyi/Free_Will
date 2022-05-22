@@ -82,7 +82,7 @@ class MapActivity : AppCompatActivity() {
                         } else {
                             popupWindow.dismiss()
 
-                            setContentView(ShowAudience(this, points))
+                            this.setContentView(ShowAudience(this, points))
                         }
                     } else {
                         popupWindow.dismiss()
