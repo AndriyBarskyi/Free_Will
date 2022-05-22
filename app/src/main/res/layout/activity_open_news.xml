@@ -34,43 +34,44 @@
                     android:layout_height="1dp"/>
 
 
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:elevation="15dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold|normal" />
+
                 <ImageView
                     android:id="@+id/imgNews"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
-                    android:id="@+id/header"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="#228ADC"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:textSize="22sp"
-                    android:textStyle="bold|normal" />
-
-                <TextView
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="320dp"
-                    android:layout_gravity="start"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
-                    android:gravity="start"
+                    android:fontFamily="@font/comfortaa"
+                    android:textAlignment="center"
                     android:text="@{isData.description}"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:textStyle="bold|normal" />
 
 
