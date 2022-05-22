@@ -33,6 +33,7 @@
     <string name="from">Від</string>
     <string name="to">До</string>
     <string name="search">Пошук</string>
+    <string name="info">Інформація</string>
     <string name="room_not_exists">Кімнати з таким номером немає!</string>
 
     <!--    authentication part-->
@@ -69,6 +70,8 @@
 
 
 
+    <string name="subject">Предмет</string>
+    <string name="audience">ауд.</string>
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
     <string name="edit_schedule_wen">ср</string>
