@@ -30,7 +30,7 @@ class LinksPreviewActivity : AppCompatActivity() {
             val array=when (it.exists()) {
                 true->
                 {
-                    var arrayKeys= Array<String>(1){" "}
+                    var arrayKeys= Array<String>(1){"Дізнатись щось корисне ↓"}
                     it.children.forEach {
                         arrayKeys+=it.key.toString()
                     }
@@ -84,7 +84,7 @@ class LinksPreviewActivity : AppCompatActivity() {
                     Toast.makeText(this@LinksPreviewActivity,
                         "Обраний предмет: "+
                                 "" + languages[position], Toast.LENGTH_SHORT).show()
-                    if(languages[position]!=" ")
+                    if(languages[position]!="Дізнатись щось корисне ↓")
                     {
                         OpenFrag(LinkFragment.newInstance(languages[position]), R.id.frame)
                         //image=findViewById(R.id.boy_links) as ImageView
