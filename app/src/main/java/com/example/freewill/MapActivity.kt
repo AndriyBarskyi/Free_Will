@@ -112,7 +112,7 @@ class MapActivity : AppCompatActivity() {
 
         val imageMap: ImageView = findViewById(R.id.imageView16)
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
-          
+
             if (isChecked) {
                 imageMap.setOnTouchListener(imageViewOnTouchListener)
             }
@@ -178,29 +178,29 @@ class MapActivity : AppCompatActivity() {
         val infoAboutRoom = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("Rooms")
-        infoAboutRoom.child("237").get().addOnSuccessListener {
+        infoAboutRoom.child(_room).get().addOnSuccessListener {
             val info=when(it.exists()) {
-                true-> it.value.toString()
+                true->
+                {
+                    "к-ть місць: "+it.child("к-ть місць").value.toString()+"\n"+"кафедра: "+it.child("кафедра").value.toString()+"\n"+"тип аудиторії: "+it.child("тип аудиторії").value.toString()
+                }
                 else->""
             }
             onSuccess(info)
         }
-        Log.d("InfoRoom","2")
     }
-
+    fun DialogAud(room:String)
+    {
+        val manager = supportFragmentManager
+        readRoom(room){info->InfoRoomFragment(room,info).show(manager, "myDialog")}
+    }
     @SuppressLint("ClickableViewAccessibility")
     private val imageViewOnTouchListener =
             OnTouchListener { view, event ->
-                val x = event.x.toInt()
-                val y = event.y.toInt()
-                if (5 <= x && x <= 200) {
-
-                    val info:String
-                    val manager = supportFragmentManager
-                    readRoom("237"){info->InfoRoomFragment("237",info).show(manager, "myDialog")}
-                    //val intent = Intent(this, NextActivity::class.java)
-                    //context.startActivity(intent)
-                }
+                val x = event.x.toString()
+                val y = event.y.toString()
+                Log.d("in",y)
+                InformationAboutRooms().search(x,y){room->DialogAud(room)}
                 true
             }
 }
