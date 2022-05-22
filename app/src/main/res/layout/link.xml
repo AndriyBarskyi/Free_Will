@@ -17,19 +17,20 @@
         app:strokeColor="@color/less_blue"
         app:strokeWidth="3dp">
 
+
         <ImageView
             android:id="@+id/imageView28"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_margin="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
             app:srcCompat="@drawable/link" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="335dp"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="35dp"
             android:autoLink="web"
             android:clickable="true"
             android:fontFamily="@font/comfortaa"

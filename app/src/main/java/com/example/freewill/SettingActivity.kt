@@ -488,9 +488,4 @@ open class SettingActivity : AppCompatActivity()
         stringfSaver(keyLanguage, chooseLang)
         stringfSaver(keyFont, chooseFont)
     }
-
-
-
-
-
 }
