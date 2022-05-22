@@ -7,7 +7,9 @@
     <string name="gmail">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="confirm">Підтвердити</string>
-    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
+    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">
+        Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням.
+        Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>
@@ -97,18 +99,18 @@
     <string name="characteristic3">лояльність</string>
     <string name="characteristic4">викладання</string>
 
-    <string name="shcherbyna_name">Щербина Юрій Миколайович</string>
-    <string name="shcherbyna_subject">математична логіка</string>
+    <string name="shcherbyna_name" translatable="false">Щербина Юрій Миколайович</string>
+    <string name="shcherbyna_subject" translatable="false">математична логіка</string>
 
-    <string name="golovatyy_name">Головатий Юрій Данилович</string>
-    <string name="golovatyy_subject">диференціальні рівняння</string>
+    <string name="golovatyy_name" translatable="false">Головатий Юрій Данилович</string>
+    <string name="golovatyy_subject" translatable="false">диференціальні рівняння</string>
 
-    <string name="malets_name">Малець Романна Богданівна</string>
-    <string name="malets_subject">бази даних</string>
+    <string name="malets_name" translatable="false">Малець Романна Богданівна</string>
+    <string name="malets_subject" translatable="false">бази даних</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
