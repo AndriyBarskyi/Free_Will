@@ -28,4 +28,8 @@
         <item name="android:textColorPrimary">@color/white</item>
     </style>
 
+    <style name="roundedCornersOfImage">
+        <item name="cornerSize">30%</item>
+    </style>
+
 </resources>

@@ -12,13 +12,13 @@
         android:layout_height="180dp"
         android:padding="15dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/newsImage"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@mipmap/ic_launcher">
+            app:shapeAppearanceOverlay="@style/roundedCornersOfImage"
+            android:src="@mipmap/ic_launcher"/>
 
-        </ImageView>
 
         <TextView
             android:id="@+id/header"
@@ -52,10 +52,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="260dp"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="120dp"
             android:fontFamily="@font/comfortaa"
             android:text="25/05/22"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold">
 
         </TextView>

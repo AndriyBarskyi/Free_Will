@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.freewill.NewsActivity
 import com.example.freewill.OpenNewsActivity
-import com.example.freewill.OpenNewsFragment
 //import com.bumptech.glide.Glide
 import com.example.freewill.R
 
