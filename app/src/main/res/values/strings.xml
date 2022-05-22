@@ -33,6 +33,7 @@
     <string name="from">Від</string>
     <string name="to">До</string>
     <string name="search">Пошук</string>
+    <string name="info">Інформація</string>
     <string name="room_not_exists">Кімнати з таким номером немає!</string>
 
     <!--    authentication part-->
