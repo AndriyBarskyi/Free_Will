@@ -26,7 +26,8 @@ class AlarmActivity : AppCompatActivity() {
         v = getSystemService(VIBRATOR_SERVICE) as Vibrator?
         when(count){
             0->{sound.start()}
-            2->{v!!.vibrate(VibrationEffect.createOneShot(5000,VibrationEffect.DEFAULT_AMPLITUDE))}
+            2->{v!!.vibrate(VibrationEffect.createOneShot(5000,
+                VibrationEffect.DEFAULT_AMPLITUDE))}
         }
         val editor = resLang.edit()
         var index = resLang.getInt(a.clockIndex,0)
