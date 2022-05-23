@@ -33,44 +33,47 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-            <ImageView
-                android:id="@+id/boy_links"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="-700dp"
-                android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
-                app:srcCompat="@drawable/boy_links" />
+        <ImageView
+            android:id="@+id/boy_links"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="-670dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@drawable/boy_links" />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="92dp"
-        android:text="@string/links_preview"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:fontFamily="@font/comfortaa" />
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="92dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/links_preview"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:fontFamily="@font/comfortaa" />
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="144dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/rounded_all_borders_dark"
             android:spinnerMode="dropdown"
+            android:theme="@style/SpinnerTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,9 +81,9 @@
 
         <FrameLayout
             android:id="@+id/frame"
-            android:layout_width="407dp"
-            android:layout_height="455dp"
-            android:layout_marginTop="200dp"
+            android:layout_width="408dp"
+            android:layout_height="494dp"
+            android:layout_marginTop="150dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +93,7 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.navigation.NavigationView
+    <com.google.android.material.navigation.NavigationView
 
         android:id="@+id/navView"
         android:layout_width="120dp"
@@ -98,11 +101,10 @@
         android:layout_gravity="start"
         android:background="@drawable/nav_background"
         android:fitsSystemWindows="true"
-        android:visibility="visible"
         app:itemHorizontalPadding="@dimen/activity_horizontal_margin"
         app:itemIconSize="80dp"
         app:itemVerticalPadding="10dp"
         app:menu="@menu/nav_menu">
 
-        </com.google.android.material.navigation.NavigationView>
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

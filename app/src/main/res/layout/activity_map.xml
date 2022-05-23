@@ -50,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity='end|bottom'
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="100dp"
             android:backgroundTint="@color/dark_blue"
             android:clickable="true"
             android:contentDescription="@android:string/search_go"
@@ -69,10 +71,13 @@
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="45dp"
             android:checked="false"
-            android:text="Інформація"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/info"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

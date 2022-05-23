@@ -7,7 +7,9 @@
     <string name="gmail">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="confirm">Підтвердити</string>
-    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
+    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">
+        Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням.
+        Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>
@@ -31,6 +33,7 @@
     <string name="from">Від</string>
     <string name="to">До</string>
     <string name="search">Пошук</string>
+    <string name="info">Інформація</string>
     <string name="room_not_exists">Кімнати з таким номером немає!</string>
 
     <!--    authentication part-->
@@ -47,7 +50,7 @@
     <string name="entrance_no_account">Я ще не маю акаунта</string>
     <string name="entrance_registration">Зареєструватись</string>
     <string name="registration">Реєстрація</string>
-    <string name="forget_pass">Забули \nпароль?</string>
+    <string name="forget_pass">Забули\nпароль?</string>
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
@@ -60,12 +63,15 @@
     <string name="you_agree">Зміни підтверджено</string>
     <string name="reset_password">Скинути пароль</string>
     <string name="alarm">Alarm!!!</string>
-    <string name="rest_five">Пара за 5 хвилин</string>
-    <string name="rest_ten">Пара за 10 хвилин</string>
-    <string name="rest_fifteen">Пара за 15 хвилин</string>
-    <string name="rest_twelve">Пара за 20 хвилин</string>
+    <string name="rest_five">Пара через 5 хвилин</string>
+    <string name="rest_ten">Пара через 10 хвилин</string>
+    <string name="rest_fifteen">Пара через 15 хвилин</string>
+    <string name="rest_twelve">Пара через 20 хвилин</string>
 
 
+
+    <string name="subject">Предмет</string>
+    <string name="audience">ауд.</string>
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
     <string name="edit_schedule_wen">ср</string>
@@ -79,7 +85,6 @@
     <string name="toolbar_schedule">Розклад</string>
     <string name="toolbar_link">Корисні посилання</string>
     <string name="toolbar_map">Карта</string>
-    <string name="toolbar_news">Новини</string>
     <string name="toolbar_settings">Налаштування</string>
     <string name="toolbar_change_schedule">Зміна розкладу</string>
     <string name="log_out_alert">Ви справді бажаєте вийти з акаунта?</string>
@@ -95,18 +100,18 @@
     <string name="characteristic3">лояльність</string>
     <string name="characteristic4">викладання</string>
 
-    <string name="shcherbyna_name">Щербина Юрій Миколайович</string>
-    <string name="shcherbyna_subject">математична логіка</string>
+    <string name="shcherbyna_name" translatable="false">Щербина Юрій Миколайович</string>
+    <string name="shcherbyna_subject" translatable="false">математична логіка</string>
 
-    <string name="golovatyy_name">Головатий Юрій Данилович</string>
-    <string name="golovatyy_subject">диференціальні рівняння</string>
+    <string name="golovatyy_name" translatable="false">Головатий Юрій Данилович</string>
+    <string name="golovatyy_subject" translatable="false">диференціальні рівняння</string>
 
-    <string name="malets_name">Малець Романна Богданівна</string>
-    <string name="malets_subject">бази даних</string>
+    <string name="malets_name" translatable="false">Малець Романна Богданівна</string>
+    <string name="malets_subject" translatable="false">бази даних</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->

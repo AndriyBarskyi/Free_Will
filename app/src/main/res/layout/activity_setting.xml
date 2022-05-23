@@ -48,26 +48,11 @@
                 android:orientation="vertical">
 
 
-                <TextView
-                    android:id="@+id/setting"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:fontFamily="@font/comfortaa_light"
-                    android:text="@string/setting"
-                    android:textAlignment="center"
-                    android:textColor="@color/blue"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sideBar"
-                    tools:ignore="TextContrastCheck" />
-
                 <RelativeLayout
                     android:id="@+id/personalDateRelativeLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="60dp"
                     app:layout_constraintBottom_toTopOf="@+id/editGroup"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -111,7 +96,7 @@
                 <TextView
                     android:id="@+id/editGroup"
                     android:layout_width="255dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="76dp"
@@ -133,7 +118,7 @@
                 <TextView
                     android:id="@+id/editLogin"
                     android:layout_width="255dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="76dp"
@@ -154,7 +139,7 @@
                 <TextView
                     android:id="@+id/editGmail"
                     android:layout_width="255dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="76dp"
@@ -204,7 +189,7 @@
                         android:id="@+id/forgotPasswordSetting"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="36dp"
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/comfortaa"
                         android:text="@string/forget_pass"
@@ -502,7 +487,7 @@
                         android:layout_height="40dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="36dp"
+                        android:layout_marginStart="47dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="36dp"
                         android:background="@drawable/rounded_border"

@@ -2,11 +2,9 @@ package Links
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -32,7 +30,7 @@ class LinksPreviewActivity : AppCompatActivity() {
             val array=when (it.exists()) {
                 true->
                 {
-                    var arrayKeys= Array<String>(1){"Оберіть предмет:"}
+                    var arrayKeys= Array<String>(1){"Дізнатись щось корисне ↓"}
                     it.children.forEach {
                         arrayKeys+=it.key.toString()
                     }
@@ -53,7 +51,7 @@ class LinksPreviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLinksPreviewBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_links_preview)
+        setContentView(binding.root)
         readSubjects(){array->CreateItem(array)}
 
         // assigning ID of the toolbar to a variable
@@ -74,6 +72,7 @@ class LinksPreviewActivity : AppCompatActivity() {
     fun CreateItem(languages:Array<String>)
     {
         val spinner = findViewById<Spinner>(R.id.spinner)
+        val image=findViewById(R.id.boy_links) as ImageView
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, languages)
@@ -85,14 +84,28 @@ class LinksPreviewActivity : AppCompatActivity() {
                     Toast.makeText(this@LinksPreviewActivity,
                         "Обраний предмет: "+
                                 "" + languages[position], Toast.LENGTH_SHORT).show()
-                    if(languages[position]!="Оберіть предмет:")
+                    if(languages[position]!="Дізнатись щось корисне ↓")
                     {
                         OpenFrag(LinkFragment.newInstance(languages[position]), R.id.frame)
+                        //image=findViewById(R.id.boy_links) as ImageView
+                        image.visibility=View.GONE
                     }
+                    else
+                    {
+                        image.visibility=View.VISIBLE
+                    }
+
                 }
                 override fun onNothingSelected(parent: AdapterView<*>) {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name = "app_name"> Free Will </string>
-    <string name = "no_account"> I don\'t have an account yet. \n<b><u> Sign up </u></b></string>
+    <string name = "no_account"> I don\'t have an account yet.\n<b><u> Sign up </u></b></string>
     <string name = "setting"> Settings </string>
     <string name = "group"> Group </string>
     <string name = "login"> Login </string>
+    <string name = "confirm"> Confirm </string>
+    <string name = "confirm_info"> <b> Congratulations! </b> <b> Click the <font color = "# 00b4d8">
+        Send </font> button and a link will be sent to your email. Follow it to confirm your email.
+    </b> </string>
     <string name = "gmail"> Email </string>
     <string name = "password"> Password </string>
     <string name = "personal_data"> Personal data </string>
@@ -30,6 +34,7 @@
     <string name = "to"> To </string>
     <string name = "search"> Search </string>
     <string name="room_not_exists">Such room does not exist!</string>
+    <string name="send">Send</string>
 
 <!--    authentication part-->
     <string name = "choose_page"> Welcome </string>
@@ -51,6 +56,14 @@
     <b> You can change your password in Settings. </b> </string>
     <string name = "check_registr" ><b> A confirmation email has been sent to your inbox so you can sign in. </b>
     <b> Looking forward to seeing you! </b> </string>
+
+
+    <string name="alarm">Alarm!!!</string>
+    <string name="rest_five">lesson for 5 minutes</string>
+    <string name="rest_ten">lesson for 10 minutes</string>
+    <string name="rest_fifteen">lesson for 15 minutes</string>
+    <string name="rest_twelve">lesson for 20 minutes</string>
+
     <string name = "edit_schedule_mon"> Mon </string>
     <string name = "edit_schedule_tue"> Tue </string>
     <string name = "edit_schedule_wen"> Wed </string>
@@ -64,12 +77,23 @@
     <string name="you_agree">Changes confirmed</string>
     <string name="reset_password">Reset Password</string>
 
+    <string name="subject">Subject</string>
+    <string name="info">Information</string>
+    <string name="audience">aud.</string>
+    <string name = "links_preview"> Select subject </string>
+
+    <string name = "teachers_preview"> Search here </string>
+    <string name = "characteristic1"> present </string>
+    <string name = "characteristic2"> fastidiousness </string>
+    <string name = "characteristic3"> loyalty </string>
+    <string name = "characteristic4"> teaching </string>
+
 
     <!--    navigation_drawer-->
     <string name = "open"> Open </string>
     <string name = "close"> Close </string>
     <string name="toolbar_schedule">Schedule</string>
-    <string name="toolbar_link">Usefull Link</string>
+    <string name="toolbar_link">Useful Link</string>
     <string name="toolbar_map">Map</string>
     <string name="toolbar_settings">Settings</string>
     <string name="toolbar_news">News</string>

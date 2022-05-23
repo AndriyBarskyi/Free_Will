@@ -3,11 +3,13 @@ package com.example.freewill
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
-import android.graphics.*
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.Gravity
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.DialogFragment
-import com.google.firebase.database.DatabaseReference
 import com.example.freewill.databinding.ActivityMapBinding
 import com.example.freewill.models.DrawPoints
 import com.example.freewill.models.NavigationClass
@@ -33,8 +34,7 @@ class MapActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var mapBinding: ActivityMapBinding
-    val bitmap = Bitmap.createBitmap(913, 785, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
+    private var showing = false
 
     @SuppressLint("InflateParams", "UseSwitchCompatOrMaterialCode", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,10 +82,11 @@ class MapActivity : AppCompatActivity() {
                         } else {
                             popupWindow.dismiss()
 
-                            setContentView(ShowAudience(this, points))
+                            this.setContentView(ShowAudience(this, points))
                         }
                     } else {
                         popupWindow.dismiss()
+                        showing = true
 
                         setContentView(DrawPoints(this, points))
                     }
@@ -108,8 +109,10 @@ class MapActivity : AppCompatActivity() {
             })
         }
         val switchInfo: Switch = findViewById(R.id.switch1)
+
         val imageMap: ImageView = findViewById(R.id.imageView16)
         switchInfo.setOnCheckedChangeListener {ImageView, isChecked ->
+
             if (isChecked) {
                 imageMap.setOnTouchListener(imageViewOnTouchListener)
             }
@@ -117,6 +120,25 @@ class MapActivity : AppCompatActivity() {
             {
                 imageMap.setOnTouchListener(null)
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
+
+            setContentView(R.layout.activity_map)
+            val i = Intent(baseContext, MapActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
         }
     }
 
@@ -156,29 +178,29 @@ class MapActivity : AppCompatActivity() {
         val infoAboutRoom = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("Rooms")
-        infoAboutRoom.child("237").get().addOnSuccessListener {
+        infoAboutRoom.child(_room).get().addOnSuccessListener {
             val info=when(it.exists()) {
-                true-> it.value.toString()
+                true->
+                {
+                    "к-ть місць: "+it.child("к-ть місць").value.toString()+"\n"+"кафедра: "+it.child("кафедра").value.toString()+"\n"+"тип аудиторії: "+it.child("тип аудиторії").value.toString()
+                }
                 else->""
             }
             onSuccess(info)
         }
-        Log.d("InfoRoom","2")
     }
-
+    fun DialogAud(room:String)
+    {
+        val manager = supportFragmentManager
+        readRoom(room){info->InfoRoomFragment(room,info).show(manager, "myDialog")}
+    }
     @SuppressLint("ClickableViewAccessibility")
     private val imageViewOnTouchListener =
             OnTouchListener { view, event ->
-                val x = event.x.toInt()
-                val y = event.y.toInt()
-                if (5 <= x && x <= 200) {
-
-                    val info:String
-                    val manager = supportFragmentManager
-                    readRoom("237"){info->InfoRoomFragment("237",info).show(manager, "myDialog")}
-                    //val intent = Intent(this, NextActivity::class.java)
-                    //context.startActivity(intent)
-                }
+                val x = event.x.toString()
+                val y = event.y.toString()
+                Log.d("in",y)
+                InformationAboutRooms().search(x,y){room->DialogAud(room)}
                 true
             }
 }
