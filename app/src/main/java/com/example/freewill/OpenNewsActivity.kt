@@ -3,6 +3,7 @@ package com.example.freewill
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.example.freewill.databinding.ActivityOpenNewsBinding
 import com.example.freewill.image_tools.loadImage
@@ -29,6 +30,15 @@ class OpenNewsActivity : AppCompatActivity() {
             .load(animalImg)
             .into(binding.imgNews)
 
+        val toolbar: Toolbar = binding.toolbar
+
+        // using toolbar as ActionBar
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            title = "News"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 //        val referenceNews =
 //            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
 //                .getReference("News")
@@ -43,5 +53,9 @@ class OpenNewsActivity : AppCompatActivity() {
 //
 //            }
 //        }
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }
