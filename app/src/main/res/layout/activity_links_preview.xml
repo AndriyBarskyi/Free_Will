@@ -89,6 +89,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/imageView29"
+                android:layout_width="85dp"
+                android:layout_height="86dp"
+                app:srcCompat="@drawable/emblem_of_the_ukrainian_air_force_prapor_copy_copy" />
+
         </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
