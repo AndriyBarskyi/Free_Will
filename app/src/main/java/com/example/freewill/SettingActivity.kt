@@ -53,8 +53,8 @@ open class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(8,10,14,13)
-    val minutes:IntArray= intArrayOf(30,10,45,30)
+    val hours:IntArray= intArrayOf(8,10,11,13)
+    val minutes:IntArray= intArrayOf(30,10,50,30)
     val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
@@ -80,21 +80,22 @@ open class SettingActivity : AppCompatActivity()
         //потрібно запитати дозвіл на показ вікон поверх інших програм
         //
         //resLang?.getBoolean("setting", true) == true
-        if (true) {
+        val r = resLang?.getInt("111", 0)
+        if (r != 6) {
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             val uri = Uri.fromParts("package", packageName, null)
             intent.data = uri
             startActivity(intent)
-            boolSaver("setting", false)
         }
+        intSaver("111", 6)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceAsColor", "CutPasteId", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
-        setOption()
         resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
+        setOption()
         chooseLang = resLang?.getString(keyLanguage, mLanguageCodeUa)!!
         LocaleHelper.setLocale(this, chooseLang)
 
@@ -117,15 +118,18 @@ open class SettingActivity : AppCompatActivity()
                 selectColorsFontSize(R.drawable.circle_button_dark_blue, R.drawable.circle_button,
                     R.drawable.circle_button)
                 SetSizeFont(smallSize)
+                SetSizeFont(smallSize)
             }
             medium ->{
                 selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button_dark_blue,
                     R.drawable.circle_button)
                 SetSizeFont(mediumSize)
+                SetSizeFont(mediumSize)
             }
             big ->{
                 selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button,
                     R.drawable.circle_button_dark_blue)
+                SetSizeFont(bigSize)
                 SetSizeFont(bigSize)
             }
         }
@@ -173,12 +177,14 @@ open class SettingActivity : AppCompatActivity()
             chooseFont = small
             chooseSizeKoef = smallSize
             SetSizeFont(smallSize)
+            SetSizeFont(smallSize)
             recreate()
         })
         bindingClass.buttonM.setOnClickListener(View.OnClickListener
         {
             chooseFont = medium
             chooseSizeKoef = mediumSize
+            SetSizeFont(mediumSize)
             SetSizeFont(mediumSize)
             recreate()
 
@@ -188,8 +194,8 @@ open class SettingActivity : AppCompatActivity()
             chooseFont = big
             chooseSizeKoef = bigSize
             SetSizeFont(bigSize)
+            SetSizeFont(bigSize)
             recreate()
-
         })
 
 
@@ -392,6 +398,7 @@ open class SettingActivity : AppCompatActivity()
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
+    @RequiresApi(Build.VERSION_CODES.O)
     fun changeB(view: View) {
         // call checking the password
         EditInformation(R.layout.activity_edit_setting, view)

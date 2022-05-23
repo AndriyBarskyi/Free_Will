@@ -62,6 +62,7 @@ class ScheduleActivity : AppCompatActivity() {
         viewPager.adapter=adapter
         binding.ChangeBtn1.setOnClickListener {
             startActivity(Intent(this, EditScheduleActivity::class.java))
+            //setContentView(ShowAudience(this, Dijkstra.getCoord("241",  this.baseContext)))
         }
     }
 
