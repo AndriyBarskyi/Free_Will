@@ -35,10 +35,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="@style/custom_toolbar"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+            </com.google.android.material.appbar.AppBarLayout>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/feedbackTeacherPhoto"
                 android:layout_width="110dp"
+                app:layout_constraintTop_toBottomOf="@id/appBarLayout2"
                 android:layout_height="110dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="28dp"
@@ -46,7 +66,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/background_name"
                 app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                 tools:srcCompat="@tools:sample/avatars" />

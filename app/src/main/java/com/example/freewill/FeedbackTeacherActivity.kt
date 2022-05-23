@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,16 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         val avgRating = teacherIntent.getStringExtra("avgRating")
         val photo = teacherIntent.getStringExtra("photo")
 
+        val toolbar: Toolbar = feedbackBinding.toolbar
+
+        // using toolbar as ActionBar
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            title = getString(R.string.information_about_teacher)
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         /**call text and images*/
         feedbackBinding.backgroundName.text = fullName
         feedbackBinding.departmentName.text = department
@@ -43,20 +54,20 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         if (photo != null) {
             feedbackBinding.feedbackTeacherPhoto.setImageResource(photo.toInt())
         }
-        feedbacksRecyclerView = feedbackBinding.feedbackRecycler
-        feedbacksRecyclerView.layoutManager = LinearLayoutManager(this)
-        feedbacksRecyclerView.setHasFixedSize(true)
-        teacherFeedbacks = ArrayList()
-
-        val referenceTeacher =
-            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Teachers").child("")
-        referenceTeacher.get().addOnSuccessListener {
-            for (feedbackSnapshot in it.children) {
-                teacherFeedbacks.add(feedbackSnapshot.value.toString())
-            }
-            feedbacksRecyclerView.adapter = FeedbackAdapter(teacherFeedbacks)
-        }
+//        feedbacksRecyclerView = feedbackBinding.feedbackRecycler
+//        feedbacksRecyclerView.layoutManager = LinearLayoutManager(this)
+//        feedbacksRecyclerView.setHasFixedSize(true)
+//        teacherFeedbacks = ArrayList()
+//
+//        val referenceTeacher =
+//            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+//                .getReference("Teachers").child("")
+//        referenceTeacher.get().addOnSuccessListener {
+//            for (feedbackSnapshot in it.children) {
+//                teacherFeedbacks.add(feedbackSnapshot.value.toString())
+//            }
+//            feedbacksRecyclerView.adapter = FeedbackAdapter(teacherFeedbacks)
+//        }
 
         if (avgRating != null) {
             if (avgRating != "0/5") {
@@ -128,5 +139,9 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }
