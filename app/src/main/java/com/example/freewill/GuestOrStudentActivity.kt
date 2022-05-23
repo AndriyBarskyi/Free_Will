@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.freewill.databinding.ActivityGuestOrStudentBinding
-import com.example.freewill.databinding.ActivityLoginBinding
 
 class GuestOrStudentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGuestOrStudentBinding
@@ -16,13 +15,10 @@ class GuestOrStudentActivity : AppCompatActivity() {
 
         binding.studentButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
 
         binding.guestButton.setOnClickListener {
-            val i: Intent = Intent(this, ScheduleActivity::class.java)
-            i.putExtra("isGuest", true)
-            startActivity(i)
+            startActivity(Intent(this, MapActivity::class.java))
             finish()
         }
     }

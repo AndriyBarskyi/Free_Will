@@ -40,6 +40,10 @@ class LoginActivity : AppCompatActivity() {
         binding.forgotPassword.setOnClickListener{
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
+
+        binding.backButton.setOnClickListener{
+            super.onBackPressed()
+        }
     }
 
     //check whether all fields contain correct data
