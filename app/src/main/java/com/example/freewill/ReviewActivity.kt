@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.freewill.databinding.ActivityReviewBinding
 import com.example.freewill.models.NavigationClass
 import com.example.freewill.models.TeacherCard
-import com.example.freewill.models.TeacherDataAdapter
+import com.example.freewill.models.TeacherCardDataAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
@@ -53,7 +53,7 @@ class ReviewActivity : AppCompatActivity() {
                 )
                 teachersArrayList.add(teacher)
             }
-            teachersRecyclerView.adapter = TeacherDataAdapter(this, teachersArrayList)
+            teachersRecyclerView.adapter = TeacherCardDataAdapter(this, teachersArrayList)
         }
     }
 
@@ -102,8 +102,8 @@ class ReviewActivity : AppCompatActivity() {
         } else {
             // at last we are passing that filtered
             // list to our adapter class.
-            teachersRecyclerView.adapter = TeacherDataAdapter(this, teachersArrayList)
-            (teachersRecyclerView.adapter as TeacherDataAdapter).filterList(filteredList)
+            teachersRecyclerView.adapter = TeacherCardDataAdapter(this, teachersArrayList)
+            (teachersRecyclerView.adapter as TeacherCardDataAdapter).filterList(filteredList)
         }
     }
 

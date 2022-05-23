@@ -13,6 +13,8 @@ import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.freewill.databinding.ActivityFeedbackTeacherBinding
+import com.example.freewill.models.ReadFirebase
+import com.example.freewill.models.TeacherRatings
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.FirebaseDatabase
 
@@ -69,7 +71,6 @@ class FeedbackTeacherActivity : AppCompatActivity() {
 
             val addFeedbackBtn: Button = popupView.findViewById(R.id.addFeedbackBtn)
             addFeedbackBtn.setOnClickListener {
-
                 val modernity: Float =
                     (popupView.findViewById(R.id.addModernityRating) as RatingBar).rating
                 val demanding: Float =
@@ -81,19 +82,32 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                 val feedback: String =
                     (popupView.findViewById(R.id.feedbackText) as TextInputEditText).text.toString()
                 if (modernity.compareTo(0) != 0 && demanding.compareTo(0) != 0 &&
-                    loyalty.compareTo(0) != 0 && teachingSkills.compareTo(0) != 0) {
+                    loyalty.compareTo(0) != 0 && teachingSkills.compareTo(0) != 0
+                ) {
+                    var teacherRatings: TeacherRatings = TeacherRatings()
                     val referenceTeacher =
                         fullName?.let {
                             FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                                 .getReference("Teachers").child(it)
                         }
-                    referenceTeacher?.get()?.addOnSuccessListener {
-
+                    if (avgRating != null) {
+                        referenceTeacher?.setValue(
+                            TeacherRatings(
+                                modernity,
+                                demanding,
+                                loyalty,
+                                teachingSkills,
+                                0,
+                                avgRating.split("/")[0].toFloat()
+                            )
+                        )
                     }
                 }
 
-                if (feedback.trim() != ""){
-
+                if (feedback.trim() != "") {
+                    if (fullName != null) {
+                        ReadFirebase().addReview(fullName, feedback, this)
+                    }
                 }
             }
         }

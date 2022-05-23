@@ -3,7 +3,6 @@ package com.example.freewill.models
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,8 @@ import com.example.freewill.R
 import com.google.android.material.imageview.ShapeableImageView
 
 
-class TeacherDataAdapter(private val context: Context, private var teacherCardList: ArrayList<TeacherCard>) :
-    RecyclerView.Adapter<TeacherDataAdapter.TeacherViewHolder>() {
+class TeacherCardDataAdapter(private val context: Context, private var teacherCardList: ArrayList<TeacherCard>) :
+    RecyclerView.Adapter<TeacherCardDataAdapter.TeacherViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeacherViewHolder {
         val itemView =

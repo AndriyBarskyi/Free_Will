@@ -165,9 +165,9 @@ class ReadFirebase {
                 }
     }
 
-    fun addRatings(fullName: String, modernity: String, demanding: String, loyalty: String, teachingSkills: String, activityClass: AppCompatActivity) {
+    fun addRatings(fullName: String, teacherRatings: TeacherRatings, activityClass: AppCompatActivity) {
             val referenceTeacher = firebaseData.getReference("Teachers")
-            referenceTeacher.child(fullName).child("modernity").setValue(modernity).addOnSuccessListener {
+            referenceTeacher.child(fullName).child("modernity").setValue(teacherRatings).addOnSuccessListener {
                 Toast.makeText(activityClass, "Review add...", Toast.LENGTH_SHORT).show()
             }
                 .addOnFailureListener { e ->

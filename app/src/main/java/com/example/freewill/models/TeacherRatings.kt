@@ -1,23 +1,26 @@
 package com.example.freewill.models
 
 import com.google.firebase.database.Exclude
+import kotlin.math.round
 import kotlin.math.roundToInt
 
 class TeacherRatings {
-    private var modernity: Float? = null
-    private var demanding: Float? = null
-    private var loyalty: Float? = null
-    private var teachingSkills: Float? = null
+    private var modernity: Float = 0f
+    private var demanding: Float = 0f
+    private var loyalty: Float = 0f
+    private var teachingSkills: Float = 0f
     private var ratingsCount: Int = 0
-    private var avgRating: Float? = null
+    private var avgRating: Float = 0f
+
+    constructor()
 
     constructor(
-        modernity: Float?,
-        demanding: Float?,
-        loyalty: Float?,
-        teachingSkills: Float?,
+        modernity: Float,
+        demanding: Float,
+        loyalty: Float,
+        teachingSkills: Float,
         ratingsCount: Int,
-        meanRating: Float?
+        meanRating: Float
     ) {
         this.modernity = modernity
         this.demanding = demanding
@@ -25,27 +28,12 @@ class TeacherRatings {
         this.teachingSkills = teachingSkills
         this.ratingsCount = ratingsCount
         this.avgRating = meanRating
+        calcNewAvg()
     }
 
-
-    fun addRatings() {
-
-        ratingsCount++
-        calcAvgRating()
-    }
-
-    private fun getNextAvg(meanValue: Int, nextValue: Int): Int {
-        return meanValue + ((nextValue - meanValue) / (ratingsCount + 1))
-    }
-
-/*    fun getAvgRating(): Int {
-        return avgRating
-    }*/
-
-    private fun calcAvgRating() {
-        avgRating = 0.0f
-        avgRating = (modernity!! + demanding!! + loyalty!! + teachingSkills!!) / 4.0f
-
+    private fun calcNewAvg() {
+        val meanRating: Float = (modernity + demanding + loyalty + teachingSkills) / 4.0f
+        avgRating += ((meanRating - avgRating) / (ratingsCount + 1))
     }
 
     @Exclude
@@ -59,5 +47,4 @@ class TeacherRatings {
         result["avgRating"] = avgRating!!
         return result
     }
-
 }
