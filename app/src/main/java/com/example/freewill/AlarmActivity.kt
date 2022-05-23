@@ -60,28 +60,28 @@ class AlarmActivity : AppCompatActivity() {
         {
             val med = randomAuduo(R.raw.yulik,R.raw.ksenia)
             fiveMedia = MediaPlayer.create(this, med)
-            binding.AlarmText.setText(R.string.rest_five)
+            binding.AlarmText.text = getString(R.string.rest_five)
             soundPlay(fiveMedia!!, resLang, count)
         }
         if (resLang?.getBoolean(a.ten, false) == true)
         {
             val med = randomAuduo(R.raw.diana,R.raw.andriy)
             tenMedia = MediaPlayer.create(this, med)
-            binding.AlarmText.setText(R.string.rest_ten)
+            binding.AlarmText.text = getString(R.string.rest_ten)
             soundPlay(tenMedia!!, resLang, count)
         }
         if (resLang?.getBoolean(a.fifteen, false) == true)
         {
             val med = randomAuduo(R.raw.olenka,R.raw.marta)
-            fifteenMedia = MediaPlayer.create(this, R.raw.yulik)
-            binding.AlarmText.setText(R.string.rest_fifteen)
+            fifteenMedia = MediaPlayer.create(this, med)
+            binding.AlarmText.text = getString(R.string.rest_fifteen)
             soundPlay(fifteenMedia!!, resLang,count)
         }
         if (resLang?.getBoolean(a.twelve, false) == true)
         {
             val med = randomAuduo(R.raw.olesya,R.raw.andrew)
             twelveMedia = MediaPlayer.create(this, med)
-            binding.AlarmText.setText(R.string.rest_twelve)
+            binding.AlarmText.text = getString(R.string.rest_twelve)
             soundPlay(twelveMedia!!, resLang,count)
         }
 
@@ -95,8 +95,6 @@ class AlarmActivity : AppCompatActivity() {
         return second
     }
     override fun onDestroy() {
-        fiveMedia!!.stop()
-        v?.cancel()
         super.onDestroy()
     }
 }
