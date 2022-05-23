@@ -55,7 +55,7 @@ class NewsActivity : AppCompatActivity() {
         val toolbar: Toolbar = binding.toolbar
 
         // using toolbar as ActionBar
-        toolbar.setTitle(R.string.toolbar_schedule)
+        toolbar.setTitle(R.string.toolbar_news)
         setSupportActionBar(toolbar)
 
 //      Navigation bar

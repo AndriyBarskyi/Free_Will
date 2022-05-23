@@ -79,22 +79,23 @@ open class SettingActivity : AppCompatActivity()
         // Якщо не працює будильник у android,
         //потрібно запитати дозвіл на показ вікон поверх інших програм
         //
-        //
-        if (resLang?.getBoolean("setting", true) == true) {
+        //resLang?.getBoolean("setting", true) == true
+        val r = resLang?.getInt("111", 0)
+        if (r != 6) {
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             val uri = Uri.fromParts("package", packageName, null)
             intent.data = uri
             startActivity(intent)
-            boolSaver("setting", false)
         }
+        intSaver("111", 6)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceAsColor", "CutPasteId", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
-        setOption()
         resLang = getSharedPreferences(baseForSetting, Context.MODE_PRIVATE)
+        setOption()
         chooseLang = resLang?.getString(keyLanguage, mLanguageCodeUa)!!
         LocaleHelper.setLocale(this, chooseLang)
 
@@ -117,15 +118,18 @@ open class SettingActivity : AppCompatActivity()
                 selectColorsFontSize(R.drawable.circle_button_dark_blue, R.drawable.circle_button,
                     R.drawable.circle_button)
                 SetSizeFont(smallSize)
+                SetSizeFont(smallSize)
             }
             medium ->{
                 selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button_dark_blue,
                     R.drawable.circle_button)
                 SetSizeFont(mediumSize)
+                SetSizeFont(mediumSize)
             }
             big ->{
                 selectColorsFontSize(R.drawable.circle_button, R.drawable.circle_button,
                     R.drawable.circle_button_dark_blue)
+                SetSizeFont(bigSize)
                 SetSizeFont(bigSize)
             }
         }
@@ -173,12 +177,14 @@ open class SettingActivity : AppCompatActivity()
             chooseFont = small
             chooseSizeKoef = smallSize
             SetSizeFont(smallSize)
+            SetSizeFont(smallSize)
             recreate()
         })
         bindingClass.buttonM.setOnClickListener(View.OnClickListener
         {
             chooseFont = medium
             chooseSizeKoef = mediumSize
+            SetSizeFont(mediumSize)
             SetSizeFont(mediumSize)
             recreate()
 
@@ -188,8 +194,8 @@ open class SettingActivity : AppCompatActivity()
             chooseFont = big
             chooseSizeKoef = bigSize
             SetSizeFont(bigSize)
+            SetSizeFont(bigSize)
             recreate()
-
         })
 
 
@@ -274,7 +280,36 @@ open class SettingActivity : AppCompatActivity()
         calendar[Calendar.HOUR_OF_DAY] = hour
 
         if (calendar.timeInMillis <= System.currentTimeMillis())
-            calendar.add(Calendar.DAY_OF_YEAR, 1)
+                calendar.add(Calendar.DAY_OF_YEAR, 1)
+
+
+//        if (calendar.timeInMillis <= System.currentTimeMillis())
+//        {
+//            if(resLang?.getBoolean("Counterremember", true) == true)
+//            {
+//                var index = resLang?.getInt(clockIndex,0)
+//                index = index!! + 1
+//                if(index == hours.size){
+//                    boolSaver("Counterremember", false)
+//                    intSaver(clockIndex, 0)
+//                    boolSaver(period, true)
+//                    onResume()
+//                }
+//                else
+//                {
+//                    intSaver(clockIndex, index!!)
+//                    boolSaver(period, true)
+//                    onResume()
+//                }
+//            }
+//            else{
+//                boolSaver("Counterremember", true)
+//            }
+//        }
+//        if (calendar.timeInMillis <= System.currentTimeMillis())
+//            calendar.add(Calendar.DAY_OF_YEAR, 1)
+
+
 
         val alarmManager =
             getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
@@ -363,6 +398,7 @@ open class SettingActivity : AppCompatActivity()
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
+    @RequiresApi(Build.VERSION_CODES.O)
     fun changeB(view: View) {
         // call checking the password
         EditInformation(R.layout.activity_edit_setting, view)

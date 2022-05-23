@@ -13,7 +13,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.freewill.databinding.ActivityScheduleBinding
+import com.example.freewill.databinding.FragmentScheduleBinding
 import com.example.freewill.models.NavigationClass
+import com.example.freewill.models.ShowAudience
+import com.example.freewill.search_point.Dijkstra
 import com.google.android.material.navigation.NavigationView
 
 
@@ -59,6 +62,7 @@ class ScheduleActivity : AppCompatActivity() {
         viewPager.adapter=adapter
         binding.ChangeBtn1.setOnClickListener {
             startActivity(Intent(this, EditScheduleActivity::class.java))
+            //setContentView(ShowAudience(this, Dijkstra.getCoord("241",  this.baseContext)))
         }
     }
 
@@ -69,4 +73,18 @@ class ScheduleActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    public fun showAudience(binding: FragmentScheduleBinding)
+    {
+//        showing=true
+        val aud1 = "240"
+        val p = ArrayList<Float>()
+        p.add(566f)
+        p.add(566f)
+        binding.aud1.setOnClickListener {
+            this.setContentView(
+                ShowAudience(this, p),
+            )
+        }
+
+    }
 }
