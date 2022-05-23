@@ -53,8 +53,8 @@ open class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(8,10,11,13)
-    val minutes:IntArray= intArrayOf(30,10,50,30)
+    val hours:IntArray= intArrayOf(8,10,14,13)
+    val minutes:IntArray= intArrayOf(30,10,45,30)
     val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
@@ -79,8 +79,8 @@ open class SettingActivity : AppCompatActivity()
         // Якщо не працює будильник у android,
         //потрібно запитати дозвіл на показ вікон поверх інших програм
         //
-        //
-        if (resLang?.getBoolean("setting", true) == true) {
+        //resLang?.getBoolean("setting", true) == true
+        if (true) {
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             val uri = Uri.fromParts("package", packageName, null)
@@ -274,7 +274,36 @@ open class SettingActivity : AppCompatActivity()
         calendar[Calendar.HOUR_OF_DAY] = hour
 
         if (calendar.timeInMillis <= System.currentTimeMillis())
-            calendar.add(Calendar.DAY_OF_YEAR, 1)
+                calendar.add(Calendar.DAY_OF_YEAR, 1)
+
+
+//        if (calendar.timeInMillis <= System.currentTimeMillis())
+//        {
+//            if(resLang?.getBoolean("Counterremember", true) == true)
+//            {
+//                var index = resLang?.getInt(clockIndex,0)
+//                index = index!! + 1
+//                if(index == hours.size){
+//                    boolSaver("Counterremember", false)
+//                    intSaver(clockIndex, 0)
+//                    boolSaver(period, true)
+//                    onResume()
+//                }
+//                else
+//                {
+//                    intSaver(clockIndex, index!!)
+//                    boolSaver(period, true)
+//                    onResume()
+//                }
+//            }
+//            else{
+//                boolSaver("Counterremember", true)
+//            }
+//        }
+//        if (calendar.timeInMillis <= System.currentTimeMillis())
+//            calendar.add(Calendar.DAY_OF_YEAR, 1)
+
+
 
         val alarmManager =
             getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
@@ -488,9 +517,4 @@ open class SettingActivity : AppCompatActivity()
         stringfSaver(keyLanguage, chooseLang)
         stringfSaver(keyFont, chooseFont)
     }
-
-
-
-
-
 }

@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-700dp"
+            android:layout_marginTop="-670dp"
             android:layout_marginEnd="10dp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,13 +66,14 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="144dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/rounded_all_borders_dark"
             android:spinnerMode="dropdown"
+            android:theme="@style/SpinnerTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,9 +81,9 @@
 
         <FrameLayout
             android:id="@+id/frame"
-            android:layout_width="407dp"
-            android:layout_height="455dp"
-            android:layout_marginTop="200dp"
+            android:layout_width="408dp"
+            android:layout_height="494dp"
+            android:layout_marginTop="150dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

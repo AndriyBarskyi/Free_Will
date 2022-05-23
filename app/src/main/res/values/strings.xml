@@ -7,7 +7,9 @@
     <string name="gmail">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="confirm">Підтвердити</string>
-    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням. Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
+    <string name="confirm_info"><b>Вітаємо! </b><b>Натисніть кнопку <font color="#00b4d8">
+        Надіслати</font> і на Вашу електронну пошту  буде надісланий лист з посиланням.
+        Перейдіть за ним, щоб підтвердити Вашу електронну пошту.</b></string>
     <string name="personal_data">Особисті дані</string>
     <string name="general_setting">Загальні налаштування</string>
     <string name="change">Змінити</string>
@@ -31,6 +33,7 @@
     <string name="from">Від</string>
     <string name="to">До</string>
     <string name="search">Пошук</string>
+    <string name="info">Інформація</string>
     <string name="room_not_exists">Кімнати з таким номером немає!</string>
 
     <!--    authentication part-->
@@ -67,6 +70,8 @@
 
 
 
+    <string name="subject">Предмет</string>
+    <string name="audience">ауд.</string>
     <string name="edit_schedule_mon">пн</string>
     <string name="edit_schedule_tue">вт</string>
     <string name="edit_schedule_wen">ср</string>
@@ -105,6 +110,7 @@
     <string name="add_feedback">Додати відгук</string>
     <string name="teachers_not_found">Таких викладачів не знайдено</string>
     <string name="write_feedback">Опишіть детальніше ваші враження…(не обов\'язково)</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
