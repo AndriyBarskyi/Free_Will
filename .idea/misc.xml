@@ -7,10 +7,18 @@
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_links_preview.xml" value="0.16666666666666666" />
         <entry key="..\:/Free_Will/app/src/main/res/layout/activity_links_preview.xml" value="0.23731884057971014" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_edit_schedule.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_feedback_teacher.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_map.xml" value="0.3333333333333333" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_news.xml" value="0.1" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_open_news.xml" value="0.1513157894736842" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/activity_schedule.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_edit_schedule_.xml" value="0.12092391304347826" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_feedback_teacher.xml" value="0.1" />
         <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_open_news.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/fragment_schedule.xml" value="0.12092391304347826" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/news_recycleview_item.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/sign_in_dialog.xml" value="0.1" />
+        <entry key="..\:/Project_Kotlin/Free_Will/app/src/main/res/layout/teacher_card.xml" value="0.1" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_links_preview.xml" value="0.14749893116716545" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Projects/AndroidStudio/Free_Will/app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -29,6 +37,7 @@
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_check_password.xml" value="0.33" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_edit_setting.xml" value="0.25" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_login.xml" value="0.246875" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_news.xml" value="0.24728260869565216" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_search_popup.xml" value="0.12006079027355623" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/activity_setting.xml" value="0.246875" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Free_Will/app/src/main/res/layout/test.xml" value="0.33" />

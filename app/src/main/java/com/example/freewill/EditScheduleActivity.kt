@@ -48,7 +48,7 @@ class EditScheduleActivity : AppCompatActivity() ,  View.OnClickListener
             // using toolbar as ActionBar
             setSupportActionBar(toolbar)
             supportActionBar?.apply {
-                title = "Change Schedule"
+                title = getString(R.string.toolbar_change_schedule)
                 setDisplayHomeAsUpEnabled(true)
                 setDisplayShowHomeEnabled(true)
             }
