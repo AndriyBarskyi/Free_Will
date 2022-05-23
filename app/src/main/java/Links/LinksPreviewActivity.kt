@@ -30,7 +30,7 @@ class LinksPreviewActivity : AppCompatActivity() {
             val array=when (it.exists()) {
                 true->
                 {
-                    var arrayKeys= Array<String>(1){"Дізнатись щось корисне ↓"}
+                    var arrayKeys= Array<String>(1){"Натисни↓"}
                     it.children.forEach {
                         arrayKeys+=it.key.toString()
                     }
@@ -72,7 +72,10 @@ class LinksPreviewActivity : AppCompatActivity() {
     fun CreateItem(languages:Array<String>)
     {
         val spinner = findViewById<Spinner>(R.id.spinner)
-        val image=findViewById(R.id.boy_links) as ImageView
+        val image1=findViewById(R.id.boy_links) as ImageView
+        val image2=findViewById(R.id.imageView29) as ImageView
+        val text1=findViewById(R.id.linkFond) as TextView
+        val text2=findViewById(R.id.tvTitleFond) as TextView
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, languages)
@@ -84,15 +87,21 @@ class LinksPreviewActivity : AppCompatActivity() {
                     Toast.makeText(this@LinksPreviewActivity,
                         "Обраний предмет: "+
                                 "" + languages[position], Toast.LENGTH_SHORT).show()
-                    if(languages[position]!="Дізнатись щось корисне ↓")
+                    if(languages[position]!="Натисни↓")
                     {
                         OpenFrag(LinkFragment.newInstance(languages[position]), R.id.frame)
                         //image=findViewById(R.id.boy_links) as ImageView
-                        image.visibility=View.GONE
+                        image1.visibility=View.GONE
+                        image2.visibility=View.GONE
+                        text1.visibility=View.GONE
+                        text2.visibility=View.GONE
                     }
                     else
                     {
-                        image.visibility=View.VISIBLE
+                        image1.visibility=View.VISIBLE
+                        image2.visibility=View.VISIBLE
+                        text1.visibility=View.VISIBLE
+                        text2.visibility=View.VISIBLE
                     }
 
                 }
