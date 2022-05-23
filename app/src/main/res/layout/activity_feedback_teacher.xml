@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LinksFragment">
+    tools:context=".FeedbackTeacherActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFeedbackFAB"
@@ -239,6 +239,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/background_name" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/feedbackRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"

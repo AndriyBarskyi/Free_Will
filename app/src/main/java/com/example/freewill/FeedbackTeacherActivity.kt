@@ -12,21 +12,23 @@ import android.widget.PopupWindow
 import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.freewill.databinding.ActivityFeedbackTeacherBinding
-import com.example.freewill.models.ReadFirebase
-import com.example.freewill.models.TeacherRatings
+import com.example.freewill.models.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.FirebaseDatabase
 
 class FeedbackTeacherActivity : AppCompatActivity() {
-    private lateinit var feedbackLayout: DrawerLayout
-    private lateinit var binding: ActivityFeedbackTeacherBinding
+    lateinit var feedbackBinding: ActivityFeedbackTeacherBinding
+    lateinit var teacherFeedbacks: ArrayList<String>
+    private lateinit var feedbacksRecyclerView: RecyclerView
 
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFeedbackTeacherBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        feedbackBinding = ActivityFeedbackTeacherBinding.inflate(layoutInflater)
+        setContentView(feedbackBinding.root)
 
         val teacherIntent = intent
         val fullName = teacherIntent.getStringExtra("fullName")
@@ -35,29 +37,44 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         val photo = teacherIntent.getStringExtra("photo")
 
         /**call text and images*/
-        binding.backgroundName.text = fullName
-        binding.departmentName.text = department
-        binding.rate.text = avgRating
+        feedbackBinding.backgroundName.text = fullName
+        feedbackBinding.departmentName.text = department
+        feedbackBinding.rate.text = avgRating
         if (photo != null) {
-            binding.feedbackTeacherPhoto.setImageResource(photo.toInt())
+            feedbackBinding.feedbackTeacherPhoto.setImageResource(photo.toInt())
         }
+        feedbacksRecyclerView = feedbackBinding.feedbackRecycler
+        feedbacksRecyclerView.layoutManager = LinearLayoutManager(this)
+        feedbacksRecyclerView.setHasFixedSize(true)
+        teacherFeedbacks = ArrayList()
+
+        val referenceTeacher =
+            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Teachers").child("")
+        referenceTeacher.get().addOnSuccessListener {
+            for (feedbackSnapshot in it.children) {
+                teacherFeedbacks.add(feedbackSnapshot.value.toString())
+            }
+            feedbacksRecyclerView.adapter = FeedbackAdapter(teacherFeedbacks)
+        }
+
         if (avgRating != null) {
             if (avgRating != "0/5") {
-                val referenceTeacher =
+                val referenceDB =
                     fullName?.let {
                         FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                             .getReference("Teachers").child(it)
                     }
-                referenceTeacher?.get()?.addOnSuccessListener {
-                    binding.modernityRating.rating = it.child("modernity").value as Float
-                    binding.demandingRating.rating = it.child("demanding").value as Float
-                    binding.loyaltyRating.rating = it.child("loyalty").value as Float
-                    binding.teachingSkillsRating.rating = it.child("teachingSkills").value as Float
+                referenceDB?.get()?.addOnSuccessListener {
+                    feedbackBinding.modernityRating.rating = it.child("modernity").value as Float
+                    feedbackBinding.demandingRating.rating = it.child("demanding").value as Float
+                    feedbackBinding.loyaltyRating.rating = it.child("loyalty").value as Float
+                    feedbackBinding.teachingSkillsRating.rating = it.child("teachingSkills").value as Float
                 }
             }
         }
 
-        binding.addFeedbackFAB.setOnClickListener {
+        feedbackBinding.addFeedbackFAB.setOnClickListener {
             val inflater =
                 it.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val popupView: View = inflater.inflate(R.layout.add_feedback_popup, null)
