@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreeWill">
         <activity
+            android:name=".OpenNewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewsActivity"
             android:exported="false" />
         <activity

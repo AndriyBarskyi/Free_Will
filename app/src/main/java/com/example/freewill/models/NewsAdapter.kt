@@ -1,7 +1,9 @@
 package com.example.freewill.models
 
 import android.content.Context
+import android.content.Intent
 import android.media.Image
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.freewill.NewsActivity
+import com.example.freewill.OpenNewsActivity
 //import com.bumptech.glide.Glide
 import com.example.freewill.R
 
@@ -33,6 +37,24 @@ class NewsAdapter(private val context: Context, private val newsList: ArrayList<
         Glide.with(context)
             .load(currentNews.newsImage)
             .into(holder.newsImage)
+
+        holder.itemView.setOnClickListener {
+            /**set Data*/
+            val mIntent = Intent(context, OpenNewsActivity::class.java)
+            mIntent.putExtra("header",holder.header.text)
+            mIntent.putExtra("date",holder.date.text)
+            mIntent.putExtra("description",currentNews.description)
+            mIntent.putExtra("img",currentNews.newsImage)
+            context.startActivity(mIntent)
+
+//            val bundle = Bundle()
+//            bundle.putString("header", holder.header.text.toString())
+//            bundle.putString("description", holder.description.text.toString())
+//            bundle.putString("date", holder.date.text.toString())
+//            bundle.putString("img", currentNews.newsImage.toString())
+//            var fragment = OpenNewsFragment()
+//            fragment.arguments = bundle
+        }
     }
 
     override fun getItemCount(): Int {
