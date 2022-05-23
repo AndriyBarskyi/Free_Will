@@ -1,5 +1,6 @@
 package Links
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.freewill.EditSchedule_Fragment
 import com.example.freewill.R
+import com.example.freewill.ScheduleActivity
 import com.example.freewill.databinding.ActivityLinksPreviewBinding
 import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
@@ -22,6 +24,7 @@ class LinksPreviewActivity : AppCompatActivity() {
     private lateinit var referenceSubject: DatabaseReference
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
+    private var showing = false
     fun readSubjects(onSuccess:(Array<String>)->Unit) {
         referenceSubject = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -116,5 +119,23 @@ class LinksPreviewActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
+
+            setContentView(R.layout.activity_schedule)
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        }
     }
 }

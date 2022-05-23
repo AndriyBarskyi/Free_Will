@@ -65,6 +65,7 @@ open class SettingActivity : AppCompatActivity()
     lateinit var chooseLang : String
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
+    private var showing = false
 
     fun SetSizeFont(size_coef: Float)
     {
@@ -523,5 +524,23 @@ open class SettingActivity : AppCompatActivity()
         super.onDestroy()
         stringfSaver(keyLanguage, chooseLang)
         stringfSaver(keyFont, chooseFont)
+    }
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
+
+            setContentView(R.layout.activity_schedule)
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        }
     }
 }
