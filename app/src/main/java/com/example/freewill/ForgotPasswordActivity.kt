@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import com.example.freewill.databinding.ActivityForgotPasswordBinding
-import com.example.freewill.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPasswordActivity : AppCompatActivity() {
@@ -20,6 +19,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //resetButton is clicked
         binding.resetPasswordButton.setOnClickListener {
             resetPassword()
             startActivity(Intent(this, LoginActivity::class.java))
@@ -27,6 +27,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
     }
 
+    //reset user password with Firebase
     private fun resetPassword(){
         val emailText = binding.emailEditText.text.toString().trim()
 
