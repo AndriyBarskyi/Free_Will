@@ -36,7 +36,6 @@ class OpenNewsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             title = getString(R.string.toolbar_news)
-            //toolbar.setTitle(R.string.toolbar_schedule)
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
         }
