@@ -22,7 +22,7 @@ class ScheduleFragment : Fragment() {
     private lateinit var schedule:ScheduleActivity
     private var showing = false
     private lateinit var thisContext: Context
-    private lateinit var aud1: TextView
+    lateinit var aud1: TextView
 
 
     override fun onCreateView(
@@ -36,7 +36,7 @@ class ScheduleFragment : Fragment() {
 //        }
         thisContext = bindingScheduleBinding.root.context
         schedule = ScheduleActivity()
-        showAudience(this)
+        schedule.showAudience(binding)
         return binding.root
     }
 
@@ -54,47 +54,7 @@ class ScheduleFragment : Fragment() {
     }
 
 //не працює
-    private fun showAudience(fragment: ScheduleFragment)
-    {
-        showing=true
-        val aud1 = "240"
-        val p = ArrayList<Float>()
-        p.add(566f)
-        p.add(566f)
-        binding.aud1.setOnClickListener {
-            schedule.setContentView(
-                ShowAudience(schedule, p),
-            )
-        }
-        binding.aud2.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, bindingScheduleBinding.root.context)
-                ),
-            )
-        }
-        binding.aud3.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, activity)
-                ),
-            )
-        }
-        binding.aud4.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, activity)
-                ),
-            )
-        }
-        binding.aud5.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, activity)
-                ),
-            )
-        }
-    }
+
 
 //    override fun onBackPressed() {
 //        if (showing) {
