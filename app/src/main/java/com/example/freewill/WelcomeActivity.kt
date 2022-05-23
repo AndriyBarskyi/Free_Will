@@ -71,6 +71,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     }
 
+    //check whether user is signed in
     private fun checkUser() {
         val user = firebaseAuth.currentUser
         if(user != null){
@@ -81,7 +82,6 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(Intent(this, GuestOrStudentActivity::class.java))
             finish()
         }
-
     }
 
     class MyDialogFragment : DialogFragment() {
