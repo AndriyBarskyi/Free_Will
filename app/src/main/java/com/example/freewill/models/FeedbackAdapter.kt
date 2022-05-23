@@ -30,6 +30,6 @@ class FeedbackAdapter(private var feedbacks: ArrayList<String>) :
     }
 
     class FeedbackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val feedback: TextView = itemView.findViewById(R.id.feedbackText)
+        val feedback: TextView = itemView.findViewById(R.id.feedbackCardText)
     }
 }

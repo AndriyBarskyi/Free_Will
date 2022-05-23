@@ -54,20 +54,20 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         if (photo != null) {
             feedbackBinding.feedbackTeacherPhoto.setImageResource(photo.toInt())
         }
-//        feedbacksRecyclerView = feedbackBinding.feedbackRecycler
-//        feedbacksRecyclerView.layoutManager = LinearLayoutManager(this)
-//        feedbacksRecyclerView.setHasFixedSize(true)
-//        teacherFeedbacks = ArrayList()
-//
-//        val referenceTeacher =
-//            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-//                .getReference("Teachers").child("")
-//        referenceTeacher.get().addOnSuccessListener {
-//            for (feedbackSnapshot in it.children) {
-//                teacherFeedbacks.add(feedbackSnapshot.value.toString())
-//            }
-//            feedbacksRecyclerView.adapter = FeedbackAdapter(teacherFeedbacks)
-//        }
+        feedbacksRecyclerView = feedbackBinding.feedbackRecycler
+        feedbacksRecyclerView.layoutManager = LinearLayoutManager(this)
+        feedbacksRecyclerView.setHasFixedSize(true)
+        teacherFeedbacks = ArrayList()
+
+        val referenceTeacher =
+            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Teachers").child("reviews")
+        referenceTeacher.get().addOnSuccessListener {
+            for (feedbackSnapshot in it.children) {
+                teacherFeedbacks.add(feedbackSnapshot.value.toString())
+            }
+            feedbacksRecyclerView.adapter = FeedbackAdapter(teacherFeedbacks)
+        }
 
         if (avgRating != null) {
             if (avgRating != "0/5") {

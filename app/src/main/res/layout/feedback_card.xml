@@ -12,7 +12,7 @@
     android:layout_marginTop="3dp">
 
     <TextView
-        android:id="@+id/teacherFullName"
+        android:id="@+id/feedbackCardText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="10dp"
