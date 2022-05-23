@@ -15,7 +15,7 @@ class FeedbackAdapter(private var feedbacks: ArrayList<String>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedbackViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.teacher_card, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.feedback_card, parent, false)
         return FeedbackViewHolder(itemView)
     }
 

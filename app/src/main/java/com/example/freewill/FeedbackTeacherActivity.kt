@@ -60,9 +60,11 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         teacherFeedbacks = ArrayList()
 
         val referenceTeacher =
-            FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("Teachers").child("reviews")
-        referenceTeacher.get().addOnSuccessListener {
+            fullName?.let {
+                FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                    .getReference("Teachers").child(it).child("reviews")
+            }
+        referenceTeacher?.get()?.addOnSuccessListener {
             for (feedbackSnapshot in it.children) {
                 teacherFeedbacks.add(feedbackSnapshot.value.toString())
             }
@@ -113,13 +115,13 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                     loyalty.compareTo(0) != 0 && teachingSkills.compareTo(0) != 0
                 ) {
                     var teacherRatings: TeacherRatings = TeacherRatings()
-                    val referenceTeacher =
+                    val referenceDB =
                         fullName?.let {
                             FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                                 .getReference("Teachers").child(it)
                         }
                     if (avgRating != null) {
-                        referenceTeacher?.setValue(
+                        referenceDB?.setValue(
                             TeacherRatings(
                                 modernity,
                                 demanding,
@@ -129,12 +131,14 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                                 avgRating.split("/")[0].toFloat()
                             )
                         )
+                        popupWindow.dismiss()
                     }
                 }
 
                 if (feedback.trim() != "") {
                     if (fullName != null) {
                         ReadFirebase().addReview(fullName, feedback, this)
+                        popupWindow.dismiss()
                     }
                 }
             }

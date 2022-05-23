@@ -153,7 +153,7 @@ class ReadFirebase {
 
     fun addReview(fullName: String, review: String, activityClass: AppCompatActivity) {
             val referenceTeacher = firebaseData.getReference("Teachers")
-            referenceTeacher.child(fullName).child("review").setValue(review).addOnSuccessListener {
+            referenceTeacher.child(fullName).child("reviews").child(review.hashCode().toString()).setValue(review).addOnSuccessListener {
                 Toast.makeText(activityClass, "Review add...", Toast.LENGTH_SHORT).show()
             }
                 .addOnFailureListener { e ->
@@ -167,7 +167,7 @@ class ReadFirebase {
 
     fun addRatings(fullName: String, teacherRatings: TeacherRatings, activityClass: AppCompatActivity) {
             val referenceTeacher = firebaseData.getReference("Teachers")
-            referenceTeacher.child(fullName).child("modernity").setValue(teacherRatings).addOnSuccessListener {
+            referenceTeacher.child(fullName).setValue(teacherRatings).addOnSuccessListener {
                 Toast.makeText(activityClass, "Review add...", Toast.LENGTH_SHORT).show()
             }
                 .addOnFailureListener { e ->

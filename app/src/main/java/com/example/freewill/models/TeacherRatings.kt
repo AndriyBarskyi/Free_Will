@@ -28,23 +28,34 @@ class TeacherRatings {
         this.teachingSkills = teachingSkills
         this.ratingsCount = ratingsCount
         this.avgRating = meanRating
-        calcNewAvg()
     }
 
-    private fun calcNewAvg() {
+
+    private fun getNewAvg(avg: Float, newAvg: Float): Float {
+        return avg + ((newAvg - avg) / (ratingsCount + 1))
+    }
+
+    fun updateRatings(newModernity: Float,
+                              newDemanding: Float,
+                              newLoyalty: Float,
+                              newTeachingSkills: Float) {
         val meanRating: Float = (modernity + demanding + loyalty + teachingSkills) / 4.0f
-        avgRating += ((meanRating - avgRating) / (ratingsCount + 1))
+        avgRating = getNewAvg(avgRating, meanRating)
+        modernity = getNewAvg(modernity, newModernity)
+        demanding = getNewAvg(demanding, newDemanding)
+        loyalty = getNewAvg(loyalty, newLoyalty)
+        teachingSkills = getNewAvg(teachingSkills, newTeachingSkills)
     }
 
     @Exclude
     fun toMap(): Map<String, Any> {
         val result: HashMap<String, Any> = HashMap()
-        result["modernity"] = modernity!!
-        result["demanding"] = demanding!!
-        result["loyalty"] = loyalty!!
-        result["teachingSkills"] = teachingSkills!!
+        result["modernity"] = modernity
+        result["demanding"] = demanding
+        result["loyalty"] = loyalty
+        result["teachingSkills"] = teachingSkills
         result["ratingsCount"] = ratingsCount
-        result["avgRating"] = avgRating!!
+        result["avgRating"] = avgRating
         return result
     }
 }
