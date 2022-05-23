@@ -31,7 +31,6 @@ class LoginActivity : AppCompatActivity() {
         //if no account open SingUpActivity
         binding.noAccountText.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
-            finish()
         }
 
         binding.loginButton.setOnClickListener {
@@ -40,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding.forgotPassword.setOnClickListener{
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
-            finish()
         }
     }
 

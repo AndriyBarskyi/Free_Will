@@ -25,6 +25,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+        binding.backButton.setOnClickListener{
+            super.onBackPressed()
+        }
     }
 
     //reset user password with Firebase

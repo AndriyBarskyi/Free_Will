@@ -35,6 +35,10 @@ class SignUpActivity : AppCompatActivity() {
         binding.signUpButton.setOnClickListener{
             validateUser()
         }
+
+        binding.backButton.setOnClickListener{
+            super.onBackPressed()
+        }
     }
 
     //check whether all fields contain correct data
@@ -74,7 +78,6 @@ class SignUpActivity : AppCompatActivity() {
                     if(task.isSuccessful){
                         updateUserInfo()
                         startActivity(Intent(this, LetterEntranceActivity::class.java))
-                        finish()
 
                     }
                     else{
@@ -135,8 +138,8 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     //navigation button
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed() // go back to previous activity
-        return super.onSupportNavigateUp()
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        onBackPressed() // go back to previous activity
+//        return super.onSupportNavigateUp()
+//    }
 }
