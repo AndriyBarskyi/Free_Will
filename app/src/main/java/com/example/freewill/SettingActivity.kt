@@ -89,7 +89,6 @@ open class SettingActivity : AppCompatActivity()
             startActivity(intent)
         }
         intSaver("111", 6)
-        val h = resLang?.getInt("11", 0)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
