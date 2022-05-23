@@ -27,7 +27,12 @@ class TeacherCardDataAdapter(private val context: Context, private var teacherCa
     override fun onBindViewHolder(holder: TeacherViewHolder, position: Int) {
         val currentItem = teacherCardList[position]
         holder.avgStarsRating.rating = currentItem.avgRating?.toFloat()!!
-        holder.avgRating.text = "${currentItem.avgRating}/5"
+        if (currentItem.avgRating == "0.0"){
+            holder.avgRating.text = "0/5"
+        }
+        else{
+            holder.avgRating.text = "${String.format("%.1f", currentItem.avgRating?.toFloat())}/5"
+        }
         holder.department.text = currentItem.department
         holder.fullName.text = currentItem.fullName
         currentItem.photo?.let { holder.photo.setImageResource(it.toInt()) }
@@ -38,7 +43,7 @@ class TeacherCardDataAdapter(private val context: Context, private var teacherCa
             mIntent.putExtra("fullName",  holder.fullName.text)
             mIntent.putExtra("department", holder.department.text)
             mIntent.putExtra("photo", currentItem.photo)
-            mIntent.putExtra("avgRating", holder.avgRating.text)
+            mIntent.putExtra("avgRating", holder.avgRating.text.split("/")[0])
             context.startActivity(mIntent)
 
         }

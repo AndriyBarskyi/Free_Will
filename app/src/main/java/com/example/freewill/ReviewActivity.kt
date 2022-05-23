@@ -18,7 +18,6 @@ import com.example.freewill.models.TeacherCardDataAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 private lateinit var teachersRecyclerView: RecyclerView
@@ -47,7 +46,8 @@ class ReviewActivity : AppCompatActivity() {
                     teacherSnapshot.child("avgRating").value as String?,
                     teacherSnapshot.child("department").value as String?,
                     teacherSnapshot.child("fullName").value as String?,
-                    reviewBinding.root.resources.getIdentifier("@drawable/" + teacherSnapshot.child("photo").value as String?, null,
+                    reviewBinding.root.resources.getIdentifier(
+                        "@drawable/" + teacherSnapshot.child("photo").value as String?, null,
                         packageName
                     ).toString()
                 )
@@ -89,7 +89,11 @@ class ReviewActivity : AppCompatActivity() {
         // running a for loop to compare elements.
         for (item in teachersArrayList) {
             // checking if the entered string matched with any item of our recycler view.
-            if (item.fullName?.lowercase(Locale.ROOT)?.contains(text.lowercase(Locale.getDefault())) == true || item.department?.lowercase(Locale.ROOT)?.contains(text.lowercase(Locale.getDefault())) == true) {
+            if (item.fullName?.lowercase(Locale.ROOT)
+                    ?.contains(text.lowercase(Locale.getDefault())) == true || item.department?.lowercase(
+                    Locale.ROOT
+                )?.contains(text.lowercase(Locale.getDefault())) == true
+            ) {
                 // if the item is matched we are
                 // adding it to our filtered list.
                 filteredList.add(item)

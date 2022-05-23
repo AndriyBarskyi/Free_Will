@@ -12,11 +12,12 @@ import android.widget.PopupWindow
 import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freewill.databinding.ActivityFeedbackTeacherBinding
-import com.example.freewill.models.*
+import com.example.freewill.models.FeedbackAdapter
+import com.example.freewill.models.ReadFirebase
+import com.example.freewill.models.TeacherRatings
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.FirebaseDatabase
 
@@ -25,7 +26,7 @@ class FeedbackTeacherActivity : AppCompatActivity() {
     lateinit var teacherFeedbacks: ArrayList<String>
     private lateinit var feedbacksRecyclerView: RecyclerView
 
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         feedbackBinding = ActivityFeedbackTeacherBinding.inflate(layoutInflater)
@@ -50,7 +51,10 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         /**call text and images*/
         feedbackBinding.backgroundName.text = fullName
         feedbackBinding.departmentName.text = department
-        feedbackBinding.rate.text = avgRating
+        if (avgRating != null) {
+            feedbackBinding.rate.text = "${String.format("%.1f", avgRating.toFloat())}/5"
+        }
+
         if (photo != null) {
             feedbackBinding.feedbackTeacherPhoto.setImageResource(photo.toInt())
         }
@@ -72,17 +76,40 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         }
 
         if (avgRating != null) {
-            if (avgRating != "0/5") {
+            if (avgRating != "0.0" && avgRating != "0") {
                 val referenceDB =
                     fullName?.let {
                         FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                             .getReference("Teachers").child(it)
                     }
                 referenceDB?.get()?.addOnSuccessListener {
-                    feedbackBinding.modernityRating.rating = it.child("modernity").value as Float
-                    feedbackBinding.demandingRating.rating = it.child("demanding").value as Float
-                    feedbackBinding.loyaltyRating.rating = it.child("loyalty").value as Float
-                    feedbackBinding.teachingSkillsRating.rating = it.child("teachingSkills").value as Float
+                    feedbackBinding.modernityRating.rating = (it.child("modernity").value).toString().toFloat()
+                    feedbackBinding.demandingRating.rating = it.child("demanding").value.toString().toFloat()
+                    feedbackBinding.loyaltyRating.rating = it.child("loyalty").value.toString().toFloat()
+                    feedbackBinding.teachingSkillsRating.rating =
+                        it.child("teachingSkills").value.toString().toFloat()
+                    feedbackBinding.rate.text = "${it.child("avgRating").value.toString()}/5)"
+                }
+            }
+        }
+
+        var ratings: TeacherRatings = TeacherRatings()
+        if (avgRating != null) {
+            if (avgRating.toFloat() > 0f) {
+                val ref =
+                    fullName?.let {
+                        FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
+                            .getReference("Teachers").child(it)
+                    }
+                ref?.get()?.addOnSuccessListener {
+                    ratings = TeacherRatings(
+                        it.child("modernity").value.toString().toFloat(),
+                        it.child("demanding").value.toString().toFloat(),
+                        it.child("loyalty").value.toString().toFloat(),
+                        it.child("teachingSkills").value.toString().toFloat(),
+                        it.child("ratingsCount").value.toString().toInt(),
+                        it.child("avgRating").value.toString().toFloat()
+                    )
                 }
             }
         }
@@ -114,24 +141,23 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                 if (modernity.compareTo(0) != 0 && demanding.compareTo(0) != 0 &&
                     loyalty.compareTo(0) != 0 && teachingSkills.compareTo(0) != 0
                 ) {
-                    var teacherRatings: TeacherRatings = TeacherRatings()
+                    ratings.updateRatings(modernity, demanding, loyalty, teachingSkills)
                     val referenceDB =
                         fullName?.let {
                             FirebaseDatabase.getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
                                 .getReference("Teachers").child(it)
                         }
                     if (avgRating != null) {
-                        referenceDB?.setValue(
-                            TeacherRatings(
-                                modernity,
-                                demanding,
-                                loyalty,
-                                teachingSkills,
-                                0,
-                                avgRating.split("/")[0].toFloat()
-                            )
-                        )
+                        referenceDB?.child("modernity")?.setValue(ratings.modernity.toString())
+                        referenceDB?.child("loyalty")?.setValue(ratings.loyalty.toString())
+                        referenceDB?.child("demanding")?.setValue(ratings.demanding.toString())
+                        referenceDB?.child("teachingSkills")
+                            ?.setValue(ratings.teachingSkills.toString())
+                        referenceDB?.child("avgRating")?.setValue(ratings.avgRating.toString())
+                        referenceDB?.child("ratingsCount")
+                            ?.setValue(ratings.ratingsCount.toString())
                         popupWindow.dismiss()
+                        recreate()
                     }
                 }
 
@@ -139,11 +165,13 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                     if (fullName != null) {
                         ReadFirebase().addReview(fullName, feedback, this)
                         popupWindow.dismiss()
+                        recreate()
                     }
                 }
             }
         }
     }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()

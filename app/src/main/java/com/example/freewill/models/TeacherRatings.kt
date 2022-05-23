@@ -5,12 +5,12 @@ import kotlin.math.round
 import kotlin.math.roundToInt
 
 class TeacherRatings {
-    private var modernity: Float = 0f
-    private var demanding: Float = 0f
-    private var loyalty: Float = 0f
-    private var teachingSkills: Float = 0f
-    private var ratingsCount: Int = 0
-    private var avgRating: Float = 0f
+    var modernity: Float = 0f
+    var demanding: Float = 0f
+    var loyalty: Float = 0f
+    var teachingSkills: Float = 0f
+    var ratingsCount: Int = 0
+    var avgRating: Float = 0f
 
     constructor()
 
@@ -40,14 +40,19 @@ class TeacherRatings {
                               newLoyalty: Float,
                               newTeachingSkills: Float) {
         val meanRating: Float = (modernity + demanding + loyalty + teachingSkills) / 4.0f
-        avgRating = getNewAvg(avgRating, meanRating)
+        if (avgRating == 0.0f) {
+            avgRating = meanRating
+        } else {
+            avgRating = getNewAvg(avgRating, meanRating)
+        }
         modernity = getNewAvg(modernity, newModernity)
         demanding = getNewAvg(demanding, newDemanding)
         loyalty = getNewAvg(loyalty, newLoyalty)
         teachingSkills = getNewAvg(teachingSkills, newTeachingSkills)
+        ratingsCount += 1
     }
 
-    @Exclude
+/*    @Exclude
     fun toMap(): Map<String, Any> {
         val result: HashMap<String, Any> = HashMap()
         result["modernity"] = modernity
@@ -55,7 +60,7 @@ class TeacherRatings {
         result["loyalty"] = loyalty
         result["teachingSkills"] = teachingSkills
         result["ratingsCount"] = ratingsCount
-        result["avgRating"] = avgRating
+        result["avgRating"] = avgRating.toString()
         return result
-    }
+    }*/
 }
