@@ -139,7 +139,7 @@ class ReadFirebase {
                 false -> ""
             }
             onSuccess(group)
-        }
+        }.addOnFailureListener {}
     }
 
     fun readFirebaseUser( binding: ActivitySettingBinding) {
