@@ -53,8 +53,8 @@ open class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(8,10,14,13)
-    val minutes:IntArray= intArrayOf(30,10,45,30)
+    val hours:IntArray= intArrayOf(15,15,15,18)
+    val minutes:IntArray= intArrayOf(25,28,40,25)
     val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
@@ -173,12 +173,14 @@ open class SettingActivity : AppCompatActivity()
             chooseFont = small
             chooseSizeKoef = smallSize
             SetSizeFont(smallSize)
+            SetSizeFont(smallSize)
             recreate()
         })
         bindingClass.buttonM.setOnClickListener(View.OnClickListener
         {
             chooseFont = medium
             chooseSizeKoef = mediumSize
+            SetSizeFont(mediumSize)
             SetSizeFont(mediumSize)
             recreate()
 
@@ -188,8 +190,8 @@ open class SettingActivity : AppCompatActivity()
             chooseFont = big
             chooseSizeKoef = bigSize
             SetSizeFont(bigSize)
+            SetSizeFont(bigSize)
             recreate()
-
         })
 
 
@@ -392,6 +394,7 @@ open class SettingActivity : AppCompatActivity()
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
+    @RequiresApi(Build.VERSION_CODES.O)
     fun changeB(view: View) {
         // call checking the password
         EditInformation(R.layout.activity_edit_setting, view)
