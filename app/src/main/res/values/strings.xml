@@ -50,7 +50,7 @@
     <string name="entrance_no_account">Я ще не маю акаунта</string>
     <string name="entrance_registration">Зареєструватись</string>
     <string name="registration">Реєстрація</string>
-    <string name="forget_pass">Забули \nпароль?</string>
+    <string name="forget_pass">Забули\nпароль?</string>
     <string name="schedule_btn">Змінити</string>
     <string name="check_entrance"><b>На Вашу пошту був надісланий лист для входу. Скористайтесь ним, щоб увійти.</b>
     <b>Змінити свій пароль Ви можете в Налаштуваннях.</b></string>
@@ -63,10 +63,10 @@
     <string name="you_agree">Зміни підтверджено</string>
     <string name="reset_password">Скинути пароль</string>
     <string name="alarm">Alarm!!!</string>
-    <string name="rest_five">Пара за 5 хвилин</string>
-    <string name="rest_ten">Пара за 10 хвилин</string>
-    <string name="rest_fifteen">Пара за 15 хвилин</string>
-    <string name="rest_twelve">Пара за 20 хвилин</string>
+    <string name="rest_five">Пара через 5 хвилин</string>
+    <string name="rest_ten">Пара через 10 хвилин</string>
+    <string name="rest_fifteen">Пара через 15 хвилин</string>
+    <string name="rest_twelve">Пара через 20 хвилин</string>
 
 
 
