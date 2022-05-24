@@ -165,7 +165,7 @@
                 android:layout_marginTop="47dp"
                 android:layout_marginEnd="200dp"
                 android:fontFamily="@font/comfortaa"
-                android:text="@string/loyality"
+                android:text="@string/loyalty"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
