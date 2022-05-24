@@ -39,12 +39,8 @@ class TeacherRatings {
                               newDemanding: Float,
                               newLoyalty: Float,
                               newTeachingSkills: Float) {
-        val meanRating: Float = (modernity + demanding + loyalty + teachingSkills) / 4.0f
-        if (avgRating == 0.0f) {
-            avgRating = meanRating
-        } else {
-            avgRating = getNewAvg(avgRating, meanRating)
-        }
+        val meanRating: Float = (newModernity + newDemanding + newLoyalty + newTeachingSkills) / 4.0f
+        avgRating = getNewAvg(avgRating, meanRating)
         modernity = getNewAvg(modernity, newModernity)
         demanding = getNewAvg(demanding, newDemanding)
         loyalty = getNewAvg(loyalty, newLoyalty)
