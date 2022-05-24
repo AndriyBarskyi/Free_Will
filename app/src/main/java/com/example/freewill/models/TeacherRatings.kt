@@ -47,16 +47,4 @@ class TeacherRatings {
         teachingSkills = getNewAvg(teachingSkills, newTeachingSkills)
         ratingsCount += 1
     }
-
-/*    @Exclude
-    fun toMap(): Map<String, Any> {
-        val result: HashMap<String, Any> = HashMap()
-        result["modernity"] = modernity
-        result["demanding"] = demanding
-        result["loyalty"] = loyalty
-        result["teachingSkills"] = teachingSkills
-        result["ratingsCount"] = ratingsCount
-        result["avgRating"] = avgRating.toString()
-        return result
-    }*/
 }
