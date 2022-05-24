@@ -1,5 +1,6 @@
 package com.example.freewill
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -21,6 +22,7 @@ class NewsActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     private lateinit var newsList: ArrayList<NewsModel>
     private lateinit var newsAdapter: NewsAdapter
+    private var showing = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +57,7 @@ class NewsActivity : AppCompatActivity() {
         val toolbar: Toolbar = binding.toolbar
 
         // using toolbar as ActionBar
-        toolbar.setTitle(R.string.toolbar_schedule)
+        toolbar.setTitle(R.string.toolbar_news)
         setSupportActionBar(toolbar)
 
 //      Navigation bar
@@ -66,5 +68,22 @@ class NewsActivity : AppCompatActivity() {
         val navigation = NavigationClass(drawerLayout, toggle, navView, this)
         navigation.createNavigationDrawer(this)
     }
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
 
+            setContentView(R.layout.activity_schedule)
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        }
+    }
 }

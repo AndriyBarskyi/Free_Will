@@ -1,14 +1,19 @@
 package com.example.freewill
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.freewill.databinding.FragmentScheduleBinding
 import com.example.freewill.models.ReadFirebase
 import com.example.freewill.databinding.ActivityScheduleBinding
+import com.example.freewill.models.DataModel
 import com.example.freewill.models.ShowAudience
 import com.example.freewill.search_point.Dijkstra
 import org.w3c.dom.Text
@@ -18,25 +23,13 @@ const val ARG_OBJECT = "object"
 @Suppress("UNREACHABLE_CODE")
 class ScheduleFragment : Fragment() {
     private lateinit var binding: FragmentScheduleBinding
-    private lateinit var bindingScheduleBinding: ActivityScheduleBinding
-    private lateinit var schedule:ScheduleActivity
-    private var showing = false
-    private lateinit var thisContext: Context
-    private lateinit var aud1: TextView
-
+    private val dataModel : DataModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         залученийІнстаціїState: Bundle?
     ): View? {
         binding = FragmentScheduleBinding.inflate(inflater)
-        bindingScheduleBinding = ActivityScheduleBinding.inflate(layoutInflater)
-//        if (container != null) {
-//            vcontext = container.context
-//        }
-        thisContext = bindingScheduleBinding.root.context
-        schedule = ScheduleActivity()
-        showAudience(this)
         return binding.root
     }
 
@@ -47,54 +40,51 @@ class ScheduleFragment : Fragment() {
             val textDay =getString(ARG_OBJECT)
             ReadGroup.readGroupUser(){group->ReadGroup.readSchedule(group,textDay.toString(),binding)}
 
-        //binding.class1.setText(textDay.toString())
-            //binding.aud1.setText(position.toString())
         }
-//ReadGroup.readGroupUser(){group->ReadGroup.ReadSchedule(group,activity ,binding)}
+        clickOnAud()
     }
 
-//не працює
-    private fun showAudience(fragment: ScheduleFragment)
+//    fun setOnClickListener() {
+////if( binding.aud1.setOnClickListener{} || )
+//        binding.aud1.setOnClickListener {
+//            if(binding.aud1.toString()!="") {
+//                dataModel.audutoria.value = binding.aud1.text as String?
+//            }
+//        }
+//
+//    }
+
+    fun clickOnAud()
     {
-        showing=true
-        val aud1 = "240"
-        val p = ArrayList<Float>()
-        p.add(566f)
-        p.add(566f)
+
         binding.aud1.setOnClickListener {
-            schedule.setContentView(
-                ShowAudience(schedule, p),
-            )
+            if(binding.aud1.toString()!="") {
+                dataModel.audutoria.value = binding.aud1.text as String?
+            }
         }
         binding.aud2.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, bindingScheduleBinding.root.context)
-                ),
-            )
+            if(binding.aud2.toString()!="") {
+                dataModel.audutoria.value = binding.aud2.text as String?
+            }
         }
         binding.aud3.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, activity)
-                ),
-            )
+            if(binding.aud3.toString()!="") {
+                dataModel.audutoria.value = binding.aud3.text as String?
+            }
         }
         binding.aud4.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, activity)
-                ),
-            )
+            if(binding.aud4.toString()!="") {
+                dataModel.audutoria.value = binding.aud4.text as String?
+            }
         }
         binding.aud5.setOnClickListener {
-            schedule = ScheduleActivity()
-            schedule.setContentView(
-                ShowAudience(bindingScheduleBinding.root.context, Dijkstra.getCoord(aud1, activity)
-                ),
-            )
+            if(binding.aud5.toString()!="") {
+                dataModel.audutoria.value = binding.aud5.text as String?
+            }
         }
     }
+//не працює
+
 
 //    override fun onBackPressed() {
 //        if (showing) {

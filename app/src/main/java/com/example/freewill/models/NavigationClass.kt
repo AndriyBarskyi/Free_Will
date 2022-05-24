@@ -12,7 +12,7 @@ import com.example.freewill.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
+//class for better manipulating with navigation drawer
 class NavigationClass(
     _drawerLayout: DrawerLayout,
     _toggle: ActionBarDrawerToggle,
@@ -27,9 +27,10 @@ class NavigationClass(
     fun createNavigationDrawer(activityClass: AppCompatActivity){
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
         navView.itemIconTintList = null
         navView.setNavigationItemSelectedListener{
+
+            //determine what each button should do
             when(it.itemId){
                 R.id.nav_schedule -> {
                     val i = Intent(context, ScheduleActivity::class.java)
@@ -59,23 +60,22 @@ class NavigationClass(
 
                 }
                 R.id.nav_feedback -> {
-                    val i = Intent(context, ReviewActivity::class.java)
-                    context.startActivity(i)
-                    activityClass.finish()
-
+//                    val i = Intent(context, TeachersActivity::class.java)
+ //                   context.startActivity(i)
+ //                   activityClass.finish()
                 }
                 R.id.nav_useful_links -> {
                     val i = Intent(context, LinksPreviewActivity::class.java)
                     context.startActivity(i)
                     activityClass.finish()
                 }
-
             }
             true
         }
     }
 
-    fun showAlertMessage(activityClass: AppCompatActivity){
+    //open and show a custom alert dialog
+    private fun showAlertMessage(activityClass: AppCompatActivity){
         val builder = AlertDialog.Builder(context)
 
         builder.setTitle(R.string.alert_header)

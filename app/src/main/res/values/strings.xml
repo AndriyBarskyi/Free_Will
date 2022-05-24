@@ -86,6 +86,7 @@
     <string name="toolbar_link">Корисні посилання</string>
     <string name="toolbar_map">Карта</string>
     <string name="toolbar_reviews">Відгуки</string>
+    <string name="toolbar_news">Новини</string>
     <string name="toolbar_settings">Налаштування</string>
     <string name="toolbar_change_schedule">Зміна розкладу</string>
     <string name="log_out_alert">Ви справді бажаєте вийти з акаунта?</string>
@@ -98,7 +99,7 @@
     <string name="teachers_preview">Шукай тут</string>
     <string name="modernity">сучасність</string>
     <string name="demanding">вимогливість</string>
-    <string name="loyality">лояльність</string>
+    <string name="loyalty">лояльність</string>
     <string name="teaching_skills">викладання</string>
 
     <!-- TODO: Remove or change this placeholder text -->

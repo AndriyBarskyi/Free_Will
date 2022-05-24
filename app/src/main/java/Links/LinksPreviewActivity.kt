@@ -1,5 +1,6 @@
 package Links
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.freewill.EditSchedule_Fragment
 import com.example.freewill.R
+import com.example.freewill.ScheduleActivity
 import com.example.freewill.databinding.ActivityLinksPreviewBinding
 import com.example.freewill.models.NavigationClass
 import com.google.android.material.navigation.NavigationView
@@ -22,6 +24,7 @@ class LinksPreviewActivity : AppCompatActivity() {
     private lateinit var referenceSubject: DatabaseReference
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
+    private var showing = false
     fun readSubjects(onSuccess:(Array<String>)->Unit) {
         referenceSubject = FirebaseDatabase
             .getInstance("https://freewilldatabase-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -30,7 +33,7 @@ class LinksPreviewActivity : AppCompatActivity() {
             val array=when (it.exists()) {
                 true->
                 {
-                    var arrayKeys= Array<String>(1){"Дізнатись щось корисне ↓"}
+                    var arrayKeys= Array<String>(1){"Натисни↓"}
                     it.children.forEach {
                         arrayKeys+=it.key.toString()
                     }
@@ -72,7 +75,10 @@ class LinksPreviewActivity : AppCompatActivity() {
     fun CreateItem(languages:Array<String>)
     {
         val spinner = findViewById<Spinner>(R.id.spinner)
-        val image=findViewById(R.id.boy_links) as ImageView
+        val image1=findViewById(R.id.boy_links) as ImageView
+        val image2=findViewById(R.id.imageView29) as ImageView
+        val text1=findViewById(R.id.linkFond) as TextView
+        val text2=findViewById(R.id.tvTitleFond) as TextView
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, languages)
@@ -84,15 +90,21 @@ class LinksPreviewActivity : AppCompatActivity() {
                     Toast.makeText(this@LinksPreviewActivity,
                         "Обраний предмет: "+
                                 "" + languages[position], Toast.LENGTH_SHORT).show()
-                    if(languages[position]!="Дізнатись щось корисне ↓")
+                    if(languages[position]!="Натисни↓")
                     {
                         OpenFrag(LinkFragment.newInstance(languages[position]), R.id.frame)
                         //image=findViewById(R.id.boy_links) as ImageView
-                        image.visibility=View.GONE
+                        image1.visibility=View.GONE
+                        image2.visibility=View.GONE
+                        text1.visibility=View.GONE
+                        text2.visibility=View.GONE
                     }
                     else
                     {
-                        image.visibility=View.VISIBLE
+                        image1.visibility=View.VISIBLE
+                        image2.visibility=View.VISIBLE
+                        text1.visibility=View.VISIBLE
+                        text2.visibility=View.VISIBLE
                     }
 
                 }
@@ -107,5 +119,23 @@ class LinksPreviewActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
+
+            setContentView(R.layout.activity_schedule)
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        }
     }
 }

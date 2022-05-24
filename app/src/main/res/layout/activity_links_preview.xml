@@ -21,16 +21,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="@style/custom_toolbar"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
-
         </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
@@ -38,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-670dp"
+            android:layout_marginTop="-650dp"
             android:layout_marginEnd="10dp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +56,7 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="144dp"
@@ -89,9 +79,56 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/imageView29"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/emblem_of_the_ukrainian_air_force_prapor_copy_copy" />
+
+            <TextView
+                android:id="@+id/linkFond"
+                android:layout_width="335dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/comfortaa"
+                android:paddingLeft="5dp"
+                android:text="Повернись живим | Благодійний фонд"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTitleFond"
+                android:layout_width="335dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="40dp"
+                android:autoLink="web"
+                android:clickable="true"
+                android:fontFamily="@font/comfortaa"
+                android:paddingLeft="5dp"
+                android:text="https://savelife.in.ua/donate/"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
         </FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/custom_toolbar"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
 

@@ -199,7 +199,6 @@ class MapActivity : AppCompatActivity() {
             OnTouchListener { view, event ->
                 val x = event.x.toString()
                 val y = event.y.toString()
-                Log.d("in",y)
                 InformationAboutRooms().search(x,y){room->DialogAud(room)}
                 true
             }

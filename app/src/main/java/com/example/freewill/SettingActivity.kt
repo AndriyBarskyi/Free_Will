@@ -53,8 +53,8 @@ open class SettingActivity : AppCompatActivity()
     val ten = "ten"
     val fifteen = "fifteen"
     val twelve = "twelve"
-    val hours:IntArray= intArrayOf(16,16,16,18)
-    val minutes:IntArray= intArrayOf(20,24,40,25)
+    val hours:IntArray= intArrayOf(8,10,11,13)
+    val minutes:IntArray= intArrayOf(30,10,50,30)
     val timesTo:IntArray= intArrayOf(5,10,15,20)
 
     var chooseSizeKoef : Float? = null
@@ -65,6 +65,7 @@ open class SettingActivity : AppCompatActivity()
     lateinit var chooseLang : String
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
+    private var showing = false
 
     fun SetSizeFont(size_coef: Float)
     {
@@ -89,7 +90,6 @@ open class SettingActivity : AppCompatActivity()
             startActivity(intent)
         }
         intSaver("111", 6)
-        val h = resLang?.getInt("11", 0)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -524,5 +524,23 @@ open class SettingActivity : AppCompatActivity()
         super.onDestroy()
         stringfSaver(keyLanguage, chooseLang)
         stringfSaver(keyFont, chooseFont)
+    }
+    override fun onBackPressed() {
+        if (showing) {
+            showing = false
+
+            setContentView(R.layout.activity_schedule)
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        } else {
+            val i = Intent(baseContext, ScheduleActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            baseContext.startActivity(i)
+            finish()
+        }
     }
 }
