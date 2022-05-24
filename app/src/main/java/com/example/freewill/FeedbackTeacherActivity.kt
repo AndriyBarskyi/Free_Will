@@ -35,7 +35,7 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         val teacherIntent = intent
         val fullName = teacherIntent.getStringExtra("fullName")
         val department = teacherIntent.getStringExtra("department")
-        val avgRating = teacherIntent.getStringExtra("avgRating")
+        var avgRating = teacherIntent.getStringExtra("avgRating")
         val photo = teacherIntent.getStringExtra("photo")
 
         val toolbar: Toolbar = feedbackBinding.toolbar
@@ -52,7 +52,12 @@ class FeedbackTeacherActivity : AppCompatActivity() {
         feedbackBinding.backgroundName.text = fullName
         feedbackBinding.departmentName.text = department
         if (avgRating != null) {
-            feedbackBinding.rate.text = "${String.format("%.1f", avgRating.toFloat())}/5"
+            if (avgRating.toFloat() == 0f) {
+                feedbackBinding.rate.text = "0/5"
+            }
+            else {
+                feedbackBinding.rate.text = "${String.format("%.1f", avgRating.toFloat())}/5"
+            }
         }
 
         if (photo != null) {
@@ -83,12 +88,20 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                             .getReference("Teachers").child(it)
                     }
                 referenceDB?.get()?.addOnSuccessListener {
-                    feedbackBinding.modernityRating.rating = (it.child("modernity").value).toString().toFloat()
-                    feedbackBinding.demandingRating.rating = it.child("demanding").value.toString().toFloat()
-                    feedbackBinding.loyaltyRating.rating = it.child("loyalty").value.toString().toFloat()
+                    feedbackBinding.modernityRating.rating =
+                        (it.child("modernity").value).toString().toFloat()
+                    feedbackBinding.demandingRating.rating =
+                        it.child("demanding").value.toString().toFloat()
+                    feedbackBinding.loyaltyRating.rating =
+                        it.child("loyalty").value.toString().toFloat()
                     feedbackBinding.teachingSkillsRating.rating =
                         it.child("teachingSkills").value.toString().toFloat()
-                    feedbackBinding.rate.text = "${it.child("avgRating").value.toString()}/5)"
+                    feedbackBinding.rate.text = "${
+                        String.format(
+                            "%.1f",
+                            it.child("avgRating").value.toString().toFloat()
+                        )
+                    }/5"
                 }
             }
         }
@@ -157,6 +170,7 @@ class FeedbackTeacherActivity : AppCompatActivity() {
                         referenceDB?.child("ratingsCount")
                             ?.setValue(ratings.ratingsCount.toString())
                         popupWindow.dismiss()
+                        avgRating = ratings.avgRating.toString()
                         recreate()
                     }
                 }
