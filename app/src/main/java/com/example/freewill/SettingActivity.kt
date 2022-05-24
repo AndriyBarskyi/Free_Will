@@ -82,14 +82,14 @@ open class SettingActivity : AppCompatActivity()
         //
         //resLang?.getBoolean("setting", true) == true
         val r = resLang?.getInt("111", 0)
-        if (r != 6) {
+        if (r != 13) {
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             val uri = Uri.fromParts("package", packageName, null)
             intent.data = uri
             startActivity(intent)
         }
-        intSaver("111", 6)
+        intSaver("111", 13)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -113,7 +113,7 @@ open class SettingActivity : AppCompatActivity()
         }
 
         // font size selection after restart
-        chooseFont = resLang?.getString(keyFont, medium)!!
+        chooseFont = resLang?.getString(keyFont, small)!!
         when(chooseFont) {
             small ->{
                 selectColorsFontSize(R.drawable.circle_button_dark_blue, R.drawable.circle_button,

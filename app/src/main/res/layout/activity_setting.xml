@@ -171,7 +171,7 @@
                         android:id="@+id/change"
                         android:layout_width="170dp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="115dp"
+                        android:layout_marginStart="105dp"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/btn_shape"
                         android:fontFamily="@font/comfortaa_light"
@@ -187,7 +187,7 @@
 
                     <TextView
                         android:id="@+id/forgotPasswordSetting"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="36dp"
                         android:layout_marginTop="15dp"
@@ -308,6 +308,7 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/SoundLinearLayout"
+
                         tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck"
                         tools:layout_editor_absoluteY="383dp" />
 

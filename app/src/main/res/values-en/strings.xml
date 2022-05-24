@@ -50,7 +50,7 @@
     <string name = "entrance_without"> Sign in without authorization </string>
     <string name = "entrance_no_account"> I don\'t have an account yet </string>
     <string name = "entrance_registration"> Register </string>
-    <string name = "forget_pass"> Forgot password? </string>
+    <string name = "forget_pass"> Forgot \npassword? </string>
     <string name = "schedule_btn"> Edit </string>
     <string name = "check_entrance"> <b> A login email has been sent to your mail. Use it to sign in. </b>
     <b> You can change your password in Settings. </b> </string>
