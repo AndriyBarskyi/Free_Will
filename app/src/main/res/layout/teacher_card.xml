@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/teacherCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardCornerRadius="40dp"
+    app:cardElevation="8dp"
+    app:strokeColor="@color/less_blue"
+    app:strokeWidth="8dp"
+    android:layout_marginTop="8dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/teacherPhoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="20dp"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/teacherFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/full_name"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <TextView
+        android:id="@+id/departmentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/department_name"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <RatingBar
+        android:id="@+id/teacherRatingBar"
+        style="@android:style/Widget.Material.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginBottom="6dp"
+        android:progressTint="@color/dark_blue"
+        android:rating="0" />
+
+    <TextView
+        android:id="@+id/teacherAvgRating"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/circle_button_dark_blue"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/zero_stars"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/teacherRatingBar"
+        app:layout_constraintTop_toBottomOf="@+id/departmentName" />
+</com.google.android.material.card.MaterialCardView>

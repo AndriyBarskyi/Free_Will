@@ -53,7 +53,7 @@ class EditSchedule_Fragment : Fragment() {
             ) {
                 item = it
             }
-            ChangeSchedule.UpdateShedule(ChangeDay, item, requireActivity() as AppCompatActivity)
+            ChangeSchedule.updateShedule(ChangeDay, item, requireActivity() as AppCompatActivity)
 
         }
     }

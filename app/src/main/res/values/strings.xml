@@ -67,7 +67,7 @@
     <string name="rest_ten">Пара через 10 хвилин</string>
     <string name="rest_fifteen">Пара через 15 хвилин</string>
     <string name="rest_twelve">Пара через 20 хвилин</string>
-
+    <string name="information_about_teacher">Інформація про викладача</string>
 
 
     <string name="subject">Предмет</string>
@@ -85,6 +85,7 @@
     <string name="toolbar_schedule">Розклад</string>
     <string name="toolbar_link">Корисні посилання</string>
     <string name="toolbar_map">Карта</string>
+    <string name="toolbar_reviews">Відгуки</string>
     <string name="toolbar_news">Новини</string>
     <string name="toolbar_settings">Налаштування</string>
     <string name="toolbar_change_schedule">Зміна розкладу</string>
@@ -96,22 +97,19 @@
     <string name="links_preview">Оберіть предмет</string>
 
     <string name="teachers_preview">Шукай тут</string>
-    <string name="characteristic1">сучасність</string>
-    <string name="characteristic2">вибагливість</string>
-    <string name="characteristic3">лояльність</string>
-    <string name="characteristic4">викладання</string>
-
-    <string name="shcherbyna_name" translatable="false">Щербина Юрій Миколайович</string>
-    <string name="shcherbyna_subject" translatable="false">математична логіка</string>
-
-    <string name="golovatyy_name" translatable="false">Головатий Юрій Данилович</string>
-    <string name="golovatyy_subject" translatable="false">диференціальні рівняння</string>
-
-    <string name="malets_name" translatable="false">Малець Романна Богданівна</string>
-    <string name="malets_subject" translatable="false">бази даних</string>
-
+    <string name="modernity">сучасність</string>
+    <string name="demanding">вимогливість</string>
+    <string name="loyalty">лояльність</string>
+    <string name="teaching_skills">викладання</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="zero_stars">0/5</string>
+    <string name="department_name">Назва факультету</string>
+    <string name="full_name">Прізвище Ім\'я Побатькові</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="add_feedback">Додати відгук</string>
+    <string name="teachers_not_found">Таких викладачів не знайдено</string>
+    <string name="write_feedback">Опишіть детальніше ваші враження…(не обов\'язково)</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->

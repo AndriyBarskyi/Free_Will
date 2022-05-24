@@ -18,6 +18,12 @@
             android:name=".OpenNewsActivity"
             android:exported="false" />
         <activity
+            android:name=".FeedbackTeacherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewsActivity"
             android:exported="false" />
         <activity
