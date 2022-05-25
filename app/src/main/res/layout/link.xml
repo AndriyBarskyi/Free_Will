@@ -25,10 +25,10 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="335dp"
-            android:layout_height="47dp"
+            android:layout_width="310dp"
+            android:layout_height="72dp"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="45dp"
             android:autoLink="web"
             android:clickable="true"
             android:fontFamily="@font/comfortaa"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/textView18"
-            android:layout_width="335dp"
+            android:layout_width="310dp"
             android:layout_height="40dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="10dp"
@@ -48,7 +48,7 @@
             android:paddingLeft="5dp"
             android:text="name"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
 
