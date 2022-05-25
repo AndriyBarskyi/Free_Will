@@ -67,9 +67,11 @@
 
     <TextView
         android:id="@+id/teacherAvgRating"
-        android:layout_width="60dp"
-        android:layout_height="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
+        android:paddingHorizontal="8dp"
+        android:paddingBottom="3dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
@@ -78,7 +80,7 @@
         android:text="@string/zero_stars"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/teacherRatingBar"
         app:layout_constraintTop_toBottomOf="@+id/departmentName" />
